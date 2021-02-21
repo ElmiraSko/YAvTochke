@@ -1,0 +1,27 @@
+.colorDiv {
+    background-color: #f8e2e2;
+    height: 180px;
+    width: 100%;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 30px;
+    /*backgroundColor: '#94261f',*/
+    margin-left: 60px;
+}
+@media (max-width: 767.98px) {
+    .colorDiv {
+        flex-direction: column;
+    }
+}
+
+.test {
+    border-radius: 2px;
+    border-color: #1A365A;
+    background-size: 1px;
+    justify-content: flex-start;
+}
