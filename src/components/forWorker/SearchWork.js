@@ -10,19 +10,19 @@ import {YMaps, Map, Placemark} from 'react-yandex-maps';
 export default function WorkerPage() {
     const [sliderValue, setSliderValue] = useState(0)
 
-    const [mapCenter, setMapCenter] = useState(
-        {
-            center: [55.75, 37.57],
-            zoom: 7,
-            controls: ['zoomControl', 'fullscreenControl'],
-        }
-    );
+    // const [mapCenter, setMapCenter] = useState(
+    //     {
+    //         center: [55.75, 37.57],
+    //         zoom: 7,
+    //         controls: ['zoomControl', 'fullscreenControl'],
+    //     }
+    // );
     const [zoom, setZoom] = React.useState(7)
 
     const [center, setCenter] = React.useState(
         [55.75, 37.57],
     )
-    const mapState = React.useMemo(() => ({ center, zoom }),
+    const mapState = React.useMemo(() => ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
         [center, zoom, ])
 
     const coordinates = [
@@ -37,10 +37,9 @@ export default function WorkerPage() {
     }
 
     function getCurrentPlace(ymaps) {
-
         ymaps.geolocation.get({
             // Выставляем опцию для определения положения по ip
-            provider: 'yandex',
+            provider: 'auto',
             // Карта автоматически отцентрируется по положению пользователя.
             mapStateAutoApply: true
         }).then(function (result) {
@@ -48,11 +47,6 @@ export default function WorkerPage() {
             let coords = result.geoObjects.get(0).geometry.getCoordinates()
             console.log(coords);
             setCenter(coords)
-            // setMapCenter({
-            //         center: result.geoObjects.get(0).geometry.getCoordinates(),
-            //         zoom: 7,
-            //         controls: ['zoomControl', 'fullscreenControl']
-            // })
             console.log(center)
         });
 
@@ -176,7 +170,9 @@ export default function WorkerPage() {
                             apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
                         }}>
                             <div>
-                                <Map state={mapState} onLoad={(ymaps) => {
+                                <Map
+                                    state={mapState}
+                                     onLoad={(ymaps) => {
                                     console.log(ymaps.geocode);
                                     getCurrentPlace(ymaps)
                                 } }
@@ -189,10 +185,8 @@ export default function WorkerPage() {
                                     {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
 
                                 </Map>
-
                             </div>
                         </YMaps>
-                        {/*<div id="map" style={{width: "600px", height: "400px"}} />*/}
                     </div>
                 </div>
 
