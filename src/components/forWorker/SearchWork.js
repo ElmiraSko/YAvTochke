@@ -17,6 +17,14 @@ export default function WorkerPage() {
             controls: ['zoomControl', 'fullscreenControl'],
         }
     );
+    const [zoom, setZoom] = React.useState(7)
+
+    const [center, setCenter] = React.useState(
+        [55.75, 37.57],
+    )
+    const mapState = React.useMemo(() => ({ center, zoom }),
+        [center, zoom, ])
+
     const coordinates = [
         [55.684758, 37.738521],
         [56.684758, 37.73999]
@@ -37,13 +45,15 @@ export default function WorkerPage() {
             mapStateAutoApply: true
         }).then(function (result) {
             console.log(result)
-            console.log(result.geoObjects.get(0).geometry.getCoordinates());
-            setMapCenter({
-                    center: result.geoObjects.get(0).geometry.getCoordinates(),
-                    zoom: 7,
-                    controls: ['zoomControl', 'fullscreenControl']
-            })
-            console.log(mapCenter)
+            let coords = result.geoObjects.get(0).geometry.getCoordinates()
+            console.log(coords);
+            setCenter(coords)
+            // setMapCenter({
+            //         center: result.geoObjects.get(0).geometry.getCoordinates(),
+            //         zoom: 7,
+            //         controls: ['zoomControl', 'fullscreenControl']
+            // })
+            console.log(center)
         });
 
     }
@@ -150,7 +160,7 @@ export default function WorkerPage() {
                     justifyContent: "space-around",
                     marginBottom: "135px",
                 }}>
-                    <div style={{width: "40%", height: "auto", backgroundColor: "#320202"}}>
+                    <div style={{width: "40%", height: "auto",}}>
                         <div>
                             <div>
                                 <AdItem vacancy = {Ad[0]}/>
@@ -166,7 +176,7 @@ export default function WorkerPage() {
                             apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
                         }}>
                             <div>
-                                <Map defaultState={mapCenter} onLoad={(ymaps) => {
+                                <Map state={mapState} onLoad={(ymaps) => {
                                     console.log(ymaps.geocode);
                                     getCurrentPlace(ymaps)
                                 } }
