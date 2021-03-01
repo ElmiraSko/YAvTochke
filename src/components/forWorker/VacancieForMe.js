@@ -30,7 +30,6 @@ export default function VacanciesForMe() {
                         <div>
                             <AdItem vacancy = {Ad[1]}/>
                         </div>
-
                     </div>
                 </div>
 

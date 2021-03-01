@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
-import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
 import Loader from "../Loader";
 import './styles2/signInCompany.css'
+import SignIn from "../SignIn";
 
 export default function SignInCompany() {
     // Контекст
@@ -65,11 +64,14 @@ export default function SignInCompany() {
     // обработчик поля email
     function loginHandler(event){
         setEmail(event.target.value)
+        console.log(email)
     }
     // обработчик поля password
     function passwordHandler(event){
         setPassword(event.target.value)
+        console.log(password)
     }
+
     console.log('Форма авторизации company')
 
     return (
@@ -78,38 +80,12 @@ export default function SignInCompany() {
             <div className="wr">
                 <form noValidate autoComplete="off" hidden={formHidden} >
                     <Typography component="h1" variant="h5" align={"center"}>
-                        Авторизация
+                        Вход в личный кабинет
                     </Typography>
-                    <TextField id="outlined-basic"
-                               label="Email"
-                               variant="outlined"
-                               margin="normal"
-                               type="email"
-                               required
-                               fullWidth
-                               value={email}
-                               onChange={loginHandler}
-                    />
-                    <TextField id="outlined-basic"
-                               label="Пароль"
-                               variant="outlined"
-                               margin="normal"
-                               type="password"
-                               required
-                               fullWidth
-                               value={password}
-                               onChange={passwordHandler}
-                    />
-                    <Button type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            // className="sub"
-                            style={{margin: '24px 0 16px', backgroundColor: "#278c21"}}
-                            onClick={submitHandler}
-                    >
-                        Войти
-                    </Button>
+
+                    <SignIn loginHandler={loginHandler}
+                            passwordHandler={passwordHandler}
+                            submitHandler={submitHandler} />
                 </form>
             </div>
         </Container>

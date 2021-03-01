@@ -1,9 +1,52 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Container} from "@material-ui/core";
 import '../employeesForCompany/styles2/Emploees.css';
+import './styles1/slider.css'
+import AdItem from "../AdItem";
+import Ad from '../employeesForCompany/VacanciesText'
+import {YMaps, Map, Placemark} from 'react-yandex-maps';
 
 
 export default function WorkerPage() {
+    const [sliderValue, setSliderValue] = useState(0)
+
+    const [mapCenter, setMapCenter] = useState(
+        {
+            center: [55.75, 37.57],
+            zoom: 7,
+            controls: ['zoomControl', 'fullscreenControl'],
+        }
+    );
+    const coordinates = [
+        [55.684758, 37.738521],
+        [56.684758, 37.73999]
+    ]
+
+    function getRadius() {
+        const size = document.getElementById("radius").value;
+        setSliderValue(size)
+        console.log(size)
+    }
+
+    function getCurrentPlace(ymaps) {
+
+        ymaps.geolocation.get({
+            // Выставляем опцию для определения положения по ip
+            provider: 'yandex',
+            // Карта автоматически отцентрируется по положению пользователя.
+            mapStateAutoApply: true
+        }).then(function (result) {
+            console.log(result)
+            console.log(result.geoObjects.get(0).geometry.getCoordinates());
+            setMapCenter({
+                    center: result.geoObjects.get(0).geometry.getCoordinates(),
+                    zoom: 7,
+                    controls: ['zoomControl', 'fullscreenControl']
+            })
+            console.log(mapCenter)
+        });
+
+    }
 
     return(
         <div>
@@ -79,6 +122,71 @@ export default function WorkerPage() {
                     <div style={{backgroundColor: "#e78282",  width: "180px", }}>2 шаг</div>
                     <div style={{backgroundColor: "#e78282",  width: "180px", }}>3 шаг</div>
                 </div>
+                <hr />
+                <div style={{marginBottom: "35px", }}>
+                    <div style={{fontSize: "1.2rem", marginBottom: "15px",}}>
+                        Найди работу в нужном тебе месте
+                    </div>
+                    <div>
+                        <input style={{width: "40%", }}
+                               placeholder="Улица и номер дома где хотите работать"/>
+                               <input type="submit" style={{margin: "0px 10px", }} value="Поиск"/>
+                        <p style={{fontSize: "1.0rem"}}>
+                            Укажите в каком радиусе от точки искать работу
+                        </p>
+                               <p>
+                                   <input type="range" className="slider"
+                                          min="0" max="2000" step="100"
+                                          value={sliderValue} id="radius"
+                                          onInput={getRadius} />
+                               </p>
+                        <p style={{fontSize: "1.0rem"}}>
+                            Радиус: {sliderValue/1000} км ({sliderValue} метров)
+                        </p>
+                    </div>
+                </div>
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    marginBottom: "135px",
+                }}>
+                    <div style={{width: "40%", height: "auto", backgroundColor: "#320202"}}>
+                        <div>
+                            <div>
+                                <AdItem vacancy = {Ad[0]}/>
+                            </div>
+                            <div>
+                                <AdItem vacancy = {Ad[1]}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{marginBottom: "35px",}}>
+                        <YMaps  query={{
+                            apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
+                        }}>
+                            <div>
+                                <Map defaultState={mapCenter} onLoad={(ymaps) => {
+                                    console.log(ymaps.geocode);
+                                    getCurrentPlace(ymaps)
+                                } }
+                                     modules={['control.ZoomControl', 'control.FullscreenControl','geolocation', 'geocode']}
+                                     style={{width: "600px", height: "400px"}}
+                                >
+
+                                    {/*<Placemark defaultGeometry={[55.75, 37.57]} />*/}
+
+                                    {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
+
+                                </Map>
+
+                            </div>
+                        </YMaps>
+                        {/*<div id="map" style={{width: "600px", height: "400px"}} />*/}
+                    </div>
+                </div>
+
+
 
             </Container>
 

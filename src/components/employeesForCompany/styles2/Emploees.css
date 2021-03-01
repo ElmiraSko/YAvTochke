@@ -23,5 +23,5 @@
     border-radius: 2px;
     border-color: #1A365A;
     background-size: 1px;
-    justify-content: flex-start;
+    justify-content: space-between;
 }

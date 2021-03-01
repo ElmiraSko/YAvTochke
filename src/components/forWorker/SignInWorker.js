@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
 import Loader from "../Loader";
 import './styles1/signInWorker.css'
+import SignIn from "../SignIn";
 
 export default function SignInWorker() {
     // Контекст
@@ -64,6 +65,7 @@ export default function SignInWorker() {
     // обработчик поля email
     function loginHandler(event){
         setEmail(event.target.value)
+        console.log(email)
     }
     // обработчик поля password
     function passwordHandler(event){
@@ -79,37 +81,9 @@ export default function SignInWorker() {
                     <Typography component="h1" variant="h5" align={"center"}>
                         Вход в профиль
                     </Typography>
-                    <hr/>
-                    <TextField id="outlined-basic"
-                               label="Email"
-                               variant="outlined"
-                               margin="normal"
-                               type="email"
-                               required
-                               fullWidth
-                               value={email}
-                               // onChange={loginHandler}
-                    />
-                    <TextField id="outlined-basic"
-                               label="Пароль"
-                               variant="outlined"
-                               margin="normal"
-                               type="password"
-                               required
-                               fullWidth
-                               value={password}
-                               // onChange={passwordHandler}
-                    />
-                    <Button type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            // className="sub"
-                            style={{margin: '24px 0 16px', backgroundColor: "#278C21"}}
-                            onClick={submitHandler}
-                    >
-                        Войти
-                    </Button>
+                    <SignIn loginHandler={loginHandler}
+                            passwordHandler={passwordHandler}
+                            submitHandler={submitHandler} />
                 </form>
             </div>
         </Container>

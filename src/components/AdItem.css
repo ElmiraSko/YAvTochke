@@ -1,0 +1,13 @@
+.adItem-main {
+    background-color: #def2f3;
+    color: #110808;
+    font-size: 1.0rem;
+    font-weight: 400;
+    max-width: 50rem;
+    min-width: 30rem;
+    min-height: 180px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border: 4px double black;
+    padding: 5px 10px;
+}

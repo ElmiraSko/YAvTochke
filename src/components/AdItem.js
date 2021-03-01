@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Container} from "@material-ui/core";
 import Logo from "../img/Logo.png";
+import './AdItem.css'
 
 
 export default function AdItem(props) {
@@ -8,10 +9,7 @@ export default function AdItem(props) {
     const vacancy = props.vacancy
 
     return(
-
-            <div style={{backgroundColor: "#def2f3", color: "#110808", fontSize: "1.0rem",
-                fontWeight: "400", width: "50rem", minHeight: '180px', marginBottom: "15px",
-                borderRadius: "7px", border: "4px double black", padding: "5px 10px"  }}>
+            <div className="adItem-main">
                 <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}}>
                     <div>
                         <span style={{color: "#138499", fontWeight: "700", fontSize: "1.6rem"}}>
