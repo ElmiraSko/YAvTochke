@@ -1,19 +1,22 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
+import '../components/styles/SignIn.css'
 
 export default function SignIn(props) {
-
+// общий простой компонет для авторизации
     const submitH = props.submitHandler
 
     return(
-            <div style={{width: "300px", margin: "auto", fontSize: "1.2rem", paddingTop: "15px", }}>
+            <div className="main-div">
                     <div style={{marginBottom: "15px"}} >
                         <div>
                             <label >Логин/email/телефон*</label>
                         </div>
                         <div>
                             <input type="text"  style={{width: "100%",}}
-                                   onChange={props.loginHandler} />
+                                   value={props.login}
+                                   onChange={props.loginHandler}
+                                   onClick={props.cleanLogin} />
                         </div>
                     </div>
 
@@ -23,7 +26,9 @@ export default function SignIn(props) {
                         </div>
                         <div>
                             <input type="text" style={{width: "100%",}}
-                                   onChange={props.passwordHandler} />
+                                   value={props.password}
+                                   onChange={props.passwordHandler}
+                                   onClick={props.cleanPassword} />
                         </div>
                     </div>
 

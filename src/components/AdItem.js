@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Container} from "@material-ui/core";
 import Logo from "../img/Logo.png";
-import './AdItem.css'
+import './styles/AdItem.css'
 
 
 export default function AdItem(props) {

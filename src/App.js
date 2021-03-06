@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import HeaderApp from "./components/HeaderApp";
+import HeaderApp2 from "./components/HeaderApp2";
 import Context from './components/Context'
 import {
     BrowserRouter as Router,
@@ -112,8 +112,7 @@ function App() {
       }}>
           <div>
               <Router >
-                <HeaderApp />
-
+                <HeaderApp2 />
                   {/*<div style={{width: "100%", backgroundColor: "#fffffe", margin: "auto", textAlign: "center"}}>*/}
                       <div style={{minHeight: "calc(100vh - 64px)"}}>
                           <Switch>
@@ -159,7 +158,7 @@ function App() {
                               <Route exact path="/vacancy-employees">
                                   <VacanciesForMe />
                               </Route>
-                              <Route exact path="/confirm/user77t-745-phone">
+                              <Route exact path="/confirm/user-phone">
                                   <ConfirmUserPhone />
                               </Route>
                               <Route exact path="/after-r57ph7-page">

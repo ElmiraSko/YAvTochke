@@ -1,28 +1,29 @@
 .appbar {
     font-size: 1.2rem;
-    background-color: #000000;
+    background-color: #fff;
     min-height: 64px;
-    color: #fff;
+    color: #0c1618;
+    font-weight: bold;
     width: 100%;
     display: flex;
     justify-content: space-between;
     z-index: 1100;
-    /*box-sizing: border-box;*/
-    /*flex-shrink: 0;*/
+    box-sizing: border-box;
+    /*box-shadow: 0 0 3px 2px rgba(63, 102, 153, 0.5);*/
+    flex-shrink: 0;
     padding: 10px 0 10px 0;
 }
-.link {
-    padding: 10px 0 10px 0;
-    color: #ebeeed;
+.link-padding {
+    padding: 18px 0;
 }
 .link-logo {
     display: flex;
     justify-content: flex-start;
 }
 
-.active {
-    color: #9b1010;
-}
+/*.active {*/
+/*    color: #F04D2D;*/
+/*}*/
 
 @media (max-width: 767.98px) {
     .appbar {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Container} from "@material-ui/core";
 import '../employeesForCompany/styles2/Emploees.css';
 import './styles1/slider.css'
@@ -6,28 +6,33 @@ import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
 
-
 export default function WorkerPage() {
+
+    let tempCords=localStorage.getItem("center")
+    console.log(tempCords)
+
+    // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(0)
+    const [zoom, setZoom] = useState(7)
+    const [address, setAddress] = useState('')
+    const [ymaps, setYmaps] = useState()
 
-    // const [mapCenter, setMapCenter] = useState(
-    //     {
-    //         center: [55.75, 37.57],
-    //         zoom: 7,
-    //         controls: ['zoomControl', 'fullscreenControl'],
-    //     }
-    // );
-    const [zoom, setZoom] = React.useState(7)
+    const [coordinates, setCoordinates] = useState([])
 
-    const [center, setCenter] = React.useState(
-        [55.75, 37.57],
-    )
-    const mapState = React.useMemo(() => ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
-        [center, zoom, ])
 
-    const coordinates = [
-        [55.684758, 37.738521],
-        [56.684758, 37.73999]
+    const [center, setCenter] = useState(tempCords,)
+    const mapState = React.useMemo(() =>
+            ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
+        [center, zoom])
+
+
+    let data = [
+        {
+            address: "Москва, ул. Солянка, 9"
+        },
+        {
+            address: "Москва, ул. Варварка, 5/10c1"
+        }
     ]
 
     function getRadius() {
@@ -36,105 +41,108 @@ export default function WorkerPage() {
         console.log(size)
     }
 
-    function getCurrentPlace(ymaps) {
-        ymaps.geolocation.get({
-            // Выставляем опцию для определения положения по ip
-            provider: 'auto',
-            // Карта автоматически отцентрируется по положению пользователя.
-            mapStateAutoApply: true
-        }).then(function (result) {
-            console.log(result)
-            let coords = result.geoObjects.get(0).geometry.getCoordinates()
-            console.log(coords);
-            setCenter(coords)
-            console.log(center)
-        });
-
+    function addressHandler(event) {
+        setAddress(event.target.value)
     }
+
+    function getCurrentPlace(ymaps) {
+            setYmaps(ymaps)
+            ymaps.geolocation.get({
+                // Выставляем опцию для определения положения по ip
+                provider: 'auto',
+                // Карта автоматически отцентрируется по положению пользователя.
+                mapStateAutoApply: true
+            }).then(function (result) {
+                console.log(result)
+                let coords = result.geoObjects.get(0).geometry.getCoordinates()
+                console.log(coords);
+                localStorage.setItem("center", coords)
+                tempCords=coords
+                setCenter(coords)
+                console.log(tempCords)
+            });
+    }
+
+    function clearTheSearchField() {
+        setAddress('')
+    }
+
+
+    function findPlace() {
+        console.log("Клик по кнопке")
+        let coords = []
+        // {Адрес и радиус} отпраить на бэк, получить список адресов в указанном радиусе - data
+        // после, пройтись по массиву адресов - data
+        // создать массив из координат - сoordinates
+        data.map(function (add) {
+            ymaps.geocode(add.address)
+                .then(result => coords.push( result.geoObjects.get(0).geometry.getCoordinates()))
+        })
+        setCoordinates(coords)
+        ymaps.geocode(address)
+            .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
+    }
+
 
     return(
         <div>
-            <div className="colorDiv" >
-                <Container maxWidth="lg">
-                    <div style={{display: "flex", justifyContent: "space-around", fontSize: "1.2rem",
-                        fontWeight: "600",}}>
-                        <div className="title">
-                            Сервис для <br /> тех кто
-                        </div>
-                        <div >
-                            <div >Хочет найти подработку </div>
-                            <div style={{ marginTop: "15px"}}>в своем магазине </div>
-                        </div>
-                        <div>
-                            <div> Ищет работу рядом</div>
-                            <div style={{marginRight: "120px", marginTop: "15px"}}> со своим домом</div>
-                        </div>
-                    </div>
-                    <div style={{paddingTop: "40px", textAlign: "center"}}>
-                        <Button style={{backgroundColor: "#c81f1f", color: "#ffffff",
-                            fontWeight: "400",}}> Регистрация </Button>
-                    </div>
-                </Container>
-            </div>
-
             <Container maxWidth="lg">
-
                 <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                    fontWeight: "600", }}> Соискатели
+                    fontWeight: "600", }}> Соискателям
+
+                    <div style={{backgroundColor: '#848C8E', width: "900px", color: '#fff',
+                        borderRadius: '10px', height: 'auto', margin: 'auto', textAlign: "center",
+                        marginTop: '20px', fontSize: "1.2rem", }}>
+                        <div style={{width: "500px", margin: 'auto', paddingTop:'10px'}}>
+                            <ul style={{textAlign: "left", }}>
+                                <li>Нужна подработка в своем магазине</li>
+                                <li>Нужна работа рядом с домом</li>
+                                <li>Нет времени листать вакансии</li>
+                            </ul>
+                        </div>
+                        <h3 > Как найти: </h3>
+                        <div style={{display: "flex", justifyContent: "space-around",
+                            height: "180px", fontSize: "2.9rem"  }}>
+                            <div style={{backgroundColor: "#ffb43c",
+                                width: "80px", height: "80px",
+                                borderRadius: '50%'}}>1</div>
+                            <div style={{backgroundColor: "#f17f05",
+                                width: "80px", height: "80px",
+                                borderRadius: '50%'}}>2</div>
+                            <div style={{backgroundColor: "#F04D2D",
+                                width: "80px", height: "80px",
+                                borderRadius: '50%'}}>3</div>
+                        </div>
+                        <div style={{display: "flex", justifyContent: "space-around",
+                            marginBottom: "105px", height: "180px", fontSize: "1.4rem"  }}>
+                            <div style={{
+                                width: "30%", height: "80px",
+                                borderRadius: '50%'}}>Выбери точку на карте, где удобно работать</div>
+                            <div style={{
+                                width: "30%", height: "80px",
+                                borderRadius: '50%'}}>Заполни анкету и оставь свой номер телефона</div>
+                            <div style={{
+                                width: "30%", height: "80px",
+                                borderRadius: '50%'}}>Получай сообщения с подходящими вакансиями</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
-                    <div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1", color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Продавцы 23</Button>
-                        </div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1", color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Аудиторы 12</Button>
-                        </div>
-
-                    </div>
-                    <div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1",  color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Промоутеры 18 </Button>
-                        </div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1", color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Мерчендайзеры 17 </Button>
-                        </div>
-
-                    </div>
-                    <div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1", color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Консультанты 8</Button>
-                        </div>
-                        <div>
-                            <Button style={{backgroundColor: "#c4c1c1", color: "#ffffff",
-                                fontWeight: "400", width: "180px", marginBottom: "15px"}}> Разместить</Button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <h1 style={{textAlign: "center"}}> Как это работает </h1>
-                <div style={{display: "flex", justifyContent: "space-around",
-                    marginBottom: "135px", height: "180px", fontSize: "1.4rem"  }}>
-                    <div style={{backgroundColor: "#e78282",  width: "180px", }}>1 шаг</div>
-                    <div style={{backgroundColor: "#e78282",  width: "180px", }}>2 шаг</div>
-                    <div style={{backgroundColor: "#e78282",  width: "180px", }}>3 шаг</div>
-                </div>
-                <hr />
                 <div style={{marginBottom: "35px", }}>
                     <div style={{fontSize: "1.2rem", marginBottom: "15px",}}>
                         Найди работу в нужном тебе месте
                     </div>
                     <div>
                         <input style={{width: "40%", }}
-                               placeholder="Улица и номер дома где хотите работать"/>
-                               <input type="submit" style={{margin: "0px 10px", }} value="Поиск"/>
+                               placeholder="Улица и номер дома где хотите работать"
+                               value={address}
+                               onChange={addressHandler}
+                               onClick={clearTheSearchField}
+                        />
+                        <input type="submit" style={{margin: "0px 10px", }}
+                               value="Поиск"
+                               onClick={findPlace}
+                        />
                         <p style={{fontSize: "1.0rem"}}>
                             Укажите в каком радиусе от точки искать работу
                         </p>
@@ -174,15 +182,32 @@ export default function WorkerPage() {
                                     state={mapState}
                                      onLoad={(ymaps) => {
                                     console.log(ymaps.geocode);
-                                    getCurrentPlace(ymaps)
+                                    getCurrentPlace(ymaps);
                                 } }
-                                     modules={['control.ZoomControl', 'control.FullscreenControl','geolocation', 'geocode']}
+                                     modules={[
+                                         'control.ZoomControl',
+                                         'control.FullscreenControl',
+                                         'geolocation', 'geocode',
+                                         'geoObject.addon.balloon',
+                                         'geoObject.addon.hint']}
+
                                      style={{width: "600px", height: "400px"}}
                                 >
 
-                                    {/*<Placemark defaultGeometry={[55.75, 37.57]} />*/}
+                                    <Placemark geometry={center}
+                                               properties={{
+                                                   // iconContent: 'Я здесь',
+                                                   // hintContent: 'Это',
+                                                   balloonContent: 'Я здесь',
+                                               }}
+                                               options={{
+                                                   // The placemark's icon will stretch to fit its contents.
+                                                   preset: 'islands#darkOrangeDotIcon',
+                                               }}
+                                    />
+                                    {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
 
-                                    {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
+                                    {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
 
                                 </Map>
                             </div>

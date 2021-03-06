@@ -1,12 +1,27 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Container} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Context from "../Context";
+import SignUpComponent from "./SignUpComponent";
+import './styles1/slider.css'
 
 export default function SignUpWorker() {
 
     // Контекст
     const {user, setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
+    // Состояние компонента SignUpWorker
+    const [firstName, setFirstName] = React.useState('')
+    const [lastName, setLastName] = React.useState('')
+    const [phone, setPhone] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [citizenship, setCitizenship] = React.useState('')
+    const [address, setAddress] = React.useState('')
+    const [password, setPassword] = React.useState('')
+    // состояние ползунка
+    const [sliderValue, setSliderValue] = useState(0)
+
+    const [loading, setLoading] = React.useState(false)
+    const [formHidden, setFormHidden] = React.useState(false)
 
     function submitHandler(event) {
         event.preventDefault()
@@ -16,96 +31,106 @@ export default function SignUpWorker() {
         setSignIn(!signIn)
         setSignUp(!signUp)
         // setLoading(false) // конец загрузки
-        window.location.href='/confirm/user77t-745-phone'
+        window.location.href='/confirm/user-phone'
     }
 
-    // обработчик поля email
+    // обработчик поля firstName
     function firstNameHandler(event){
-        console.log(event.target.value)
+        setFirstName(event.target.value)
+    }
+    // обработчик поля lastName
+    function lastNameHandler(event){
+        setLastName(event.target.value)
+    }
+    // обработчик поля phone
+    function phoneHandler(event){
+        setPhone(event.target.value)
+    }
+    // обработчик поля email
+    function emailHandler(event){
+        setEmail(event.target.value)
+    }
+    // обработчик поля citizenship
+    function citizenshipHandler(event){
+        setCitizenship(event.target.value)
+    }
+    // обработчик поля address
+    function addressHandler(event){
+        setAddress(event.target.value)
+    }
+    // обработчик поля password
+    function passwordHandler(event){
+        setPassword(event.target.value)
+    }
+    //== onClick - для всех полей ===
+    function cleanFirstName() {
+        setFirstName('')
+    }
+    function cleanLastName() {
+        setLastName('')
+    }
+    function cleanPhone() {
+        setPhone('')
+    }
+    function cleanEmail() {
+        setEmail('')
+    }
+    function cleanCitizenship() {
+        setCitizenship('')
+    }
+    function cleanAddress() {
+        setAddress('')
+    }
+    function cleanPassword() {
+        setPassword('')
+    }
+    // функция для ползунка
+    function getRadius() {
+        const size = document.getElementById("radius").value;
+        setSliderValue(size)
+        console.log(size)
     }
 
     return(
         <div>
-            <Container maxWidth="lg"  >
-                <div style={{width: "300px", margin: "auto" }}>
-                    <div style={{ fontSize: "1.2rem", }}>
-                        <div style={{marginBottom: "15px"}} >
-                            <div style={{padding: "20px 0px 20px 0px",
-                                fontSize: "1.4rem",  fontWeight: "600",}}>
-                                Регистрация соискателя
-                            </div>
-                        </div>
+            <Container maxWidth="lg">
+               <SignUpComponent
+                   firstNH={firstNameHandler} lastNH={lastNameHandler}
+                   phoneH={phoneHandler} emailH={emailHandler}
+                   citizenshipH={citizenshipHandler} addressH={addressHandler}
+                   passwordH={passwordHandler} submitHandler={submitHandler}
 
-                        <div style={{marginBottom: "15px"}} >
-                            <div>
-                                <label >Имя*</label>
-                            </div>
-                            <div>
-                                <input type="text"  style={{width: "100%",}}
-                                       onChange={firstNameHandler}/>
-                            </div>
-                        </div>
+                   firstName={firstName} cleanFirstName={cleanFirstName}
+                   lastName={lastName} cleanLastName={cleanLastName}
+                   phone={phone} cleanPhone={cleanPhone}
+                   email={email} cleanEmail={cleanEmail}
+                   citizenship={citizenship} cleanCitizenship={cleanCitizenship}
+                   address={address} cleanAddress={cleanAddress}
+                   password={password} cleanPassword={cleanPassword} />
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Фамилия*</label>
-                            </div>
-                            <div>
-                                <input type="text" style={{width: "100%",}}/>
-                            </div>
-                        </div>
+                   <div style={{textAlign: 'center', paddingBottom: '20px'}}>
+                        <p style={{fontSize: "1.0rem"}}>
+                            Укажите расстояние от точки поиска работы
+                        </p>
+                        <p>
+                            <input type="range" className="slider"
+                                   min="0" max="2000" step="100"
+                                   value={sliderValue} id="radius"
+                                   onInput={getRadius} />
+                        </p>
+                        <p style={{fontSize: "1.0rem", paddingBottom: '30px'}}>
+                            Радиус: {sliderValue/1000} км ({sliderValue} метров)
+                        </p>
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Мобильный телефон*</label>
-                            </div>
-                            <div>
-                                <input type="text"  style={{width: "100%",}} />
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Email*</label>
-                            </div>
-                            <div>
-                                <input type="email"  style={{width: "100%",}} />
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Гражданство*</label>
-                            </div>
-                            <div>
-                                <input type="text"  style={{width: "100%",}} />
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "25px"}}>
-                            <div>
-                                <label >Адрес*</label>
-                            </div>
-                            <div>
-                                <input type="text" style={{width: "100%",}}
-                                placeholder="Адрес где хотите работать"/>
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "30px"}} >
-                            <Button style={{backgroundColor: "#278C21", width: "100%",}}
-                                    onClick={submitHandler}
-                            >Зарегистрироваться</Button>
-                        </div>
-                    </div>
-
-                </div>
-
+                       <div style={{marginBottom: "30px"}} >
+                           <Button style={{backgroundColor: "#FFB43C", width: "50x",}}
+                                   onClick={submitHandler}
+                           >Зарегистрироваться</Button>
+                       </div>
+                   </div>
 
 
             </Container>
-
-
         </div>
     )
 }

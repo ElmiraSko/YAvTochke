@@ -5,6 +5,7 @@ import Logo from '../img/Logo.png'
 import './styles/HeaderApp.css'
 import Container from "@material-ui/core/Container";
 import Context from "./Context";
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ButtonAppBar() {
+export default function HeaderApp2() {
     const classes = useStyles();
 
     const {user, setUser, signIn, setSignIn, signUp, setSignUp,
@@ -48,11 +49,16 @@ export default function ButtonAppBar() {
             <Container maxWidth="lg">
                 <header className="appbar">
                     <div className="link-logo">
-                        <img src={Logo} alt="logo" style={{width: '3.0rem', padding: "10px 0 10px 0"}}/>
-                        &nbsp;&nbsp;
+                        <div>
+                            <img src={Logo} alt="logo" style={{width: '3.0rem', padding: "10px 0 10px 0"}}/>
+                        </div>
+                        <div style={{padding: '18px 0'}}>
+                            &nbsp;&nbsp;Я в точке
+                        </div>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <div className="link-padding">
                             <NavLink className={classes.link} onClick={() => setSearchWork(true)}
-                                     exact to={"/"}  activeStyle={{color: "#e78787", fontWeight: "bold"}} >
+                                     exact to={"/"}  activeStyle={{color: "#F04D2D", fontWeight: "bold"}} >
                                 Ищу подработку
                             </NavLink>
                         </div>
@@ -61,7 +67,7 @@ export default function ButtonAppBar() {
                         </div>
                         <div className="link-padding">
                             <NavLink className={classes.link} onClick={() => setSearchWork(false)}
-                                     exact to={"/employees"} activeStyle={{color: "#2a97cf", fontWeight: "bold"}} >
+                                     exact to={"/employees"} activeStyle={{color: "#F04D2D", fontWeight: "bold"}} >
                                 Ищу сотрудника
                             </NavLink>
                         </div>
@@ -79,13 +85,13 @@ export default function ButtonAppBar() {
                                         > Объявления
                                         </NavLink>
                                         <NavLink className={classes.link}
-                                            hidden={!user}
+                                                 hidden={!user}
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/personal-account/employees"}
-                                        > Личный  кабинет
+                                        > Профиль
                                         </NavLink>
                                         <NavLink className={classes.link}
-                                            hidden={signUp}
+                                                 hidden={signUp}
 
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/reg/employees"}
@@ -98,8 +104,8 @@ export default function ButtonAppBar() {
                                         > Войти
                                         </NavLink>
                                         <NavLink className={classes.link}
-                                            hidden={!user}  // или id магазина
-                                            onClick={() => {logout()}}
+                                                 hidden={!user}  // или id магазина
+                                                 onClick={() => {logout()}}
                                                  to={"/"}
                                         > Выйти
                                         </NavLink>
@@ -113,7 +119,7 @@ export default function ButtonAppBar() {
                                         > Анкеты
                                         </NavLink>
                                         <NavLink className={classes.link}
-                                            hidden={!company}
+                                                 hidden={!company}
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/vacancies"}
                                         > Ваши объявления
@@ -137,8 +143,8 @@ export default function ButtonAppBar() {
                                         > Войти
                                         </NavLink>
                                         <NavLink className={classes.link}
-                                            hidden={!company}  // id компании
-                                            onClick={() => {companyLogout()}}
+                                                 hidden={!company}  // id компании
+                                                 onClick={() => {companyLogout()}}
                                                  to={"/employees"}
                                         > Выйти
                                         </NavLink>

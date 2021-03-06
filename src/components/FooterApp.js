@@ -3,7 +3,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import './FooterApp.css'
+import './styles/FooterApp.css'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -25,8 +25,18 @@ function FooterApp() {
         <div className="main">
 {/* теги <p>  заменить на ссылки*/}
             <div className="left">
-                <span className="tit">ЯвТочке</span>
+                {/*<span className="tit">ЯвТочке</span>*/}
                 <div className="group">
+                    <div style={{padding: "0px 20px"}}>
+                        <span className="tit" style={{margin: "7px"}}>ЯвТочке</span>
+                        <span style={{margin: "7px"}}>
+                    <Typography variant="body2">
+                        {'© '}
+                        {new Date().getFullYear()}
+                        {' YAvTochke.ru'}
+                    </Typography>
+                </span>
+                    </div>
                     <div style={{padding: "0px 20px"}}>
                         <p style={{margin: "7px"}}>О компании</p>
                         <p style={{margin: "7px"}}>Новости</p>
@@ -42,13 +52,13 @@ function FooterApp() {
                         </p>
                     </div>
                 </div>
-                <span>
-                    <Typography variant="body2">
-                        {'© '}
-                        {new Date().getFullYear()}
-                        {' YAvTochke.ru'}
-                    </Typography>
-                </span>
+                {/*<span>*/}
+                {/*    <Typography variant="body2">*/}
+                {/*        {'© '}*/}
+                {/*        {new Date().getFullYear()}*/}
+                {/*        {' YAvTochke.ru'}*/}
+                {/*    </Typography>*/}
+                {/*</span>*/}
 
             </div>
 

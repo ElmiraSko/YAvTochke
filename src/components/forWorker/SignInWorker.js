@@ -1,7 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
 import Loader from "../Loader";
@@ -13,8 +12,12 @@ export default function SignInWorker() {
     const {user, setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
 
     // Состояние компонента
-    const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+    const [loginValid, setLoginValid] = useState(false)
+    const [passwordValid, setPasswordValid] = useState(false)
+
+    const [formValid, setFormValid] = useState(false)
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
@@ -62,16 +65,25 @@ export default function SignInWorker() {
     }
     // }
 
-    // обработчик поля email
+    // обработчик поля email/phone/login
     function loginHandler(event){
-        setEmail(event.target.value)
-        console.log(email)
+        setLogin(event.target.value)
+        console.log(login)
     }
     // обработчик поля password
     function passwordHandler(event){
         setPassword(event.target.value)
     }
-    console.log('Форма авторизации user')
+    // очистка поля email/phone/login
+    function cleanLogin(){
+        setLogin('')
+        console.log(login)
+    }
+    // очистка поля password
+    function cleanPassword(){
+        setPassword('')
+    }
+    console.log('Форма авторизации user' )
 
     return (
         <Container component="main" maxWidth="xs">
@@ -83,6 +95,10 @@ export default function SignInWorker() {
                     </Typography>
                     <SignIn loginHandler={loginHandler}
                             passwordHandler={passwordHandler}
+                            cleanLogin={cleanLogin}
+                            cleanPassword={cleanPassword}
+                            login={login}
+                            password={password}
                             submitHandler={submitHandler} />
                 </form>
             </div>
