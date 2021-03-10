@@ -1,0 +1,23 @@
+.search-block {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.map-button {
+    font-size: 0.7rem;
+    border: 0;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.map-wrapper {
+    width: 600px;
+    margin: auto;
+}
+.radius-text {
+    font-size: 1.0rem;
+    font-weight: 600;
+}

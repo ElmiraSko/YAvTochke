@@ -173,8 +173,9 @@ export default function WorkerPage() {
                         </div>
                     </div>
 
-                    <div style={{marginBottom: "35px",}}>
-                        <YMaps  query={{
+                    <div style={{marginBottom: "35px",}} hidden={false}>
+                        <YMaps
+                            query={{
                             apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
                         }}>
                             <div>

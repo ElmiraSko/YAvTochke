@@ -42,7 +42,7 @@ export default function (props) {
                                        className={`input-field ${fieldError(props.firstNameValid)}`}
                                        value={props.firstName}
                                        onChange={firstNameHandler}
-                                       onClick={props.cleanFirstName}
+                                       onDoubleClick={props.cleanFirstName}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -58,7 +58,7 @@ export default function (props) {
                                        className={`input-field ${fieldError(props.lastNameValid)}`}
                                        value={props.lastName}
                                        onChange={lastNameHandler}
-                                       onClick={props.cleanLastName}
+                                       onDoubleClick={props.cleanLastName}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -75,7 +75,7 @@ export default function (props) {
                                        className={`input-field ${fieldError(props.phoneValid)}`}
                                        value={props.phone}
                                        onChange={phoneHandler}
-                                       onClick={props.cleanPhone}
+                                       onDoubleClick={props.cleanPhone}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -92,10 +92,11 @@ export default function (props) {
                             <div>
                                 <input type="email"
                                        name="email"
+                                       placeholder="user@mail.ru"
                                        className={`input-field ${fieldError(props.emailValid)}`}
                                        value={props.email}
                                        onChange={emailHandler}
-                                       onClick={props.cleanEmail}
+                                       onDoubleClick={props.cleanEmail}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -108,10 +109,11 @@ export default function (props) {
                             <div>
                                 <input type="password"
                                        name="password"
+                                       placeholder="A-Z,a-z,0-9,_"
                                        className={`input-field ${fieldError(props.passwordValid)}`}
                                        value={props.password}
                                        onChange={passwordHandler}
-                                       onClick={props.cleanPassword}
+                                       onDoubleClick={props.cleanPassword}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -121,10 +123,13 @@ export default function (props) {
                                 <label >Подтвердить пароль*</label>
                             </div>
                             <div>
-                                <input type="password" className={`input-field ${fieldError(props.repeatPasswordValid)}`}
+                                <input type="password"
+                                       name="rpassword"
+                                       placeholder="A-Z,a-z,0-9,_"
+                                       className={`input-field ${fieldError(props.repeatPasswordValid)}`}
                                        value={props.repeatPassword}
                                        onChange={repeatPasswordHandler}
-                                       onClick={props.cleanRepeatPassword}
+                                       onDoubleClick={props.cleanRepeatPassword}
                                        onBlur={props.blurHandler}
                                 />
                             </div>
@@ -136,16 +141,17 @@ export default function (props) {
                 <div style={{textAlign: 'center', margin: 'auto', width: "40%"}}>
                     <div style={{marginBottom: "30px", textAlign: 'left', fontSize: "1.0rem", }}>
                         <div>
-                            <label>Адрес поиска работы*</label>
+                            <label >Адрес поиска работы*</label>
                         </div>
                         <div>
                             <input type="text"
                                    name="address"
                                    className={`input-field ${fieldError(props.addressValid)}`}
                                    value={props.address}
-                                   // placeholder="Адрес где хотите работать"
+                                   placeholder="Город, улица, дом"
                                    onChange={addressHandler}
-                                   onClick={props.cleanAddress}
+                                   // onClick={props.cleanAddress}
+                                   onDoubleClick={props.cleanAddress}
                                    onBlur={props.blurHandler}
                             />
                         </div>

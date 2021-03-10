@@ -40,6 +40,7 @@ export default function SignIn(props) {
                         <div>
                             <input type="text"
                                    name="password"
+                                   placeholder="A-Z,a-z,0-9,_"
                                    className={`input-field ${loginError(props.passwordValid)}`}
                                    value={props.password}
                                    onChange={props.passwordHandler}

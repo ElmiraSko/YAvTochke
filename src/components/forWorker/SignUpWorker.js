@@ -4,8 +4,12 @@ import Button from "@material-ui/core/Button";
 import Context from "../Context";
 import SignUpComponent from "./SignUpComponent";
 import './styles1/slider.css'
+import {Map, Placemark, YMaps} from "react-yandex-maps";
+import './styles1/signUpWorker.css'
 
 export default function SignUpWorker() {
+
+    let tempCords=localStorage.getItem("center")
 
     // Контекст
     const {user, setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
@@ -24,22 +28,70 @@ export default function SignUpWorker() {
     const [repeatPasswordValid, setRepeatPasswordValid] = useState(true)
     const [address, setAddress] = React.useState('')
     const [addressValid, setAddressValid] = useState(true)
+    const [addressCoords, setAddressCoords] = useState('')
+    const [mapHid, setMapHid] = useState(true)
+    const [ymaps, setYmaps] = useState()
+    const [buttonValue, setButtonValue] = useState("ПОКАЗАТЬ КАРТУ")
+    const [center, setCenter] = useState(tempCords)
+    const [zoom, setZoom] = useState(7)
+    const mapState = React.useMemo(() =>
+            ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
+        [center, zoom])
     const [formValid, setFormValid] = useState(false)
 
     // состояние ползунка
-    const [sliderValue, setSliderValue] = useState(0)
-
-    const [loading, setLoading] = React.useState(false)
-    const [formHidden, setFormHidden] = React.useState(false)
+    const [sliderValue, setSliderValue] = useState(2)
+    //
+    // const [loading, setLoading] = React.useState(false)
+    // const [formHidden, setFormHidden] = React.useState(false)
 
     function submitHandler(event) {
         event.preventDefault()
-
-        setUser("Company")
-        console.log(user)
+        const requestOptions = {
+            method: 'POST',
+            // headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                phone: phone,
+                email: email,
+                password: password,
+                address: address,
+                x: addressCoords[0],
+                y: addressCoords[1],
+                radius: sliderValue
+            })
+        };
+        let m = {
+            first_name: firstName,
+            last_name: lastName,
+            phone: phone,
+            email: email,
+            password: password,
+            address: address,
+            x: addressCoords[0],
+            y: addressCoords[1],
+            radius: sliderValue
+        }
+        console.log(m)
+        // fetch('https://iaminpoint.herokuapp.com/register', requestOptions)
+        //     .then(response => response.json())
+        //     .then(function (data){
+        //         console.log(data)
+        //         // localStorage.setItem('Authorization', 'Bearer ' + data.token);
+        //         setUser(data.id)
+        //         console.log(user + " == user")
+        //         setSignIn(!signIn)
+        //         setSignUp(!signUp)
+        //         // setLoading(false) // конец загрузки
+        //
+        //         let stateObj = { foo: "reg/employees" }
+        //         window.history.replaceState(stateObj, null, "/confirm/user-phone")
+        //         window.location.href='/confirm/user-phone'
+        //     });
+        setUser(23)
         setSignIn(!signIn)
         setSignUp(!signUp)
-        // setLoading(false) // конец загрузки
         window.location.href='/confirm/user-phone'
     }
 
@@ -54,6 +106,7 @@ export default function SignUpWorker() {
 
     // сработывает при потере полем фокуса
     function blurHandler(event) {
+        // eslint-disable-next-line default-case
         switch (event.target.name) {
             case 'firstName':
                 if (firstName.length === 0) {
@@ -78,6 +131,11 @@ export default function SignUpWorker() {
             case 'password':
                 if (password.length === 0) {
                     setPasswordValid(true) // что бы граница поля не была красного цвета
+                }
+                break
+            case 'rpassword':
+                if (repeatPassword.length === 0) {
+                    setRepeatPasswordValid(true) // что бы граница поля не была красного цвета
                 }
                 break
             case 'address':
@@ -189,7 +247,7 @@ export default function SignUpWorker() {
     }
     // === Валидация Phone === маска (phs: +XXXX-XXX-XXXX, +XXXX.XXX.XXXX, +XXXX XXX XXXX,
     function validatePhone(phone){
-        const phs = /^\+?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        // const phs = /^\+?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
         const ph = /^\+?([0-9]{11})\)?$/;
         let phoneValid = ph.test(String(phone).toLowerCase());
         if (phoneValid) {
@@ -231,6 +289,46 @@ export default function SignUpWorker() {
         setSliderValue(size)
         console.log(size)
     }
+    // === для карты ======
+    function findAddressPlace() {
+        console.log("Клик по кнопке")
+        if (address) {
+            ymaps.geocode(address)
+                .then(result => {
+                    const coordin = result.geoObjects.get(0).geometry.getCoordinates()
+                    console.log(coordin)
+                    setCenter(coordin)
+                    setAddressCoords(coordin)
+                })
+        }
+
+    }
+
+    function getCurrentPlace(ymaps) {
+        setYmaps(ymaps)
+        ymaps.geolocation.get({
+            provider: 'auto',
+            mapStateAutoApply: true
+        }).then(function (result) {
+            let coords = result.geoObjects.get(0).geometry.getCoordinates()
+            console.log(coords);
+            localStorage.setItem("center", coords)
+            tempCords=coords  // пересмотреть
+            setCenter(coords)
+            console.log(tempCords)
+        });
+    }
+
+    function showTheMap() {
+        if (mapHid){
+            setButtonValue("СКРЫТЬ КАРТУ")
+            setMapHid(false)
+            findAddressPlace()
+        } else {
+            setButtonValue("ПОКАЗАТЬ КАРТУ")
+            setMapHid(true)
+        }
+    }
 
     return(
         <div>
@@ -255,29 +353,70 @@ export default function SignUpWorker() {
                    blurHandler={blurHandler}
                />
 
-                   <div style={{textAlign: 'center', paddingBottom: '20px'}}>
+                   <div className="search-block">
                         <p style={{fontSize: "1.0rem"}}>
-                            Укажите расстояние от точки поиска работы
+                            УКАЖИТЕ РАССТОЯНИЕ ОТ ТОЧКИ ПОИСКА РАБОТЫ
                         </p>
                         <p>
                             <input type="range" className="slider"
-                                   min="0" max="2000" step="100"
+                                   min="0" max="10" step="0.01"
                                    value={sliderValue} id="radius"
                                    onInput={getRadius} />
                         </p>
-                        <p style={{fontSize: "1.0rem", paddingBottom: '30px'}}>
-                            Радиус: {sliderValue/1000} км ({sliderValue} метров)
+                        <p className="radius-text">
+                            Радиус: {sliderValue} км
                         </p>
+                       <button className="map-button"
+                       onClick={showTheMap} >
+                           {buttonValue}
+                       </button>
 
-                       <div style={{marginBottom: "30px"}} >
+                       <div className="map-wrapper"
+                            hidden={mapHid}>
+                           <YMaps
+                               query={{
+                                   apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
+                               }}>
+                               <div>
+                                   <Map
+                                       state={mapState}
+                                       onLoad={(ymaps) => {
+                                           console.log(ymaps.geocode);
+                                           getCurrentPlace(ymaps);
+                                       } }
+                                       modules={[
+                                           'control.ZoomControl',
+                                           'control.FullscreenControl',
+                                           'geolocation', 'geocode',
+                                           'geoObject.addon.balloon',
+                                           'geoObject.addon.hint']}
+
+                                       style={{width: "600px", height: "400px"}}
+                                   >
+
+                                       <Placemark geometry={center}
+                                                  properties={{
+                                                      balloonContent: 'Я здесь',
+                                                  }}
+                                                  options={{
+                                                      preset: 'islands#darkOrangeDotIcon',
+                                                  }}
+                                       />
+                                       {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
+
+                                       {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
+
+                                   </Map>
+                               </div>
+                           </YMaps>
+                       </div>
+                       <div style={{margin: "30px 0px 30px 0px"}} >
                            <Button style={{backgroundColor: "#f04d2d", width: "250px", color:'white'}}
                                    onClick={submitHandler}
                                    disabled={!formValid}
                            >Зарегистрироваться</Button>
                        </div>
                    </div>
-
-
             </Container>
         </div>
     )

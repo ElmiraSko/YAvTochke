@@ -62,7 +62,7 @@ export default function SignInWorker() {
         //             window.location.href='/user'
         //         });
 
-        setUser("User")
+        setUser(56)
         console.log(user)
         setSignIn(!signIn)
         setSignUp(!signUp)
