@@ -93,7 +93,7 @@ export default function WorkerPage() {
                     <div style={{backgroundColor: '#848C8E', width: "900px", color: '#fff',
                         borderRadius: '10px', height: 'auto', margin: 'auto', textAlign: "center",
                         marginTop: '20px', fontSize: "1.2rem", }}>
-                        <div style={{width: "500px", margin: 'auto', paddingTop:'10px'}}>
+                        <div style={{width: "500px", margin: 'auto', paddingTop:'10px', marginBottom: '50px'}}>
                             <ul style={{textAlign: "left", }}>
                                 <li>Нужна подработка в своем магазине</li>
                                 <li>Нужна работа рядом с домом</li>
@@ -102,7 +102,7 @@ export default function WorkerPage() {
                         </div>
                         <h3 > Как найти: </h3>
                         <div style={{display: "flex", justifyContent: "space-around",
-                            height: "180px", fontSize: "2.9rem"  }}>
+                            height: "90px", fontSize: "2.9rem"  }}>
                             <div style={{backgroundColor: "#ffb43c",
                                 width: "80px", height: "80px",
                                 borderRadius: '50%'}}>1</div>

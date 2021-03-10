@@ -1,11 +1,11 @@
-import React, {useContext, useState} from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, {useContext, useEffect, useState} from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
 import Loader from "../Loader";
 import './styles1/signInWorker.css'
 import SignIn from "../SignIn";
+
 
 export default function SignInWorker() {
     // Контекст
@@ -14,14 +14,20 @@ export default function SignInWorker() {
     // Состояние компонента
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const [loginValid, setLoginValid] = useState(false)
-    const [passwordValid, setPasswordValid] = useState(false)
+    const [loginValid, setLoginValid] = useState(true)
+    const [passwordValid, setPasswordValid] = useState(true)
 
     const [formValid, setFormValid] = useState(false)
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
     let url = 'https://cookstarter-restaurant-service.herokuapp.com/restaurant/get/'
+
+    useEffect(() => {
+        if (password.length>0 && passwordValid && login.length>0 && loginValid) {
+            setFormValid(true)
+        } else setFormValid(false)
+    }, [loginValid, passwordValid ])
 
     // обработчик формы, отправка запроса и получение ответа
     function submitHandler(event) {
@@ -65,23 +71,62 @@ export default function SignInWorker() {
     }
     // }
 
+    // сработывает при потере полем фокуса
+    function blurHandler(event) {
+        switch (event.target.name) {
+            case 'login':
+                if (login.length === 0) {
+                    setLoginValid(true) // что бы граница поля не была красного цвета
+                }
+                break
+            case 'password':
+                if (password.length === 0) {
+                    setPasswordValid(true) // что бы граница поля не была красного цвета
+                }
+                break
+        }
+    }
+
+    //======= Валидация полей формы =======
+    function validateLogin(login){
+        if (login.length>5) {
+            setLoginValid(true)
+        } else {
+            setLoginValid(false)
+        }
+    }
+    // === Валидация Password ===
+    function validatePassword(password){
+        const ph = /^[A-Za-z]\w{7,15}$/;
+        let passValid = ph.test(String(password).toLowerCase());
+        if (passValid) {
+            setPasswordValid(true)
+        } else {
+            setPasswordValid(false)
+        }
+    }
+
     // обработчик поля email/phone/login
     function loginHandler(event){
-        setLogin(event.target.value)
-        console.log(login)
+        let editLogin = event.target.value
+        setLogin(editLogin)
+        validateLogin(editLogin)
     }
     // обработчик поля password
     function passwordHandler(event){
-        setPassword(event.target.value)
+        let editPassword = event.target.value
+        setPassword(editPassword)
+        validatePassword(editPassword)
     }
     // очистка поля email/phone/login
     function cleanLogin(){
         setLogin('')
-        console.log(login)
+        setLoginValid(false)
     }
     // очистка поля password
-    function cleanPassword(){
+    function cleanPassword() {
         setPassword('')
+        setPasswordValid(false)
     }
     console.log('Форма авторизации user' )
 
@@ -98,8 +143,13 @@ export default function SignInWorker() {
                             cleanLogin={cleanLogin}
                             cleanPassword={cleanPassword}
                             login={login}
+                            loginValid={loginValid}
                             password={password}
-                            submitHandler={submitHandler} />
+                            passwordValid={passwordValid}
+                            submitHandler={submitHandler}
+                            blurHandler={blurHandler}
+                            formValid={formValid}
+                    />
                 </form>
             </div>
         </Container>

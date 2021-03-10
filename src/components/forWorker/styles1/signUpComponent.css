@@ -1,16 +1,20 @@
-.wr {
-    display: flex;
-    margin-top: 30px;
+.input-field {
+    width: 100%;
+    height: 25px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    padding-left: 7px;
 }
-
 .input-field-error {
     border-color: #f04d2d;
 }
 .input-field-error:focus {
     border-color: #f04d2d;
+    box-shadow: 1px 1px 2px 0 #f04d2d;
     outline: none;
 }
 .input-field {
     width: 100%;
     font-size: 1.0rem
+;
 }

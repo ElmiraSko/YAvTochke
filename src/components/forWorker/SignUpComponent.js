@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
 import {Container} from "@material-ui/core";
+import './styles1/signUpComponent.css'
 
 export default function (props) {
 
@@ -10,7 +10,13 @@ export default function (props) {
     const emailHandler = props.emailH
     const addressHandler = props.addressH
     const passwordHandler = props.passwordH
-    const submitHandler = props.submitHandler
+    const repeatPasswordHandler = props.repeatPassworH
+
+    // === Добавляем стилевой класс - error
+
+    function fieldError(fieldNameValid) {
+        return (fieldNameValid ? " ": 'input-field-error');
+    }
 
     return(
         <Container maxWidth="lg">
@@ -28,27 +34,33 @@ export default function (props) {
                         borderRadius: '50%'}}>
                         <div style={{marginBottom: "15px"}} >
                             <div>
-                                <label >Фамилия*</label>
+                                <label >Имя*</label>
                             </div>
                             <div>
-                                <input type="text"  style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                                <input type="text"
+                                       name="firstName"
+                                       className={`input-field ${fieldError(props.firstNameValid)}`}
                                        value={props.firstName}
                                        onChange={firstNameHandler}
-                                       onClick={props.cleanFirstName} />
+                                       onClick={props.cleanFirstName}
+                                       onBlur={props.blurHandler}
+                                />
                             </div>
                         </div>
 
                         <div style={{marginBottom: "15px"}}>
                             <div>
-                                <label >Имя*</label>
+                                <label >Фамилия*</label>
                             </div>
                             <div>
-                                <input type="text" style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                                <input type="text"
+                                       name="lastName"
+                                       className={`input-field ${fieldError(props.lastNameValid)}`}
                                        value={props.lastName}
                                        onChange={lastNameHandler}
-                                       onClick={props.cleanLastName} />
+                                       onClick={props.cleanLastName}
+                                       onBlur={props.blurHandler}
+                                />
                             </div>
                         </div>
 
@@ -57,11 +69,15 @@ export default function (props) {
                                 <label >Мобильный телефон*</label>
                             </div>
                             <div>
-                                <input type="text"  style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                                <input type="text"
+                                       name="phone"
+                                       placeholder="+70000000000"
+                                       className={`input-field ${fieldError(props.phoneValid)}`}
                                        value={props.phone}
                                        onChange={phoneHandler}
-                                       onClick={props.cleanPhone}/>
+                                       onClick={props.cleanPhone}
+                                       onBlur={props.blurHandler}
+                                />
                             </div>
                         </div>
 
@@ -74,11 +90,13 @@ export default function (props) {
                                 <label >E-mail*</label>
                             </div>
                             <div>
-                                <input type="email"  style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                                <input type="email"
+                                       name="email"
+                                       className={`input-field ${fieldError(props.emailValid)}`}
                                        value={props.email}
                                        onChange={emailHandler}
                                        onClick={props.cleanEmail}
+                                       onBlur={props.blurHandler}
                                 />
                             </div>
                         </div>
@@ -88,11 +106,14 @@ export default function (props) {
                                 <label >Пароль*</label>
                             </div>
                             <div>
-                                <input type="password" style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                                <input type="password"
+                                       name="password"
+                                       className={`input-field ${fieldError(props.passwordValid)}`}
                                        value={props.password}
                                        onChange={passwordHandler}
-                                       onClick={props.cleanPassword}  />
+                                       onClick={props.cleanPassword}
+                                       onBlur={props.blurHandler}
+                                />
                             </div>
                         </div>
                         <div style={{marginBottom: "25px"}}>
@@ -100,11 +121,12 @@ export default function (props) {
                                 <label >Подтвердить пароль*</label>
                             </div>
                             <div>
-                                <input type="password" style={{width: "100%",
-                                    height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px',}}
-                                       value={props.password}
-                                       onChange={passwordHandler}
-                                       onClick={props.cleanPassword}  />
+                                <input type="password" className={`input-field ${fieldError(props.repeatPasswordValid)}`}
+                                       value={props.repeatPassword}
+                                       onChange={repeatPasswordHandler}
+                                       onClick={props.cleanRepeatPassword}
+                                       onBlur={props.blurHandler}
+                                />
                             </div>
                         </div>
 
@@ -117,20 +139,17 @@ export default function (props) {
                             <label>Адрес поиска работы*</label>
                         </div>
                         <div>
-                            <input type="text" style={{width: "100%",
-                                height: '25px', fontSize: "1.3rem", borderRadius: '5px', paddingLeft: '7px', }}
+                            <input type="text"
+                                   name="address"
+                                   className={`input-field ${fieldError(props.addressValid)}`}
                                    value={props.address}
                                    // placeholder="Адрес где хотите работать"
                                    onChange={addressHandler}
-                                   onClick={props.cleanAddress}/>
+                                   onClick={props.cleanAddress}
+                                   onBlur={props.blurHandler}
+                            />
                         </div>
                     </div>
-
-                    {/*<div style={{marginBottom: "30px"}} >*/}
-                    {/*    <Button style={{backgroundColor: "#FFB43C", width: "40%",}}*/}
-                    {/*            onClick={submitHandler}*/}
-                    {/*    >Зарегистрироваться</Button>*/}
-                    {/*</div>*/}
                 </div>
 
             </div>

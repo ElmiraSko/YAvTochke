@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {Button, Container} from "@material-ui/core";
+import './styles1/signInWorker.css'
 
 export default function ConfirmUserPhone() {
     return(
@@ -9,11 +10,14 @@ export default function ConfirmUserPhone() {
                     fontWeight: "600", textAlign: "center", margin: "35px 0px 20px 0px"}}>
                     <div>
                         Подтвердите свой номер телефона <br />
-                        Пароль был отправлен на номер
+                        Пароль был отправлен на указанный номер
                     </div>
                     <div style={{marginBottom: "15px"}}>
                         <div>
-                            <input type="text" style={{width: "300px",}} placeholder="Код из смс" />
+                            <input type="text"
+                                   style={{width: "300px", margin: '40px 0 15px 0'}}
+                                   className="input-field"
+                                   placeholder="Код из смс" />
                         </div>
                     </div>
 

@@ -21,8 +21,32 @@ export default function SignUpCompany() {
         window.location.href='/confirm-745-phone'
     }
 
-    // обработчик поля email
+    // обработчик поля firstName
     function firstNameHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля lastName
+    function lastNameHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля phone
+    function phoneHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля email
+    function emailHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля password
+    function passwordHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля repeatPassword
+    function repeatPasswordHandler(event){
+        console.log(event.target.value)
+    }
+    // обработчик поля address
+    function addressHandler(event){
         console.log(event.target.value)
     }
 
