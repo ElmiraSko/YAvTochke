@@ -87,7 +87,7 @@ export default function HeaderApp2() {
                                         <NavLink className={classes.link}
                                                  hidden={!user}
                                             // onClick={() => setSignIn(!signIn)}
-                                                 to={"/personal-account/employees"}
+                                                 to={"/profile"}
                                         > Профиль
                                         </NavLink>
                                         <NavLink className={classes.link}

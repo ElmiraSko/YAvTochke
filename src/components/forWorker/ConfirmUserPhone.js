@@ -11,41 +11,39 @@ export default function ConfirmUserPhone() {
     const userId = localStorage.getItem('user')
     let url = 'https://iaminpoint.herokuapp.com/confirm_phone/?code='+code+'&id='+userId+'&type=a'
 
-    console.log(url)
+    // console.log(url)
 
     useEffect(() => {
         if (code.length>0 && codeValid) {
             setFormValid(true)
-        } else setFormValid(false)
-    }, [codeValid])
+        } else {
+            setFormValid(false)}
+    }, [code, codeValid])
 
     function submitHandler(event) {
         event.preventDefault()
-        // const requestOptions = {
-        //     method: ' GET',
-        // };
-        // fetch(url, requestOptions)
-        //     .then(response => response.json())
-        //     .then(function (data){
-        //         console.log(data)
-                // localStorage.setItem('Authorization', 'Bearer ' + data.token);
-                // setUser(data.userId)
-                // console.log(user + " == user")
-                // setSignIn(!signIn)
-                // setSignUp(!signUp)
-                // setLoading(false) // конец загрузки
-
-                // let stateObj = { foo: "auth" }
-                // window.history.replaceState(stateObj, null, "/user")
-                // window.location.href='/user'
-            // });
-
-        // setUser("Company")
-        // console.log(user)
-        // setSignIn(!signIn)
-        // setSignUp(!signUp)
-        // setLoading(false) // конец загрузки
+        const requestOptions = {
+            method: ' GET',
+            headers: { 'Content-Type': 'application/json' },
+        };
         window.location.href='/after-r57ph7-page'
+        console.log(url)
+        fetch(url, requestOptions)
+            .then(async response => {
+                const  data = await response.json()
+                if (response.status === 400) {
+                    alert(data.error)
+                } else {
+                    alert(data.msg)
+                    let stateObj = { foo: "confirm/user-phone" }
+                    window.history.replaceState(stateObj, null, "/after-r57ph7-page")
+                    window.location.href='/after-r57ph7-page'
+                }
+            })
+            .catch(error=>{
+                console.log("Ошибка при подтверждении номера телефона!")
+                console.log(error)
+            });
     }
 
     // обработчик поля code

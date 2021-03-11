@@ -39,6 +39,7 @@ export default function (props) {
                             <div>
                                 <input type="text"
                                        name="firstName"
+                                       autoComplete="off"
                                        className={`input-field ${fieldError(props.firstNameValid)}`}
                                        value={props.firstName}
                                        onChange={firstNameHandler}
@@ -55,6 +56,7 @@ export default function (props) {
                             <div>
                                 <input type="text"
                                        name="lastName"
+                                       autoComplete="off"
                                        className={`input-field ${fieldError(props.lastNameValid)}`}
                                        value={props.lastName}
                                        onChange={lastNameHandler}
@@ -72,6 +74,7 @@ export default function (props) {
                                 <input type="text"
                                        name="phone"
                                        placeholder="+70000000000"
+                                       autoComplete="off"
                                        className={`input-field ${fieldError(props.phoneValid)}`}
                                        value={props.phone}
                                        onChange={phoneHandler}
@@ -93,6 +96,7 @@ export default function (props) {
                                 <input type="email"
                                        name="email"
                                        placeholder="user@mail.ru"
+                                       autoComplete="off"
                                        className={`input-field ${fieldError(props.emailValid)}`}
                                        value={props.email}
                                        onChange={emailHandler}
@@ -105,14 +109,17 @@ export default function (props) {
                         <div style={{marginBottom: "25px"}}>
                             <div>
                                 <label >Пароль*</label>
+                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
                             </div>
                             <div>
                                 <input type="password"
                                        name="password"
                                        placeholder="A-Z,a-z,0-9,_"
+                                       autoComplete="off"
                                        className={`input-field ${fieldError(props.passwordValid)}`}
                                        value={props.password}
                                        onChange={passwordHandler}
+                                       onInput={passwordHandler}
                                        onDoubleClick={props.cleanPassword}
                                        onBlur={props.blurHandler}
                                 />
@@ -146,11 +153,11 @@ export default function (props) {
                         <div>
                             <input type="text"
                                    name="address"
+                                   autoComplete="off"
                                    className={`input-field ${fieldError(props.addressValid)}`}
                                    value={props.address}
                                    placeholder="Город, улица, дом"
                                    onChange={addressHandler}
-                                   // onClick={props.cleanAddress}
                                    onDoubleClick={props.cleanAddress}
                                    onBlur={props.blurHandler}
                             />

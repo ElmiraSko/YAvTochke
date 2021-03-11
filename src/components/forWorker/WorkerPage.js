@@ -9,6 +9,7 @@ import './styles1/WorkerPage.css'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Select from 'react-select'
 import Button from "@material-ui/core/Button";
+import Brightness1Icon from "@material-ui/icons/Brightness1";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -104,8 +105,12 @@ export default function WorkerPage() {
                         width: '30%',   }}>
 
                         <div style={{ textAlign: "center",}}>
-                            <img src={Logo} alt="logo"
-                                 style={{width: '6.0rem', padding: "30px 0 10px 0"}}/>
+                            <div style={{marginTop: '15px'}}>
+                                <Brightness1Icon style={{width: '100px', height: '100px', color: '#848c8e', }}/>
+                            </div>
+
+                            {/*<img src={Logo} alt="logo"*/}
+                            {/*     style={{width: '6.0rem', padding: "30px 0 10px 0"}}/>*/}
 
                             <div style={{ fontSize: '1.6rem', fontWeight: '700',
                                 textTransform: 'uppercase', marginBottom: '30px'}}>

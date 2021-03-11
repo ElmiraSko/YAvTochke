@@ -29,47 +29,37 @@ export default function SignInWorker() {
         } else setFormValid(false)
     }, [loginValid, passwordValid ])
 
-    // обработчик формы, отправка запроса и получение ответа
+    // обработчик формы
     function submitHandler(event) {
-
         event.preventDefault()
-        setFormHidden(true) // скрыли форму
-        // setLoading(true)    // начало загрузки
-
-        // if (email.trim() && password.trim()){
-        //     console.log(email)
-        //     console.log(password)
-        //
-        //     // Simple POST request with a JSON body using fetch
-        //     const requestOptions = {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: JSON.stringify({ email: email, password: password})
-        //     };
-        //     fetch('https://yoshpa-registration-login.herokuapp.com/auth', requestOptions)
-        //         .then(response => response.json())
-        //         .then(function (data){
-        //             console.log(data)
-        //             localStorage.setItem('Authorization', 'Bearer ' + data.token);
-        //             setUser(data.userId)
-        //             console.log(user + " == user")
-        //             setSignIn(!signIn)
-        //             setSignUp(!signUp)
-        //             setLoading(false) // конец загрузки
-        //
-        //             let stateObj = { foo: "auth" }
-        //             window.history.replaceState(stateObj, null, "/user")
-        //             window.location.href='/user'
-        //         });
-
-        setUser(56)
-        console.log(user)
-        setSignIn(!signIn)
-        setSignUp(!signUp)
-        // setLoading(false) // конец загрузки
-        window.location.href='/personal-account/employees'
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ "email/phone": login, password: password})
+        };
+            fetch('https://iaminpoint.herokuapp.com/login', requestOptions)
+                .then(async response => {
+                    const  data = await response.json()
+                    if (response.status === 400) {
+                        setUser(null)
+                        setSignIn(false)
+                        setSignUp(false)
+                        alert(data.error)
+                    } else {
+                        alert(data.data)
+                        setUser(data.id)
+                        setSignIn(!signIn)
+                        setSignUp(!signUp)
+                        let stateObj = { foo: "auth/employees" }
+                        window.history.replaceState(stateObj, null, "/personal-account/employees")
+                        window.location.href='/personal-account/employees'
+                    }
+                })
+                .catch(error=>{
+                    console.log("Ошибка при авторизации пользователя!")
+                    console.log(error)
+                })
     }
-    // }
 
     // сработывает при потере полем фокуса
     function blurHandler(event) {
@@ -89,7 +79,9 @@ export default function SignInWorker() {
 
     //======= Валидация полей формы =======
     function validateLogin(login){
-        if (login.length>5) {
+        const pattern = /^\+?([0-9]{11})\)?|(.*)@(.*)\.[a-z]{2,5}$/
+        let phoneValid = pattern.test(String(login).toLowerCase());
+        if (phoneValid) {
             setLoginValid(true)
         } else {
             setLoginValid(false)

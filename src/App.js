@@ -23,6 +23,7 @@ import ConfirmPhoneNumber from "./components/employeesForCompany/ConfirmPhoneNum
 import VacanciesForMe from "./components/forWorker/VacancieForMe";
 import ConfirmUserPhone from "./components/forWorker/ConfirmUserPhone";
 import WelcomeWorker from "./components/forWorker/WelcomeWorker";
+import WorkerProfile from "./components/forWorker/WorkerProfile";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -148,6 +149,9 @@ function App() {
 
                               <Route exact path="/personal-account/employees">
                                   <WorkerPage />
+                              </Route>
+                              <Route exact path="/profile">
+                                  <WorkerProfile />
                               </Route>
                               <Route exact path="/auth/employees">
                                   <SignInWorker />

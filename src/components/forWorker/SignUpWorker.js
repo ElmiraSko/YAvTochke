@@ -47,52 +47,53 @@ export default function SignUpWorker() {
 
     function submitHandler(event) {
         event.preventDefault()
-        const requestOptions = {
-            method: 'POST',
-            // headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName,
-                phone: phone,
-                email: email,
-                password: password,
-                address: address,
-                x: addressCoords[0],
-                y: addressCoords[1],
-                radius: sliderValue
-            })
-        };
-        let m = {
-            first_name: firstName,
-            last_name: lastName,
-            phone: phone,
-            email: email,
-            password: password,
-            address: address,
-            x: addressCoords[0],
-            y: addressCoords[1],
-            radius: sliderValue
-        }
-        console.log(m)
-        // fetch('https://iaminpoint.herokuapp.com/register', requestOptions)
-        //     .then(response => response.json())
-        //     .then(function (data){
-        //         console.log(data)
-        //         // localStorage.setItem('Authorization', 'Bearer ' + data.token);
-        //         setUser(data.id)
-        //         console.log(user + " == user")
-        //         setSignIn(!signIn)
-        //         setSignUp(!signUp)
-        //         // setLoading(false) // конец загрузки
-        //
-        //         let stateObj = { foo: "reg/employees" }
-        //         window.history.replaceState(stateObj, null, "/confirm/user-phone")
-        //         window.location.href='/confirm/user-phone'
-        //     });
-        setUser(23)
-        setSignIn(!signIn)
-        setSignUp(!signUp)
-        window.location.href='/confirm/user-phone'
+
+        ymaps.geocode(address)
+            .then(result => {
+                const coordinates = result.geoObjects.get(0).geometry.getCoordinates()
+                // setCenter(coordin) // не меняем отцентровку карты, только получаем координаты адреса
+                setAddressCoords(coordinates)
+                const requestOptions = {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        first_name: firstName,
+                        last_name: lastName,
+                        phone: phone,
+                        email: email,
+                        password: password,
+                        address: address,
+                        x: coordinates[0],
+                        y: coordinates[1],
+                        radius: sliderValue
+                    })
+                };
+                console.log(requestOptions)
+                fetch('https://iaminpoint.herokuapp.com/register', requestOptions)
+                    .then(async response => {
+                        console.log(response)
+                        const  data = await response.json()
+                        console.log(response.status)
+                        if (response.status === 400) {
+                            setUser(null)
+                            setSignIn(false)
+                            setSignUp(false)
+                            alert(data.error)
+                        } else {
+                            console.log(data)
+                            setUser(data.id)
+                            setSignIn(!signIn)
+                            setSignUp(!signUp)
+                            alert(data.msg)
+                            let stateObj = { foo: "reg/employees" }
+                            window.history.replaceState(stateObj, null, "/confirm/user-phone")
+                            window.location.href='/confirm/user-phone'
+                        }
+                    })
+                    .catch(error=>{
+                        console.log("Ошибка при регистрации пользователя!")
+                        console.log(error)
+                    })
+            });
     }
 
     useEffect(() => {
@@ -100,6 +101,13 @@ export default function SignUpWorker() {
             phone.length>0 && phoneValid && email.length>0 && emailValid && address.length>0 && addressValid
         && password.length>0 && passwordValid && repeatPassword.length>0 && repeatPasswordValid) {
             setFormValid(true)
+            console.log(firstNameValid)
+            console.log(lastNameValid)
+            console.log(phoneValid)
+            console.log(emailValid)
+            console.log(addressValid)
+            console.log(passwordValid)
+            console.log(repeatPasswordValid)
         } else setFormValid(false)
     }, [firstName, firstNameValid, lastNameValid, phoneValid, emailValid,
         passwordValid, repeatPasswordValid, addressValid])
@@ -221,7 +229,7 @@ export default function SignUpWorker() {
     //======= Валидация полей формы =======
     // === Валидация FirstName, если длина имени больше 3 =====
     function validateFirstName(firstName){
-        if (firstName.length > 3) {
+        if (firstName.length > 2) {
             setFirstNameValid(true)
         } else {
             setFirstNameValid(false)
@@ -301,7 +309,6 @@ export default function SignUpWorker() {
                     setAddressCoords(coordin)
                 })
         }
-
     }
 
     function getCurrentPlace(ymaps) {
@@ -323,7 +330,6 @@ export default function SignUpWorker() {
         if (mapHid){
             setButtonValue("СКРЫТЬ КАРТУ")
             setMapHid(false)
-            findAddressPlace()
         } else {
             setButtonValue("ПОКАЗАТЬ КАРТУ")
             setMapHid(true)
@@ -411,10 +417,10 @@ export default function SignUpWorker() {
                            </YMaps>
                        </div>
                        <div style={{margin: "30px 0px 30px 0px"}} >
-                           <Button style={{backgroundColor: "#f04d2d", width: "250px", color:'white'}}
+                           <button className="reg-button"
                                    onClick={submitHandler}
                                    disabled={!formValid}
-                           >Зарегистрироваться</Button>
+                           >Зарегистрироваться</button>
                        </div>
                    </div>
             </Container>

@@ -19,7 +19,7 @@ export default function VacanciesForMe() {
         <div>
             <Container maxWidth="lg">
                 <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                    fontWeight: "600", }}> Объявления
+                    fontWeight: "600", }}> РЕКОМЕНДУЕМЫЕ ВАКАНСИИ
                 </div>
 
                 <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>

@@ -9,11 +9,6 @@ export default function SignIn(props) {
     function loginError(log) {
         return (log ? " ": 'input-field-error');
     }
-    // useEffect(() => {
-    //     if (props.password.length>0 && props.passwordValid && props.login.length>0 && props.loginValid) {
-    //         setFormValid(true)
-    //     } else setFormValid(false)
-    // }, [props.loginValid, props.passwordValid ])
 
     return(
             <div className="main-div">
@@ -24,10 +19,11 @@ export default function SignIn(props) {
                         <div>
                             <input type="text"
                                    name="login"
+                                   placeholder="+70000000000 или user@mail.ru"
                                    className={`input-field ${loginError(props.loginValid)}`}
                                    value={props.login}
                                    onChange={props.loginHandler}
-                                   onClick={props.cleanLogin}
+                                   onDoubleClick={props.cleanLogin}
                                    onBlur={props.blurHandler}
                             />
                         </div>
@@ -38,13 +34,13 @@ export default function SignIn(props) {
                             <label >Пароль*</label>
                         </div>
                         <div>
-                            <input type="text"
+                            <input type="password"
                                    name="password"
                                    placeholder="A-Z,a-z,0-9,_"
                                    className={`input-field ${loginError(props.passwordValid)}`}
                                    value={props.password}
                                    onChange={props.passwordHandler}
-                                   onClick={props.cleanPassword}
+                                   onDoubleClick={props.cleanPassword}
                                    onBlur={props.blurHandler}
                             />
                         </div>
