@@ -369,8 +369,9 @@ export default function SignUpWorker() {
 
                         blurHandler={blurHandler}
                     />
+                </form>
 
-                    <div className="search-block">
+                    <div className="search-block" hidden={formHidden}>
                         <p style={{fontSize: "1.0rem"}}>
                             УКАЖИТЕ РАССТОЯНИЕ ОТ ТОЧКИ ПОИСКА РАБОТЫ
                         </p>
@@ -383,6 +384,8 @@ export default function SignUpWorker() {
                         <p className="radius-text">
                             Радиус: {sliderValue} км
                         </p>
+
+
                         <button className="map-button"
                                 onClick={showTheMap} >
                             {buttonValue}
@@ -436,7 +439,6 @@ export default function SignUpWorker() {
                         </div>
                     </div>
 
-                </form>
             </Container>
         </div>
     )
