@@ -134,7 +134,7 @@ export default function WorkerPage() {
                     </div>
                     <div>
                         <input style={{width: "40%", }}
-                               placeholder="Улица и номер дома где хотите работать"
+                               placeholder="Город, улица и номер дома где хотите работать"
                                value={address}
                                onChange={addressHandler}
                                onClick={clearTheSearchField}
@@ -148,12 +148,12 @@ export default function WorkerPage() {
                         </p>
                                <p>
                                    <input type="range" className="slider"
-                                          min="0" max="2000" step="100"
+                                          min="0" max="10" step="0.01"
                                           value={sliderValue} id="radius"
                                           onInput={getRadius} />
                                </p>
                         <p style={{fontSize: "1.0rem"}}>
-                            Радиус: {sliderValue/1000} км ({sliderValue} метров)
+                            Радиус: {sliderValue} км
                         </p>
                     </div>
                 </div>

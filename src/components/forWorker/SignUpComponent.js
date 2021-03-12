@@ -108,7 +108,7 @@ export default function (props) {
                         <div style={{marginBottom: "25px"}}>
                             <div>
                                 <label >Пароль*</label>
-
+                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
                             </div>
                             <div>
                                 <input type="password"
@@ -123,7 +123,6 @@ export default function (props) {
                                        onBlur={props.blurHandler}
                                 />
                             </div>
-                            {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
                         </div>
                         <div style={{marginBottom: "25px"}}>
                             <div>
