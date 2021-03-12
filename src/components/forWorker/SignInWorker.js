@@ -5,7 +5,16 @@ import Context from "../Context";
 import Loader from "../Loader";
 import './styles1/signInWorker.css'
 import SignIn from "../SignIn";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}));
 
 export default function SignInWorker() {
     // Контекст
@@ -21,43 +30,49 @@ export default function SignInWorker() {
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
-    let url = 'https://cookstarter-restaurant-service.herokuapp.com/restaurant/get/'
+    let url = ''
+
 
     useEffect(() => {
-        if (password.length>0 && passwordValid && login.length>0 && loginValid) {
+        if (password.length>0 && passwordValid && login.length >0 && loginValid) {
             setFormValid(true)
         } else setFormValid(false)
-    }, [loginValid, passwordValid ])
+    }, [loginValid, passwordValid, password, login])
 
     // обработчик формы
     function submitHandler(event) {
         event.preventDefault()
+        setFormHidden(true) // скрыли форму
+        setLoading(true)    // начало загрузки
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "email/phone": login, password: password})
+            body: JSON.stringify({ email_phone: login, password: password})
         };
             fetch('https://iaminpoint.herokuapp.com/login', requestOptions)
                 .then(async response => {
                     const  data = await response.json()
                     if (response.status === 400) {
+                        setLoading(false)    // конец загрузки
+                        setFormHidden(false) // открыли форму
                         setUser(null)
                         setSignIn(false)
                         setSignUp(false)
                         alert(data.error)
                     } else {
-                        alert(data.data)
+                        setLoading(false)
                         setUser(data.id)
                         setSignIn(!signIn)
                         setSignUp(!signUp)
                         let stateObj = { foo: "auth/employees" }
-                        window.history.replaceState(stateObj, null, "/personal-account/employees")
-                        window.location.href='/personal-account/employees'
+                        window.history.replaceState(stateObj, null, "/profile")
+                        window.location.href='/profile'
                     }
                 })
                 .catch(error=>{
                     console.log("Ошибка при авторизации пользователя!")
                     console.log(error)
+                    setLoading(false)
                 })
     }
 
@@ -124,7 +139,9 @@ export default function SignInWorker() {
 
     return (
         <Container component="main" maxWidth="xs">
-            {loading && <Loader />}
+            <div className="div-louder">
+                {loading && <Loader />}
+            </div>
             <div className="wr">
                 <form noValidate autoComplete="off" hidden={formHidden} >
                     <Typography component="h1" variant="h5" align={"center"}>

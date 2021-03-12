@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Container} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import Context from "../Context";
 import SignUpComponent from "./SignUpComponent";
 import './styles1/slider.css'
 import {Map, Placemark, YMaps} from "react-yandex-maps";
 import './styles1/signUpWorker.css'
+import Loader from "../Loader";
 
 export default function SignUpWorker() {
 
@@ -41,12 +41,15 @@ export default function SignUpWorker() {
 
     // состояние ползунка
     const [sliderValue, setSliderValue] = useState(2)
-    //
-    // const [loading, setLoading] = React.useState(false)
-    // const [formHidden, setFormHidden] = React.useState(false)
+    // Для загрузчика -
+    const [loading, setLoading] = React.useState(false)
+    const [formHidden, setFormHidden] = React.useState(false)
 
+    //
     function submitHandler(event) {
         event.preventDefault()
+        setFormHidden(true) // скрыли форму
+        setLoading(true)    // начало загрузки
 
         ymaps.geocode(address)
             .then(result => {
@@ -74,15 +77,17 @@ export default function SignUpWorker() {
                         const  data = await response.json()
                         console.log(response.status)
                         if (response.status === 400) {
+                            setLoading(false)    // конец загрузки
+                            setFormHidden(false) // открыли форму
                             setUser(null)
                             setSignIn(false)
                             setSignUp(false)
                             alert(data.error)
                         } else {
-                            console.log(data)
                             setUser(data.id)
                             setSignIn(!signIn)
                             setSignUp(!signUp)
+                            setLoading(false)    // конец загрузки
                             alert(data.msg)
                             let stateObj = { foo: "reg/employees" }
                             window.history.replaceState(stateObj, null, "/confirm/user-phone")
@@ -92,6 +97,7 @@ export default function SignUpWorker() {
                     .catch(error=>{
                         console.log("Ошибка при регистрации пользователя!")
                         console.log(error)
+                        setLoading(false)
                     })
             });
     }
@@ -339,27 +345,32 @@ export default function SignUpWorker() {
     return(
         <div>
             <Container maxWidth="lg">
-               <SignUpComponent
-                   firstNH={firstNameHandler} lastNH={lastNameHandler}
-                   phoneH={phoneHandler} emailH={emailHandler}
-                   passwordH={passwordHandler}
-                   repeatPassworH={repeatPasswordHandler}
-                   addressH={addressHandler}
-                   submitHandler={submitHandler}
+                <div className="div-louder">
+                    {loading && <Loader />}
+                </div>
 
-                   firstName={firstName} cleanFirstName={cleanFirstName} firstNameValid={firstNameValid}
-                   lastName={lastName} cleanLastName={cleanLastName} lastNameValid={lastNameValid}
-                   phone={phone} cleanPhone={cleanPhone} phoneValid={phoneValid}
-                   email={email} cleanEmail={cleanEmail} emailValid={emailValid}
-                   password={password} cleanPassword={cleanPassword} passwordValid={passwordValid}
-                   repeatPassword={repeatPassword} cleanRepeatPassword={cleanRepeatPassword}
-                   repeatPasswordValid={repeatPasswordValid}
-                   address={address} cleanAddress={cleanAddress} addressValid={addressValid}
+                <form noValidate autoComplete="off" hidden={formHidden} >
+                    <SignUpComponent
+                        firstNH={firstNameHandler} lastNH={lastNameHandler}
+                        phoneH={phoneHandler} emailH={emailHandler}
+                        passwordH={passwordHandler}
+                        repeatPassworH={repeatPasswordHandler}
+                        addressH={addressHandler}
+                        submitHandler={submitHandler}
 
-                   blurHandler={blurHandler}
-               />
+                        firstName={firstName} cleanFirstName={cleanFirstName} firstNameValid={firstNameValid}
+                        lastName={lastName} cleanLastName={cleanLastName} lastNameValid={lastNameValid}
+                        phone={phone} cleanPhone={cleanPhone} phoneValid={phoneValid}
+                        email={email} cleanEmail={cleanEmail} emailValid={emailValid}
+                        password={password} cleanPassword={cleanPassword} passwordValid={passwordValid}
+                        repeatPassword={repeatPassword} cleanRepeatPassword={cleanRepeatPassword}
+                        repeatPasswordValid={repeatPasswordValid}
+                        address={address} cleanAddress={cleanAddress} addressValid={addressValid}
 
-                   <div className="search-block">
+                        blurHandler={blurHandler}
+                    />
+
+                    <div className="search-block">
                         <p style={{fontSize: "1.0rem"}}>
                             УКАЖИТЕ РАССТОЯНИЕ ОТ ТОЧКИ ПОИСКА РАБОТЫ
                         </p>
@@ -372,57 +383,60 @@ export default function SignUpWorker() {
                         <p className="radius-text">
                             Радиус: {sliderValue} км
                         </p>
-                       <button className="map-button"
-                       onClick={showTheMap} >
-                           {buttonValue}
-                       </button>
+                        <button className="map-button"
+                                onClick={showTheMap} >
+                            {buttonValue}
+                        </button>
 
-                       <div className="map-wrapper"
-                            hidden={mapHid}>
-                           <YMaps
-                               query={{
-                                   apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
-                               }}>
-                               <div>
-                                   <Map
-                                       state={mapState}
-                                       onLoad={(ymaps) => {
-                                           console.log(ymaps.geocode);
-                                           getCurrentPlace(ymaps);
-                                       } }
-                                       modules={[
-                                           'control.ZoomControl',
-                                           'control.FullscreenControl',
-                                           'geolocation', 'geocode',
-                                           'geoObject.addon.balloon',
-                                           'geoObject.addon.hint']}
+                        <div className="map-wrapper"
+                             hidden={mapHid}>
+                            <YMaps
+                                query={{
+                                    apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
+                                }}>
+                                <div>
+                                    <Map
+                                        state={mapState}
+                                        onLoad={(ymaps) => {
+                                            console.log(ymaps.geocode);
+                                            getCurrentPlace(ymaps);
+                                        } }
+                                        modules={[
+                                            'control.ZoomControl',
+                                            'control.FullscreenControl',
+                                            'geolocation', 'geocode',
+                                            'geoObject.addon.balloon',
+                                            'geoObject.addon.hint']}
 
-                                       style={{width: "600px", height: "400px"}}
-                                   >
+                                        style={{width: "600px", height: "400px"}}
+                                    >
 
-                                       <Placemark geometry={center}
-                                                  properties={{
-                                                      balloonContent: 'Я здесь',
-                                                  }}
-                                                  options={{
-                                                      preset: 'islands#darkOrangeDotIcon',
-                                                  }}
-                                       />
-                                       {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
+                                        <Placemark geometry={center}
+                                                   properties={{
+                                                       balloonContent: 'Я здесь',
+                                                   }}
+                                                   options={{
+                                                       preset: 'islands#darkOrangeDotIcon',
+                                                   }}
+                                        />
+                                        {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
 
-                                       {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
+                                        {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
 
-                                   </Map>
-                               </div>
-                           </YMaps>
-                       </div>
-                       <div style={{margin: "30px 0px 30px 0px"}} >
-                           <button className="reg-button"
-                                   onClick={submitHandler}
-                                   disabled={!formValid}
-                           >Зарегистрироваться</button>
-                       </div>
-                   </div>
+                                    </Map>
+                                </div>
+                            </YMaps>
+                        </div>
+
+                        <div style={{margin: "30px 0px 30px 0px"}} >
+                            <button className="reg-button"
+                                    onClick={submitHandler}
+                                    disabled={!formValid}
+                            >Зарегистрироваться</button>
+                        </div>
+                    </div>
+
+                </form>
             </Container>
         </div>
     )

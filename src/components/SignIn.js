@@ -19,6 +19,7 @@ export default function SignIn(props) {
                         <div>
                             <input type="text"
                                    name="login"
+                                   // autoComplete="off"
                                    placeholder="+70000000000 или user@mail.ru"
                                    className={`input-field ${loginError(props.loginValid)}`}
                                    value={props.login}
@@ -37,6 +38,7 @@ export default function SignIn(props) {
                             <input type="password"
                                    name="password"
                                    placeholder="A-Z,a-z,0-9,_"
+                                   // autoComplete="off"
                                    className={`input-field ${loginError(props.passwordValid)}`}
                                    value={props.password}
                                    onChange={props.passwordHandler}

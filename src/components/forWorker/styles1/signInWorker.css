@@ -3,14 +3,3 @@
     margin-top: 30px;
 }
 
-.input-field-error {
-    border-color: #f04d2d;
-}
-.input-field-error:focus {
-    border-color: #f04d2d;
-    outline: none;
-}
-.input-field {
-    width: 100%;
-    font-size: 1.0rem
-}

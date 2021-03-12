@@ -242,7 +242,7 @@ export default function WorkerProfile() {
                         <div>
                             <button className="edit-button" onClick={() =>{
                                 window.location.href='/personal-account/employees' }}
-                            >Изменить</button>
+                            >Изменить данные</button>
                         </div>
 
                     </div>

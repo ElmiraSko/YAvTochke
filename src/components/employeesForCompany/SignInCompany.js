@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
@@ -13,12 +13,16 @@ export default function SignInCompany() {
     } = useContext(Context)
 
     // Состояние компонента
-    const [email, setEmail] = React.useState('')
+    const [login, setLogin] = useState('')
     const [password, setPassword] = React.useState('')
+    const [loginValid, setLoginValid] = useState(true)
+    const [passwordValid, setPasswordValid] = useState(true)
+
+    const [formValid, setFormValid] = useState(false)
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
-    let url = 'https://cookstarter-restaurant-service.herokuapp.com/restaurant/get/'
+    let url = ''
 
     // обработчик формы, отправка запроса и получение ответа
     function submitHandler(event) {
@@ -36,11 +40,10 @@ export default function SignInCompany() {
         //         headers: { 'Content-Type': 'application/json' },
         //         body: JSON.stringify({ email: email, password: password})
         //     };
-        //     fetch('https://yoshpa-registration-login.herokuapp.com/auth', requestOptions)
+        //     fetch(url, requestOptions)
         //         .then(response => response.json())
         //         .then(function (data){
         //             console.log(data)
-        //             localStorage.setItem('Authorization', 'Bearer ' + data.token);
         //             setUser(data.userId)
         //             console.log(user + " == user")
         //             setSignIn(!signIn)
@@ -61,15 +64,65 @@ export default function SignInCompany() {
         }
     // }
 
-    // обработчик поля email
+    // сработывает при потере полем фокуса
+    function blurHandler(event) {
+        switch (event.target.name) {
+            case 'login':
+                if (login.length === 0) {
+                    setLoginValid(true) // что бы граница поля не была красного цвета
+                }
+                break
+            case 'password':
+                if (password.length === 0) {
+                    setPasswordValid(true) // что бы граница поля не была красного цвета
+                }
+                break
+        }
+    }
+
+    //======= Валидация полей формы =======
+    function validateLogin(login){
+        const pattern = /^\+?([0-9]{11})\)?|(.*)@(.*)\.[a-z]{2,5}$/
+        let phoneValid = pattern.test(String(login).toLowerCase());
+        if (phoneValid) {
+            setLoginValid(true)
+        } else {
+            setLoginValid(false)
+        }
+    }
+    // === Валидация Password ===
+    function validatePassword(password){
+        const ph = /^[A-Za-z]\w{7,15}$/;
+        let passValid = ph.test(String(password).toLowerCase());
+        if (passValid) {
+            setPasswordValid(true)
+        } else {
+            setPasswordValid(false)
+        }
+    }
+
+    // обработчик поля email/phone/login
     function loginHandler(event){
-        setEmail(event.target.value)
-        console.log(email)
+        let editLogin = event.target.value
+        setLogin(editLogin)
+        validateLogin(editLogin)
     }
     // обработчик поля password
     function passwordHandler(event){
-        setPassword(event.target.value)
-        console.log(password)
+        let editPassword = event.target.value
+        setPassword(editPassword)
+        validatePassword(editPassword)
+    }
+
+    // очистка поля email/phone/login
+    function cleanLogin(){
+        setLogin('')
+        setLoginValid(false)
+    }
+    // очистка поля password
+    function cleanPassword() {
+        setPassword('')
+        setPasswordValid(false)
     }
 
     console.log('Форма авторизации company')
@@ -85,7 +138,16 @@ export default function SignInCompany() {
 
                     <SignIn loginHandler={loginHandler}
                             passwordHandler={passwordHandler}
-                            submitHandler={submitHandler} />
+                            submitHandler={submitHandler}
+                            cleanLogin={cleanLogin}
+                            cleanPassword={cleanPassword}
+                            login={login}
+                            loginValid={loginValid}
+                            password={password}
+                            passwordValid={passwordValid}
+                            blurHandler={blurHandler}
+                            formValid={formValid}
+                    />
                 </form>
             </div>
         </Container>

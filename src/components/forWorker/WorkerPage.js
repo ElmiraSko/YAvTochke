@@ -10,19 +10,35 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Select from 'react-select'
 import Button from "@material-ui/core/Button";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Radio from "@material-ui/core/Radio";
+import withStyles from "@material-ui/core/styles/withStyles";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
-
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 320,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
-}));
 
 export default function WorkerPage() {
+
+    const RedRadio = withStyles({
+        root: {
+            color: '#f04d2d',
+            '&$checked': {
+                color: '#f04d2d',
+            },
+        },
+        checked: {},
+    })((props) =>
+        <Radio color="default" {...props} />);
+
+    const RedCheckbox = withStyles({
+        root: {
+            color: '#f04d2d',
+            '&$checked': {
+                color: '#f04d2d',
+            },
+        },
+        checked: {},
+    })((props) =>
+        <Checkbox color="default" {...props} />);
 
     //предпочтительный способ связи: mail или phone
     // сначала не выбран, потом надо подтягивать с бэка
@@ -31,16 +47,37 @@ export default function WorkerPage() {
     const [mailColor, setMailColor] = useState('#848c8e')
     const [phoneColor, setPhoneColor] = useState('#848c8e')
 
-    // Вид работы: постоянная или подработка
+    // Состояние: вид работы: постоянная или подработка
     const [workType, setWorkType] = useState('')
-    const classes = useStyles();
     const [age, setAge] = useState('');
+    const [gender, setGender] = useState('');
+    // Состояние бегунка, получаем с сервера
+    const [sliderValue, setSliderValue] = useState(0)
+
+    //-  вариант 1
+    const [showContactsState, setShowContactsState] = useState({
+        showContacts: false
+    });
+    const showContactsHandler = (event) => {
+        setShowContactsState({[event.target.name]: event.target.checked});
+    };
+    const [mailingState, setMailingState] = useState({
+        checkMailing: false
+    });
+    const mailingHandler = (event) => {
+        setMailingState({[event.target.name]: event.target.checked});
+    };
+    const [hideProfileState, setHideProfileState] = useState({
+        hideProfile: false
+    });
+    const hideProfileHandler = (event) => {
+        setHideProfileState({[event.target.name]: event.target.checked});
+    };
+
 
     const handleChange = (event) => {
         setAge(event.target.value);
     };
-    // Состояние бегунка, получаем с сервера
-    const [sliderValue, setSliderValue] = useState(0)
     // функция установки предпочтительного способа связи - email
     function setPreferredEmail() {
         setPreferredCommunication('email')
@@ -66,8 +103,10 @@ export default function WorkerPage() {
                 setMailColor('#848c8e')
             }
     }
-    // Выбор типа работы
-    const workTypeHandle =(event) => {
+    //
+
+    // Функция выбора типа работы: Постоянная работа или Подработка
+    const workTypeHandler =(event) => {
         setWorkType(event.target.value)
         console.log(workType)
     }
@@ -128,28 +167,23 @@ export default function WorkerPage() {
                             </IconButton>
 
                             <div style={{textAlign: "left", width: '240px', margin: 'auto', }}>
-                                <div className='form_radio'>
-                                    <input type="radio"
-                                           value='Постоянная работа'
-                                           id='permanent_work'
-                                           className='input'
-                                           checked={workType === 'Постоянная работа'}
-                                           onChange={workTypeHandle} />
-                                    <label htmlFor="permanent_work"
-                                           className='label'
-                                    >Постоянная работа</label>
+                                <div>
+                                    <RedRadio
+                                        checked={workType === 'Постоянная работа'}
+                                        onChange={workTypeHandler}
+                                        value="Постоянная работа"
+                                        name="radio-button-demo"
+                                        inputProps={{ 'aria-label': 'C' }}
+                                    /> Постоянная работа
                                 </div>
-                                <div className='form_radio'>
-                                    <input type="radio"
-                                           value='Подработка'
-                                           id='temporary_work'
-                                           className='input'
-                                           checked={workType === 'Подработка'}
-                                           onChange={workTypeHandle}  />
-                                    <label htmlFor="temporary_work"
-                                           className='label'
-                                    >Подработка</label>
-
+                                <div>
+                                    <RedRadio
+                                        checked={workType === 'Подработка'}
+                                        onChange={workTypeHandler}
+                                        value="Подработка"
+                                        name="radio-button-demo"
+                                        inputProps={{ 'aria-label': 'C' }}
+                                    /> Подработка
                                 </div>
                             </div>
                             <div style={{textAlign: "left",  width: '340px', margin: 'auto', }}>
@@ -191,44 +225,54 @@ export default function WorkerPage() {
                                                    value='' readOnly={true}/>
                                         </div>
                                     </div>
-                                    <div style={{marginTop: '10px'}}>
-                                        <div style={{marginBottom: '14px'}}>
-                                            <input type='radio' id='phone' className='input'
-                                                   value={preferredCommunication}
-                                                   checked={preferredCommunication === 'phone'}
-                                                   onChange={setPreferredPhone}/>
-                                            <label htmlFor="phone" className='label'> </label>
+
+                                    <div>
+                                        <div style={{marginBottom: '10px'}}>
+                                            <RedRadio style={{padding: '0px'}}
+                                                      checked={preferredCommunication === 'phone'}
+                                                      onChange={setPreferredPhone}
+                                                      value={preferredCommunication}
+                                                      name="radio-button-demo"
+                                                      inputProps={{ 'aria-label': 'C' }}
+                                            />
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <input type='radio' id='email' className='input'
-                                                   value={preferredCommunication}
-                                                   checked={preferredCommunication === 'email'}
-                                                   onChange={setPreferredEmail}/>
-                                            <label htmlFor="email" className='label'> </label>
+                                            <RedRadio style={{padding: '0px'}}
+                                                      checked={preferredCommunication === 'email'}
+                                                      onChange={setPreferredEmail}
+                                                      value={preferredCommunication}
+                                                      name="radio-button-demo"
+                                                      inputProps={{ 'aria-label': 'C' }}
+                                            />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div style={{marginTop: '40px'}}>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type='checkbox' />
-                                        <label style={{marginLeft: '15px'}}>
-                                            Показать контакты работодателю
-                                        </label>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type='checkbox' />
-                                        <label style={{marginLeft: '15px'}}>
-                                            Рассылка подходящих вакансий
-                                        </label>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type='checkbox' />
-                                        <label style={{marginLeft: '15px'}}>
-                                            Скрыть анкету
-                                        </label>
-                                    </div>
+                                    <FormControlLabel
+                                        control={<RedCheckbox checked={showContactsState.showContacts}
+                                                              onChange={showContactsHandler} name='showContacts'/>}
+                                        label="Показать контакты работодателю"
+                                    />
+                                    <FormControlLabel
+                                        control={<RedCheckbox checked={mailingState.checkMailing}
+                                                              onChange={mailingHandler} name='checkMailing'/>}
+                                        label="Рассылка подходящих вакансий"
+                                    />
+                                    <FormControlLabel
+                                        control={<RedCheckbox checked={hideProfileState.hideProfile}
+                                                              onChange={hideProfileHandler} name='hideProfile'/>}
+                                        label=" Скрыть анкету"
+                                    />
+
                                 </div>
+                                <div style={{textAlign: "right",}}>
+                                    <Button style={{margin: '15px 15px 15px 10px',
+                                        background: '#f04d2d', color: 'white'}}
+                                            href='/profile'
+                                    >Сохранить</Button>
+                                </div>
+
 
                             </div>
 
@@ -284,7 +328,9 @@ export default function WorkerPage() {
                                 backgroundColor: '#e1e1e1', border: 'none', height: '2px'}}/>
                             <div style={{display: "flex", justifyContent: "space-between",
                                 width: '100%', fontSize: "15px",}}>
-                                <div style={{marginTop: '8px', marginLeft: '20px'}}>Статус самозанятого гражданина</div>
+                                <div style={{marginTop: '8px', marginLeft: '20px'}}>
+                                    Статус самозанятого гражданина
+                                </div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
                                     <select className="select-css" onChange={handleChange}>
                                         <option value="age">Да</option>
@@ -326,9 +372,9 @@ export default function WorkerPage() {
                                 </div>
                                 <div style={{width: '100%',}}>
                                     <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '26rem'}}
+                                        <input type="text" style={{width: '33rem'}}
                                                value='' readOnly={true}/>
-                                               <span style={{margin: '0 10px 0 15px'}}>Изменить</span>
+                                               {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
 
                                     <div style={{margin: '5px 0 5px 0px'}}>
@@ -356,7 +402,7 @@ export default function WorkerPage() {
                                         Интересующие  вакансии:
                                 </p>
                                 <div style={{display: "flex", justifyContent: "flex-start",}}>
-                                    <div style={{width: '520px',}}>
+                                    <div style={{width: '635px',}}>
                                         <Select styles={colourStyles}
                                                 options={options} isMulti
                                                 onChange={opt => console.log(opt)}
@@ -372,8 +418,6 @@ export default function WorkerPage() {
                                         />
 
                                     </div>
-                                    <Button style={{margin: '0 10px 0 10px',
-                                        background: '#f04d2d', color: 'white'}}>Добавить</Button>
                                 </div>
                             </div>
 
@@ -399,19 +443,19 @@ export default function WorkerPage() {
                                 </div>
                                 <div style={{width: '100%',}}>
                                     <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '26rem'}}
+                                        <input type="text" style={{width: '33rem'}}
                                                value='' readOnly={true}/>
-                                        <span style={{margin: '0 10px 0 15px'}}>Изменить</span>
+                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
                                     <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '26rem'}}
+                                        <input type="text" style={{width: '33rem'}}
                                                value='' readOnly={true}/>
-                                        <span style={{margin: '0 10px 0 15px'}}>Изменить</span>
+                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
                                     <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '26rem'}}
+                                        <input type="text" style={{width: '33rem'}}
                                                value='' readOnly={true}/>
-                                        <span style={{margin: '0 10px 0 15px'}}>Изменить</span>
+                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
                                 </div>
                             </div>

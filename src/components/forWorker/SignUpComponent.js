@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
-import './styles1/signUpComponent.css'
 
 export default function (props) {
 
@@ -71,7 +70,7 @@ export default function (props) {
                                 <label >Мобильный телефон*</label>
                             </div>
                             <div>
-                                <input type="text"
+                                <input type="tel"
                                        name="phone"
                                        placeholder="+70000000000"
                                        autoComplete="off"
@@ -90,7 +89,7 @@ export default function (props) {
                         borderRadius: '50%'}}>
                         <div style={{marginBottom: "15px"}}>
                             <div>
-                                <label >E-mail*</label>
+                                <label>E-mail*</label>
                             </div>
                             <div>
                                 <input type="email"
@@ -109,7 +108,7 @@ export default function (props) {
                         <div style={{marginBottom: "25px"}}>
                             <div>
                                 <label >Пароль*</label>
-                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
+
                             </div>
                             <div>
                                 <input type="password"
@@ -124,6 +123,7 @@ export default function (props) {
                                        onBlur={props.blurHandler}
                                 />
                             </div>
+                            {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
                         </div>
                         <div style={{marginBottom: "25px"}}>
                             <div>
