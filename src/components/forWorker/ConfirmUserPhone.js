@@ -26,7 +26,6 @@ export default function ConfirmUserPhone() {
             method: ' GET',
             headers: { 'Content-Type': 'application/json' },
         };
-        window.location.href='/after-r57ph7-page'
         console.log(url)
         fetch(url, requestOptions)
             .then(async response => {
@@ -35,6 +34,7 @@ export default function ConfirmUserPhone() {
                     alert(data.error)
                 } else {
                     alert(data.msg)
+                    // alert(data.error)
                     let stateObj = { foo: "confirm/user-phone" }
                     window.history.replaceState(stateObj, null, "/after-r57ph7-page")
                     window.location.href='/after-r57ph7-page'
