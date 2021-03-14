@@ -23,7 +23,7 @@ export default function ConfirmUserPhone() {
     function submitHandler(event) {
         event.preventDefault()
         const requestOptions = {
-            method: ' GET',
+            method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         };
         console.log(url)
@@ -34,7 +34,7 @@ export default function ConfirmUserPhone() {
                     alert(data.error)
                 } else {
                     alert(data.msg)
-                    // alert(data.error)
+                    alert(data.error)
                     let stateObj = { foo: "confirm/user-phone" }
                     window.history.replaceState(stateObj, null, "/after-r57ph7-page")
                     window.location.href='/after-r57ph7-page'
@@ -43,6 +43,7 @@ export default function ConfirmUserPhone() {
             .catch(error=>{
                 console.log("Ошибка при подтверждении номера телефона!")
                 console.log(error)
+                alert(error)
             });
     }
 
@@ -52,7 +53,7 @@ export default function ConfirmUserPhone() {
         setCode(codeNumber)
         validateFirstName(codeNumber)
     }
-    // === Валидация code, если длина больше 3 =====
+    // === Валидация code, если длина больше 3, надо уточнить =====
     function validateFirstName(code){
         if (code.length > 3) {
             setCodeValid(true)
@@ -108,7 +109,6 @@ export default function ConfirmUserPhone() {
                             color: "#faf5f5", margin: "10px 10px 5px 5px", }}
                                  onClick={submitHandler}
                                  disabled={!formValid}
-                                 // href="/after-r57ph7-page"
                         >
                             Подтвердить</Button>
                     </div>

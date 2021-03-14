@@ -5,6 +5,7 @@ import './styles1/slider.css'
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
+import SearchWorkSteps from "./SearchWorkSteps";
 
 export default function WorkerPage() {
 
@@ -12,7 +13,7 @@ export default function WorkerPage() {
     console.log(tempCords)
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
-    const [sliderValue, setSliderValue] = useState(0)
+    const [sliderValue, setSliderValue] = useState(5)
     const [zoom, setZoom] = useState(7)
     const [address, setAddress] = useState('')
     const [ymaps, setYmaps] = useState()
@@ -88,47 +89,49 @@ export default function WorkerPage() {
         <div>
             <Container maxWidth="lg">
                 <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                    fontWeight: "600", }}> Соискателям
+                    fontWeight: "600", }}>
 
-                    <div style={{backgroundColor: '#848C8E', width: "900px", color: '#fff',
-                        borderRadius: '10px', height: 'auto', margin: 'auto', textAlign: "center",
-                        marginTop: '20px', fontSize: "1.2rem", }}>
-                        <div style={{width: "500px", margin: 'auto', paddingTop:'10px', marginBottom: '50px'}}>
-                            <ul style={{textAlign: "left", }}>
-                                <li>Нужна подработка в своем магазине</li>
-                                <li>Нужна работа рядом с домом</li>
-                                <li>Нет времени листать вакансии</li>
-                            </ul>
+                    <div style={{display: "flex", justifyContent: "space-around",  marginTop: '30px'}}>
+                        <div style={{backgroundColor: '#db98c2', width: '400px',}}>
                         </div>
-                        <h3 > Как найти: </h3>
-                        <div style={{display: "flex", justifyContent: "space-around",
-                            height: "90px", fontSize: "2.9rem"  }}>
-                            <div style={{backgroundColor: "#ffb43c",
-                                width: "80px", height: "80px",
-                                borderRadius: '50%'}}>1</div>
-                            <div style={{backgroundColor: "#f17f05",
-                                width: "80px", height: "80px",
-                                borderRadius: '50%'}}>2</div>
-                            <div style={{backgroundColor: "#F04D2D",
-                                width: "80px", height: "80px",
-                                borderRadius: '50%'}}>3</div>
-                        </div>
-                        <div style={{display: "flex", justifyContent: "space-around",
-                            marginBottom: "105px", height: "180px", fontSize: "1.4rem"  }}>
-                            <div style={{
-                                width: "30%", height: "80px",
-                                borderRadius: '50%'}}>Выбери точку на карте, где удобно работать</div>
-                            <div style={{
-                                width: "30%", height: "80px",
-                                borderRadius: '50%'}}>Заполни анкету и оставь свой номер телефона</div>
-                            <div style={{
-                                width: "30%", height: "80px",
-                                borderRadius: '50%'}}>Получай сообщения с подходящими вакансиями</div>
-                        </div>
+                        <SearchWorkSteps/>
                     </div>
-                </div>
 
-                <div style={{marginBottom: "35px", }}>
+                    {/*<div style={{backgroundColor: '#848C8E', width: "900px", color: '#fff',*/}
+                    {/*    borderRadius: '10px', height: 'auto', margin: 'auto', textAlign: "center",*/}
+                    {/*    marginTop: '20px', fontSize: "1.2rem", }}>*/}
+                    {/*    <div style={{width: "500px", margin: 'auto', paddingTop:'10px', marginBottom: '50px'}}>*/}
+                    {/*
+                    {/*    </div>*/}
+                    {/*    <h3 > Как найти: </h3>*/}
+                    {/*    <div style={{display: "flex", justifyContent: "space-around",*/}
+                    {/*        height: "90px", fontSize: "2.9rem"  }}>*/}
+                    {/*        <div style={{backgroundColor: "#ffb43c",*/}
+                    {/*            width: "80px", height: "80px",*/}
+                    {/*            borderRadius: '50%'}}>1</div>*/}
+                    {/*
+                    {/*    <div style={{display: "flex", justifyContent: "space-around",*/}
+                    {/*        marginBottom: "105px", height: "180px", fontSize: "1.4rem"  }}>*/}
+                    {/*        <div style={{*/}
+                    {/*            width: "30%", height: "80px",*/}
+                    {/*            borderRadius: '50%'}}>Выбери точку на карте, где удобно работать</div>*/}
+                    {/*        <div style={{*/}
+                    {/*            width: "30%", height: "80px",*/}
+                    {/*            borderRadius: '50%'}}>Заполни анкету и оставь свой номер телефона</div>*/}
+                    {/*        <div style={{*/}
+                    {/*            width: "30%", height: "80px",*/}
+                    {/*            borderRadius: '50%'}}>Получай сообщения с подходящими вакансиями</div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <div style={{ margin: "30px 0px", }}>
+                        <Button  style={{backgroundColor: "#f04d2d",
+                            color: "#faf5f5", margin: "10px ", padding: '10 30px 10 30px'}}
+                            // onClick={submitHandler}
+                            // disabled={!formValid}
+                        >
+                            Регистрация</Button>
+                    </div>
+
                     <div style={{fontSize: "1.2rem", marginBottom: "15px",}}>
                         Найди работу в нужном тебе месте
                     </div>
@@ -143,26 +146,14 @@ export default function WorkerPage() {
                                value="Поиск"
                                onClick={findPlace}
                         />
-                        <p style={{fontSize: "1.0rem"}}>
-                            Укажите в каком радиусе от точки искать работу
-                        </p>
-                               <p>
-                                   <input type="range" className="slider"
-                                          min="0" max="10" step="0.01"
-                                          value={sliderValue} id="radius"
-                                          onInput={getRadius} />
-                               </p>
-                        <p style={{fontSize: "1.0rem"}}>
-                            Радиус: {sliderValue} км
-                        </p>
                     </div>
                 </div>
-                <div style={{
-                    display: "flex",
-                    justifyContent: "space-around",
+
+
+                <div style={{ display: "flex", justifyContent: "space-around",
                     marginBottom: "135px",
                 }}>
-                    <div style={{width: "40%", height: "auto",}}>
+                    <div style={{width: "600px", height: "auto",}}>
                         <div>
                             <div>
                                 <AdItem vacancy = {Ad[0]}/>
@@ -173,7 +164,24 @@ export default function WorkerPage() {
                         </div>
                     </div>
 
-                    <div style={{marginBottom: "35px",}} hidden={false}>
+                    <div style={{marginBottom: "35px", width: "500px" }} >
+                        <div style={{marginBottom: "35px", textAlign: 'center'}}>
+                            <div>
+                                <p>
+                                    <input type="range" className="slider"
+                                           min="0" max="10" step="0.01"
+                                           value={sliderValue} id="radius"
+                                           onInput={getRadius} />
+                                </p>
+                                <p style={{fontSize: "1.0rem"}}>
+                                    Радиус: {sliderValue} км
+                                </p>
+                                <p style={{fontSize: "1.0rem", textTransform: 'uppercase'}}>
+                                    Укажите в каком радиусе от точки искать работу
+                                </p>
+                            </div>
+                        </div>
+
                         <YMaps
                             query={{
                             apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
@@ -192,7 +200,7 @@ export default function WorkerPage() {
                                          'geoObject.addon.balloon',
                                          'geoObject.addon.hint']}
 
-                                     style={{width: "600px", height: "400px"}}
+                                     style={{width: "500px", height: "300px"}}
                                 >
 
                                     <Placemark geometry={center}

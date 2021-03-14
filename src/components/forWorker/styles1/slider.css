@@ -1,7 +1,7 @@
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 40%; /* Full-width */
+    width: 100%; /* Full-width */
     height: 5px; /* Specified height */
     border-radius: 5px;
     background: #f04d2d; /*  background */
