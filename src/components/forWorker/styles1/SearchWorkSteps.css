@@ -1,0 +1,112 @@
+.one {
+    width: 25%;
+    height: 180px;
+    margin: 15px 0 0 0;
+    background: linear-gradient(to top, #ffffff 0%, #848c8e 100%);
+    border-radius: 4px;
+}
+.two {
+    width: 96%;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    background: #ffffff;
+    border-radius: 4px;
+    padding-bottom: 5px;
+}
+
+.steps-icons {
+    color: #f04d2d;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 13px;
+}
+.wrapper {
+    width: 700px;
+    height: auto;
+    text-align: center;
+}
+.title-steps {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.wr-stp {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #f04d2d;
+}
+.wr-stp-div {
+    width: 28%;
+    margin: 20px 0 15px 0;
+}
+.how-title {
+    text-transform: uppercase;
+    margin: 15px 0 15px 0;
+    font-size: 1.1rem;
+}
+.how-wrapper {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1rem;
+}
+.for-steps-icons {
+    width: 40px;
+    height: 40px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        width: 600px;
+        font-size: 1.0rem;
+    }
+    .two {
+        font-size: 1.0rem;
+        margin-top: 2px;
+    }
+    .wr-stp-div {
+        margin: 10px 0 10px 0;
+    }
+    .how-title {
+        margin: 12px 0 12px 0;
+        font-size: 1.0rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 500px;
+        font-size: 1.0rem;
+    }
+    .title-steps {
+        font-weight: 500;
+    }
+    .wr-stp {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #f04d2d;
+    }
+    .two {
+        font-size: 0.9rem;
+        height: 160px;
+    }
+    .how-title {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    .wr-stp-div {
+        line-height: 1;
+        width: 30%;
+    }
+    .how-wrapper {
+        font-size: 1.0rem;
+        line-height: 1.1
+    }
+    .one {
+        width: 28%;
+        height: 160px;
+        margin: 10px 0 0 0;
+    }
+}

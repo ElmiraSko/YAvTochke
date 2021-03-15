@@ -1,13 +1,12 @@
-import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TelegramIcon from '@material-ui/icons/Telegram';
 import './styles/FooterApp.css'
+import vk from "../img/vk-1.png";
+import telegram from '../img/telegram-1.png'
+import facebook from '../img/facebook-3.png'
+import Logo from "../img/Logo-1.png";
 
 const useStyles = makeStyles((theme) => ({
-
-
 
     right: {
         display: "flex",
@@ -17,58 +16,52 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
 function FooterApp() {
     const classes = useStyles();
 
     return (
         <div className="main">
-{/* теги <p>  заменить на ссылки*/}
+
             <div className="left">
-                {/*<span className="tit">ЯвТочке</span>*/}
                 <div className="group">
                     <div style={{padding: "0px 20px"}}>
-                        <span className="tit" style={{margin: "7px"}}>ЯвТочке</span>
-                        <span style={{margin: "7px"}}>
-                    <Typography variant="body2">
-                        {'© '}
-                        {new Date().getFullYear()}
-                        {' YAvTochke.ru'}
-                    </Typography>
-                </span>
+                        <img src={Logo} alt="logo" style={{width: '1.8rem', padding: "10px 10px 0 0"}}/>
+                        <span className="tit" >Я в точке</span>
+                        <div>
+                                {'Я в точке '}
+                                {new Date().getFullYear()}
+                                {'. Все права защищены'}
+                        </div>
                     </div>
-                    <div style={{padding: "0px 20px"}}>
+                    <div style={{padding: "20px 20px 0 0"}}>
                         <p style={{margin: "7px"}}>О компании</p>
                         <p style={{margin: "7px"}}>Новости</p>
                     </div>
-                    <div style={{padding: "0px 20px"}}>
+                    <div style={{padding: "20px 20px 0 0"}}>
                         <p style={{margin: "7px"}}>Вакансии</p>
                         <p style={{margin: "7px"}}>Реклама у нас</p>
                     </div>
 
-                    <div style={{padding: "0px 20px"}}>
+                    <div style={{padding: "20px 20px 0 0"}}>
                         <p style={{margin: "7px"}}>
-                            Политика <br/> конфиденциальности
+                            Политика конфиденциальности
                         </p>
                     </div>
                 </div>
-                {/*<span>*/}
-                {/*    <Typography variant="body2">*/}
-                {/*        {'© '}*/}
-                {/*        {new Date().getFullYear()}*/}
-                {/*        {' YAvTochke.ru'}*/}
-                {/*    </Typography>*/}
-                {/*</span>*/}
-
             </div>
 
             <div className="right">
-                <div style={{margin: "10px, 20px 0px 20px"}}>
-                    <FacebookIcon style={{ fontSize: 70 }} />
+                <div  style={{paddingLeft: "30px"}}>
+                    <img src={telegram} alt="Photo-1"
+                         style={{width: '30px', height: '30px', padding: '10px'}} />
                 </div>
-
-                <div style={{paddingLeft: "30px"}}>
-                    <TelegramIcon style={{ fontSize: 70,}} />
+                <div style={{margin: "10px, 20px 0px 20px"}}>
+                    <img src={vk} alt="Photo-1"
+                         style={{width: '30px', height: '30px', padding: '10px'}} />
+                </div>
+                <div style={{margin: "10px, 20px 0px 20px"}}>
+                    <img src={facebook} alt="Photo-1"
+                         style={{width: '30px', height: '30px', padding: '10px'}} />
                 </div>
 
             </div>

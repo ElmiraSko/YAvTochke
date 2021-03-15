@@ -13,20 +13,26 @@
     flex-shrink: 0;
     padding: 10px 0 10px 0;
 }
+.links {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #0c1618;
+}
 .link-padding {
     padding: 18px 0;
+    /*background: #848c8e;*/
 }
 .link-logo {
     display: flex;
     justify-content: flex-start;
 }
 
-/*.active {*/
-/*    color: #F04D2D;*/
-/*}*/
-
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .appbar {
-        flex-direction: column;
+        /*flex-direction: column;*/
+        font-size: 1.0rem;
+    }
+    .links {
+        font-size: 1.0rem;
     }
 }

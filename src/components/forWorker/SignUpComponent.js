@@ -27,7 +27,7 @@ export default function (props) {
                 </div>
 
                 <div style={{display: "flex", justifyContent: "space-around",
-                    marginBottom: "30px", height: "180px", fontSize: "1.0rem", }}>
+                    marginBottom: "30px", height: "180px", fontSize: "1.0rem", fontWeight: '600' }}>
                     <div style={{
                         width: "30%", height: "auto",
                         borderRadius: '50%'}}>
@@ -45,6 +45,7 @@ export default function (props) {
                                        onDoubleClick={props.cleanFirstName}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.firstNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
 
@@ -62,6 +63,7 @@ export default function (props) {
                                        onDoubleClick={props.cleanLastName}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.lastNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
 
@@ -80,6 +82,7 @@ export default function (props) {
                                        onDoubleClick={props.cleanPhone}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.phoneValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
 
@@ -102,6 +105,7 @@ export default function (props) {
                                        onDoubleClick={props.cleanEmail}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.emailValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
 
@@ -122,6 +126,7 @@ export default function (props) {
                                        onDoubleClick={props.cleanPassword}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.passwordValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
                         <div style={{marginBottom: "25px"}}>
@@ -138,16 +143,20 @@ export default function (props) {
                                        onDoubleClick={props.cleanRepeatPassword}
                                        onBlur={props.blurHandler}
                                 />
+                                {props.repeatPasswordValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div style={{textAlign: 'center', margin: 'auto', width: "40%"}}>
-                    <div style={{marginBottom: "30px", textAlign: 'left', fontSize: "1.0rem", }}>
-                        <div>
-                            <label >Адрес поиска работы*</label>
+                <div style={{textAlign: 'center', margin: 'auto', width: "40%", padding: '30px 0 0 0'}}>
+                    <div style={{marginBottom: "30px", textAlign: 'center', fontSize: "1.0rem", }}>
+                        <div style={{margin: "15px 0 15px 0", textTransform: 'uppercase',
+                            color: '#f04d2d', fontWeight: 600}}>
+                            <label  >
+                                Найди работу в удобном месте
+                            </label>
                         </div>
                         <div>
                             <input type="text"
@@ -160,6 +169,7 @@ export default function (props) {
                                    onDoubleClick={props.cleanAddress}
                                    onBlur={props.blurHandler}
                             />
+                            {props.addressValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                         </div>
                     </div>
                 </div>

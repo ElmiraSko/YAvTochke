@@ -1,0 +1,117 @@
+.search-work-wrapper {
+    padding: 20px 0 30px 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.search-work-img {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.search-work-img-style {
+    width: 30rem;
+    padding: 10px 10px 10px 10px;
+    border-radius: 1rem;
+}
+.search-work-reg-button-div {
+    margin: 50px 0;
+}
+.vacancy-and-map-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 35px;
+}
+.vacancy-div {
+    width: 600px;
+    height: auto;
+}
+.search-map-wrapper {
+    margin-bottom: 35px;
+    width: 500px;
+}
+.search-slider-div {
+    margin-bottom: 35px;
+    text-align: center;
+}
+.m-maps {
+    width: 500px;
+    height: 300px
+}
+.pre-search-text {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #f04d2d;
+    text-transform: uppercase;
+}
+
+.search-work-input {
+    font-size: 1.0rem;
+    width: 40%;
+    border-color: #f04d2d;
+    height: 30px;
+    border-radius: 5px;
+    border-style:solid;
+}
+.search-work-button {
+    width: 120px;
+    background: #f04d2d;
+    height: 35px;
+    border-radius: 5px;
+    border-color: #f04d2d;
+    border-style:solid;
+    margin: 0 20px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.search-work-button:focus {
+    outline:none;
+}
+.search-work-button:active {
+    outline:none;
+}
+
+@media screen and (max-width: 1024px) {
+    .search-work-img {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .search-work-img-style {
+        padding: 10px 10px 10px 10px;
+    }
+    .m-maps {
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .search-slider-div {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    .vacancy-and-map-wrapper {
+        display: block;
+        margin-bottom: 135px;
+    }
+    .search-work-img-style {
+        width: 20rem;
+        margin-top: 20px;
+    }
+    .vacancy-div {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .search-map-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .m-maps {
+        width: 500px;
+    }
+}
+

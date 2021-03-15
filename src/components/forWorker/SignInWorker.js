@@ -6,6 +6,9 @@ import Loader from "../Loader";
 import './styles1/signInWorker.css'
 import SignIn from "../SignIn";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import telegram2 from "../../img/telegram-grey.png";
+import vk2 from "../../img/vk-grey.png";
+import facebook2 from "../../img/facebook-3-2.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -138,12 +141,12 @@ export default function SignInWorker() {
     console.log('Форма авторизации user' )
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="md">
             <div className="div-louder">
                 {loading && <Loader />}
             </div>
             <div className="wr">
-                <form noValidate autoComplete="off" hidden={formHidden} >
+                <form  hidden={formHidden} style={{width: '360px', margin: 'auto'}}>
                     <Typography component="h1" variant="h5" align={"center"}>
                         Вход в профиль
                     </Typography>
@@ -161,6 +164,40 @@ export default function SignInWorker() {
                     />
                 </form>
             </div>
+
+            <div hidden={formHidden} style={{fontSize: '1.0rem',
+                paddingBottom: "40px", height: 'auto', width: '600px', margin: 'auto',}}>
+                <div style={{textAlign: 'center'}}>
+                    Войти через соцсеть
+                </div>
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex', justifyContent: 'center'}} >
+                    <div >
+                        <img src={telegram2} alt="Photo-1"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                    <div >
+                        <img src={vk2} alt="Photo-1"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                    <div >
+                        <img src={facebook2} alt="Photo-1"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                </div>
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex',
+                    justifyContent: 'space-around', }} >
+                    <div >
+                        Зарегистрироваться
+                    </div>
+                    <div style={{color: '#f04d2d', }}>
+                        как работодатель
+                    </div>
+                    <div style={{color: '#f04d2d'}}>
+                        как соискатель
+                    </div>
+                </div>
+            </div>
+
         </Container>
     );
 }

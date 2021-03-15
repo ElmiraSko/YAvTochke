@@ -375,7 +375,7 @@ export default function SignUpWorker() {
                         <p style={{fontSize: "1.0rem"}}>
                             УКАЖИТЕ РАССТОЯНИЕ ОТ ТОЧКИ ПОИСКА РАБОТЫ
                         </p>
-                        <p>
+                        <p style={{width: '420px', margin: 'auto'}}>
                             <input type="range" className="slider"
                                    min="0" max="10" step="0.01"
                                    value={sliderValue} id="radius"

@@ -1,7 +1,5 @@
 import React, {useEffect, useState, } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Container} from "@material-ui/core";
-import Logo from "../../img/Logo.png";
 import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
@@ -232,8 +230,8 @@ export default function WorkerPage() {
                                                       checked={preferredCommunication === 'phone'}
                                                       onChange={setPreferredPhone}
                                                       value={preferredCommunication}
-                                                      name="radio-button-demo"
-                                                      inputProps={{ 'aria-label': 'C' }}
+                                                      // name="radio-button-demo"
+                                                      // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
@@ -241,8 +239,8 @@ export default function WorkerPage() {
                                                       checked={preferredCommunication === 'email'}
                                                       onChange={setPreferredEmail}
                                                       value={preferredCommunication}
-                                                      name="radio-button-demo"
-                                                      inputProps={{ 'aria-label': 'C' }}
+                                                      // name="radio-button-demo"
+                                                      // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
                                     </div>

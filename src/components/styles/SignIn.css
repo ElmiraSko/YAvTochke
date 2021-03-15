@@ -1,7 +1,22 @@
 .main-div {
-    width: 300px;
-    margin: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.0rem;
-    padding-top: 15px;
+    margin-top: 40px;
+    font-weight: 600;
 }
 
+.forgot-password-button {
+    font-size: 0.9rem;
+    border: 0;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background-color: white;
+    padding: 0;
+    outline: none;
+}
+.forgot-password-button:hover {
+    border-radius: 5px;
+    outline: none;
+}

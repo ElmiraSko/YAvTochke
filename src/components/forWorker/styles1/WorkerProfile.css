@@ -12,6 +12,10 @@
     background-color: #f04d2d;
     border-radius: 5px;
     color: #ffffff;
+    outline:none;
+}
+.edit-button:active {
+    outline:none;
 }
 .right-table {
     border-collapse: collapse;
@@ -24,6 +28,7 @@
     border-spacing: 0;
     width: 200px;
     margin: auto;
+
 }
 
 th, td {

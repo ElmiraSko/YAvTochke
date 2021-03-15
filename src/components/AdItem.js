@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Container} from "@material-ui/core";
-import Logo from "../img/Logo.png";
+import creon from "../img/creon-logo-1.png";
 import './styles/AdItem.css'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
@@ -14,15 +14,15 @@ export default function AdItem(props) {
             <div className="adItem-main">
                 <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}}>
                     <div>
-                        <div style={{color: "#f04d2d", fontWeight: "700", fontSize: "1.4rem"}}>
+                        <div style={{color: "#505350", fontWeight: "700", fontSize: "1.4rem"}}>
                             {vacancy.title}
                         </div>
                         <div
-                            style={{color: "#505350",
+                            style={{color: "#f04d2d",
                                 fontWeight: "700",
-                                fontSize: "1.4rem"}}>{vacancy.price} р/час
+                                fontSize: "1.2rem"}}>{vacancy.price} р/час
                         </div>
-                        <div style={{padding: "10px 10px 5px 5px"}}>
+                        <div style={{padding: "10px 10px 5px 5px", fontSize: "1.0rem", fontWeight: "400",}}>
                             {vacancy.desc}
                         </div>
                         <div style={{display: "flex",}}>
@@ -32,8 +32,9 @@ export default function AdItem(props) {
                     </div>
                     <div style={{textAlign: 'center'}}>
                         <div>
-                           <Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>
-                            {/*<img src={Logo} alt="logo" style={{width: '3.0rem', padding: "10px 0 10px 0"}}/>*/}
+                           {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
+                            <img src={creon} alt="logo" style={{width: '4.0rem',
+                                padding: "10px 0 10px 0", }}/>
                         </div>
                         <div>
                             {vacancy.companyName}

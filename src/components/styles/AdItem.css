@@ -1,17 +1,24 @@
 .adItem-main {
     background-color: #ffffff;
-    /*box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);*/
-    box-shadow: 0 0 3px 2px rgba(80, 83, 80, 0.5);
-    color: #505350;
+    box-shadow: 0 6px 6px -4px rgba(132, 140, 142, .5),
+                -6px 0 6px -4px rgba(132, 140, 142, .5),
+                6px 0 6px -4px rgba(132, 140, 142, .5);
+
     font-size: 1.0rem;
     font-weight: 600;
     max-width: 50rem;
     min-width: 30rem;
     min-height: 180px;
     margin-bottom: 15px;
-    border-radius: 30px;
+    border-radius: 10px;
     text-align: left;
 
     /*border: 1px solid #505350;*/
     padding: 10px 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .adItem-main {
+        font-weight: 500;
+    }
 }

@@ -29,11 +29,9 @@
 }
 .reg-button:disabled {
     cursor: auto;
-    background-color: #fa9784;
-    border-color:  #fa9784;
-    color: #f6d1d1;
-    /*border-bottom: white;*/
-    /*border-right: white;*/
+    background-color:  #f04d2d;
+    border-color:   #f04d2d;
+    color: #ffffff;
 }
 
 .map-wrapper {

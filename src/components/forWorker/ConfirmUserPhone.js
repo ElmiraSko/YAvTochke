@@ -84,12 +84,13 @@ export default function ConfirmUserPhone() {
             <Container  maxWidth="md" >
                 <div style={{ fontSize: "1.2rem",
                     fontWeight: "600", textAlign: "center", margin: "35px 0px 20px 0px"}}>
-                    <div style={{ fontSize: "1.4rem", marginBottom: '20px', }}>
-                        Подтвердите номер телефона и адрес электронной почты!
+                    <div style={{ fontSize: "1.4rem", textTransform: 'uppercase',
+                        marginBottom: '40px', fontWeight: '600',  }}>
+                        Подтвеждение номера телефона
                     </div>
 
-                    <div style={{marginBottom: "15px"}}>
-                        <div style={{ fontSize: "1.1rem", color: '#F04D2D'}} >
+                    <div style={{margin: "15px 0 15px 0"}}>
+                        <div style={{ fontSize: "1.1rem", }} >
                             Пароль был отправлен на указанный номер
                         </div>
                         <div>

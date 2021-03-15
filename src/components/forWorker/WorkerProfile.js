@@ -1,14 +1,10 @@
 import React, {useEffect, useState, } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container} from "@material-ui/core";
-import Logo from "../../img/Logo.png";
 import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerProfile.css'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import Select from 'react-select'
-import Button from "@material-ui/core/Button";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 
 

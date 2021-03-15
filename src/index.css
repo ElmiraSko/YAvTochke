@@ -20,9 +20,11 @@ code {
   height: 25px;
   font-size: 0.9rem;
   border-radius: 5px;
-  padding-left: 7px;
-  border-color: #505350;
+  /*padding-left: 7px;*/
+
+  border-color: #848c8e;
   outline: none;
+  border-style:solid;
 }
 .input-field-error {
   border-color: #f04d2d;

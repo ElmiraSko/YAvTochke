@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Container} from "@material-ui/core";
-import '../employeesForCompany/styles2/Emploees.css';
+import './styles1/SearchWork.css';
 import './styles1/slider.css'
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
+import Logo from "../../img/Logo-1.png";
+import Photo from '../../img/Photo-1st-screen.png'
 
 export default function WorkerPage() {
 
@@ -88,72 +90,44 @@ export default function WorkerPage() {
     return(
         <div>
             <Container maxWidth="lg">
-                <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                    fontWeight: "600", }}>
-
-                    <div style={{display: "flex", justifyContent: "space-around",  marginTop: '30px'}}>
-                        <div style={{backgroundColor: '#db98c2', width: '400px',}}>
+                <div className="search-work-wrapper">
+                    <div className="search-work-img">
+                        <div >
+                            <img src={Photo} alt="Photo-1"
+                                 className="search-work-img-style" />
                         </div>
                         <SearchWorkSteps/>
                     </div>
 
-                    {/*<div style={{backgroundColor: '#848C8E', width: "900px", color: '#fff',*/}
-                    {/*    borderRadius: '10px', height: 'auto', margin: 'auto', textAlign: "center",*/}
-                    {/*    marginTop: '20px', fontSize: "1.2rem", }}>*/}
-                    {/*    <div style={{width: "500px", margin: 'auto', paddingTop:'10px', marginBottom: '50px'}}>*/}
-                    {/*
-                    {/*    </div>*/}
-                    {/*    <h3 > Как найти: </h3>*/}
-                    {/*    <div style={{display: "flex", justifyContent: "space-around",*/}
-                    {/*        height: "90px", fontSize: "2.9rem"  }}>*/}
-                    {/*        <div style={{backgroundColor: "#ffb43c",*/}
-                    {/*            width: "80px", height: "80px",*/}
-                    {/*            borderRadius: '50%'}}>1</div>*/}
-                    {/*
-                    {/*    <div style={{display: "flex", justifyContent: "space-around",*/}
-                    {/*        marginBottom: "105px", height: "180px", fontSize: "1.4rem"  }}>*/}
-                    {/*        <div style={{*/}
-                    {/*            width: "30%", height: "80px",*/}
-                    {/*            borderRadius: '50%'}}>Выбери точку на карте, где удобно работать</div>*/}
-                    {/*        <div style={{*/}
-                    {/*            width: "30%", height: "80px",*/}
-                    {/*            borderRadius: '50%'}}>Заполни анкету и оставь свой номер телефона</div>*/}
-                    {/*        <div style={{*/}
-                    {/*            width: "30%", height: "80px",*/}
-                    {/*            borderRadius: '50%'}}>Получай сообщения с подходящими вакансиями</div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    <div style={{ margin: "30px 0px", }}>
+                    <div className="search-work-reg-button-div">
                         <Button  style={{backgroundColor: "#f04d2d",
-                            color: "#faf5f5", margin: "10px ", padding: '10 30px 10 30px'}}
+                            color: "#faf5f5",  padding: '10px 40px 10px 30px'}}
                             // onClick={submitHandler}
                             // disabled={!formValid}
                         >
                             Регистрация</Button>
                     </div>
 
-                    <div style={{fontSize: "1.2rem", marginBottom: "15px",}}>
-                        Найди работу в нужном тебе месте
+                    <div className="pre-search-text">
+                        Найди работу в удобном месте
                     </div>
                     <div>
-                        <input style={{width: "40%", }}
-                               placeholder="Город, улица и номер дома где хотите работать"
+                        <input className="search-work-input"
+                               placeholder="Город, улица и номер дома, где хотите работать"
                                value={address}
                                onChange={addressHandler}
                                onClick={clearTheSearchField}
                         />
-                        <input type="submit" style={{margin: "0px 10px", }}
-                               value="Поиск"
+                        <input type="submit" className="search-work-button"
+                               value="Найти"
                                onClick={findPlace}
                         />
                     </div>
                 </div>
 
 
-                <div style={{ display: "flex", justifyContent: "space-around",
-                    marginBottom: "135px",
-                }}>
-                    <div style={{width: "600px", height: "auto",}}>
+                <div className="vacancy-and-map-wrapper">
+                    <div className="vacancy-div">
                         <div>
                             <div>
                                 <AdItem vacancy = {Ad[0]}/>
@@ -164,8 +138,8 @@ export default function WorkerPage() {
                         </div>
                     </div>
 
-                    <div style={{marginBottom: "35px", width: "500px" }} >
-                        <div style={{marginBottom: "35px", textAlign: 'center'}}>
+                    <div className="search-map-wrapper" >
+                        <div className="search-slider-div">
                             <div>
                                 <p>
                                     <input type="range" className="slider"
@@ -181,26 +155,25 @@ export default function WorkerPage() {
                                 </p>
                             </div>
                         </div>
-
                         <YMaps
                             query={{
-                            apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
-                        }}>
+                                apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
+                            }}>
                             <div>
                                 <Map
                                     state={mapState}
-                                     onLoad={(ymaps) => {
-                                    console.log(ymaps.geocode);
-                                    getCurrentPlace(ymaps);
-                                } }
-                                     modules={[
-                                         'control.ZoomControl',
-                                         'control.FullscreenControl',
-                                         'geolocation', 'geocode',
-                                         'geoObject.addon.balloon',
-                                         'geoObject.addon.hint']}
+                                    onLoad={(ymaps) => {
+                                        console.log(ymaps.geocode);
+                                        getCurrentPlace(ymaps);
+                                    } }
+                                    modules={[
+                                        'control.ZoomControl',
+                                        'control.FullscreenControl',
+                                        'geolocation', 'geocode',
+                                        'geoObject.addon.balloon',
+                                        'geoObject.addon.hint']}
 
-                                     style={{width: "500px", height: "300px"}}
+                                    className="m-maps"
                                 >
 
                                     <Placemark geometry={center}
@@ -224,11 +197,17 @@ export default function WorkerPage() {
                     </div>
                 </div>
 
-
+                <div style={{marginLeft: 'auto', marginBottom: '60px',
+                    marginRight: 'auto', width: '170px', }}>
+                    <Button  style={{backgroundColor: "#f04d2d",
+                        color: "#faf5f5",  width: '170px', }}
+                        // onClick={submitHandler}
+                        // disabled={!formValid}
+                    >
+                        Регистрация</Button>
+                </div>
 
             </Container>
-
-
         </div>
     )
 }

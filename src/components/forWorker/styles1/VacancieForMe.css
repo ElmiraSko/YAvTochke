@@ -1,0 +1,38 @@
+.my-maps {
+    width: 600px;
+    height: 400px;
+    margin: 30px auto 30px;
+}
+.radio-gr {
+    display: flex;
+    justify-content: start;
+    width: 600px;
+    margin: 15px auto 15px;
+    font-size: 1.0rem;
+    font-weight: 600;
+}
+.add-point {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin: 15px auto 15px;
+    font-size: 1.0rem;
+    font-weight: 600;
+}
+.show-map-b {
+    margin: 0 5px 0 5px;
+    height: 25px;
+    background: #f04d2d;
+    color: white;
+    font-size: 1.0rem;
+    border-radius: 5px;
+    border-color: #f04d2d;
+    border-style:solid;
+    cursor: pointer;
+}
+.show-map-b:active {
+    outline:none;
+}
+.show-map-b:focus {
+    outline:none;
+}
