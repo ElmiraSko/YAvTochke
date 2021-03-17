@@ -1,5 +1,4 @@
 import React, {useState, useMemo} from 'react';
-import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import './styles1/VacancieForMe.css';
 import AdItem from "../AdItem";
@@ -13,8 +12,9 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 export default function VacanciesForMe() {
 
+    // получили из хранилища координаты центра карты
     let tempCords=localStorage.getItem("center")
-    console.log(tempCords)
+
     const [zoom, setZoom] = useState(7)
     const [address, setAddress] = useState('')
     const [ymaps, setYmaps] = useState()
@@ -73,7 +73,7 @@ export default function VacanciesForMe() {
         ymaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
-    // radio
+    // radio кнопки
     const RedRadio = withStyles({
         root: {
             color: '#f04d2d',
@@ -84,6 +84,7 @@ export default function VacanciesForMe() {
         checked: {},
     })((props) =>
         <Radio color="default" {...props} style={{padding: '0', margin: '0 10px 0 10px'}}/>);
+
     // Функция выбора типа работы: Постоянная работа или Подработка
     const workTypeHandler =(event) => {
         setWorkType(event.target.value)
@@ -202,12 +203,13 @@ export default function VacanciesForMe() {
 
                 <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
                     <div>
-                        <div>
-                            <AdItem vacancy = {Ad[0]}/>
-                        </div>
-                        <div>
-                            <AdItem vacancy = {Ad[1]}/>
-                        </div>
+                        {Ad.length > 0 ?
+                            Ad.map(ad =>
+                                <div key={ad.id}>
+                                    <AdItem vacancy = {ad}/>
+                                </div>
+                            ) : ""}
+
                     </div>
                 </div>
 

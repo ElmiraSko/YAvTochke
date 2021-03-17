@@ -5,23 +5,13 @@ import Context from "../Context";
 import Loader from "../Loader";
 import './styles1/signInWorker.css'
 import SignIn from "../SignIn";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import telegram2 from "../../img/telegram-grey.png";
 import vk2 from "../../img/vk-grey.png";
 import facebook2 from "../../img/facebook-3-2.png";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
-
 export default function SignInWorker() {
     // Контекст
-    const {user, setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
+    const { setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
 
     // Состояние компонента
     const [login, setLogin] = useState('')
@@ -32,9 +22,6 @@ export default function SignInWorker() {
     const [formValid, setFormValid] = useState(false)
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
-
-    let url = ''
-
 
     useEffect(() => {
         if (password.length>0 && passwordValid && login.length >0 && loginValid) {

@@ -24,11 +24,13 @@ import VacanciesForMe from "./components/forWorker/VacancieForMe";
 import ConfirmUserPhone from "./components/forWorker/ConfirmUserPhone";
 import WelcomeWorker from "./components/forWorker/WelcomeWorker";
 import WorkerProfile from "./components/forWorker/WorkerProfile";
+import VacancyDetails from "./components/forWorker/VacancyDetails";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
     // Здесь храним состояния кнопок: Войти, Выйти, Регистрация для приложения,
     // значения им присваивается при выполнении useEffect
+    // searchWork - переключатель, что сейчас отображается страница для соискателей
     const [searchWork, setSearchWork] = React.useState(true)
 
     // const [searchEmployee, setSearchEmployee] = React.useState(false)
@@ -41,11 +43,14 @@ function App() {
     const [signUpCompany, setSignUpCompany] = React.useState(false)
     const [company, setCompany] = React.useState(null)
 
-// Выполняется один раз при перерисовке компонента, присваиваем значения состояниям
+    // для хранения id выбранной (просматриваемой) вакансии
+    const [selectedVacancyId, setSelectedVacancyId] = React.useState('')
+
+// Выполняется один раз при перерисовке компонента,
+// присваиваем значения состояниям, некоторые получаем из локального хранилища
     useEffect(() => {
         const searchW = localStorage.getItem('searchWork')
         setSearchWork(JSON.parse(searchW))
-
         // const searchEmp = localStorage.getItem('searchEmployee')
         // setSignIn(JSON.parse(searchEmp))
 
@@ -62,7 +67,16 @@ function App() {
         setSignUpCompany(JSON.parse(sUpComp))
         const comp = localStorage.getItem('company')
         setCompany(JSON.parse(comp))
+
+        const selectVacancyId = localStorage.getItem('selectedVacancyId')
+        setSelectedVacancyId(JSON.parse(selectVacancyId))
     }, [])
+
+    // при изменении значения, эти изменения записываем в
+    // локал сторадж, еще раз пересмотреть, возможно нужен useMemo-?
+    useEffect(() => {
+        localStorage.setItem('selectedVacancyId', JSON.stringify(selectedVacancyId))
+    }, [selectedVacancyId])
 
     useEffect(() => {
         localStorage.setItem('searchWork', JSON.stringify(searchWork))
@@ -109,7 +123,7 @@ function App() {
           signIn, setSignIn, signUp, setSignUp,
           searchWork, setSearchWork,
           signInCompany, setSignInCompany, signUpCompany, setSignUpCompany,
-          company, setCompany
+          company, setCompany, selectedVacancyId, setSelectedVacancyId,
       }}>
           <div>
               <Router >
@@ -167,6 +181,9 @@ function App() {
                               </Route>
                               <Route exact path="/after-r57ph7-page">
                                   <WelcomeWorker />
+                              </Route>
+                              <Route exact path="/vacancy-details">
+                                  <VacancyDetails />
                               </Route>
 
                               <Redirect to="/" />

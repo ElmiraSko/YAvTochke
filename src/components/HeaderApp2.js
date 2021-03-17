@@ -78,24 +78,25 @@ export default function HeaderApp2() {
                                 (
                                     <div >
                                         <NavLink className="links"
-                                            // hidden={signUp}
-                                            // onClick={() => setSignIn(!signIn)}
                                                  to={"/vacancy-employees"}
                                         > Объявления
                                         </NavLink>
                                         <NavLink className="links"
                                                  hidden={!user}
-                                            // onClick={() => setSignIn(!signIn)}
                                                  to={"/profile"}
                                         > Профиль
                                         </NavLink>
                                         <NavLink className="links"
-                                                 hidden={signUp}
-
-                                            // onClick={() => setSignIn(!signIn)}
-                                                 to={"/reg/employees"}
-                                        > Регистрация
+                                                 hidden={!user}
+                                                 to={"/profile"}
+                                        > Отклики
                                         </NavLink>
+                                        {/*<NavLink className="links"*/}
+                                        {/*         hidden={signUp}*/}
+                                        {/*    // onClick={() => setSignIn(!signIn)}*/}
+                                        {/*         to={"/reg/employees"}*/}
+                                        {/*> Регистрация*/}
+                                        {/*</NavLink>*/}
                                         <NavLink className="links"
                                                  hidden={signIn}
                                                  to={"/auth/employees"}

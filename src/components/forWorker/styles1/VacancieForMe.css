@@ -5,7 +5,7 @@
 }
 .radio-gr {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     width: 600px;
     margin: 15px auto 15px;
     font-size: 1.0rem;

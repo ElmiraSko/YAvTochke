@@ -107,13 +107,6 @@ export default function SignUpWorker() {
             phone.length>0 && phoneValid && email.length>0 && emailValid && address.length>0 && addressValid
         && password.length>0 && passwordValid && repeatPassword.length>0 && repeatPasswordValid) {
             setFormValid(true)
-            console.log(firstNameValid)
-            console.log(lastNameValid)
-            console.log(phoneValid)
-            console.log(emailValid)
-            console.log(addressValid)
-            console.log(passwordValid)
-            console.log(repeatPasswordValid)
         } else setFormValid(false)
     }, [firstName, firstNameValid, lastNameValid, phoneValid, emailValid,
         passwordValid, repeatPasswordValid, addressValid])

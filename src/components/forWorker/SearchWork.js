@@ -6,8 +6,8 @@ import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
-import Logo from "../../img/Logo-1.png";
 import Photo from '../../img/Photo-1st-screen.png'
+import {NavLink} from "react-router-dom";
 
 export default function WorkerPage() {
 
@@ -72,7 +72,6 @@ export default function WorkerPage() {
 
 
     function findPlace() {
-        console.log("Клик по кнопке")
         let coords = []
         // {Адрес и радиус} отпраить на бэк, получить список адресов в указанном радиусе - data
         // после, пройтись по массиву адресов - data
@@ -85,7 +84,6 @@ export default function WorkerPage() {
         ymaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
-
 
     return(
         <div>
@@ -100,12 +98,10 @@ export default function WorkerPage() {
                     </div>
 
                     <div className="search-work-reg-button-div">
-                        <Button  style={{backgroundColor: "#f04d2d",
-                            color: "#faf5f5",  padding: '10px 40px 10px 30px'}}
-                            // onClick={submitHandler}
-                            // disabled={!formValid}
-                        >
-                            Регистрация</Button>
+                        <NavLink className="reg-button-navLink"
+                                 to={"/reg/employees"}
+                        > Регистрация
+                        </NavLink>
                     </div>
 
                     <div className="pre-search-text">
@@ -188,7 +184,6 @@ export default function WorkerPage() {
                                                }}
                                     />
                                     {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
-
                                     {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
 
                                 </Map>
@@ -197,15 +192,15 @@ export default function WorkerPage() {
                     </div>
                 </div>
 
-                <div style={{marginLeft: 'auto', marginBottom: '60px',
-                    marginRight: 'auto', width: '170px', }}>
-                    <Button  style={{backgroundColor: "#f04d2d",
-                        color: "#faf5f5",  width: '170px', }}
-                        // onClick={submitHandler}
-                        // disabled={!formValid}
-                    >
-                        Регистрация</Button>
+                <div className="search-work-wrapper">
+                    <div className="search-work-reg-button-div">
+                        <NavLink className="reg-button-navLink"
+                                 to={"/reg/employees"}
+                        > Регистрация
+                        </NavLink>
+                    </div>
                 </div>
+
 
             </Container>
         </div>
