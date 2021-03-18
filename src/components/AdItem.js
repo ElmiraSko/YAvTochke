@@ -12,8 +12,8 @@ export default function AdItem(props) {
     // Контекст
     const { setSelectedVacancyId} = useContext(Context)
 
-    function respond(id) {
-        setSelectedVacancyId(id)
+    function respond(item) {
+        setSelectedVacancyId(item)
         window.location.href="/vacancy-details"
     }
 

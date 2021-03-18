@@ -123,13 +123,27 @@ export default function WorkerPage() {
         { value: 'Упаковщик', label: 'Упаковщик' },
     ]
     const colourStyles = {
-        control: styles => ({ ...styles, backgroundColor: 'white', border: '2px solid #e1e1e1',  }),
+        control: styles => ({ ...styles, backgroundColor: 'white', border: '2px solid #848c8e', }),
         option: (styles) => {
-            return {
-                ...styles,
-                backgroundColor: 'white'
+            return {...styles, backgroundColor: 'white',
+                ':hover': {
+                    backgroundColor: "#f04d2d",
+                    color: 'white',
+                },
             }
         },
+        multiValue: (styles) => ({...styles, backgroundColor: '#848c8e', color: '#fff', borderRadius: '5px',
+            ':hover': {
+                backgroundColor: "#848c8e",
+                color: 'white',
+            },}),
+        multiValueLabel: (styles) => ({...styles,  color: '#fff', }),
+        multiValueRemove: (styles) => ({...styles, backgroundColor: '#848c8e', borderRadius: '5px',
+            ':hover': {
+                backgroundColor: "#f04d2d", borderRadius: '5px',
+                color: 'white',
+            },
+        }),
     }
 
 
@@ -382,7 +396,6 @@ export default function WorkerPage() {
                                                min="0" max="10" step="0.25" id="radius"
                                                value={sliderValue}
                                                onInput={getRadius}
-                                               style={{marginLeft: '15px'}}
                                         />
                                     </div>
                                 </div>
@@ -409,8 +422,8 @@ export default function WorkerPage() {
                                                     borderRadius: 0,
                                                     colors: {
                                                         ...theme.colors,
-                                                        primary50: '#ffbdad',
-                                                        primary: '#e1e1e1',
+                                                        primary50: '#f04d2d',
+                                                        primary: '#848c8e',
                                                     },
                                                 })}
                                         />
