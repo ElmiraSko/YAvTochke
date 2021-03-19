@@ -1,9 +1,6 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
 import '../components/styles/SignIn.css'
-import telegram2 from "../img/telegram-grey.png";
-import vk2 from "../img/vk-grey.png";
-import facebook2 from "../img/facebook-3-2.png";
 
 export default function SignIn(props) {
 // общий простой компонет для авторизации

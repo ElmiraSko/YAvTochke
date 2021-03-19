@@ -5,7 +5,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerPage.css'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import Select from 'react-select'
+import Select, { components } from 'react-select'
 import Button from "@material-ui/core/Button";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import Radio from "@material-ui/core/Radio";
@@ -50,7 +50,7 @@ export default function WorkerPage() {
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     // Состояние бегунка, получаем с сервера
-    const [sliderValue, setSliderValue] = useState(0)
+    const [sliderValue, setSliderValue] = useState(2)
 
     //-  вариант 1
     const [showContactsState, setShowContactsState] = useState({
@@ -116,11 +116,15 @@ export default function WorkerPage() {
     }
     // Для мульти селекта
     const options = [
-        { value: 'Консультант', label: 'Консультант' },
-        { value: 'Мерчендайзе', label: 'Мерчендайзе' },
+        { value: 'Грузчик', label: 'Грузчик' },
+        { value: 'Мерчендайзер', label: ' Мерчендайзер' },
+        { value: 'Комплектовщик/сборщик', label: 'Комплектовщик/сборщик' },
+        { value: 'Курьер', label: 'Курьер' },
         { value: 'Продавец-кассир', label: 'Продавец-кассир' },
+        { value: 'Продавец-консультант', label: 'Продавец-консультант' },
         { value: 'Промоутер', label: 'Промоутер' },
-        { value: 'Упаковщик', label: 'Упаковщик' },
+        { value: 'Охраник', label: 'Охраник' },
+        { value: 'Тайный покупатель', label: 'Тайный покупатель' },
     ]
     const colourStyles = {
         control: styles => ({ ...styles, backgroundColor: 'white', border: '2px solid #848c8e', }),
@@ -145,6 +149,9 @@ export default function WorkerPage() {
             },
         }),
     }
+    const Placeholder = props => {
+        return <components.Placeholder {...props} />;
+    };
 
 
     return(
@@ -374,29 +381,33 @@ export default function WorkerPage() {
                             </div>
                             <div style={{display: "flex", justifyContent: "flex-start",}}>
                                 <div style={{width: '20%',}}>
-                                    <div  style={{margin: '5px 0 5px 15px'}}>
+                                    <div  style={{margin: '5px 0 15px 15px'}}>
                                         Адрес:
                                     </div>
-                                    <div style={{margin: '5px 0 5px 15px'}}>
+                                    <div style={{margin: '5px 0 15px 15px'}}>
                                         Радиус:
                                     </div>
-
                                 </div>
+
                                 <div style={{width: '100%',}}>
-                                    <div style={{margin: '5px 0 5px 0px'}}>
+                                    <div style={{margin: '5px 0 15px 0px'}}>
                                         <input type="text" style={{width: '33rem'}}
                                                value='' readOnly={true}/>
                                                {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
 
-                                    <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '4rem', color: '#f04d2d', fontWeight: '700',}}
-                                               value={sliderValue} readOnly={true}/> км
-                                        <input type="range" className="slider"
-                                               min="0" max="10" step="0.25" id="radius"
-                                               value={sliderValue}
-                                               onInput={getRadius}
-                                        />
+                                    <div style={{margin: '5px 0 15px 0px', display: "flex" }}>
+                                        <input type="text" className="sliderValue"
+                                               value={sliderValue} readOnly={true}/>
+                                        <span style={{margin: '0 10px 0 10px'}}>км</span>
+                                        <div style={{width: '70%', margin: '0 15px 0 15px',}}>
+                                            <input type="range" className="slider"
+                                                   min="0" max="10" step="0.5" id="radius"
+                                                   value={sliderValue}
+                                                   onInput={getRadius}
+                                            />
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -415,6 +426,7 @@ export default function WorkerPage() {
                                 <div style={{display: "flex", justifyContent: "flex-start",}}>
                                     <div style={{width: '635px',}}>
                                         <Select styles={colourStyles}
+                                                placeholder={"Вакансии"}
                                                 options={options} isMulti
                                                 onChange={opt => console.log(opt)}
                                                 theme={theme => ({

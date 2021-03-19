@@ -5,9 +5,9 @@ import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {Map, Placemark, YMaps} from "react-yandex-maps";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Radio from "@material-ui/core/Radio";
 import IconButton from "@material-ui/core/IconButton";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import Checkbox from "@material-ui/core/Checkbox";
 
 
 export default function VacanciesForMe() {
@@ -21,11 +21,18 @@ export default function VacanciesForMe() {
 
     const [coordinates, setCoordinates] = useState([])
     // Состояние: вид работы: постоянная или подработка
-    const [workType, setWorkType] = useState('')
+    const [fullTimeJob, setFullTimeJob] = useState({
+        fullTime: false,
+    })
+    const [tempTimeJobs, setTempTimeJobs] = useState({
+        tempTime: false,
+    })
     // состояние карты
     const [mapHid, setMapHid] = useState(true)
     const [buttonValue, setButtonValue] = useState("Показать на карте")
 
+    // Состояние бегунка, получаем с сервера
+    const [sliderValue, setSliderValue] = useState(2)
 
     const [center, setCenter] = useState(tempCords,)
     const mapState = useMemo(() =>
@@ -73,22 +80,24 @@ export default function VacanciesForMe() {
         ymaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
-    // radio кнопки
-    const RedRadio = withStyles({
+    const RedCheckbox = withStyles({
         root: {
-            color: '#f04d2d',
+            color: '#f04d2d', padding: '0', margin: '10px',
             '&$checked': {
                 color: '#f04d2d',
             },
         },
         checked: {},
     })((props) =>
-        <Radio color="default" {...props} style={{padding: '0', margin: '0 10px 0 10px'}}/>);
+        <Checkbox color="default" {...props} />);
 
-    // Функция выбора типа работы: Постоянная работа или Подработка
-    const workTypeHandler =(event) => {
-        setWorkType(event.target.value)
-        console.log(workType)
+    // Функция выбора типа работы: Постоянная работа
+    const fullTimeHandler =(event) => {
+        setFullTimeJob({[event.target.name]: event.target.checked})
+    }
+    // Функция выбора типа работы: Подработка
+    const tempTimeHandler =(event) => {
+        setTempTimeJobs({[event.target.name]: event.target.checked})
     }
     //==== показать или скрыть карту ====
     function showTheMap() {
@@ -99,6 +108,12 @@ export default function VacanciesForMe() {
             setButtonValue("Показать на карте")
             setMapHid(true)
         }
+    }
+    // функция для бегунка
+    function getRadius() {
+        const size = document.getElementById("radius").value;
+        setSliderValue(size)
+        console.log(size)
     }
 
 
@@ -125,21 +140,17 @@ export default function VacanciesForMe() {
 
                 <div className="radio-gr">
                     <div>
-                        <RedRadio
-                            checked={workType === 'Постоянная работа'}
-                            onChange={workTypeHandler}
-                            value="Постоянная работа"
-                            // name="radio-button-demo"
-                            // inputProps={{ 'aria-label': 'C' }}
+                        <RedCheckbox
+                            checked={fullTimeJob.fullTime}
+                            onChange={fullTimeHandler}
+                            name="fullTime"
                         /> Полная занятость
                     </div>
                     <div>
-                        <RedRadio
-                            checked={workType === 'Подработка'}
-                            onChange={workTypeHandler}
-                            value="Подработка"
-                            // name="radio-button-demo"
-                            // inputProps={{ 'aria-label': 'C' }}
+                        <RedCheckbox
+                            checked={tempTimeJobs.tempTime}
+                            onChange={tempTimeHandler}
+                            name="tempTime"
                         /> Подработка
                     </div>
                 </div>
@@ -155,8 +166,25 @@ export default function VacanciesForMe() {
                     <button className="show-map-b"
                             onClick={showTheMap}
                     >{buttonValue}</button>
+                </div>
 
+                <div style={{ display: 'flex', width: '400px', margin: 'auto',}}>
+                    {/*<input type="text" className="sliderValue"*/}
+                    {/*       value={sliderValue} readOnly={true}/> км*/}
+                    <input type="range" className="slider-2"
+                           min="0" max="10" step="0.5" id="radius"
+                           value={sliderValue}
+                           onInput={getRadius}
+                    />
+                </div>
 
+                <div style={{width: '400px', margin: 'auto',
+                    display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem', }} >
+                    <div style={{margin: '5px 0 15px 0'}}>0</div>
+                    <div  style={{margin: '5px 0 15px 0'}}>
+                        {sliderValue} км
+                    </div>
+                    <div  style={{margin: '5px 0 15px 0'}}>10</div>
                 </div>
 
                 <div hidden={mapHid}>>

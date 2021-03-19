@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     width: 600px;
-    margin: 15px auto 15px;
+    margin: 15px auto 30px;
     font-size: 1.0rem;
     font-weight: 600;
 }
@@ -35,4 +35,32 @@
 }
 .show-map-b:focus {
     outline:none;
+}
+.slider-2 {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 5px; /* Specified height */
+    border-radius: 5px;
+    background: #f04d2d; /*  background */
+    outline: none; /* Remove outline */
+    /*opacity: 0.7; !* Set transparency (for mouse-over effects on hover) *!*/
+    /*-webkit-transition: .2s; !* 0.2 seconds transition on hover *!*/
+    /*transition: opacity .2s;*/
+}
+.slider-2::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 50%;
+    background: #f04d2d;
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider-2::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #f04d2d;
+    cursor: pointer; /* Cursor on hover */
 }

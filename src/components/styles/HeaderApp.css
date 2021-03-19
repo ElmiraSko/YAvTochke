@@ -26,6 +26,14 @@
     display: flex;
     justify-content: flex-start;
 }
+.logo, .logo-title {
+    cursor: pointer;
+}
+.logo-title {
+    padding: 18px 0 18px 15px;
+    text-decoration: none;
+    color: #0c1618;
+}
 
 @media (max-width: 768px) {
     .appbar {

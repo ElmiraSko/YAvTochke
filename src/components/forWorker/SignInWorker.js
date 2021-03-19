@@ -8,6 +8,7 @@ import SignIn from "../SignIn";
 import telegram2 from "../../img/telegram-grey.png";
 import vk2 from "../../img/vk-grey.png";
 import facebook2 from "../../img/facebook-3-2.png";
+import {NavLink} from "react-router-dom";
 
 export default function SignInWorker() {
     // Контекст
@@ -171,17 +172,17 @@ export default function SignInWorker() {
                              style={{width: '40px', height: '40px', padding: '15px'}} />
                     </div>
                 </div>
-                <div style={{margin: "10px 0 20px 0 ", display: 'flex',
-                    justifyContent: 'space-around', }} >
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex', fontWeight: '700',
+                    fontSize: '1.0rem',  justifyContent: 'space-around', }} >
                     <div >
                         Зарегистрироваться
                     </div>
-                    <div style={{color: '#f04d2d', }}>
-                        как работодатель
-                    </div>
-                    <div style={{color: '#f04d2d'}}>
+                    <NavLink to={'/reg/employees'} style={{color: '#f04d2d', textDecoration: 'none'}}>
                         как соискатель
-                    </div>
+                    </NavLink>
+                    <NavLink to={'/reg/company'} style={{color: '#f04d2d', textDecoration: 'none'}}>
+                        как работодатель
+                    </NavLink>
                 </div>
             </div>
 

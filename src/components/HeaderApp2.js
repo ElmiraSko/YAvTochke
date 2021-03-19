@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+// import {makeStyles} from '@material-ui/core/styles';
 import {NavLink} from 'react-router-dom';
 import Logo from '../img/Logo-1.png'
 import './styles/HeaderApp.css'
@@ -7,17 +7,17 @@ import Container from "@material-ui/core/Container";
 import Context from "./Context";
 
 
-const useStyles = makeStyles((theme) => ({
-    link: {
-        marginRight: '1rem',
-        textDecoration: 'none',
-        color: '#0c1618',
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     link: {
+//         marginRight: '1rem',
+//         textDecoration: 'none',
+//         color: '#0c1618',
+//     },
+// }));
 
 
 export default function HeaderApp2() {
-    const classes = useStyles();
+    // const classes = useStyles();
 
     const {user, setUser, signIn, setSignIn, signUp, setSignUp,
         searchWork, setSearchWork, signUpCompany, setSignUpCompany,
@@ -25,7 +25,7 @@ export default function HeaderApp2() {
     } = useContext(Context)
 
     // получаем id компании из локального хранилища
-    const idComp = JSON.parse(localStorage.getItem('company'))
+    // const idComp = JSON.parse(localStorage.getItem('company'))
 
     function logout() {
         setUser(null)
@@ -39,21 +39,18 @@ export default function HeaderApp2() {
         setSignInCompany(false)
         setSignUpCompany(false)
     }
-    const handleHome = () => {
-        window.location.href='/'
-    }
 
     return (
         <div style={{backgroundColor: "#fff", boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)'}}>
             <Container maxWidth="lg">
                 <header className="appbar">
                     <div className="link-logo">
-                        <div>
+                        <NavLink className="logo" to={'/'}>
                             <img src={Logo} alt="logo" style={{width: '2.2rem', padding: "10px 0 10px 0"}}/>
-                        </div>
-                        <div style={{padding: '18px 0'}}>
-                            &nbsp;&nbsp;Я в точке
-                        </div>
+                        </NavLink>
+                        <NavLink className="logo-title" to={'/'}>
+                           Я в точке
+                        </NavLink>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <div className="link-padding">
                             <NavLink className="links" onClick={() => setSearchWork(true)}

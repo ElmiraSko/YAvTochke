@@ -11,6 +11,11 @@
     margin-bottom: 20px;
     cursor: pointer;
     background-color: white;
+    outline: none;
+}
+.map-button:active {
+    border-style: solid;
+    outline: none;
 }
 
 .reg-button {

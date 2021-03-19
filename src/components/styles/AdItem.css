@@ -22,3 +22,38 @@
         font-weight: 500;
     }
 }
+
+.description-area {
+    cursor: pointer;
+}
+.desc {
+    font-size: 1.0rem;
+    font-weight: 400;
+    color: #505350;
+    text-align: -webkit-left;
+}
+.vacancy-price {
+    color: #f04d2d;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.sent-button {
+    background-color: #f04d2d;
+    border-radius: 5px;
+    color: #fff;
+    margin: 10px 10px 5px 5px;
+    outline: none;
+    cursor: pointer;
+    border-style:solid;
+    border-color: #f04d2d;
+    font-size: 1.0rem;
+    width: 140px;
+    height: 30px;
+}
+.sent-ok {
+    font-size: 0.9rem;
+    background-color: #848c8e;
+    border-color: #848c8e;
+}
+
+

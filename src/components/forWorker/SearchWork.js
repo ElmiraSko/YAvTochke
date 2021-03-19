@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Container} from "@material-ui/core";
+import React, {useState} from 'react';
+import {Container} from "@material-ui/core";
 import './styles1/SearchWork.css';
 import './styles1/slider.css'
 import AdItem from "../AdItem";
@@ -90,7 +90,7 @@ export default function WorkerPage() {
             <Container maxWidth="lg">
                 <div className="search-work-wrapper">
                     <div className="search-work-img">
-                        <div >
+                        <div>
                             <img src={Photo} alt="Photo-1"
                                  className="search-work-img-style" />
                         </div>
@@ -139,7 +139,7 @@ export default function WorkerPage() {
                             <div>
                                 <p>
                                     <input type="range" className="slider"
-                                           min="0" max="10" step="0.01"
+                                           min="0" max="10" step="0.5"
                                            value={sliderValue} id="radius"
                                            onInput={getRadius} />
                                 </p>

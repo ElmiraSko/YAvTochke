@@ -80,4 +80,11 @@
     display: block;
 }
 
+.sliderValue {
+    width: 4rem;
+    color: #f04d2d;
+    font-weight: 700;
+    text-align: center;
+}
+
 
