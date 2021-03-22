@@ -66,4 +66,12 @@ code {
   margin: auto;
   width: 90px;
 }
+p {
+  font-size: 1.0rem;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
+}
 

@@ -6,6 +6,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerProfile.css'
 import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Button from "@material-ui/core/Button";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -98,7 +99,7 @@ export default function WorkerProfile() {
                 margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
 
                 <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                    width: '30%',   }}>
+                    width: '30%',  position: 'relative', paddingBottom:'52px' }}>
 
                     <div style={{ textAlign: "center",}}>
                         <div style={{marginTop: '15px'}}>
@@ -123,200 +124,120 @@ export default function WorkerProfile() {
                             <PhoneIcon style={{ fontSize: 30, color: phoneColor }} />
                         </IconButton>
 
-                        <div style={{textAlign: "left", width: '240px', margin: 'auto', }}>
-                            <div className='form_radio'>
-                                <input type="radio"
-                                       value='Постоянная работа'
-                                       id='permanent_work'
-                                       className='input'
-                                       checked={workType === 'Постоянная работа'}
-                                       onChange={workTypeHandle} />
-                                <label htmlFor="permanent_work"
-                                       className='label'
-                                >Постоянная работа</label>
-                            </div>
-                            <div className='form_radio'>
-                                <input type="radio"
-                                       value='Подработка'
-                                       id='temporary_work'
-                                       className='input'
-                                       checked={workType === 'Подработка'}
-                                       onChange={workTypeHandle}  />
-                                <label htmlFor="temporary_work"
-                                       className='label'
-                                >Подработка</label>
-
-                            </div>
-                        </div>
-                        <div style={{textAlign: "left",  width: '340px', margin: 'auto', }}>
-                            <div style={{fontWeight: '700', margin: '25px 0' }}>
+                        <p className="work-type-wr">
+                            Временная работа
+                        </p>
+                        <div className="contacts-wrapper">
+                            <div className="contact-title">
                                 КОНТАКТЫ
                             </div>
-                            <div style={{display: "flex", justifyContent: "space-around",}}>
-
-                                <div style={{marginRight: '5px',}}>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <label >Телефон:</label> <br/>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <label>E-mail:</label>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <label>Telegram:</label>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <label>Vk:</label>
-                                    </div>
+                            <div className="contact-content-wr">
+                                <div style={{marginRight: '5px', }}>
+                                    <p id="contT">
+                                        Телефон:
+                                    </p>
+                                    <p id="contT">
+                                        E-mail:
+                                    </p>
                                 </div>
 
                                 <div>
                                     <div style={{marginBottom: '10px'}}>
-                                        <input type="text" style={{width: '12rem'}}
-                                               value='+79056785432' readOnly={true}/>
+                                        <p id="cont" >
+                                            +79056785432
+                                        </p>
                                     </div>
                                     <div style={{marginBottom: '10px'}}>
-                                        <input type="text" style={{width: '12rem'}}
-                                               value='petr@mail.ru' readOnly={true}/>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type="text" style={{width: '12rem'}}
-                                               value='' readOnly={true}/>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type="text" style={{width: '12rem'}}
-                                               value='' readOnly={true}/>
-                                    </div>
-                                </div>
-                                <div style={{marginTop: '10px'}}>
-                                    <div style={{marginBottom: '14px'}}>
-                                        <input type='radio' id='phone' className='input'
-                                               value={preferredCommunication}
-                                               checked={preferredCommunication === 'phone'}
-                                               onChange={setPreferredPhone}/>
-                                        <label htmlFor="phone" className='label'> </label>
-                                    </div>
-                                    <div style={{marginBottom: '10px'}}>
-                                        <input type='radio' id='email' className='input'
-                                               value={preferredCommunication}
-                                               checked={preferredCommunication === 'email'}
-                                               onChange={setPreferredEmail}/>
-                                        <label htmlFor="email" className='label'> </label>
+                                        <p id="cont">
+                                            petr@mail.ru
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div style={{marginTop: '40px'}}>
-                                <div style={{marginBottom: '10px'}}>
-                                    <input type='checkbox' />
-                                    <label style={{marginLeft: '15px'}}>
-                                        Показать контакты работодателю
-                                    </label>
-                                </div>
-                                <div style={{marginBottom: '10px'}}>
-                                    <input type='checkbox' />
-                                    <label style={{marginLeft: '15px'}}>
-                                        Рассылка подходящих вакансий
-                                    </label>
-                                </div>
-                                <div style={{marginBottom: '10px'}}>
-                                    <input type='checkbox' />
-                                    <label style={{marginLeft: '15px'}}>
-                                        Скрыть анкету
-                                    </label>
-                                </div>
-                            </div>
-
                         </div>
 
+                        <div className="absolute-button">
+                            <Button style={{background: '#f04d2d', color: 'white',}}
+                                    href='/personal-account/employees'
+                            >Изменить</Button>
+                        </div>
                     </div>
                 </div>
 
-                <div style={{width: '60%', boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',}}>
-                    <div style={{margin: '10px 0 0 0', fontWeight: '700',
-                        fontSize: '18px', textAlign: "center",}}>
+                <div className="right-side-wrapper">
+                    <div className="details-title">
                         АНКЕТА РАБОТНИКА
-                        <div>
-                            <button className="edit-button" onClick={() =>{
-                                window.location.href='/personal-account/employees' }}
-                            >Изменить данные</button>
-                        </div>
-
                     </div>
 
-                    <div style={{width: '90%', height:'auto',
-                        margin: 'auto',  border: '2px solid #e1e1e1', paddingBottom: '30px',
-                        marginBottom: '10px', fontWeight: '500', }}>
+                    <div className="details-wrapper">
                         <div style={{margin: '5px 0 20px 15px'}}>
                             ОСНОВНЫЕ СВЕДЕНИЯ
                         </div>
                         <table className="right-table">
                             <tbody>
                             <tr>
-                                <td>Пол:</td>
-                                <td>Мужской</td>
+                                <td className="td-l">Пол:</td>
+                                <td className="td-r">Мужской</td>
                             </tr>
                             <tr>
-                                <td>Дата рождения:</td>
-                                <td>02.11.1990</td>
+                                <td className="td-l">Дата рождения:</td>
+                                <td className="td-r">02.11.1990</td>
                             </tr>
                             <tr>
-                                <td>Гражданство:</td>
-                                <td>РФ</td>
+                                <td className="td-l">Гражданство:</td>
+                                <td className="td-r">РФ</td>
                             </tr>
                             <tr>
-                                <td>Статус самозанятого гражданина:</td>
-                                <td>Да</td>
+                                <td className="td-l">Статус самозанятого гражданина:</td>
+                                <td className="td-r">Да</td>
                             </tr>
                             <tr>
-                                <td>Мед. книжка:</td>
-                                <td>Да</td>
+                                <td className="td-l">Мед. книжка:</td>
+                                <td className="td-r">Да</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div style={{width: '90%', height:'auto',
-                        margin: 'auto',  border: '2px solid #e1e1e1', paddingBottom: '30px',
-                        marginBottom: '10px', fontWeight: '500',}}>
+
+                    <div className="details-wrapper">
                         <div style={{margin: '5px 0 20px 15px'}}>
                             ПАРАМЕТРЫ ТОЧКИ
                         </div>
                         <table className="right-table">
                             <tbody>
                             <tr>
-                                <td>Адрес:</td>
-                                <td>ул. Горького, д. 4</td>
+                                <td className="td-l" >Адрес:</td>
+                                <td className="td-r">ул. Горького, д. 4</td>
                             </tr>
                             <tr>
-                                <td>Радиус:</td>
-                                <td>1 км</td>
+                                <td className="td-l">Радиус:</td>
+                                <td className="td-r">1 км</td>
                             </tr>
                             <tr>
-                                <td>Интересующие  вакансии:</td>
-                                <td>Продавец, Мерчендайзер</td>
+                                <td className="td-l">Интересующие  вакансии:</td>
+                                <td className="td-r">Продавец, Мерчендайзер</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div style={{width: '90%', height:'180px',
-                        margin: 'auto',  border: '2px solid #e1e1e1',
-                        marginBottom: '10px', fontWeight: '500',}}>
+                    <div className="details-wrapper">
                         <div style={{margin: '5px 0 20px 15px'}}>
                             ТЕКУЩЕЕ МЕСТО РАБОТЫ
                         </div>
                         <table className="right-table">
                             <tbody>
                             <tr>
-                                <td>Адрес:</td>
-                                <td>ул. Кирпичная, д. 23</td>
+                                <td className="td-l">Адрес:</td>
+                                <td className="td-r">ул. Кирпичная, д. 23</td>
                             </tr>
                             <tr>
-                                <td>Компания:</td>
-                                <td>ООО Компания</td>
+                                <td className="td-l">Компания:</td>
+                                <td className="td-r">ООО Компания</td>
                             </tr>
                             <tr>
-                                <td>Должность:</td>
-                                <td>Продавец-кассир</td>
+                                <td className="td-l">Должность:</td>
+                                <td className="td-r">Продавец-кассир</td>
                             </tr>
                             </tbody>
                         </table>

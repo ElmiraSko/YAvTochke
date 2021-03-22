@@ -13,6 +13,9 @@
     border-radius: 10px;
     text-align: left;
 
+    margin-right: auto;
+    margin-left: auto;
+
     /*border: 1px solid #505350;*/
     padding: 10px 10px;
 }
@@ -22,14 +25,17 @@
         font-weight: 500;
     }
 }
-
+#cn {
+    margin-block-start: 0;
+    margin-block-end: 0.5em;
+    /*font-size: 1.0rem;*/
+}
 .description-area {
     cursor: pointer;
+    margin-right: 0.5rem;
 }
 .desc {
-    font-size: 1.0rem;
     font-weight: 400;
-    color: #505350;
     text-align: -webkit-left;
 }
 .vacancy-price {
@@ -54,6 +60,11 @@
     font-size: 0.9rem;
     background-color: #848c8e;
     border-color: #848c8e;
+}
+.vacancy-title {
+    font-size: 1.4rem;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
 }
 
 

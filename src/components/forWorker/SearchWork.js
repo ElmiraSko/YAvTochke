@@ -4,7 +4,7 @@ import './styles1/SearchWork.css';
 import './styles1/slider.css'
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
-import {YMaps, Map, Placemark} from 'react-yandex-maps';
+import {YMaps, Map, Placemark, Circle} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
 import Photo from '../../img/Photo-1st-screen.png'
 import {NavLink} from "react-router-dom";
@@ -16,7 +16,7 @@ export default function WorkerPage() {
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(5)
-    const [zoom, setZoom] = useState(7)
+    const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
     const [ymaps, setYmaps] = useState()
 
@@ -62,7 +62,6 @@ export default function WorkerPage() {
                 localStorage.setItem("center", coords)
                 tempCords=coords
                 setCenter(coords)
-                console.log(tempCords)
             });
     }
 
@@ -137,17 +136,17 @@ export default function WorkerPage() {
                     <div className="search-map-wrapper" >
                         <div className="search-slider-div">
                             <div>
-                                <p>
+                                <div>
                                     <input type="range" className="slider"
                                            min="0" max="10" step="0.5"
                                            value={sliderValue} id="radius"
                                            onInput={getRadius} />
-                                </p>
+                                </div>
                                 <p style={{fontSize: "1.0rem"}}>
                                     Радиус: {sliderValue} км
                                 </p>
-                                <p style={{fontSize: "1.0rem", textTransform: 'uppercase'}}>
-                                    Укажите в каком радиусе от точки искать работу
+                                <p style={{fontSize: "1.0rem", textTransform: 'uppercase', }}>
+                                    <b>Укажите расстояние от точки поиска работы</b>
                                 </p>
                             </div>
                         </div>
@@ -171,6 +170,18 @@ export default function WorkerPage() {
 
                                     className="m-maps"
                                 >
+                                    <Circle
+                                        geometry={ [center,  sliderValue*1000]}
+                                        options={{
+                                            // Setting the circle options.
+                                            // Enabling drag-n-drop for the circle.
+                                            draggable: false,
+                                            fillColor: 'rgba(248,189,211,0.47)',
+                                            strokeColor: '#f04d2d',
+                                            strokeOpacity: 0.8,
+                                            strokeWidth: 1,
+                                        }}
+                                    />
 
                                     <Placemark geometry={center}
                                                properties={{

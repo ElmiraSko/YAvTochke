@@ -12,7 +12,12 @@ import Radio from "@material-ui/core/Radio";
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import DateFnsUtils from '@date-io/date-fns';
+import {MuiPickersUtilsProvider, KeyboardDatePicker,} from '@material-ui/pickers';
+import vk2 from "../../img/vk-grey.png";
+import telegram2 from "../../img/telegram-grey.png";
+import vk3 from "../../img/vk-red.png";
+import telegram3 from "../../img/telegram-red.png";
 
 export default function WorkerPage() {
 
@@ -47,9 +52,10 @@ export default function WorkerPage() {
 
     // Состояние: вид работы: постоянная или подработка
     const [workType, setWorkType] = useState('')
+
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
-    // Состояние бегунка, получаем с сервера
+    // Состояние бегунка
     const [sliderValue, setSliderValue] = useState(2)
 
     //-  вариант 1
@@ -84,6 +90,14 @@ export default function WorkerPage() {
     function setPreferredPhone() {
         setPreferredCommunication('phone')
     }
+    // функция установки предпочтительного способа связи - vk
+    function setPreferredVK() {
+        setPreferredCommunication('vk')
+    }
+    // функция установки предпочтительного способа связи - telegram
+    function setPreferredTelegram() {
+        setPreferredCommunication('telegram')
+    }
     // Проверку способа связи выполняем в useEffect, т. к. SetState является асинхронным,
     // то придется использовать локальную переменную или useEffect,
     // чтобы посмотреть, когда состояние уже обновлено
@@ -96,12 +110,27 @@ export default function WorkerPage() {
             setMailColor('#f04d2d')
             setPhoneColor('#848c8e')
         } else
-            if (preferredCommunication === 'phone') {
-                setPhoneColor('#f04d2d')
-                setMailColor('#848c8e')
-            }
+        if (preferredCommunication === 'phone') {
+            setPhoneColor('#f04d2d')
+            setMailColor('#848c8e')
+        }
+        else
+        if (preferredCommunication === 'vk') {
+            setPhoneColor('#848c8e')
+            setMailColor('#848c8e')
+        }
+        else
+        if (preferredCommunication === 'telegram') {
+            setPhoneColor('#848c8e')
+            setMailColor('#848c8e')
+        }
     }
-    //
+    // ==== для календаря
+    const [selectedDate, setSelectedDate] = React.useState('');
+
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value);
+    };
 
     // Функция выбора типа работы: Постоянная работа или Подработка
     const workTypeHandler =(event) => {
@@ -160,7 +189,7 @@ export default function WorkerPage() {
                     margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
 
                     <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%',   }}>
+                        width: '30%', position: 'relative', paddingBottom:'52px'}}>
 
                         <div style={{ textAlign: "center",}}>
                             <div style={{marginTop: '15px'}}>
@@ -174,15 +203,32 @@ export default function WorkerPage() {
                                 textTransform: 'uppercase', marginBottom: '30px'}}>
                                 Петр Петров
                             </div>
-                            <div style={{padding: '15px 0 10 0',   }}>
+                            <p>
                                 Предпочтительный способ связи:
-                            </div>
-                            <IconButton onClick={setPreferredEmail}>
+                            </p>
+                            <IconButton onClick={setPreferredEmail}
+                                        style={{ backgroundColor: 'transparent' }}
+                                        disableRipple={true}>
                                 <MailIcon style={{ fontSize: 30,  color: mailColor }} />
                             </IconButton>
-
-                            <IconButton onClick={setPreferredPhone} >
+                            <IconButton onClick={setPreferredPhone}
+                                        style={{ backgroundColor: 'transparent' }}
+                                        disableRipple={true}>
                                 <PhoneIcon style={{ fontSize: 30, color: phoneColor }} />
+                            </IconButton>
+                            <IconButton onClick={setPreferredVK}
+                                        style={{ backgroundColor: 'transparent' }}
+                                        disableRipple={true}>
+                                <img src={preferredCommunication==='vk' ? vk3 : vk2}
+                                     alt="Иконка VK"
+                                     style={{width: '27px', height: '27px', }} />
+                            </IconButton>
+                            <IconButton onClick={setPreferredTelegram}
+                                        style={{ backgroundColor: 'transparent' }}
+                                        disableRipple={true}>
+                                <img src={preferredCommunication==='telegram' ? telegram3 :telegram2}
+                                     alt="Иконка Telegram"
+                                     style={{width: '27px', height: '27px',}} />
                             </IconButton>
 
                             <div style={{textAlign: "left", width: '240px', margin: 'auto', }}>
@@ -191,8 +237,10 @@ export default function WorkerPage() {
                                         checked={workType === 'Постоянная работа'}
                                         onChange={workTypeHandler}
                                         value="Постоянная работа"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'C' }}
+                                        // name="radio-button-demo"
+                                        // inputProps={{ 'aria-label': 'C' }}
+                                        disableRipple={true}
+                                        style={{ backgroundColor: 'transparent' }}
                                     /> Постоянная работа
                                 </div>
                                 <div>
@@ -200,18 +248,20 @@ export default function WorkerPage() {
                                         checked={workType === 'Подработка'}
                                         onChange={workTypeHandler}
                                         value="Подработка"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'C' }}
+                                        // name="radio-button-demo"
+                                        // inputProps={{ 'aria-label': 'C' }}
+                                        disableRipple={true}
+                                        style={{ backgroundColor: 'transparent' }}
                                     /> Подработка
                                 </div>
                             </div>
-                            <div style={{textAlign: "left",  width: '340px', margin: 'auto', }}>
-                                <div style={{fontWeight: '700', margin: '25px 0' }}>
+                            <div className="worker-left-details-wr">
+                                <div className="worker-left-cont-title">
                                     КОНТАКТЫ
                                 </div>
-                                <div style={{display: "flex", justifyContent: "space-around",}}>
+                                <div className="worker-left-cont-flex">
 
-                                    <div style={{marginRight: '5px',}}>
+                                    <div className="worker-left-left">
                                         <div style={{marginBottom: '10px'}}>
                                             <label >Телефон:</label> <br/>
                                         </div>
@@ -228,38 +278,40 @@ export default function WorkerPage() {
 
                                     <div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <input type="text" style={{width: '12rem'}}
+                                            <input type="text" className="worker-left-input"
                                                    value='+79056785432' readOnly={true}/>
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <input type="text" style={{width: '12rem'}}
+                                            <input type="text" className="worker-left-input"
                                                    value='petr@mail.ru' readOnly={true}/>
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <input type="text" style={{width: '12rem'}}
+                                            <input type="text" className="worker-left-input"
                                                    value='' readOnly={true}/>
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <input type="text" style={{width: '12rem'}}
+                                            <input type="text" className="worker-left-input"
                                                    value='' readOnly={true}/>
                                         </div>
                                     </div>
 
                                     <div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <RedRadio style={{padding: '0px'}}
+                                            <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'phone'}
                                                       onChange={setPreferredPhone}
                                                       value={preferredCommunication}
+                                                      disableRipple={true}
                                                       // name="radio-button-demo"
                                                       // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
                                         <div style={{marginBottom: '10px'}}>
-                                            <RedRadio style={{padding: '0px'}}
+                                            <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'email'}
                                                       onChange={setPreferredEmail}
                                                       value={preferredCommunication}
+                                                      disableRipple={true}
                                                       // name="radio-button-demo"
                                                       // inputProps={{ 'aria-label': 'C' }}
                                             />
@@ -267,34 +319,33 @@ export default function WorkerPage() {
                                     </div>
                                 </div>
 
-                                <div style={{marginTop: '40px'}}>
-                                    <FormControlLabel
-                                        control={<RedCheckbox checked={showContactsState.showContacts}
-                                                              onChange={showContactsHandler} name='showContacts'/>}
-                                        label="Показать контакты работодателю"
-                                    />
-                                    <FormControlLabel
-                                        control={<RedCheckbox checked={mailingState.checkMailing}
-                                                              onChange={mailingHandler} name='checkMailing'/>}
-                                        label="Рассылка подходящих вакансий"
-                                    />
-                                    <FormControlLabel
-                                        control={<RedCheckbox checked={hideProfileState.hideProfile}
-                                                              onChange={hideProfileHandler} name='hideProfile'/>}
-                                        label=" Скрыть анкету"
-                                    />
-
+                                <div className="worker-left-check-box">
+                                    <div>
+                                        <RedCheckbox checked={showContactsState.showContacts}
+                                                     onChange={showContactsHandler} name='showContacts'
+                                                     style={{ backgroundColor: 'transparent', padding: 5 }}/>
+                                        Показать контакты работодателю
+                                    </div>
+                                    <div>
+                                        <RedCheckbox checked={mailingState.checkMailing}
+                                                     onChange={mailingHandler} name='checkMailing'
+                                                     style={{ backgroundColor: 'transparent', padding: 5 }}/>
+                                        Рассылка подходящих вакансий
+                                    </div>
+                                    <div>
+                                        <RedCheckbox checked={hideProfileState.hideProfile}
+                                                     onChange={hideProfileHandler} name='hideProfile'
+                                                     style={{ backgroundColor: 'transparent', padding: 5 }}/>
+                                        Скрыть анкету
+                                    </div>
                                 </div>
-                                <div style={{textAlign: "right",}}>
-                                    <Button style={{margin: '15px 15px 15px 10px',
-                                        background: '#f04d2d', color: 'white'}}
-                                            href='/profile'
-                                    >Сохранить</Button>
-                                </div>
-
-
                             </div>
-
+                            <div className="absolute-button">
+                                <Button style={{margin: '15px 15px 15px 10px',
+                                    background: '#f04d2d', color: 'white'}}
+                                        href='/profile'
+                                >Сохранить</Button>
+                            </div>
                         </div>
                     </div>
 
@@ -327,9 +378,30 @@ export default function WorkerPage() {
                                 width: '100%', fontSize: "15px",}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>Дата рождения</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
-                                    <select className="select-css" onChange={handleChange}>
-                                        <option value="age">02.11.1990</option>
-                                    </select>
+                                    <input type="text" autoComplete='off' value={selectedDate}
+                                           className="select-css"
+                                           placeholder="дд-мм-гггг"
+                                    onDoubleClick={() => {setSelectedDate('')}}
+                                           onChange={handleDateChange}
+                                    />
+
+                                    {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
+                                    {/*    /!*<Grid container justify="space-around">*!/*/}
+                                    {/*        <KeyboardDatePicker*/}
+                                    {/*            disableToolbar*/}
+                                    {/*            // placeholder={}*/}
+                                    {/*            variant="inline"*/}
+                                    {/*            format="dd-MM-yyyy"*/}
+                                    {/*            margin="normal"*/}
+                                    {/*            id="date-picker-inline"*/}
+                                    {/*            value={selectedDate}*/}
+                                    {/*            onChange={handleDateChange}*/}
+                                    {/*            // KeyboardButtonProps={{*/}
+                                    {/*            //     'aria-label': 'change date',*/}
+                                    {/*            // }}*/}
+                                    {/*        />*/}
+                                    {/*    /!*</Grid>*!/*/}
+                                    {/*</MuiPickersUtilsProvider>*/}
                                 </div>
                             </div>
                             <hr style={{width: '96%', color: '#e1e1e1',
@@ -371,7 +443,7 @@ export default function WorkerPage() {
                                 </div>
                             </div>
                             <hr style={{width: '96%', color: '#e1e1e1',
-                                backgroundColor: '#e1e1e1', border: 'none', height: '2px'}}/>
+                                backgroundColor: '#e1e1e1', border: 'none', height: '2px', marginBottom: '20px',}}/>
                         </div>
                         <div style={{width: '90%', height:'auto',
                             margin: 'auto',  border: '2px solid #e1e1e1',
@@ -391,9 +463,8 @@ export default function WorkerPage() {
 
                                 <div style={{width: '100%',}}>
                                     <div style={{margin: '5px 0 15px 0px'}}>
-                                        <input type="text" style={{width: '33rem'}}
+                                        <input type="text" className="right-address-input"
                                                value='' readOnly={true}/>
-                                               {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
 
                                     <div style={{margin: '5px 0 15px 0px', display: "flex" }}>
@@ -452,44 +523,36 @@ export default function WorkerPage() {
                             <div style={{margin: '5px 0 20px 15px'}}>
                                 ТЕКУЩЕЕ МЕСТО РАБОТЫ
                             </div>
-                            <div style={{display: "flex", justifyContent: "flex-start",}}>
+                            <div className="work-place-wr">
                                 <div style={{width: '20%',}}>
-                                    <div  style={{margin: '5px 0 5px 15px'}}>
+                                    <p  className="right-inputs-label">
                                         Адрес:
-                                    </div>
-                                    <div style={{margin: '5px 0 5px 15px'}}>
+                                    </p>
+                                    <p  className="right-inputs-label">
                                         Компания:
-                                    </div>
-                                    <div style={{margin: '5px 0 5px 15px'}}>
+                                    </p>
+                                    <p  className="right-inputs-label">
                                         Должность:
-                                    </div>
+                                    </p>
                                 </div>
-                                <div style={{width: '100%',}}>
-                                    <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '33rem'}}
+                                <div style={{width: '80%', textAlign: 'right'}}>
+                                    <div style={{margin: '5px 12px 5px 0px'}}>
+                                        <input type="text" className="right-inputs"
                                                value='' readOnly={true}/>
-                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
-                                    <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '33rem'}}
+                                    <div style={{margin: '5px 12px 5px 0px'}}>
+                                        <input type="text" className="right-inputs"
                                                value='' readOnly={true}/>
-                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
-                                    <div style={{margin: '5px 0 5px 0px'}}>
-                                        <input type="text" style={{width: '33rem'}}
+                                    <div style={{margin: '5px 12px 5px 0px'}}>
+                                        <input type="text" className="right-inputs"
                                                value='' readOnly={true}/>
-                                        {/*<span style={{margin: '0 10px 0 15px'}}>Изменить</span>*/}
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-
-
                 </div>
-
             </Container>
     )
 }

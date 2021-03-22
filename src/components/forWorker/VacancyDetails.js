@@ -1,9 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Context from "../Context";
 import Container from "@material-ui/core/Container";
 import Ad from '../employeesForCompany/VacanciesText'
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Button from "@material-ui/core/Button";
+import creon from "../../img/creon-logo-1.png";
+import {NavLink} from "react-router-dom";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 export default function VacancyDetails() {
     let vacancies = Ad
@@ -56,34 +59,68 @@ export default function VacancyDetails() {
     return(
         <div>
             <Container maxWidth="md">
-                <h4>Детали вакансии - {selectedVacancyId}  </h4>
-                <div style={{color: "#f04d2d", fontWeight: "700",
-                    fontSize: "1.6rem"}}>
-                    {v1.title}
+                <div  style={{textAlign: 'right', margin: '1em 0 0 0'}}>
+                    <NavLink to='/' style={{color: '#505350'}}>
+                        <HighlightOffIcon />
+                    </NavLink>
                 </div>
-                <div style={{fontWeight: "700", margin: '10px 0',
-                    fontSize: "1.4rem"}}>
-                    {v1.price} {v1.unit_of_time}
-                </div>
-                <div style={{fontWeight: "600", margin: '10px 0 15px 0',
-                    fontSize: "1.1rem"}}>
-                    <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
-                    {v1.point}
-                </div>
-                <div style={{ margin: '10px 0',
-                    fontSize: "1.1rem"}}>
-                    {v1.address}
-                </div>
-                <div style={{margin: '10px 0', color: "#f04d2d", fontWeight: "600",
-                    fontSize: "1.1rem"}}>
-                    {v1.work_type}
-                </div>
-                <div style={{fontWeight: "400", margin: '10px 0',
-                    fontSize: "1.2rem"}}>
-                    <span style={{margin: '0 10px 0 0', fontWeight: "600"}}>График работы:</span>
+                {/*<h4>Детали вакансии - {selectedVacancyId}  </h4>*/}
 
-                    {v1.work_schedule}
+                <div style={{display: "flex", justifyContent: "space-between",}}>
+                    <div>
+                        <div style={{color: "#f04d2d", fontWeight: "700",
+                            fontSize: "1.6rem"}}>
+                            {v1.title}
+                        </div>
+                        <div style={{fontWeight: "700", margin: '10px 0',
+                            fontSize: "1.4rem"}}>
+                            {v1.price} {v1.unit_of_time}
+                        </div>
+                        <div style={{fontWeight: "600", margin: '10px 0 15px 0',
+                            fontSize: "1.1rem"}}>
+                            <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
+                            {v1.point}
+                        </div>
+                        <div style={{ margin: '10px 0',
+                            fontSize: "1.1rem"}}>
+                            {v1.address}
+                        </div>
+                        <div style={{margin: '10px 0', color: "#f04d2d", fontWeight: "600",
+                            fontSize: "1.1rem"}}>
+                            {v1.work_type}
+                        </div>
+                        <div style={{fontWeight: "400", margin: '10px 0',
+                            fontSize: "1.2rem"}}>
+                            <span style={{margin: '0 10px 0 0', fontWeight: "600"}}>График работы:</span>
+
+                            {v1.work_schedule}
+                        </div>
+
+                    </div>
+                    <div style={{textAlign: 'center'}}>
+                        <NavLink to={'/vacancy-details/company'} style={{textDecoration: 'none'}}>
+                            <div>
+                                {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
+                                <img src={creon} alt="logo" style={{width: '4.0rem',
+                                    padding: "10px 0 10px 0", }}/>
+                            </div>
+
+                            <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#505350'}}>
+                                ООО "Рога и Копыта"
+                                {/*{vacancy.companyName}*/}
+                            </div>
+                        </NavLink>
+
+                        <Button style={{margin: '15px 15px 15px 10px',
+                            background: '#f04d2d', color: 'white'}}
+                                href='my-responses'
+                        >Откликнуться</Button>
+                    </div>
                 </div>
+
+
+
+
                 <div style={{fontWeight: "600", margin: '10px 0', color: "#f04d2d",
                     fontSize: "1.1rem"}}> Описание:
                 </div>

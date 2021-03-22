@@ -85,7 +85,7 @@ export default function HeaderApp2() {
                                         </NavLink>
                                         <NavLink className="links"
                                                  hidden={!user}
-                                                 to={"/profile"}
+                                                 to={"/my-responses"}
                                         > Отклики
                                         </NavLink>
                                         {/*<NavLink className="links"*/}

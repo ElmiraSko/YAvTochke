@@ -182,7 +182,7 @@ export default function VacanciesForMe() {
                     display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem', }} >
                     <div style={{margin: '5px 0 15px 0'}}>0</div>
                     <div  style={{margin: '5px 0 15px 0'}}>
-                        {sliderValue} км
+                       <b> {sliderValue} км </b>
                     </div>
                     <div  style={{margin: '5px 0 15px 0'}}>10</div>
                 </div>

@@ -160,15 +160,15 @@ export default function SignInWorker() {
                 </div>
                 <div style={{margin: "10px 0 20px 0 ", display: 'flex', justifyContent: 'center'}} >
                     <div >
-                        <img src={telegram2} alt="Photo-1"
+                        <img src={telegram2} alt="Иконка Telegram"
                              style={{width: '40px', height: '40px', padding: '15px'}} />
                     </div>
                     <div >
-                        <img src={vk2} alt="Photo-1"
+                        <img src={vk2} alt="Иконка VK"
                              style={{width: '40px', height: '40px', padding: '15px'}} />
                     </div>
                     <div >
-                        <img src={facebook2} alt="Photo-1"
+                        <img src={facebook2} alt="Иконка FaceBook"
                              style={{width: '40px', height: '40px', padding: '15px'}} />
                     </div>
                 </div>

@@ -25,6 +25,8 @@ import ConfirmUserPhone from "./components/forWorker/ConfirmUserPhone";
 import WelcomeWorker from "./components/forWorker/WelcomeWorker";
 import WorkerProfile from "./components/forWorker/WorkerProfile";
 import VacancyDetails from "./components/forWorker/VacancyDetails";
+import Responses from "./components/forWorker/Responses";
+import VacancyCompany from "./components/forWorker/VacancyCompany";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -184,6 +186,12 @@ function App() {
                               </Route>
                               <Route exact path="/vacancy-details">
                                   <VacancyDetails />
+                              </Route>
+                              <Route exact path="/my-responses">
+                                  <Responses />
+                              </Route>
+                              <Route exact path="/vacancy-details/company">
+                                  <VacancyCompany />
                               </Route>
 
                               <Redirect to="/" />
