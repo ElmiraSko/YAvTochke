@@ -23,7 +23,6 @@ export default function WorkerPage() {
 
     const [coordinates, setCoordinates] = useState([])
 
-
     const [center, setCenter] = useState(tempCords,)
     const mapState = React.useMemo(() =>
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
@@ -32,10 +31,10 @@ export default function WorkerPage() {
 
     let data = [
         {
-            address: "Москва, ул. Солянка, 9"
+            address: "Москва, ул. Тверская, 10"
         },
         {
-            address: "Москва, ул. Варварка, 5/10c1"
+            address: "Москва, ул. Большая Садовая, 4c1"
         }
     ]
     //=================
@@ -89,7 +88,6 @@ export default function WorkerPage() {
     }
     // функции изменяющие стартовый индекс
     function prev(){
-        console.log("пппппппппп")
         if (prevIndex > 0) {
             setPrevIndex(prevIndex-1)
         }
@@ -143,6 +141,7 @@ export default function WorkerPage() {
                 .then(result => coords.push( result.geoObjects.get(0).geometry.getCoordinates()))
         })
         setCoordinates(coords)
+
         ymaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
@@ -242,7 +241,7 @@ export default function WorkerPage() {
                                             // Setting the circle options.
                                             // Enabling drag-n-drop for the circle.
                                             draggable: false,
-                                            fillColor: 'rgba(248,189,211,0.47)',
+                                            fillColor: 'rgba(245, 131, 108,0.2)',
                                             strokeColor: '#f04d2d',
                                             strokeOpacity: 0.8,
                                             strokeWidth: 1,
@@ -261,6 +260,7 @@ export default function WorkerPage() {
                                                }}
                                     />
                                     {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
+
                                     {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
 
                                 </Map>

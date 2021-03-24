@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import './styles1/VacancieForMe.css';
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
-import {Map, Placemark, YMaps} from "react-yandex-maps";
+import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
 import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -15,7 +15,7 @@ export default function VacanciesForMe() {
     // получили из хранилища координаты центра карты
     let tempCords=localStorage.getItem("center")
 
-    const [zoom, setZoom] = useState(7)
+    const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
     const [ymaps, setYmaps] = useState()
 
@@ -208,6 +208,18 @@ export default function VacanciesForMe() {
 
                                 className="my-maps"
                             >
+                                <Circle
+                                    geometry={ [center,  sliderValue*1000]}
+                                    options={{
+                                        // Setting the circle options.
+                                        // Enabling drag-n-drop for the circle.
+                                        draggable: false,
+                                        fillColor: 'rgba(245, 131, 108,0.2)',
+                                        strokeColor: '#f04d2d',
+                                        strokeOpacity: 0.8,
+                                        strokeWidth: 1,
+                                    }}
+                                />
 
                                 <Placemark geometry={center}
                                            properties={{
