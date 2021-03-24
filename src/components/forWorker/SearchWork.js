@@ -237,30 +237,28 @@ export default function WorkerPage() {
 
                                     className="m-maps"
                                 >
-                                    {/*<Circle*/}
-                                    {/*    geometry={ [center,  sliderValue*1000]}*/}
-                                    {/*    options={{*/}
-                                    {/*        // Setting the circle options.*/}
-                                    {/*        // Enabling drag-n-drop for the circle.*/}
-                                    {/*        draggable: false,*/}
-                                    {/*        fillColor: 'rgba(245, 131, 108,0.2)',*/}
-                                    {/*        strokeColor: '#f04d2d',*/}
-                                    {/*        strokeOpacity: 0.8,*/}
-                                    {/*        strokeWidth: 1,*/}
-                                    {/*    }}*/}
-                                    {/*/>*/}
+                                    <Circle
+                                        geometry={ [center,  sliderValue*1000]}
+                                        options={{
+                                            // Setting the circle options.
+                                            // Enabling drag-n-drop for the circle.
+                                            draggable: false,
+                                            fillColor: 'rgba(245, 131, 108,0.2)',
+                                            strokeColor: '#f04d2d',
+                                            strokeOpacity: 0.8,
+                                            strokeWidth: 1,
+                                        }}
+                                    />
 
-                                    {/*<Placemark geometry={center} />*/}
-                                    {/*           properties={{*/}
-                                    {/*               // iconContent: 'Я здесь',*/}
-                                    {/*               // hintContent: 'Это',*/}
-                                    {/*               balloonContent: 'Я здесь',*/}
-                                    {/*           }}*/}
-                                    {/*           options={{*/}
-                                    {/*               // The placemark's icon will stretch to fit its contents.*/}
-                                    {/*               preset: 'islands#darkOrangeDotIcon',*/}
-                                    {/*           }}*/}
-                                    {/*/>*/}
+                                    <Placemark geometry={center}
+                                               properties={{
+                                                   balloonContent: 'Я здесь',
+                                               }}
+                                               options={{
+                                                   preset: 'islands#darkOrangeDotIcon',
+                                               }}
+                                    />
+
                                     {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
 
                                     {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
