@@ -9,10 +9,8 @@ import Loader from "../Loader";
 
 export default function SignUpWorker() {
 
-    let tempCords=localStorage.getItem("center")
-
     // Контекст
-    const {user, setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
+    const {setUser, signIn, setSignIn, signUp, setSignUp} = useContext(Context)
     // Состояние компонента SignUpWorker
     const [firstName, setFirstName] = React.useState('')
     const [firstNameValid, setFirstNameValid] = useState(true)
@@ -32,7 +30,7 @@ export default function SignUpWorker() {
     const [mapHid, setMapHid] = useState(true)
     const [ymaps, setYmaps] = useState()
     const [buttonValue, setButtonValue] = useState("ПОКАЗАТЬ КАРТУ")
-    const [center, setCenter] = useState(tempCords)
+    const [center, setCenter] = useState([55.751574, 37.573856])
     const [zoom, setZoom] = useState(7)
     const mapState = React.useMemo(() =>
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
@@ -317,11 +315,11 @@ export default function SignUpWorker() {
             mapStateAutoApply: true
         }).then(function (result) {
             let coords = result.geoObjects.get(0).geometry.getCoordinates()
-            console.log(coords);
-            localStorage.setItem("center", coords)
-            tempCords=coords  // пересмотреть
+            // console.log(coords);
+            // localStorage.setItem("center", coords)
+            // tempCords=coords  // пересмотреть
             setCenter(coords)
-            console.log(tempCords)
+            // console.log(tempCords)
         });
     }
 

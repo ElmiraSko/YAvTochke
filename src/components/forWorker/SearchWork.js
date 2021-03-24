@@ -12,18 +12,18 @@ import {Carousel} from "./Carousel";
 
 export default function WorkerPage() {
 
-    let tempCords=localStorage.getItem("center")
-    console.log(tempCords)
+    // let tempCords=localStorage.getItem("center")
+    // console.log(tempCords)
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(5)
     const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
-    const [ymaps, setYmaps] = useState()
+    const [yMaps, setYMaps] = useState()
 
     const [coordinates, setCoordinates] = useState([])
 
-    const [center, setCenter] = useState(tempCords,)
+    const [center, setCenter] = useState([55.751574, 37.573856])
     const mapState = React.useMemo(() =>
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
         [center, zoom])
@@ -110,18 +110,18 @@ export default function WorkerPage() {
     }
 
     function getCurrentPlace(ymaps) {
-            setYmaps(ymaps)
+        setYMaps(ymaps)
             ymaps.geolocation.get({
                 // Выставляем опцию для определения положения по ip
                 provider: 'auto',
                 // Карта автоматически отцентрируется по положению пользователя.
                 mapStateAutoApply: true
             }).then(function (result) {
-                console.log(result)
+                // console.log(result)
                 let coords = result.geoObjects.get(0).geometry.getCoordinates()
-                console.log(coords);
-                localStorage.setItem("center", coords)
-                tempCords=coords
+                // console.log(coords);
+                // localStorage.setItem("center", coords)
+                // tempCords=coords
                 setCenter(coords)
             });
     }
@@ -136,13 +136,13 @@ export default function WorkerPage() {
         // {Адрес и радиус} отпраить на бэк, получить список адресов в указанном радиусе - data
         // после, пройтись по массиву адресов - data
         // создать массив из координат - сoordinates
-        data.map(function (add) {
-            ymaps.geocode(add.address)
-                .then(result => coords.push( result.geoObjects.get(0).geometry.getCoordinates()))
-        })
-        setCoordinates(coords)
+        // data.map(function (add) {
+        //     yMaps.geocode(add.address)
+        //         .then(result => coords.push( result.geoObjects.get(0).geometry.getCoordinates()))
+        // })
+        // setCoordinates(coords)
 
-        ymaps.geocode(address)
+        yMaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
 
@@ -218,14 +218,16 @@ export default function WorkerPage() {
                         <YMaps
                             query={{
                                 apikey: '7d5617ab-0b68-4e1b-927b-15096a804e10',
-                            }}>
+                            }}
+
+                        >
                             <div>
                                 <Map
                                     state={mapState}
                                     onLoad={(ymaps) => {
-                                        console.log(ymaps.geocode);
                                         getCurrentPlace(ymaps);
                                     } }
+
                                     modules={[
                                         'control.ZoomControl',
                                         'control.FullscreenControl',
@@ -235,33 +237,33 @@ export default function WorkerPage() {
 
                                     className="m-maps"
                                 >
-                                    <Circle
-                                        geometry={ [center,  sliderValue*1000]}
-                                        options={{
-                                            // Setting the circle options.
-                                            // Enabling drag-n-drop for the circle.
-                                            draggable: false,
-                                            fillColor: 'rgba(245, 131, 108,0.2)',
-                                            strokeColor: '#f04d2d',
-                                            strokeOpacity: 0.8,
-                                            strokeWidth: 1,
-                                        }}
-                                    />
+                                    {/*<Circle*/}
+                                    {/*    geometry={ [center,  sliderValue*1000]}*/}
+                                    {/*    options={{*/}
+                                    {/*        // Setting the circle options.*/}
+                                    {/*        // Enabling drag-n-drop for the circle.*/}
+                                    {/*        draggable: false,*/}
+                                    {/*        fillColor: 'rgba(245, 131, 108,0.2)',*/}
+                                    {/*        strokeColor: '#f04d2d',*/}
+                                    {/*        strokeOpacity: 0.8,*/}
+                                    {/*        strokeWidth: 1,*/}
+                                    {/*    }}*/}
+                                    {/*/>*/}
 
-                                    <Placemark geometry={center}
-                                               properties={{
-                                                   // iconContent: 'Я здесь',
-                                                   // hintContent: 'Это',
-                                                   balloonContent: 'Я здесь',
-                                               }}
-                                               options={{
-                                                   // The placemark's icon will stretch to fit its contents.
-                                                   preset: 'islands#darkOrangeDotIcon',
-                                               }}
-                                    />
+                                    {/*<Placemark geometry={center} />*/}
+                                    {/*           properties={{*/}
+                                    {/*               // iconContent: 'Я здесь',*/}
+                                    {/*               // hintContent: 'Это',*/}
+                                    {/*               balloonContent: 'Я здесь',*/}
+                                    {/*           }}*/}
+                                    {/*           options={{*/}
+                                    {/*               // The placemark's icon will stretch to fit its contents.*/}
+                                    {/*               preset: 'islands#darkOrangeDotIcon',*/}
+                                    {/*           }}*/}
+                                    {/*/>*/}
                                     {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
 
-                                    {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
+                                    {/*{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}*/}
 
                                 </Map>
                             </div>

@@ -13,7 +13,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 export default function VacanciesForMe() {
 
     // получили из хранилища координаты центра карты
-    let tempCords=localStorage.getItem("center")
+    // let tempCords=localStorage.getItem("center")
 
     const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
@@ -34,7 +34,7 @@ export default function VacanciesForMe() {
     // Состояние бегунка, получаем с сервера
     const [sliderValue, setSliderValue] = useState(2)
 
-    const [center, setCenter] = useState(tempCords,)
+    const [center, setCenter] = useState([55.751574, 37.573856])
     const mapState = useMemo(() =>
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
         [center, zoom])
@@ -51,10 +51,10 @@ export default function VacanciesForMe() {
             console.log(result)
             let coords = result.geoObjects.get(0).geometry.getCoordinates()
             console.log(coords);
-            localStorage.setItem("center", coords)
-            tempCords=coords
+            // localStorage.setItem("center", coords)
+            // tempCords=coords
             setCenter(coords)
-            console.log(tempCords)
+            // console.log(tempCords)
         });
     }
 
