@@ -8,6 +8,7 @@ import {YMaps, Map, Placemark, Circle} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
 import Photo from '../../img/Photo-1st-screen.png'
 import {NavLink} from "react-router-dom";
+import {Carousel} from "./Carousel";
 
 export default function WorkerPage() {
 
@@ -37,6 +38,68 @@ export default function WorkerPage() {
             address: "Москва, ул. Варварка, 5/10c1"
         }
     ]
+    //=================
+    const [vacancyCount, setVacancyCount] = useState(4)
+    const [prevIndex, setPrevIndex] = useState(0)
+
+    const vac = [
+        {
+            name: 'Грузчик',
+            count: 12,
+        },
+        {
+            name: 'Мерчендайзер',
+            count: 23,
+        },
+        {
+            name: 'Комплектовщик/сборщик',
+            count: 49,
+        },
+        {
+            name: 'Курьер',
+            count: 38,
+        },
+        {
+            name: 'Продавец-кассир',
+            count: 25,
+        },
+        {
+            name: 'Продавец-консультант',
+            count: 27,
+        },
+        {
+            name: 'Промоутер',
+            count: 45,
+        },
+        {
+            name: 'Охраник',
+            count: 15,
+        },
+        {
+            name: 'Тайный покупатель',
+            count: 9,
+        },
+    ]
+    function getVac() {
+        let newVac = []
+        for (let i = prevIndex, j = 0; j < vacancyCount && i< vac.length; i++, j++) {
+            newVac.push(vac[i])
+        }
+        return newVac
+    }
+    // функции изменяющие стартовый индекс
+    function prev(){
+        console.log("пппппппппп")
+        if (prevIndex > 0) {
+            setPrevIndex(prevIndex-1)
+        }
+    }
+    function next(){
+        if (prevIndex < vac.length-vacancyCount) {
+            setPrevIndex(prevIndex+1)
+        }
+    }
+    //======================================
 
     function getRadius() {
         const size = document.getElementById("radius").value;
@@ -102,6 +165,9 @@ export default function WorkerPage() {
                         > Регистрация
                         </NavLink>
                     </div>
+
+
+                    <Carousel vacancies={getVac()} prev={prev} next={next}/>
 
                     <div className="pre-search-text">
                         Найди работу в удобном месте

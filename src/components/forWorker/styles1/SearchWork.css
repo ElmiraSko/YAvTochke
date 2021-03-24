@@ -20,7 +20,7 @@
 .vacancy-and-map-wrapper {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 .vacancy-div {
     width: 600px;
@@ -36,7 +36,7 @@
 }
 .m-maps {
     width: 500px;
-    height: 300px
+    height: 360px
 }
 .pre-search-text {
     font-size: 1.2rem;
@@ -83,7 +83,16 @@
     border: 0;
 }
 
-@media screen and (max-width: 1024px) {
+
+@media screen and (max-width: 1240px) {
+    .m-maps {
+        width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 1140px) {
     .search-work-img {
         display: flex;
         justify-content: space-between;
@@ -103,7 +112,7 @@
         margin-right: auto;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .vacancy-and-map-wrapper {
         display: block;
         margin-bottom: 135px;
@@ -122,6 +131,22 @@
     }
     .m-maps {
         width: 500px;
+    }
+    .search-work-reg-button-div {
+        margin: 20px 0;
+    }
+    .reg-button-navLink {
+        padding: 5px 10px 5px 10px;
+        border-radius:5px;
+    }
+    .search-work-wrapper {
+        padding: 5px 0;
+        text-align: center;
+        font-size: 1.0rem;
+        font-weight: 400;
+    }
+    .vacancy-and-map-wrapper {
+        margin-bottom: 10px;
     }
 }
 

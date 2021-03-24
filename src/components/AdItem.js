@@ -19,7 +19,6 @@ export default function AdItem(props) {
         return (sent ? 'sent-ok' : " ");
     }
     function respond() {
-        console.log("Ehf")
         if (user===null) {
             window.location.href="/auth/employees"
         } else {
