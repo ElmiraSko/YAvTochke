@@ -20,6 +20,14 @@ export default function VacancyDetails() {
 
     const[vac, setVac] = useState(getVacancyById())
 
+    // переход на обратный урл
+    let t = document.referrer // получили адрес с которого перешли
+    console.log(t)
+    let m = new URL(t, t) // создали новый url
+    console.log(m.pathname)  //  вывод пути url-а
+    let url =m.pathname+ '#'+selectedVacancyId // урл для перехода на предыдущую страницу с использование якоря вакансии
+
+
     const v1 = {
         id: 12,
         title: "Промоутер",
@@ -60,7 +68,7 @@ export default function VacancyDetails() {
         <div>
             <Container maxWidth="md">
                 <div  style={{textAlign: 'right', margin: '1em 0 0 0'}}>
-                    <NavLink to='/' style={{color: '#505350'}}>
+                    <NavLink to={url} style={{color: '#505350'}}>
                         <HighlightOffIcon />
                     </NavLink>
                 </div>

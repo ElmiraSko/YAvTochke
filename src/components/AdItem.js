@@ -32,8 +32,8 @@ export default function AdItem(props) {
     }
 
     return(
-            <div className="adItem-main">
-                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}}>
+            <div className="adItem-main" id = {vacancy.id}>
+                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}} >
 
                     <div onClick={() => showDetails(vacancy.id)} className="description-area" >
                         <h3 className="vacancy-title">

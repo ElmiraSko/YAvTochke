@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 import Container from "@material-ui/core/Container";
 import './styles1/VacancieForMe.css';
 import AdItem from "../AdItem";
@@ -116,6 +116,19 @@ export default function VacanciesForMe() {
         console.log(size)
     }
 
+    // для якорной ссылки
+    useEffect(() => {
+        const hash = window.location.hash
+        // Check if there is a hash and if an element with that id exists
+        const el = hash && document.getElementById(hash.substr(1))
+        if (el) {
+            // el.scrollIntoView({behavior: "auto"}) // этот вариант не поддерживается в
+            // браузерах Internet Explorer, Сафари, Safari на iOS
+            el.scrollIntoView() // поддерживают все
+        }
+    }, [window.location.hash]) // Fires every time hash changes
+
+
 
     return(
         <div>
@@ -172,7 +185,7 @@ export default function VacanciesForMe() {
                     {/*<input type="text" className="sliderValue"*/}
                     {/*       value={sliderValue} readOnly={true}/> км*/}
                     <input type="range" className="slider-2"
-                           min="0" max="10" step="0.5" id="radius"
+                           min="0" max="10" step="0.1" id="radius"
                            value={sliderValue}
                            onInput={getRadius}
                     />
@@ -222,11 +235,11 @@ export default function VacanciesForMe() {
                                 />
 
                                 <Placemark geometry={center}
-                                           properties={{
-                                               // iconContent: 'Я здесь',
-                                               // hintContent: 'Это',
-                                               balloonContent: 'Я здесь',
-                                           }}
+                                           // properties={{
+                                           //     iconContent: 'Я здесь',
+                                           //     hintContent: 'Это',
+                                           //     balloonContent: 'Я здесь',
+                                           // }}
                                            options={{
                                                // The placemark's icon will stretch to fit its contents.
                                                preset: 'islands#darkOrangeDotIcon',

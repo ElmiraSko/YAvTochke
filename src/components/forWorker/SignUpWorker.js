@@ -3,7 +3,7 @@ import {Container} from "@material-ui/core";
 import Context from "../Context";
 import SignUpComponent from "./SignUpComponent";
 import './styles1/slider.css'
-import {Map, Placemark, YMaps} from "react-yandex-maps";
+import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
 import './styles1/signUpWorker.css'
 import Loader from "../Loader";
 
@@ -368,7 +368,7 @@ export default function SignUpWorker() {
                         </p>
                         <p style={{width: '400px', margin: 'auto'}}>
                             <input type="range" className="slider"
-                                   min="0" max="10" step="0.5"
+                                   min="0" max="10" step="0.1"
                                    value={sliderValue} id="radius"
                                    onInput={getRadius} />
                         </p>
@@ -404,11 +404,20 @@ export default function SignUpWorker() {
 
                                         style={{width: "600px", height: "400px"}}
                                     >
+                                        <Circle
+                                            geometry={ [center,  sliderValue*1000]}
+                                            options={{
+                                                // Setting the circle options.
+                                                // Enabling drag-n-drop for the circle.
+                                                draggable: false,
+                                                fillColor: 'rgba(245, 131, 108,0.2)',
+                                                strokeColor: '#f04d2d',
+                                                strokeOpacity: 0.8,
+                                                strokeWidth: 1,
+                                            }}
+                                        />
 
                                         <Placemark geometry={center}
-                                                   properties={{
-                                                       balloonContent: 'Я здесь',
-                                                   }}
                                                    options={{
                                                        preset: 'islands#darkOrangeDotIcon',
                                                    }}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container} from "@material-ui/core";
 import './styles1/SearchWork.css';
 import './styles1/slider.css'
@@ -146,6 +146,18 @@ export default function WorkerPage() {
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
 
+    // для якорной ссылки
+    useEffect(() => {
+        const hash = window.location.hash
+        // Check if there is a hash and if an element with that id exists
+        const el = hash && document.getElementById(hash.substr(1))
+        if (el) {
+            // el.scrollIntoView({behavior: "auto"}) // этот вариант не поддерживается в
+            // браузерах Internet Explorer, Сафари, Safari на iOS
+            el.scrollIntoView() // поддерживают все
+        }
+    }, [window.location.hash]) // Fires every time hash changes
+
     return(
         <div>
             <Container maxWidth="lg">
@@ -203,7 +215,7 @@ export default function WorkerPage() {
                             <div>
                                 <div>
                                     <input type="range" className="slider"
-                                           min="0" max="10" step="0.5"
+                                           min="0" max="10" step="0.1"
                                            value={sliderValue} id="radius"
                                            onInput={getRadius} />
                                 </div>
@@ -251,9 +263,6 @@ export default function WorkerPage() {
                                     />
 
                                     <Placemark geometry={center}
-                                               properties={{
-                                                   balloonContent: 'Я здесь',
-                                               }}
                                                options={{
                                                    preset: 'islands#darkOrangeDotIcon',
                                                }}
