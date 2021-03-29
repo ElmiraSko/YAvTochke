@@ -1,0 +1,9 @@
+Подключила карусель:
+npm install react-elastic-carousel
+(+ react-elastic-carousel@0.11.3)
+И добавила:
+npm i styled-components
+(+ styled-components@5.2.1)
+Еще не разобралась до конца с styled-components
+
+

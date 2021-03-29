@@ -8,12 +8,20 @@ import {YMaps, Map, Placemark, Circle} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
 import Photo from '../../img/Photo-1st-screen.png'
 import {NavLink} from "react-router-dom";
-import {Carousel} from "./Carousel";
+import Carousel from 'react-elastic-carousel';
+import Item from "./Item";
 
 export default function WorkerPage() {
 
     // let tempCords=localStorage.getItem("center")
     // console.log(tempCords)
+    // для карусели, сколько элементов отображать в зависимости от экрана
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 768, itemsToShow: 4 },
+        { width: 1200, itemsToShow: 4 }
+    ];
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(5)
@@ -41,7 +49,7 @@ export default function WorkerPage() {
     const [vacancyCount, setVacancyCount] = useState(4)
     const [prevIndex, setPrevIndex] = useState(0)
 
-    const vac = [
+    const vacancies = [
         {
             name: 'Грузчик',
             count: 12,
@@ -79,26 +87,8 @@ export default function WorkerPage() {
             count: 9,
         },
     ]
-    function getVac() {
-        let newVac = []
-        for (let i = prevIndex, j = 0; j < vacancyCount && i< vac.length; i++, j++) {
-            newVac.push(vac[i])
-        }
-        return newVac
-    }
-    // функции изменяющие стартовый индекс
-    function prev(){
-        if (prevIndex > 0) {
-            setPrevIndex(prevIndex-1)
-        }
-    }
-    function next(){
-        if (prevIndex < vac.length-vacancyCount) {
-            setPrevIndex(prevIndex+1)
-        }
-    }
-    //======================================
 
+    //=== получаем значение ползунка
     function getRadius() {
         const size = document.getElementById("radius").value;
         setSliderValue(size)
@@ -154,7 +144,7 @@ export default function WorkerPage() {
         if (el) {
             // el.scrollIntoView({behavior: "auto"}) // этот вариант не поддерживается в
             // браузерах Internet Explorer, Сафари, Safari на iOS
-            el.scrollIntoView() // поддерживают все
+            el.scrollIntoView() // этот вариант поддерживают все
         }
     }, [window.location.hash]) // Fires every time hash changes
 
@@ -177,8 +167,10 @@ export default function WorkerPage() {
                         </NavLink>
                     </div>
 
-
-                    <Carousel vacancies={getVac()} prev={prev} next={next}/>
+                    <Carousel breakPoints={breakPoints}>
+                        {vacancies.map(c => <Item context={c}/>)}
+                    </Carousel>
+                    {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}
 
                     <div className="pre-search-text">
                         Найди работу в удобном месте

@@ -1,5 +1,5 @@
 .carousel-wrapper {
-    font-size: 1.1rem;
+    /*font-size: 1.0rem;*/
     padding: 5px 0;
     display: flex;
     justify-content: space-around;
@@ -10,6 +10,7 @@
     border-radius: 5px;
     width: 210px;
     margin: 40px 0;
+    font-size: 1.1rem;
 }
 .vacancy-name {
     border-radius: 5px;
@@ -39,6 +40,33 @@
 .text {
     font-size: 0.9rem;
     text-transform: uppercase;
+}
+
+.rec-dot {
+    display: none;
+}
+
+button.rec-arrow:hover, button.rec-arrow:focus {
+    background-color: rgba(245, 131, 108, 0.5);
+}
+button.rec-arrow {
+    background-color: rgba(245, 131, 108, 0.5);
+}
+
+button.lgksPe:hover:enabled, button.lgksPe:focus:enabled {
+    color: #fff;
+    background-color: rgba(245, 131, 108, 1);
+    box-shadow: 0 0 2px 0 #333;
+}
+button.lgksPe, button.lgksPe:focus{
+    color: #fff;
+    background-color: rgba(245, 131, 108, 1);
+    box-shadow: 0 0 2px 0 #333;
+}
+
+.rec.rec-arrow:disabled {
+    /*visibility: hidden;*/
+    cursor: inherit;
 }
 
 @media screen and (max-width: 960px) {

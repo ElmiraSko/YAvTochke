@@ -23,7 +23,7 @@ export function Carousel(props) {
 
                         <div className="vacancy-count">
                             <div className="vacancy-name-inner">
-                                {item.count} <span className="text">вакансий</span>
+                                {item.count} <span className="text"> &nbsp; вакансий</span>
                             </div>
                         </div>
                     </div>
