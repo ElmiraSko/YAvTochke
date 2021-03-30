@@ -12,7 +12,6 @@ export default function (props) {
     const repeatPasswordHandler = props.repeatPassworH
 
     // === Добавляем стилевой класс - error
-
     function fieldError(fieldNameValid) {
         return (fieldNameValid ? " ": 'input-field-error');
     }

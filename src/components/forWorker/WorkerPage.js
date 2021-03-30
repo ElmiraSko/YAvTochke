@@ -18,6 +18,7 @@ import vk2 from "../../img/vk-grey.png";
 import telegram2 from "../../img/telegram-grey.png";
 import vk3 from "../../img/vk-red.png";
 import telegram3 from "../../img/telegram-red.png";
+import addPhoto from '../../img/Add-a-photo.png'
 
 export default function WorkerPage() {
 
@@ -192,15 +193,20 @@ export default function WorkerPage() {
                         width: '30%', position: 'relative', paddingBottom:'52px'}}>
 
                         <div style={{ textAlign: "center",}}>
-                            <div style={{marginTop: '15px'}}>
-                                <Brightness1Icon style={{width: '100px', height: '100px', color: '#848c8e', }}/>
+                            {/*<div style={{marginTop: '15px'}}>*/}
+                            {/*    <Brightness1Icon style={{width: '100px', height: '100px', color: '#848c8e', }}/>*/}
+                            {/*</div>*/}
+
+                            <div style={{marginTop: '15px', backgroundColor: 'grey',
+                                width: '6.0rem', height: '6.0rem', borderRadius: '50%',
+                            marginLeft: 'auto', marginRight: 'auto', cursor: 'pointer'}}>
+                                <img src={addPhoto} alt="logo"
+                                     style={{width: '5.0rem', marginTop: '10px'}}/>
                             </div>
 
-                            {/*<img src={Logo} alt="logo"*/}
-                            {/*     style={{width: '6.0rem', padding: "30px 0 10px 0"}}/>*/}
-
                             <div style={{ fontSize: '1.6rem', fontWeight: '700',
-                                textTransform: 'uppercase', marginBottom: '30px'}}>
+                                textTransform: 'uppercase', marginBottom: '30px',
+                            marginTop: '10px'}}>
                                 Петр Петров
                             </div>
                             <p>

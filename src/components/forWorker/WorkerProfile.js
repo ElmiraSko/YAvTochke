@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerProfile.css'
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import Button from "@material-ui/core/Button";
+import addPhoto from "../../img/Add-a-photo.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -102,15 +103,19 @@ export default function WorkerProfile() {
                     width: '30%',  position: 'relative', paddingBottom:'52px' }}>
 
                     <div style={{ textAlign: "center",}}>
-                        <div style={{marginTop: '15px'}}>
-                            <Brightness1Icon style={{width: '100px', height: '100px', color: '#848c8e', }}/>
+                        {/*<div style={{marginTop: '15px'}}>*/}
+                        {/*    <Brightness1Icon style={{width: '100px', height: '100px', color: '#848c8e', }}/>*/}
+                        {/*</div>*/}
+
+                        <div style={{marginTop: '15px', backgroundColor: 'grey',
+                            width: '6.0rem', height: '6.0rem', borderRadius: '50%',
+                            marginLeft: 'auto', marginRight: 'auto', }}>
+                            <img src={addPhoto} alt="logo"
+                                 style={{width: '5.0rem', marginTop: '10px'}}/>
                         </div>
 
-                        {/*<img src={Logo} alt="logo"*/}
-                        {/*     style={{width: '6.0rem', padding: "30px 0 10px 0"}}/>*/}
-
                         <div style={{ fontSize: '1.6rem', fontWeight: '700',
-                            textTransform: 'uppercase', marginBottom: '30px'}}>
+                            textTransform: 'uppercase', marginBottom: '30px', marginTop: '10px' }}>
                             Петр Петров
                         </div>
                         <div style={{padding: '15px 0 10 0',   }}>

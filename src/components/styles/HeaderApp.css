@@ -11,16 +11,19 @@
     box-sizing: border-box;
     /*box-shadow: 0 0 3px 2px rgba(63, 102, 153, 0.5);*/
     flex-shrink: 0;
-    padding: 10px 0 10px 0;
+    padding: 10px 0 0 0;
+
+    /*position: relative;*/
 }
 .links {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     text-decoration: none;
     color: #0c1618;
+    text-align: center;
 }
 .link-padding {
     padding: 18px 0;
-    /*background: #848c8e;*/
 }
 .link-logo {
     display: flex;
@@ -33,6 +36,23 @@
     padding: 18px 0 18px 15px;
     text-decoration: none;
     color: #0c1618;
+}
+.link-padding-tab {
+    padding: 18px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.active2 {
+    box-shadow:
+            -2px -2px 2px rgba(132, 140, 142, 0.5),
+            2px -2px 2px rgba(132, 140, 142, 0.5),
+            -1px 10px 10px 5px rgba(255, 255, 255, 1);
+    border-bottom-color: white;
+    outline: white;
+    position: relative;
 }
 
 @media (max-width: 768px) {

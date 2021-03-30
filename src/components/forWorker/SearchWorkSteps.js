@@ -4,21 +4,22 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EditIcon from '@material-ui/icons/Edit';
 import EmailIcon from '@material-ui/icons/Email';
 
-export default function SearchWorkSteps() {
+export default function SearchWorkSteps(props) {
+    const content = props.content
     return(
         <div className="wrapper">
             <div className="title-steps">
-                Сервис для тех, кому:
+                {content.title}
             </div>
            <div className="wr-stp">
                <div className="wr-stp-div">
-                   Нужна подработка в своем магазине
+                   {content.red1}
                </div>
                <div className="wr-stp-div">
-                   Нужна работа рядом с домом
+                   {content.red2}
                </div>
                <div className="wr-stp-div">
-                   Нет времени листать вакансии
+                   {content.red3}
                </div>
            </div>
 
@@ -31,7 +32,7 @@ export default function SearchWorkSteps() {
                         <div className='steps-icons'>
                             <LocationOnIcon style={{width: '36px', height: '36px'}} />
                         </div>
-                        Выбери точку на карте, где удобно работать
+                        {content.grey1}
                     </div>
                 </div>
                 <div className='one'>
@@ -39,7 +40,7 @@ export default function SearchWorkSteps() {
                         <div className='steps-icons'>
                             <EditIcon style={{width: '36px', height: '36px'}} />
                         </div>
-                        Заполни анкету и оставь свой номер телефона
+                        {content.grey2}
                     </div>
                 </div>
                 <div className='one'>
@@ -47,7 +48,7 @@ export default function SearchWorkSteps() {
                         <div className='steps-icons'>
                             <EmailIcon  style={{width: '36px', height: '36px'}} />
                         </div>
-                        Получай сообщения с подходящими вакансиями
+                        {content.grey3}
                     </div>
                 </div>
             </div>

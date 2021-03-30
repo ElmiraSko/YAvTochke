@@ -5,14 +5,13 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Context from "./Context";
 
 export default function AdItem(props) {
-    const {user} = useContext(Context)
+    // Контекст
+    const {user, setSelectedVacancyId} = useContext(Context)
+    // надпись на кнопке, откликнулся соискатель или нет
     const [jobsButton, setJobsButton] = useState('Откликнуться')
     const [sent, setSent] = useState(false)
     // записали в переменную vacancy объект из props - vacancy - данные по вакансии из json
     const vacancy = props.vacancy
-
-    // Контекст
-    const { setSelectedVacancyId} = useContext(Context)
 
     // меняем стили
     function responseSent(sent) {

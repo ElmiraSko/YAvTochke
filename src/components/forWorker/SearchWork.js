@@ -1,27 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Container} from "@material-ui/core";
 import './styles1/SearchWork.css';
 import './styles1/slider.css'
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
+import WorkerContent from './textForMainPageWorker'
 import {YMaps, Map, Placemark, Circle} from 'react-yandex-maps';
 import SearchWorkSteps from "./SearchWorkSteps";
 import Photo from '../../img/Photo-1st-screen.png'
 import {NavLink} from "react-router-dom";
 import Carousel from 'react-elastic-carousel';
 import Item from "./Item";
+import Context from "../Context";
 
 export default function WorkerPage() {
 
-    // let tempCords=localStorage.getItem("center")
-    // console.log(tempCords)
-    // для карусели, сколько элементов отображать в зависимости от экрана
+    const {setSearchWork} = useContext(Context)
+
+    // для карусели, сколько элементов отображать в
+    // зависимости от экрана, нужно потестить
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
-        { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 550, itemsToShow: 3, itemsToScroll: 2 },
         { width: 768, itemsToShow: 4 },
-        { width: 1200, itemsToShow: 4 }
+        { width: 1200, itemsToShow: 4 },
     ];
+
+    const workerContent = WorkerContent
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(5)
@@ -88,6 +93,13 @@ export default function WorkerPage() {
         },
     ]
 
+    // функция устанавливает значение true для переменной searchWork,
+    // после ее отрисовки, необходимо для правильного отображения стиля меню
+    function activeSearchWork() {
+        setSearchWork(true)
+    }
+    activeSearchWork()
+
     //=== получаем значение ползунка
     function getRadius() {
         const size = document.getElementById("radius").value;
@@ -119,7 +131,6 @@ export default function WorkerPage() {
     function clearTheSearchField() {
         setAddress('')
     }
-
 
     function findPlace() {
         let coords = []
@@ -157,7 +168,7 @@ export default function WorkerPage() {
                             <img src={Photo} alt="Photo-1"
                                  className="search-work-img-style" />
                         </div>
-                        <SearchWorkSteps/>
+                        <SearchWorkSteps content={workerContent}/>
                     </div>
 
                     <div className="search-work-reg-button-div">
@@ -167,7 +178,7 @@ export default function WorkerPage() {
                         </NavLink>
                     </div>
 
-                    <Carousel breakPoints={breakPoints}>
+                    <Carousel isRTL={true} breakPoints={breakPoints}>
                         {vacancies.map(c => <Item context={c}/>)}
                     </Carousel>
                     {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}

@@ -50,7 +50,7 @@ export default function ButtonAppBar() {
                     <div className="link-logo">
                         <img src={Logo} alt="logo" style={{width: '3.0rem', padding: "10px 0 10px 0"}}/>
                         &nbsp;&nbsp;
-                        <div className="link-padding">
+                        <div className="link-padding myTab">
                             <NavLink className={classes.link} onClick={() => setSearchWork(true)}
                                      exact to={"/"}  activeStyle={{color: "#e78787", fontWeight: "bold"}} >
                                 Ищу подработку

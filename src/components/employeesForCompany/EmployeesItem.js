@@ -1,51 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import Logo from "../../img/Logo.png";
 import {Button} from "@material-ui/core";
 import PinDropRoundedIcon from '@material-ui/icons/PinDropRounded';
+import './styles2/EmployeesItem.css'
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 
 export default function EmployeesItem(props){
     const info = props.emplInf
+    // надпись на кнопке, откликнулся соискатель или нет
+    const [jobsButton, setJobsButton] = useState('Показать контакты')
+    const [sent, setSent] = useState(false)
+
+    // меняем стили
+    function responseSent(sent) {
+        return (sent ? 'sent-ok' : " ");
+    }
+
     return(
-        <div style={{backgroundColor: "#def2f3", color: "#110808", fontSize: "1.0rem",
-            fontWeight: "400", width: "50rem", minHeight: '100px', marginBottom: "15px",
-            borderRadius: "7px", border: "4px double black", padding: "5px 10px"  }}>
-            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}}>
-                <div>
-                        <span style={{color: "#138499", fontWeight: "700", fontSize: "1.6rem"}}>
-                            {info.firstName} {info.lastName}
-                        </span>
-                </div>
-                <div>
-                        <span
-                            style={{color: "#04d407",
-                                fontWeight: "700",
-                                fontSize: "1.6rem"}}>{info.requiredPosition}
-                        </span>
-                </div>
-            </div>
+        <div className="employeesItem-main"
+             // id = {vacancy.id}
+        >
+            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}} >
 
-            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}}>
-                <div style={{padding: "10px 10px 5px 10px"}}>
-                    Текущая должность: {info.currentPosition}
-                </div>
-                <div style={{width: "14rem", textAlign: "center"}}>
-                    <div>
-                        <img src={Logo} alt="logo" style={{width: '3.0rem', padding: "10px 0 10px 0"}}/>
+                <div
+                    // onClick={() => showDetails(vacancy.id)}
+                    className="description-area" >
+                    <h3 className="vacancy-title">
+                        {info.requiredPosition}
+                    </h3>
+                    <strong className="vacancy-price">
+                        {/*Текущая должность: {info.currentPosition}*/}
+                    </strong>
+                    <p  className="desc">
+                        Текущая должность: {info.currentPosition}
+                    </p>
+                    <div style={{display: "flex",}}>
+                        <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
+                        <div style={{ paddingTop: '10px'}}> {info.atPoint} </div>
                     </div>
-                    {/*<div>*/}
-                    {/*    {info.lastName}*/}
-                    {/*</div>*/}
                 </div>
-            </div>
 
-            <div style={{display: "flex"}}>
-                <PinDropRoundedIcon />
-                <div>{info.atPoint}</div>
+                <div style={{textAlign: 'center', }}>
+                    {/*<div>*/}
+                    {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
+                    <img src={Logo}
+                         alt="logo" style={{width: '4.0rem',
+                        padding: "10px 0 10px 0", }}/>
+                    {/*</div>*/}
+                    <h4 id="cn">
+                        {info.firstName} {info.lastName}
+                    </h4>
+                    <button className={`show-cont-button ${responseSent(sent)} `}
+                            // onClick={respond}
+                    > {jobsButton}</button>
+                </div>
 
-                <Button style={{backgroundColor: "#3fc62c", color: "#eee4e4", margin: "10px 10px 5px 45px", }}  >
-                Показать контакты
-            </Button>
             </div>
         </div>
     )

@@ -6,26 +6,12 @@ import './styles/HeaderApp.css'
 import Container from "@material-ui/core/Container";
 import Context from "./Context";
 
-
-// const useStyles = makeStyles((theme) => ({
-//     link: {
-//         marginRight: '1rem',
-//         textDecoration: 'none',
-//         color: '#0c1618',
-//     },
-// }));
-
-
 export default function HeaderApp2() {
-    // const classes = useStyles();
 
     const {user, setUser, signIn, setSignIn, signUp, setSignUp,
         searchWork, setSearchWork, signUpCompany, setSignUpCompany,
         signInCompany, setSignInCompany, company, setCompany
     } = useContext(Context)
-
-    // получаем id компании из локального хранилища
-    // const idComp = JSON.parse(localStorage.getItem('company'))
 
     function logout() {
         setUser(null)
@@ -39,31 +25,36 @@ export default function HeaderApp2() {
         setSignInCompany(false)
         setSignUpCompany(false)
     }
+    // === Добавляем стилевой класс - active2
+    function activeLink(searchWork) {
+        return (searchWork ? 'active2': '');
+    }
 
     return (
         <div style={{backgroundColor: "#fff", boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)'}}>
             <Container maxWidth="lg">
                 <header className="appbar">
                     <div className="link-logo">
-                        <NavLink className="logo" to={'/'}>
+                        <NavLink className="logo" to={'/'} onClick={() => setSearchWork(true)} >
                             <img src={Logo} alt="logo" style={{width: '2.2rem', padding: "10px 0 10px 0"}}/>
                         </NavLink>
-                        <NavLink className="logo-title" to={'/'}>
+                        <NavLink className="logo-title" to={'/'} onClick={() => setSearchWork(true)} >
                            Я в точке
                         </NavLink>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <div className="link-padding">
+                        {/*<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*/}
+                        <div className={`link-padding-tab ${activeLink(searchWork)}`}>
                             <NavLink className="links" onClick={() => setSearchWork(true)}
-                                     exact to={"/"}  activeStyle={{color: "#F04D2D", fontWeight: "bold"}} >
+                                     exact to={"/"}
+                                     // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
+                            >
                                 Ищу подработку
                             </NavLink>
                         </div>
-                        <div className="link-padding">
-                            | &nbsp;
-                        </div>
-                        <div className="link-padding">
+                        <div className={`link-padding-tab ${activeLink(!searchWork)}`}>
                             <NavLink className="links" onClick={() => setSearchWork(false)}
-                                     exact to={"/employees"} activeStyle={{color: "#F04D2D", fontWeight: "bold"}} >
+                                     exact to={"/employees"}
+                                     // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
+                            >
                                 Ищу сотрудника
                             </NavLink>
                         </div>
