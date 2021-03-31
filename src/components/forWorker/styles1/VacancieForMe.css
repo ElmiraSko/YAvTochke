@@ -19,6 +19,27 @@
     font-size: 1.0rem;
     font-weight: 600;
 }
+.search-work-input-2 {
+    font-size: 1.0rem;
+    width: 430px;
+    border-color: #f04d2d;
+    height: 30px;
+    border-radius: 5px;
+    border-style:solid;
+}
+.search-work-button-2 {
+    width: auto;
+    min-width: 120px;
+    background: #f04d2d;
+    height: 35px;
+    border-radius: 5px;
+    border-color: #f04d2d;
+    border-style:solid;
+    margin-left: 20px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
 .show-map-b {
     margin: 0 5px 0 5px;
     height: 25px;

@@ -179,7 +179,7 @@ export default function WorkerPage() {
                     </div>
 
                     <Carousel isRTL={true} breakPoints={breakPoints}>
-                        {vacancies.map(c => <Item context={c}/>)}
+                        {vacancies.map(c => <Item content={c}/>)}
                     </Carousel>
                     {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}
 

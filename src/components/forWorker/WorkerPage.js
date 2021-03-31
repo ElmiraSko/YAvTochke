@@ -7,18 +7,16 @@ import './styles1/WorkerPage.css'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Select, { components } from 'react-select'
 import Button from "@material-ui/core/Button";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
 import Radio from "@material-ui/core/Radio";
 import withStyles from "@material-ui/core/styles/withStyles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider, KeyboardDatePicker,} from '@material-ui/pickers';
 import vk2 from "../../img/vk-grey.png";
 import telegram2 from "../../img/telegram-grey.png";
 import vk3 from "../../img/vk-red.png";
 import telegram3 from "../../img/telegram-red.png";
 import addPhoto from '../../img/Add-a-photo.png'
+import SearchPoint from "../SearchPoint";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 export default function WorkerPage() {
 
@@ -56,10 +54,21 @@ export default function WorkerPage() {
 
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
+    // скрыть или показать дополнительную точку поиска
+    const [newPointHidden, setNewPointHidden] = useState(true);
+    // адреса поиска
+    const [searchFirstAddress, setSearchFirstAddress] = useState("");
+    const [searchSecondAddress, setSearchSecondAddress] = useState("");
     // Состояние бегунка
-    const [sliderValue, setSliderValue] = useState(2)
+    const [sliderValueFirst, setSliderValueFirst] = useState(2)
+    const [sliderValueSecond, setSliderValueSecond] = useState(2)
+    const firstId = 'radius1'
+    const secondId = 'radius2'
+    //
+    const [addPointState, setAddPointState] = useState(false)
+    const [deletePointState, setDeletePointState] = useState(true)
 
-    //-  вариант 1
+    //-  вариант 1, чекбоксы
     const [showContactsState, setShowContactsState] = useState({
         showContacts: false
     });
@@ -83,6 +92,7 @@ export default function WorkerPage() {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
+
     // функция установки предпочтительного способа связи - email
     function setPreferredEmail() {
         setPreferredCommunication('email')
@@ -139,11 +149,16 @@ export default function WorkerPage() {
         console.log(workType)
     }
     // функция для бегунка
-    function getRadius() {
-        const size = document.getElementById("radius").value;
-        setSliderValue(size)
-        console.log(size)
+    function getFirstRadius() {
+        const size = document.getElementById("radius1").value;
+        setSliderValueFirst(size)
     }
+    // функция для бегунка
+    function getSecondRadius() {
+        const size = document.getElementById("radius2").value;
+        setSliderValueSecond(size)
+    }
+
     // Для мульти селекта
     const options = [
         { value: 'Грузчик', label: 'Грузчик' },
@@ -183,6 +198,24 @@ export default function WorkerPage() {
         return <components.Placeholder {...props} />;
     };
 
+    // добавить новую точку поиска
+    function addNewPoint() {
+        setNewPointHidden(false)
+        setAddPointState(true)
+        setDeletePointState(false)
+    }
+    function deleteNewPoint() {
+        setNewPointHidden(true)
+        setAddPointState(false)
+        setDeletePointState(true)
+    }
+    //
+    function searchFirstHandler(event) {
+        setSearchFirstAddress(event.target.value)
+    }
+    function searchSecondHandler(event) {
+        setSearchSecondAddress(event.target.value)
+    }
 
     return(
             <Container  maxWidth="lg" >
@@ -302,7 +335,7 @@ export default function WorkerPage() {
                                     </div>
 
                                     <div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '8px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'phone'}
                                                       onChange={setPreferredPhone}
@@ -312,7 +345,7 @@ export default function WorkerPage() {
                                                       // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '8px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'email'}
                                                       onChange={setPreferredEmail}
@@ -320,6 +353,26 @@ export default function WorkerPage() {
                                                       disableRipple={true}
                                                       // name="radio-button-demo"
                                                       // inputProps={{ 'aria-label': 'C' }}
+                                            />
+                                        </div>
+                                        <div style={{marginBottom: '9px'}}>
+                                            <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
+                                                      checked={preferredCommunication === 'telegram'}
+                                                      onChange={setPreferredVK}
+                                                      value={preferredCommunication}
+                                                      disableRipple={true}
+                                                // name="radio-button-demo"
+                                                // inputProps={{ 'aria-label': 'C' }}
+                                            />
+                                        </div>
+                                        <div style={{marginBottom: '10px'}}>
+                                            <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
+                                                      checked={preferredCommunication === 'vk'}
+                                                      onChange={setPreferredTelegram}
+                                                      value={preferredCommunication}
+                                                      disableRipple={true}
+                                                // name="radio-button-demo"
+                                                // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
                                     </div>
@@ -384,30 +437,12 @@ export default function WorkerPage() {
                                 width: '100%', fontSize: "15px",}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>Дата рождения</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
-                                    <input type="text" autoComplete='off' value={selectedDate}
-                                           className="select-css"
-                                           placeholder="дд-мм-гггг"
+                                    <input type="date" autoComplete='off' value={selectedDate}
+                                           className="select-css-date"
+                                           // placeholder="дд-мм-гггг"
                                     onDoubleClick={() => {setSelectedDate('')}}
                                            onChange={handleDateChange}
                                     />
-
-                                    {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
-                                    {/*    /!*<Grid container justify="space-around">*!/*/}
-                                    {/*        <KeyboardDatePicker*/}
-                                    {/*            disableToolbar*/}
-                                    {/*            // placeholder={}*/}
-                                    {/*            variant="inline"*/}
-                                    {/*            format="dd-MM-yyyy"*/}
-                                    {/*            margin="normal"*/}
-                                    {/*            id="date-picker-inline"*/}
-                                    {/*            value={selectedDate}*/}
-                                    {/*            onChange={handleDateChange}*/}
-                                    {/*            // KeyboardButtonProps={{*/}
-                                    {/*            //     'aria-label': 'change date',*/}
-                                    {/*            // }}*/}
-                                    {/*        />*/}
-                                    {/*    /!*</Grid>*!/*/}
-                                    {/*</MuiPickersUtilsProvider>*/}
                                 </div>
                             </div>
                             <hr style={{width: '96%', color: '#e1e1e1',
@@ -457,45 +492,49 @@ export default function WorkerPage() {
                             <div style={{margin: '5px 0 20px 15px'}}>
                                 ПАРАМЕТРЫ ТОЧКИ
                             </div>
-                            <div style={{display: "flex", justifyContent: "flex-start",}}>
-                                <div style={{width: '20%',}}>
-                                    <div  style={{margin: '5px 0 15px 15px'}}>
-                                        Адрес:
-                                    </div>
-                                    <div style={{margin: '5px 0 15px 15px'}}>
-                                        Радиус:
-                                    </div>
-                                </div>
 
-                                <div style={{width: '100%',}}>
-                                    <div style={{margin: '5px 0 15px 0px'}}>
-                                        <input type="text" className="right-address-input"
-                                               value='' readOnly={true}/>
-                                    </div>
-
-                                    <div style={{margin: '5px 0 15px 0px', display: "flex" }}>
-                                        <input type="text" className="sliderValue"
-                                               value={sliderValue} readOnly={true}/>
-                                        <span style={{margin: '0 10px 0 10px'}}>км</span>
-                                        <div style={{width: '70%', margin: '0 15px 0 15px',}}>
-                                            <input type="range" className="slider"
-                                                   min="0" max="10" step="0.5" id="radius"
-                                                   value={sliderValue}
-                                                   onInput={getRadius}
-                                            />
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                            <SearchPoint sliderValue={sliderValueFirst}
+                                         getRadius={getFirstRadius}
+                                         searchPointAddress={searchFirstAddress}
+                                         searchHandler={searchFirstHandler}
+                                         id={firstId}
+                            />
+                            {newPointHidden ?
+                                '' : <SearchPoint sliderValue={sliderValueSecond}
+                                                  getRadius={getSecondRadius}
+                                                  searchPointAddress={searchSecondAddress}
+                                                  searchHandler={searchSecondHandler}
+                                                  id={secondId}
+                                />
+                            }
                             <div>
-                                <IconButton style={{margin: '0 5px 0 15px', padding: '2px',}}>
-                                    <AddCircleOutlineIcon style={{color: '#f04d2d'}} />
-                                </IconButton>
-                                <span style={{margin: '0 10px 0 10px',  }}>
+                                <div hidden={addPointState}>
+                                    <IconButton style={{margin: '0 5px 0 15px',
+                                        padding: '0px', backgroundColor: 'transparent'}}
+                                                onClick={addNewPoint}
+                                    >
+                                        <AddCircleOutlineIcon style={{color: '#f04d2d'}} />
+                                    </IconButton>
+                                    <span style={{margin: '0 10px 0 10px',  }}>
                                         Добавить точку поиска
                                     </span>
+                                </div>
+                                <div hidden={deletePointState}>
+                                    <IconButton style={{margin: '0 5px 0 15px',
+                                        padding: '0px', backgroundColor: 'transparent'}}
+                                                onClick={deleteNewPoint}
+                                    >
+                                        <HighlightOffIcon style={{color: '#f04d2d'}} />
+                                    </IconButton>
+                                    <span style={{margin: '0 10px 0 10px',  }}>
+                                        Удалить точку поиска
+                                    </span>
+                                </div>
+
+
+
                             </div>
+
                             <div style={{padding: '0px 10px 15px 15px',  }}>
                                 <p style={{padding: '0', margin: '10px 0' }} >
                                         Интересующие  вакансии:

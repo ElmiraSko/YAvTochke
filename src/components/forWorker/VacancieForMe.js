@@ -4,10 +4,10 @@ import './styles1/VacancieForMe.css';
 import AdItem from "../AdItem";
 import Ad from '../employeesForCompany/VacanciesText'
 import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
-import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import Checkbox from "@material-ui/core/Checkbox";
+import SearchPointWithCheckbox from "../SearchPointWithCheckbox";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 
 export default function VacanciesForMe() {
@@ -21,25 +21,126 @@ export default function VacanciesForMe() {
 
     const [coordinates, setCoordinates] = useState([])
     // Состояние: вид работы: постоянная или подработка
-    const [fullTimeJob, setFullTimeJob] = useState({
+    const [fullTimeJob1, setFullTimeJob1] = useState({
         fullTime: false,
     })
-    const [tempTimeJobs, setTempTimeJobs] = useState({
+    const [tempTimeJobs1, setTempTimeJobs1] = useState({
+        tempTime: false,
+    })
+    // Состояние: вид работы: постоянная или подработка
+    const [fullTimeJob2, setFullTimeJob2] = useState({
+        fullTime: false,
+    })
+    const [tempTimeJobs2, setTempTimeJobs2] = useState({
         tempTime: false,
     })
     // состояние карты
     const [mapHid, setMapHid] = useState(true)
     const [buttonValue, setButtonValue] = useState("Показать на карте")
 
-    // Состояние бегунка, получаем с сервера
-    const [sliderValue, setSliderValue] = useState(2)
-
+    // Состояние бегунка, используем для карты, значение меняется от первого адреса ко второму адресу
+    const [sliderValue, setSliderValue] = useState(1)
+    // для отцентровки карты, по дефолту [55.751574, 37.573856]
     const [center, setCenter] = useState([55.751574, 37.573856])
     const mapState = useMemo(() =>
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
         [center, zoom])
+    // скрыть или показать дополнительную форму поиска
+    const [newPointHidden, setNewPointHidden] = useState(true);
+    // адреса поиска
+    const [searchFirstAddress, setSearchFirstAddress] = useState("");
+    const [searchSecondAddress, setSearchSecondAddress] = useState("");
+    // Состояние бегунка
+    const [sliderValueFirst, setSliderValueFirst] = useState(1)
+    const [sliderValueSecond, setSliderValueSecond] = useState(1)
+    const firstId = 'radius1'
+    const secondId = 'radius2'
+    // логическое значение - показывать или скрыть иконку добавления точки
+    const [addPointState, setAddPointState] = useState(false)
+    const [deletePointState, setDeletePointState] = useState(true)
 
+    // функция для бегунка 1
+    function getFirstRadius() {
+        const size = document.getElementById("radius1").value;
+        setSliderValueFirst(size)
+    }
+    // функция для бегунка 2
+    function getSecondRadius() {
+        const size = document.getElementById("radius2").value;
+        setSliderValueSecond(size)
+    }
+    // добавить новую точку поиска
+    function addNewPoint() {
+        setNewPointHidden(false) // открыли форму для новой точки
+        setAddPointState(true)  // скрыли иконку добавления новой точки
+        setDeletePointState(false) // открыли иконку для удаления
+    }
+    // скрыть форму для новой точки-адреса
+    function deleteNewPoint() {
+        deleteAddressInMap(searchSecondAddress)
+        setNewPointHidden(true)
+        setAddPointState(false)
+        setDeletePointState(true)
+        setSearchSecondAddress('') // очистили второй адрес
+        setSliderValueSecond(0) // очистили второй радиус
+        setFullTimeJob2({fullTime: false,}) // очистили второй выбор
+        setTempTimeJobs2({tempTime: false,}) // очистили второй выбор
 
+    }
+    // для текстового поля адреса первой точки
+    function searchFirstHandler(event) {
+        setSearchFirstAddress(event.target.value)
+    }
+    // для текстового поля адреса второй точки
+    function searchSecondHandler(event) {
+        setSearchSecondAddress(event.target.value)
+    }
+
+    // обработка кнопки Найти точку по адресу
+    function findPlace1() {
+        ymaps.geocode(searchFirstAddress)
+            .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
+        coordinates.push(center)
+    }
+    function findPlace2() {
+        ymaps.geocode(searchSecondAddress)
+            .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
+        coordinates.push(center)
+    }
+    // функция удаления первого адреса
+    function deletePoint() {
+        deleteAddressInMap(searchFirstAddress) // перебор массива координат карты
+
+        setFullTimeJob2({fullTime: false,}) // очистили второй выбор
+        setTempTimeJobs2({tempTime: false,}) // очистили второй выбор
+
+        setSearchFirstAddress(searchSecondAddress) // первый адрес заменили вторым
+        setSliderValueFirst(sliderValueSecond) // первый радиус заменили вторым
+        setFullTimeJob1(fullTimeJob2) // передали "Тип работы" из второго выбора в первый
+        setTempTimeJobs1(tempTimeJobs2)  // передали "Тип работы" из второго выбора в первый
+
+        setAddPointState(false) // открыли иконку добавления точки
+        setNewPointHidden(true) // скрыли вторую форму
+        setDeletePointState(true) // скрыли кнопку удаления
+
+        setSearchSecondAddress('') // очистили второй адрес
+        setSliderValueSecond(0) // очистили второй радиус
+    }
+    function deleteAddressInMap(delAddress) {
+        let ind = coordinates.indexOf(delAddress, 0);
+        coordinates.splice(ind, 1);
+    }
+
+    useEffect(() => {
+        if (newPointHidden) { // если форма для второй точки скрыта
+            setSliderValue(sliderValueFirst) // используем первый радиус
+        }
+        else {
+            setSliderValue(sliderValueSecond)
+        }
+    }, [newPointHidden, sliderValueFirst ,sliderValueSecond])
+
+    // получить текущее место, отцентровать карту, при первой загрузке страницы
     function getCurrentPlace(ymaps) {
         setYmaps(ymaps)
         ymaps.geolocation.get({
@@ -51,22 +152,12 @@ export default function VacanciesForMe() {
             console.log(result)
             let coords = result.geoObjects.get(0).geometry.getCoordinates()
             console.log(coords);
-            // localStorage.setItem("center", coords)
-            // tempCords=coords
             setCenter(coords)
-            // console.log(tempCords)
         });
     }
 
-    function addressHandler(event) {
-        setAddress(event.target.value)
-    }
-    function clearTheSearchField() {
-        setAddress('')
-    }
-    // разобраться!
-    function findPlace() {
-        console.log("Клик по кнопке")
+    // заполняем массив точек, для отображения на карте
+    function savePlace() {
         // let coords = []
         // {Адрес и радиус} отпраить на бэк, получить список адресов в указанном радиусе - data
         // после, пройтись по массиву адресов - data
@@ -76,28 +167,26 @@ export default function VacanciesForMe() {
         //         .then(result => coords.push( result.geoObjects.get(0).geometry.getCoordinates()))
         // })
         // setCoordinates(coords)
-
-        ymaps.geocode(address)
+        // ymaps.geocode(address)
+        ymaps.geocode(searchFirstAddress)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
     }
-    const RedCheckbox = withStyles({
-        root: {
-            color: '#f04d2d', padding: '0', margin: '10px',
-            '&$checked': {
-                color: '#f04d2d',
-            },
-        },
-        checked: {},
-    })((props) =>
-        <Checkbox color="default" {...props} />);
 
     // Функция выбора типа работы: Постоянная работа
-    const fullTimeHandler =(event) => {
-        setFullTimeJob({[event.target.name]: event.target.checked})
+    const fullTimeHandler1 =(event) => {
+        setFullTimeJob1({[event.target.name]: event.target.checked})
     }
     // Функция выбора типа работы: Подработка
-    const tempTimeHandler =(event) => {
-        setTempTimeJobs({[event.target.name]: event.target.checked})
+    const tempTimeHandler1 =(event) => {
+        setTempTimeJobs1({[event.target.name]: event.target.checked})
+    }
+    // Функция выбора типа работы: Постоянная работа
+    const fullTimeHandler2 =(event) => {
+        setFullTimeJob2({[event.target.name]: event.target.checked})
+    }
+    // Функция выбора типа работы: Подработка
+    const tempTimeHandler2 =(event) => {
+        setTempTimeJobs2({[event.target.name]: event.target.checked})
     }
     //==== показать или скрыть карту ====
     function showTheMap() {
@@ -108,12 +197,6 @@ export default function VacanciesForMe() {
             setButtonValue("Показать на карте")
             setMapHid(true)
         }
-    }
-    // функция для бегунка
-    function getRadius() {
-        const size = document.getElementById("radius").value;
-        setSliderValue(size)
-        console.log(size)
     }
 
     // для якорной ссылки
@@ -138,66 +221,84 @@ export default function VacanciesForMe() {
                     fontWeight: "600", }}>
                     найти работу в удобном месте
                 </div>
-                <div style={{textAlign: "center",}}>
-                    <input className="search-work-input"
-                           placeholder="Город, улица и номер дома, где хотите работать"
-                           value={address}
-                           onChange={addressHandler}
-                           onClick={clearTheSearchField}
+                <div hidden={!newPointHidden}>
+                    <SearchPointWithCheckbox
+                        address={searchFirstAddress}
+                        addressHandler={searchFirstHandler}
+                        findPlace={findPlace1}
+                        fullTimeJob={fullTimeJob1.fullTime}
+                        fullTimeHandler={fullTimeHandler1}
+                        tempTimeJobs={tempTimeJobs1.tempTime}
+                        tempTimeHandler={tempTimeHandler1}
+                        sliderValue={sliderValueFirst}
+                        getRadius={getFirstRadius}
+                        id={firstId}
                     />
-                    <input type="submit" className="search-work-button"
-                           value="Найти"
-                           onClick={findPlace}
+                </div>
+                <div style={{padding: "20px 0px 30px 0px",
+                    textAlign: "left", fontSize: "1.1rem", width: '580px', marginLeft: 'auto', marginRight: 'auto',
+                    fontWeight: "500", }} hidden={newPointHidden}>
+
+                    {searchFirstAddress ? `Адрес: ${searchFirstAddress}` : 'Адрес не выбран'}
+                    <div className="flex-between">
+                        <div>
+                            {fullTimeJob1.fullTime? 'Полная занятость, ' : ''}
+                            {tempTimeJobs1.tempTime? 'Подработка, ' : ''} {'Радиус: '} {sliderValueFirst} {' км'}
+                        </div>
+                        <div >
+                            <IconButton style={{margin: '0 5px 0 15px',
+                                padding: '0px', backgroundColor: 'transparent'}}
+                                        onClick={deletePoint} >
+                                <HighlightOffIcon style={{color: '#f04d2d'}} />
+                            </IconButton>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div hidden={newPointHidden}>
+                    <SearchPointWithCheckbox
+                        address={searchSecondAddress}
+                        addressHandler={searchSecondHandler}
+                        findPlace={findPlace2}
+                        fullTimeJob={fullTimeJob2.fullTime}
+                        fullTimeHandler={fullTimeHandler2}
+                        tempTimeJobs={tempTimeJobs2.tempTime}
+                        tempTimeHandler={tempTimeHandler2}
+                        sliderValue={sliderValueSecond}
+                        getRadius={getSecondRadius}
+                        id={secondId}
                     />
                 </div>
 
-                <div className="radio-gr">
-                    <div>
-                        <RedCheckbox
-                            checked={fullTimeJob.fullTime}
-                            onChange={fullTimeHandler}
-                            name="fullTime"
-                        /> Полная занятость
-                    </div>
-                    <div>
-                        <RedCheckbox
-                            checked={tempTimeJobs.tempTime}
-                            onChange={tempTimeHandler}
-                            name="tempTime"
-                        /> Подработка
-                    </div>
-                </div>
                 <div className="add-point">
-                    <div>
-                        <IconButton style={{margin: '0 5px 0 10px', padding: '0',}}>
+                    <div hidden={addPointState}>
+                        <IconButton style={{margin: '0 5px 0 10px',
+                            padding: '0', backgroundColor: 'transparent'}}
+                                    onClick={addNewPoint} >
                             <AddCircleOutlineIcon style={{color: '#f04d2d'}} />
                         </IconButton>
                         <span style={{margin: '0 10px 0 10px',  }}>
                                         Добавить точку поиска
                                     </span>
                     </div>
+                    <div hidden={deletePointState}>
+                        <IconButton style={{margin: '0 5px 0 15px',
+                            padding: '0px', backgroundColor: 'transparent'}}
+                                    onClick={deleteNewPoint}
+                        >
+                            <HighlightOffIcon style={{color: '#f04d2d'}} />
+                        </IconButton>
+                        <span style={{margin: '0 10px 0 10px',  }}>
+                                        Удалить вторую точку поиска
+                                    </span>
+                    </div>
+
+
+
                     <button className="show-map-b"
                             onClick={showTheMap}
                     >{buttonValue}</button>
-                </div>
-
-                <div style={{ display: 'flex', width: '400px', margin: 'auto',}}>
-                    {/*<input type="text" className="sliderValue"*/}
-                    {/*       value={sliderValue} readOnly={true}/> км*/}
-                    <input type="range" className="slider-2"
-                           min="0" max="10" step="0.1" id="radius"
-                           value={sliderValue}
-                           onInput={getRadius}
-                    />
-                </div>
-
-                <div style={{width: '400px', margin: 'auto',
-                    display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem', }} >
-                    <div style={{margin: '5px 0 15px 0'}}>0</div>
-                    <div  style={{margin: '5px 0 15px 0'}}>
-                       <b> {sliderValue} км </b>
-                    </div>
-                    <div  style={{margin: '5px 0 15px 0'}}>10</div>
                 </div>
 
                 <div hidden={mapHid}>>
@@ -245,7 +346,7 @@ export default function VacanciesForMe() {
                                                preset: 'islands#darkOrangeDotIcon',
                                            }}
                                 />
-                                {/*<Placemark geometry={[55.75203456899694,37.64085649999999]} />*/}
+
 
                                 {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
 
