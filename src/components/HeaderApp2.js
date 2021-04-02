@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-// import {makeStyles} from '@material-ui/core/styles';
 import {NavLink} from 'react-router-dom';
 import Logo from '../img/Logo-1.png'
 import './styles/HeaderApp.css'
@@ -65,16 +64,16 @@ export default function HeaderApp2() {
                             searchWork ?
                                 (
                                     <div >
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  to={"/vacancy-employees"}
                                         > Объявления
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!user}
                                                  to={"/profile"}
                                         > Профиль
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!user}
                                                  to={"/my-responses"}
                                         > Отклики
@@ -85,13 +84,13 @@ export default function HeaderApp2() {
                                         {/*         to={"/reg/employees"}*/}
                                         {/*> Регистрация*/}
                                         {/*</NavLink>*/}
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={signIn}
                                                  to={"/auth/employees"}
                                             // onClick={() => setSignUp(!signUp)}
                                         > Войти
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!user}  // или id магазина
                                                  onClick={() => {logout()}}
                                                  to={"/"}
@@ -100,37 +99,37 @@ export default function HeaderApp2() {
                                     </div>
                                 ) : (
                                     <div>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                             // hidden={signUpCompany}
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/profiles"}
                                         > Анкеты
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!company}
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/vacancies"}
-                                        > Ваши объявления
+                                        > Объявления
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!company}
                                             // onClick={() => setSignIn(!signIn)}
                                                  to={"/personal-account/company"}
-                                        > Личный  кабинет
+                                        > Кабинет
                                         </NavLink>
-                                        <NavLink className="links"
-                                                 hidden={signUpCompany}
-                                            // onClick={() => setSignInCompany(!signInCompany)}
-                                                 to={"/reg/company"}
-                                        > Регистрация
-                                        </NavLink>
-                                        <NavLink className="links"
+                                        {/*<NavLink className="links f-s"*/}
+                                        {/*         hidden={signUpCompany}*/}
+                                        {/*    // onClick={() => setSignInCompany(!signInCompany)}*/}
+                                        {/*         to={"/reg/company"}*/}
+                                        {/*> Регистрация*/}
+                                        {/*</NavLink>*/}
+                                        <NavLink className="links f-s"
                                                  hidden={signInCompany}
                                                  to={"/auth/company"}
                                             // onClick={() => setSignUpCompany(!signUpCompany)}
                                         > Войти
                                         </NavLink>
-                                        <NavLink className="links"
+                                        <NavLink className="links f-s"
                                                  hidden={!company}  // id компании
                                                  onClick={() => {companyLogout()}}
                                                  to={"/employees"}

@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Container} from "@material-ui/core";
 import './styles2/Emploees.css';
 import '../forWorker/styles1/SearchWork.css';
-import Photo from "../../img/Photo-1st-screen.png";
+import Photo from "../../img/worker.jpg";
 import SearchWorkSteps from "../forWorker/SearchWorkSteps";
 import {NavLink} from "react-router-dom";
 import Carousel from "react-elastic-carousel";
@@ -11,8 +11,12 @@ import AdItem from "../AdItem";
 import Ad from "./VacanciesText";
 import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
 import Content from './textForMainPageCompany';
+import Context from "../Context";
 
 export default function SearchEmployee() {
+    // контекст, чтоб проверить, авторизован работодатель или нет
+    const {company} = useContext(Context)
+
     // для карусели, сколько элементов отображать в
     // зависимости от экрана, нужно потестить
     const breakPoints = [
@@ -148,13 +152,22 @@ export default function SearchEmployee() {
         }
     }, [window.location.hash]) // Fires every time hash changes
 
+
+    function postAJob() {
+        if (company===null) {
+            window.location.href="/auth/company"
+        } else {
+            window.location.replace('/new-vacancy')
+        }
+    }
+
     return(
         <div>
             <Container maxWidth="lg">
                 <div className="search-work-wrapper">
                     <div className="search-work-img">
                         <SearchWorkSteps content={content}/>
-                        <div>
+                        <div style={{marginTop: '20px', }}>
                             <img src={Photo} alt="Photo-1"
                                  className="search-work-img-style" />
                         </div>
@@ -162,10 +175,11 @@ export default function SearchEmployee() {
 
 
                     <div className="search-work-reg-button-div">
-                        <NavLink className="reg-button-navLink"
-                                 to={"/reg/employees"}
+                        <button className="reg-button-navLink f-s"
+                                 onClick={postAJob}
+                                 // to={"/new-vacancy"}
                         > Разместить вакансию
-                        </NavLink>
+                        </button>
                     </div>
 
                     <Carousel breakPoints={breakPoints} isRTL={true}>
@@ -273,7 +287,7 @@ export default function SearchEmployee() {
                 <div className="search-work-wrapper">
                     <div className="search-work-reg-button-div">
                         <NavLink className="reg-button-navLink"
-                                 to={"/reg/employees"}
+                                 to={"/reg/company"}
                         > Регистрация
                         </NavLink>
                     </div>

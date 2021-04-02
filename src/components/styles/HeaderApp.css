@@ -22,6 +22,9 @@
     color: #0c1618;
     text-align: center;
 }
+.f-s {
+    font-size: 1.1rem;
+}
 .link-padding {
     padding: 18px 0;
 }

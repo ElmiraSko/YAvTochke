@@ -28,7 +28,7 @@ export default function AtCompany() {
                             color: "#eee4e4", margin: "10px 10px 5px 5px", }}  >
                             Заполнить профиль</Button>
                         <br />
-                        <Button  style={{backgroundColor: "#f5253e",
+                        <Button  style={{backgroundColor: "#f04d2d",
                             color: "#faf5f5", margin: "10px 10px 5px 5px", }}  >
                             Опубликовать вакансию</Button>
                     </div>

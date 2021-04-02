@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Context from "../Context";
@@ -23,6 +23,13 @@ export default function SignInCompany() {
     const [formHidden, setFormHidden] = React.useState(false)
 
     let url = ''
+
+    // проверяет, все ли поля валидны
+    useEffect(() => {
+        if (password.length>0 && passwordValid && login.length >0 && loginValid) {
+            setFormValid(true)
+        } else setFormValid(false)
+    }, [loginValid, passwordValid, password, login])
 
     // обработчик формы, отправка запроса и получение ответа
     function submitHandler(event) {

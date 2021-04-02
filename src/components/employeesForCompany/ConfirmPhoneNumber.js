@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Button, Container} from "@material-ui/core";
 
-export default function AtCompany() {
+export default function ConfirmPhoneNumber() {
     return(
         <div>
             <Container  maxWidth="md" >

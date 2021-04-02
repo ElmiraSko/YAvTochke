@@ -18,17 +18,17 @@ export default function VacanciesOfTheCompany() {
     return(
         <div>
             <Container maxWidth="lg">
-                <div style={{padding: "20px 0px 30px 0px", textAlign: "left", fontSize: "1.4rem",
+                <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
                     fontWeight: "600", }}> Ваши объявления
                 </div>
 
                 <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
                     <div>
                         <div>
-                            <AdItem vacancy = {Ad[0]}/>
+                            <AdItem vacancy = {Ad[1]}/>
                         </div>
                         <div>
-                            <AdItem vacancy = {Ad[1]}/>
+                            <AdItem vacancy = {Ad[2]}/>
                         </div>
 
                     </div>

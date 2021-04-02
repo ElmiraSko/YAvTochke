@@ -42,12 +42,12 @@ export default function EmployeesItem(props){
                 </div>
 
                 <div style={{textAlign: 'center', }}>
-                    {/*<div>*/}
-                    {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
-                    <img src={Logo}
+                    <div style={{borderRadius: '50%', }}>
+                    {/* Нужно будет добавить альтернативу для фото, еслифото нет  */}
+                    <img src={props.photo}
                          alt="logo" style={{width: '4.0rem',
-                        padding: "10px 0 10px 0", }}/>
-                    {/*</div>*/}
+                        padding: "10px 0 10px 0", borderRadius: '50%',}}/>
+                    </div>
                     <h4 id="cn">
                         {info.firstName} {info.lastName}
                     </h4>

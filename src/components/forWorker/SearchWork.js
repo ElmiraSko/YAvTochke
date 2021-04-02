@@ -15,6 +15,7 @@ import Context from "../Context";
 
 export default function WorkerPage() {
 
+    // для функции activeSearchWork
     const {setSearchWork} = useContext(Context)
 
     // для карусели, сколько элементов отображать в
