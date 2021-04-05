@@ -13,10 +13,11 @@ import Carousel from 'react-elastic-carousel';
 import Item from "./Item";
 import Context from "../Context";
 
-export default function WorkerPage() {
+export default function WorkerPage(props) {
 
-    // для функции activeSearchWork
-    const {setSearchWork} = useContext(Context)
+    // // для функции activeSearchWork
+    // const {setSearchWork} = useContext(Context)
+    // setSearchWork(true)
 
     // для карусели, сколько элементов отображать в
     // зависимости от экрана, нужно потестить
@@ -94,13 +95,6 @@ export default function WorkerPage() {
         },
     ]
 
-    // функция устанавливает значение true для переменной searchWork,
-    // после ее отрисовки, необходимо для правильного отображения стиля меню
-    function activeSearchWork() {
-        setSearchWork(true)
-    }
-    activeSearchWork()
-
     //=== получаем значение ползунка
     function getRadius() {
         const size = document.getElementById("radius").value;
@@ -160,6 +154,10 @@ export default function WorkerPage() {
         }
     }, [window.location.hash]) // Fires every time hash changes
 
+    // при переходе на эту страницу, устанавливаем флаг - для соискателей,
+    // чтоб в гл.меню выделялась нужная вкладка
+    useEffect(() => {props.isActive()}, [])
+
     return(
         <div>
             <Container maxWidth="lg">
@@ -180,7 +178,7 @@ export default function WorkerPage() {
                     </div>
 
                     <Carousel isRTL={true} breakPoints={breakPoints}>
-                        {vacancies.map(c => <Item content={c}/>)}
+                        {vacancies.map((c,index) => <Item content={c} key={index}/>)}
                     </Carousel>
                     {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}
 
@@ -206,10 +204,10 @@ export default function WorkerPage() {
                     <div className="vacancy-div">
                         <div>
                             <div>
-                                <AdItem vacancy = {Ad[0]}/>
+                                <AdItem vacancy = {Ad[0]} />
                             </div>
                             <div>
-                                <AdItem vacancy = {Ad[1]}/>
+                                <AdItem vacancy = {Ad[1]} />
                             </div>
                         </div>
                     </div>

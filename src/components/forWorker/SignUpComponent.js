@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
 
-export default function (props) {
+export default function SignUpComponent(props) {
 
     const firstNameHandler = props.firstNH
     const lastNameHandler = props.lastNH

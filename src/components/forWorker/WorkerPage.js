@@ -5,7 +5,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerPage.css'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import Select, { components } from 'react-select'
+import Select from 'react-select'
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -194,9 +194,9 @@ export default function WorkerPage() {
             },
         }),
     }
-    const Placeholder = props => {
-        return <components.Placeholder {...props} />;
-    };
+    // const Placeholder = props => {
+    //     return <components.Placeholder {...props} />;
+    // };
 
     // добавить новую точку поиска
     function addNewPoint() {

@@ -120,6 +120,11 @@ function App() {
         localStorage.setItem('company', JSON.stringify(company))
     }, [company])
 
+    // функция устанавливает значение true для переменной searchWork,
+    // после ее отрисовки, необходимо для правильного отображения стиля меню
+    function activeSearchWork() {
+        setSearchWork(true)
+    }
 
   return (
       <Context.Provider value={{user, setUser,
@@ -135,7 +140,7 @@ function App() {
                       <div style={{minHeight: "calc(100vh - 64px)"}}>
                           <Switch>
                               <Route exact path="/">
-                                  <SearchWork />
+                                  <SearchWork isActive={activeSearchWork} />
                               </Route>
                               <Route exact path="/employees">
                                   <SearchEmploees />

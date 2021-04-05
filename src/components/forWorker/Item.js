@@ -5,7 +5,7 @@ export default function Item(props) {
     const content = props.content
     return(
         <div className="carousel-vacancy-wrapper"
-             key={content.name}
+             key={content.index}
         >
             <div className="vacancy-name">
                 <div className="vacancy-name-inner">

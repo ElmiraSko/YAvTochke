@@ -34,8 +34,8 @@
 }
 .reg-button:disabled {
     cursor: auto;
-    background-color:  #f04d2d;
-    border-color:   #f04d2d;
+    background-color:  #f5836c;
+    border-color:   #f5836c;
     color: #ffffff;
 }
 

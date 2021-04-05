@@ -183,7 +183,7 @@ export default function SearchEmployee() {
                     </div>
 
                     <Carousel breakPoints={breakPoints} isRTL={true}>
-                        {vacancies.map(c => <Item content={c}/>)}
+                        {vacancies.map((c,index) => <Item content={c} key={index}/>)}
                     </Carousel>
 
                     <div className="pre-search-text">
