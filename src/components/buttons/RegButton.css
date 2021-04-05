@@ -1,0 +1,20 @@
+.reg-button {
+    background-color: #f04d2d;
+    border: 1px solid #f04d2d;
+    border-radius: 5px;
+    color: #ffffff;
+    margin: 10px 5px 10px 5px;
+    padding: 5px 10px;
+    outline: none;
+    width: auto;
+    height: auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.confirm-button {
+    cursor: auto;
+    background-color:  #f5836c;
+    border-color:   #f5836c;
+    color: #ffffff;
+}

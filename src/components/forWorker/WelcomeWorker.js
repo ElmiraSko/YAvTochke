@@ -10,7 +10,10 @@ export default function WelcomeWorker() {
         desc: "Проведение дегустации в точке продаж, на выходных. Обязательно наличие медицинской книжки и знание правил проведения дегустации.",
         address: "Новокосинская, д. 14а",
         price: "400",
-        companyName: "Рога и копыта"
+        companyName: "Рога и копыта",
+        unit_of_time: "руб/час",
+        point: "Точка рядом",
+        imgUrl: `/images/creon-logo-1.png`,
     }
 
     return(
@@ -20,7 +23,7 @@ export default function WelcomeWorker() {
                     fontWeight: "600", textAlign: "center", margin: "20px 0px"}}>
                     <CheckCircleOutlineIcon style={{width: '36px', height: '36px', color: '#f04d2d' }}/>
                     <div style={{margin: '15px 0', textTransform: 'uppercase'}}>
-                        Регистрировались прошла успешно
+                        Регистрация прошла успешно
                     </div>
                     <div style={{marginBottom: '40px', textTransform: 'uppercase', fontSize: "1.0rem",}}>
                         Рекомендуем
@@ -33,6 +36,7 @@ export default function WelcomeWorker() {
                     </div>
 
                     <div style={{ margin: "15px 0px", }}>
+
                         <Button style={{backgroundColor: "#f04d2d", width: '150px',
                             color: "white", margin: "10px 10px 50px 5px", }}
                                 href="/personal-account/employees"
@@ -43,10 +47,6 @@ export default function WelcomeWorker() {
                             Дополните свой профиль, чтобы находить
                             наиболее подходящие вакансии
                         </div>
-
-                        {/*<Button  style={{backgroundColor: "#ffb43c",*/}
-                        {/*    color: "#f5f5f5", margin: "10px 10px 5px 5px", }}  >*/}
-                        {/*    Опубликовать вакансию</Button>*/}
                     </div>
                 </div>
 

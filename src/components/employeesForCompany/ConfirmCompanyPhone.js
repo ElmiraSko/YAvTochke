@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import './styles1/signInWorker.css'
 import ConfirmPhoneComponent from "../ConfirmPhoneComponent";
 
-export default function ConfirmUserPhone() {
+export default function ConfirmCompanyPhone() {
 
     const [code, setCode] = React.useState('')
     const [codeValid, setCodeValid] = useState(true)
@@ -11,7 +10,6 @@ export default function ConfirmUserPhone() {
     const userId = localStorage.getItem('user')
     let url = 'https://iaminpoint.herokuapp.com/confirm_phone/?code='+code+'&id='+userId+'&type=a'
 
-    // console.log(url)
 
     useEffect(() => {
         if (code.length>0 && codeValid) {
@@ -45,15 +43,13 @@ export default function ConfirmUserPhone() {
         //         console.log(error)
         //         alert(error)
         //     });
-
-
-// убрать потом
-        window.location.href='/after-r57ph7-page'
+        window.location.href='/company-page'
     }
 
     // обработчик поля code
     function codeHandler(event){
         let codeNumber = event.target.value
+        console.log(codeNumber)
         setCode(codeNumber)
         validateCode(codeNumber)
     }
@@ -93,7 +89,8 @@ export default function ConfirmUserPhone() {
                 submitHandler={submitHandler}
                 fieldError={fieldError}
                 codeHandler={codeHandler}
-                blurHandler={blurHandler}/>
+                blurHandler={blurHandler}
+                />
         </div>
     )
 }

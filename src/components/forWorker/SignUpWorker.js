@@ -6,6 +6,7 @@ import './styles1/slider.css'
 import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
 import './styles1/signUpWorker.css'
 import Loader from "../Loader";
+import RegButton from "../buttons/RegButton";
 
 export default function SignUpWorker() {
 
@@ -43,61 +44,70 @@ export default function SignUpWorker() {
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
+    const buttonText = 'Зарегистрироваться'
     //
     function submitHandler(event) {
         event.preventDefault()
         setFormHidden(true) // скрыли форму
         setLoading(true)    // начало загрузки
 
-        ymaps.geocode(address)
-            .then(result => {
-                const coordinates = result.geoObjects.get(0).geometry.getCoordinates()
-                // setCenter(coordin) // не меняем отцентровку карты, только получаем координаты адреса
-                setAddressCoords(coordinates)
-                const requestOptions = {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        first_name: firstName,
-                        last_name: lastName,
-                        phone: phone,
-                        email: email,
-                        password: password,
-                        address: address,
-                        x: coordinates[0],
-                        y: coordinates[1],
-                        radius: sliderValue
-                    })
-                };
-                console.log(requestOptions)
-                fetch('https://iaminpoint.herokuapp.com/register', requestOptions)
-                    .then(async response => {
-                        console.log(response)
-                        const  data = await response.json()
-                        console.log(response.status)
-                        if (response.status === 400) {
-                            setLoading(false)    // конец загрузки
-                            setFormHidden(false) // открыли форму
-                            setUser(null)
-                            setSignIn(false)
-                            setSignUp(false)
-                            alert(data.error)
-                        } else {
-                            setUser(data.id)
-                            setSignIn(!signIn)
-                            setSignUp(!signUp)
-                            setLoading(false)    // конец загрузки
-                            alert(data.msg)
-                            let stateObj = { foo: "reg/employees" }
-                            window.history.replaceState(stateObj, null, "/confirm/user-phone")
-                            window.location.href='/confirm/user-phone'
-                        }
-                    })
-                    .catch(error=>{
-                        console.log("Ошибка при регистрации пользователя!")
-                        console.log(error)
-                        setLoading(false)
-                    })
-            });
+        // ymaps.geocode(address)
+        //     .then(result => {
+        //         const coordinates = result.geoObjects.get(0).geometry.getCoordinates()
+        //         // setCenter(coordin) // не меняем отцентровку карты, только получаем координаты адреса
+        //         setAddressCoords(coordinates)
+        //         const requestOptions = {
+        //             method: 'POST',
+        //             body: JSON.stringify({
+        //                 first_name: firstName,
+        //                 last_name: lastName,
+        //                 phone: phone,
+        //                 email: email,
+        //                 password: password,
+        //                 address: address,
+        //                 x: coordinates[0],
+        //                 y: coordinates[1],
+        //                 radius: sliderValue
+        //             })
+        //         };
+        //         console.log(requestOptions)
+                // fetch('https://iaminpoint.herokuapp.com/register', requestOptions)
+                //     .then(async response => {
+                //         console.log(response)
+                //         const  data = await response.json()
+                //         console.log(response.status)
+                //         if (response.status === 400) {
+                //             setLoading(false)    // конец загрузки
+                //             setFormHidden(false) // открыли форму
+                //             setUser(null)
+                //             setSignIn(false)
+                //             setSignUp(false)
+                //             alert(data.error)
+                //         } else {
+                //             setUser(data.id)
+                //             setSignIn(!signIn)
+                //             setSignUp(!signUp)
+                //             setLoading(false)    // конец загрузки
+                //             alert(data.msg)
+                //             let stateObj = { foo: "reg/employees" }
+                //             window.history.replaceState(stateObj, null, "/confirm/user-phone")
+                //             window.location.href='/confirm/user-phone'
+                //         }
+                //     })
+                //     .catch(error=>{
+                //         console.log("Ошибка при регистрации пользователя!")
+                //         console.log(error)
+                //         setLoading(false)
+                //     })
+            // });
+
+
+
+        // убрать потом
+        setUser(5)
+        setSignIn(!signIn)
+        setSignUp(!signUp)
+        window.location.href='/confirm/user-phone'
     }
 
     useEffect(() => {
@@ -432,13 +442,13 @@ export default function SignUpWorker() {
                         </div>
 
                         <div style={{margin: "30px 0px 30px 0px"}} >
-                            <button className="reg-button"
-                                    onClick={submitHandler}
-                                    disabled={!formValid}
-                            >Зарегистрироваться</button>
+                            <RegButton
+                                subHandler={submitHandler}
+                                formValid={formValid}
+                                buttonText={buttonText}
+                            />
                         </div>
                     </div>
-
             </Container>
         </div>
     )

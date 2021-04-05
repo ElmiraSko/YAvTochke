@@ -13,11 +13,12 @@ import Carousel from 'react-elastic-carousel';
 import Item from "./Item";
 import Context from "../Context";
 
+
 export default function WorkerPage(props) {
 
-    // // для функции activeSearchWork
-    // const {setSearchWork} = useContext(Context)
-    // setSearchWork(true)
+    // для функции activeSearchWork
+    const {setSearchWork, searchWork} = useContext(Context)
+
 
     // для карусели, сколько элементов отображать в
     // зависимости от экрана, нужно потестить
@@ -156,7 +157,7 @@ export default function WorkerPage(props) {
 
     // при переходе на эту страницу, устанавливаем флаг - для соискателей,
     // чтоб в гл.меню выделялась нужная вкладка
-    useEffect(() => {props.isActive()}, [])
+    useEffect(() => {setSearchWork(true)}, [searchWork])
 
     return(
         <div>

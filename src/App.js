@@ -19,7 +19,7 @@ import AllEmployeesPage from "./components/employeesForCompany/AllEmployeesPage"
 import SignInWorker from "./components/forWorker/SignInWorker";
 import SignUpWorker from "./components/forWorker/SignUpWorker";
 import AtCompany from "./components/employeesForCompany/AtCompany";
-import ConfirmPhoneNumber from "./components/employeesForCompany/ConfirmPhoneNumber";
+import ConfirmCompanyPhone from "./components/employeesForCompany/ConfirmCompanyPhone";
 import VacanciesForMe from "./components/forWorker/VacancieForMe";
 import ConfirmUserPhone from "./components/forWorker/ConfirmUserPhone";
 import WelcomeWorker from "./components/forWorker/WelcomeWorker";
@@ -140,7 +140,7 @@ function App() {
                       <div style={{minHeight: "calc(100vh - 64px)"}}>
                           <Switch>
                               <Route exact path="/">
-                                  <SearchWork isActive={activeSearchWork} />
+                                  <SearchWork />
                               </Route>
                               <Route exact path="/employees">
                                   <SearchEmploees />
@@ -152,7 +152,7 @@ function App() {
                                   <SignUpCompany />
                               </Route>
                               <Route exact path="/confirm-745-phone">
-                                  <ConfirmPhoneNumber />
+                                  <ConfirmCompanyPhone />
                               </Route>
                               <Route exact path="/company-page">
                                   <AtCompany />

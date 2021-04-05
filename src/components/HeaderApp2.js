@@ -25,6 +25,7 @@ export default function HeaderApp2() {
         setSignUpCompany(false)
     }
     // === Добавляем стилевой класс - active2
+    // если выбрана страница соискателя
     function activeLink(searchWork) {
         return (searchWork ? 'active2': '');
     }

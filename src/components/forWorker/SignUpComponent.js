@@ -172,11 +172,7 @@ export default function SignUpComponent(props) {
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </Container>
-
-
     )
 }
