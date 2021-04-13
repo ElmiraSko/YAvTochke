@@ -109,13 +109,13 @@ export default function HeaderApp2() {
                                         <NavLink className="links f-s"
                                                  hidden={!company}
                                             // onClick={() => setSignIn(!signIn)}
-                                                 to={"/vacancies"}
+                                                 to={"/employer/vacancies"}
                                         > Объявления
                                         </NavLink>
                                         <NavLink className="links f-s"
                                                  hidden={!company}
                                             // onClick={() => setSignIn(!signIn)}
-                                                 to={"/personal-account/company"}
+                                                 to={"/employer/personal-account"}
                                         > Кабинет
                                         </NavLink>
                                         {/*<NavLink className="links f-s"*/}
@@ -127,6 +127,7 @@ export default function HeaderApp2() {
                                         <NavLink className="links f-s"
                                                  hidden={signInCompany}
                                                  to={"/auth/company"}
+                                                 // to={"/auth/employees"}
                                             // onClick={() => setSignUpCompany(!signUpCompany)}
                                         > Войти
                                         </NavLink>

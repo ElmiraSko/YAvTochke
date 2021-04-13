@@ -6,6 +6,7 @@ export default [
         requiredPosition: "Мерчендайзер",
         address: "Новокосинская, д. 14а",
         atPoint: "В точке",
+        work_type: "Полная занятость, Подработка"
     },
     {
         firstName: "Павел",
@@ -14,5 +15,6 @@ export default [
         currentPosition: "Продавец-кассир",
         address: "Новокосинская, д. 14а",
         atPoint: "В точке",
+        work_type: "Полная занятость"
     }
 ]

@@ -1,0 +1,22 @@
+.small-progress {
+    /*border:1px solid #f04d2d;*/
+    width: 200px;
+    height: 20px;
+    border-radius: 6px;
+    background: #ffffff;
+}
+.small-progress::-webkit-progress-bar {
+    width: 200px;
+    height: 20px;
+    border-radius: 6px;
+    background: #ffffff;
+    border:2px solid #f04d2d;
+}
+.small-progress::-webkit-progress-value {
+    border-radius: 3px;
+    background: #f04d2d;
+}
+.small-progress::-moz-progress-bar {
+    border-radius: 3px;
+    background: #f04d2d;
+}

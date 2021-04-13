@@ -36,8 +36,8 @@ export default function ConfirmUserPhone() {
         //             alert(data.msg)
         //             alert(data.error)
         //             let stateObj = { foo: "confirm/user-phone" }
-        //             window.history.replaceState(stateObj, null, "/after-r57ph7-page")
-        //             window.location.href='/after-r57ph7-page'
+        //             window.history.replaceState(stateObj, null, "/welcome/employees")
+        //             window.location.href='/welcome/employees'
         //         }
         //     })
         //     .catch(error=>{
@@ -48,7 +48,7 @@ export default function ConfirmUserPhone() {
 
 
 // убрать потом
-        window.location.href='/after-r57ph7-page'
+        window.location.href='/welcome/employees'
     }
 
     // обработчик поля code

@@ -1,11 +1,17 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Button, Container} from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import './styles2/Emploees.css';
 import Logo from "../../img/Logo.png";
 import CompanyDescription from './CompanyDescription'
-import AdItem from "../AdItem";
 import Ad from "./VacanciesText";
+import AdItemForCompany from "../AdItemForCompany";
+import addPhoto from "../../img/Add-a-photo.png";
+import Button from "@material-ui/core/Button";
+import SmallProgressBar from "../progressBar/SmallProgressBar";
+import vk2 from "../../img/vk-grey.png";
+import telegram3 from "../../img/telegram-red.png";
+import telegram2 from "../../img/telegram-grey.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,85 +25,122 @@ const companyInfo ={
 
 export default function CompanyPage() {
     const classes = useStyles();
+    const progressValue = '65'
 
     return(
         <div>
-            <Container  maxWidth="md" >
-                    <div style={{display: "flex", justifyContent: "flex-start",
-                        fontSize: "1.2rem",
-                        fontWeight: "600",}}>
+            <Container  maxWidth="lg" >
+                <div style={{display: "flex", justifyContent: "space-around",
+                    margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
 
-                        <div style={{width: "14rem", textAlign: "center"}}>
-                            <div>
-                                <img src={Logo} alt="logo"
-                                     style={{width: '3.0rem', padding: "30px 0 10px 0"}}/>
-                            </div>
-                            <div style={{margin: "auto"}}>
-                                Профиль <br/> заполнен на 30%
-                                <div  style={{ fontSize: "1.0rem",  paddingTop: "10px" }}>
-                                    <a href=" " style={{textDecoration: "none", color: "blue",}}>
-                                        Изменить пароль
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
+                        width: '30%',  position: 'relative', paddingBottom:'52px' }}>
 
-                        <div className="title" style={{ width: "500px",textAlign: "left" }}>
-                            OOO Рога и Копыта
-                            <div style={{display: "flex", justifyContent: "space-start",
-                                fontSize: "1.1rem",}}>
-                                <div style={{textAlign: "left", marginRight: "15px"}}>
-                                    Контакты <br />
-                                    Телефон:  <br />
-                                    Email:  <br />
-                                    Телеграм: <br />
-                                    VK:  <br />
-                                    Адрес:  <br />
+                        <div style={{ textAlign: "center",}}>
+                            <div style={{display: "flex",}}>
+                                <div style={{marginTop: '15px', backgroundColor: 'grey',
+                                    width: '6.0rem', height: '6.0rem', borderRadius: '50%',
+                                    marginLeft: '15px',  }}>
+                                    <img src={addPhoto} alt="logo"
+                                         style={{width: '2.0rem', marginTop: '30px'}}/>
                                 </div>
-                                <div style={{textAlign: "left"}}>
-                                    Изменить <br />
-                                    8 989 999 99 99  <br />
-                                    pochta@mail.ru  <br />
-                                    @rogakopita <br />
-                                    vk.com/id9999999  <br />
-                                    Новокосинская, д. 14а, офис 3  <br />
+                                <div style={{marginTop: '15px',
+                                    width: '14.0rem', height: '6.0rem',
+                                    marginLeft: '15px', }}>
+                                    <div style={{fontSize: '1.3rem', fontWeight: '500',
+                                        marginBottom: '10px',  marginTop: '5px'}}>
+                                        OOO "Хорошие люди"
+                                    </div>
+                                    <div style={{fontSize: '1.1rem', margin: '0'}}>
+                                        Профиль заполнен на
+                                    </div>
+                                    <div >
+                                        <SmallProgressBar value={progressValue}/>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div className="contacts-wrapper">
+                                <div className="contact-title">
+                                    КОНТАКТЫ
+                                </div>
+                                <div className="contact-content-wr">
+                                    <div style={{marginRight: '5px', }}>
+                                        <p id="contT" style={{fontWeight: '500'}}>
+                                            Телефон:
+                                        </p>
+                                        <p id="contT" style={{fontWeight: '500'}}>
+                                            E-mail:
+                                        </p>
+                                        <p id="telegram">
+                                            <img src={telegram2}
+                                                 alt="Иконка Telegram"
+                                                 style={{width: '25px', height: '25px',}} />
+                                        </p>
+                                        <p id="vk">
+                                            <img src={vk2}
+                                                 alt="Иконка VK"
+                                                 style={{width: '25px', height: '25px', }} />
+                                        </p>
+
+                                    </div>
+
+                                    <div>
+                                        <div style={{marginBottom: '10px'}}>
+                                            <p id="cont" >
+                                                +79056785432
+                                            </p>
+                                        </div>
+                                        <div style={{marginBottom: '10px'}}>
+                                            <p id="cont">
+                                                petr@mail.ru
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="absolute-button">
+                                <Button style={{background: '#f04d2d', color: 'white',}}
+                                        href='/personal-account/employees'
+                                >Изменить</Button>
                             </div>
                         </div>
                     </div>
-                <hr />
-            </Container>
 
-
-            <Container maxWidth="md">
-
-                <div style={{padding: "20px 0px 30px 0px", textAlign: "left", fontSize: "1.4rem",
-                    fontWeight: "600", }}> Описание компании
-                </div>
-                <CompanyDescription data = {companyInfo} />
-
-                <div style={{padding: "20px 0px 30px 0px", textAlign: "left", fontSize: "1.4rem",
-                    fontWeight: "600", }}> Объявления
-                </div>
-                <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
-                    <div>
-                        <div>
-                            <AdItem vacancy = {Ad[0]}/>
-                        </div>
-                        <div>
-                            <AdItem vacancy = {Ad[1]}/>
+                    <div className="right-side-wrapper-comp">
+                        <div className="details-title">
+                            ОПИСАНИЕ КОМПАНИИ
                         </div>
 
+                        <div className="details-wrapper2">
+                            <div style={{margin: '5px 0 20px 15px'}}>
+                                <CompanyDescription data = {companyInfo} />
+                            </div>
+                            <div style={{margin: '5px 0 20px 15px', textAlign: 'right'}}>
+                                Изменить
+                            </div>
+                        </div>
+                        <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
+                                fontWeight: "600", }}> Объявления
+                            </div>
+                            <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
+                                <div>
+                                    <div>
+                                        <AdItemForCompany vacancy = {Ad[0]}/>
+                                    </div>
+                                    <div>
+                                        <AdItemForCompany vacancy = {Ad[1]}/>
+                                    </div>
+
+                                </div>
+
+                            </div>
                     </div>
 
                 </div>
 
-
-
-
             </Container>
-
-
         </div>
     )
 }

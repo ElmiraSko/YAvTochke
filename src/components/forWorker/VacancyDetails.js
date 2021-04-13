@@ -21,11 +21,13 @@ export default function VacancyDetails() {
     const[vac, setVac] = useState(getVacancyById())
 
     // переход на обратный урл
-    let t = document.referrer // получили адрес с которого перешли
-    console.log(t)
+    let t = document.referrer // получили адрес с которого перешли, полный путь
+    console.log(t)            // http://localhost:3000/vacancies
     let m = new URL(t, t) // создали новый url
-    console.log(m.pathname)  //  вывод пути url-а
-    let url =m.pathname+ '#'+selectedVacancyId // урл для перехода на предыдущую страницу с использование якоря вакансии
+    let path = m.pathname
+    console.log(path)  //  вывод пути url-а,  /vacancies
+    console.log(path.startsWith('/vacancies')) // в зависимости откуда пришли, отображать кнопку Откликнуться или нет
+    let url = path + '#'+selectedVacancyId // урл для перехода на предыдущую страницу с использование якоря вакансии
 
 
     const v1 = {
@@ -106,7 +108,10 @@ export default function VacancyDetails() {
 
                     </div>
                     <div style={{textAlign: 'center'}}>
-                        <NavLink to={'/vacancy-details/company'} style={{textDecoration: 'none'}}>
+                        <NavLink
+                            to={`${path.startsWith('/employer') ? '/employer/personal-account':'/vacancy-details/company'}`}
+                            style={{textDecoration: 'none'}}>
+
                             <div>
                                 {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
                                 <img src={creon} alt="logo" style={{width: '4.0rem',
@@ -118,11 +123,13 @@ export default function VacancyDetails() {
                                 {/*{vacancy.companyName}*/}
                             </div>
                         </NavLink>
-
-                        <Button style={{margin: '15px 15px 15px 10px',
+                        {path.startsWith('/employer') ? '' :
+                            <Button style={{margin: '15px 15px 15px 10px',
                             background: '#f04d2d', color: 'white'}}
-                                href='my-responses'
+                                    href='my-responses'
                         >Откликнуться</Button>
+                        }
+
                     </div>
                 </div>
 
@@ -156,13 +163,14 @@ export default function VacancyDetails() {
                 <div style={{fontWeight: "400", fontSize: "1.1rem", margin: '10px 0 60px 0' }}>
                     {v1.idea}
                 </div>
+                {path.startsWith('/employer') ? '' :
                 <div style={{marginRight: "auto", marginLeft: "auto", padding: "10px 0 80px 0",
                     width: '6.0rem', height: "auto", }}>
                     <Button style={{backgroundColor: "#f04d2d", borderRadius: '10px',
                     color: "#fff", padding: "7px 12px" }}
                     // onClick={() => respond(vacancy.id)}
                     > Откликнуться</Button>
-                </div>
+                </div>  }
 
             </Container>
 

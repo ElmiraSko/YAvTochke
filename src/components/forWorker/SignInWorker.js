@@ -53,8 +53,8 @@ export default function SignInWorker() {
                     } else {
                         setLoading(false)
                         setUser(data.id)
-                        setSignIn(!signIn)
-                        setSignUp(!signUp)
+                        setSignIn(true)
+                        setSignUp(true)
                         let stateObj = { foo: "auth/employees" }
                         window.history.replaceState(stateObj, null, "/profile")
                         window.location.href='/profile'

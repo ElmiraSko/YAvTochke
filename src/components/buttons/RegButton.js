@@ -1,7 +1,7 @@
 import React from 'react';
 import './RegButton.css'
 
-export default function WelcomeWorker(props) {
+export default function RegButton(props) {
     return(
         <div style={{ margin: "15px 0px", }}>
         <button  className="reg-button"

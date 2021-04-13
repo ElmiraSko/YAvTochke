@@ -28,11 +28,12 @@
 #cn {
     margin-block-start: 0;
     margin-block-end: 0.5em;
-    /*font-size: 1.0rem;*/
+    font-size: 0.9rem;
 }
 .description-area {
     cursor: pointer;
     margin-right: 0.5rem;
+    width: 400px;
 }
 .desc {
     font-weight: 400;
@@ -47,7 +48,7 @@
     background-color: #f04d2d;
     border-radius: 5px;
     color: #fff;
-    margin: 10px 10px 5px 5px;
+    margin-top: 10px;
     outline: none;
     cursor: pointer;
     border-style:solid;
@@ -62,9 +63,25 @@
     border-color: #848c8e;
 }
 .vacancy-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
 }
+.red-button-text {
+    color: #f04d2d;
+    font-size: 1.0rem;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: white;
+    outline: none;
+}
+.red-button-text:active {
+    border: 0;
+    outline: none;
+}
+
 
 

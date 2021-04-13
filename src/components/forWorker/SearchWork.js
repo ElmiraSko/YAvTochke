@@ -12,12 +12,13 @@ import {NavLink} from "react-router-dom";
 import Carousel from 'react-elastic-carousel';
 import Item from "./Item";
 import Context from "../Context";
+import ButtonForAdItem from "../buttons/ButtonForAdItem";
 
 
 export default function WorkerPage(props) {
 
     // для функции activeSearchWork
-    const {setSearchWork, searchWork} = useContext(Context)
+    const {setSearchWork, searchWork, user} = useContext(Context)
 
 
     // для карусели, сколько элементов отображать в
@@ -128,6 +129,14 @@ export default function WorkerPage(props) {
         setAddress('')
     }
 
+    // // передача кнопки в компонент- вакансия
+    // const buttonForAdItem = (props) => {
+    //     return(
+    //         <button className={`sent-button ${props.responseSent(props.sent)} `}
+    //                 onClick={props.respond}
+    //         > {props.jobsButton}</button>
+    //     )
+    // }
     function findPlace() {
         let coords = []
         // {Адрес и радиус} отпраить на бэк, получить список адресов в указанном радиусе - data
@@ -141,6 +150,21 @@ export default function WorkerPage(props) {
 
         yMaps.geocode(address)
             .then(result => setCenter( result.geoObjects.get(0).geometry.getCoordinates()))
+
+        // var metro = new yMaps.Metro.Closest(new YMaps.GeoPoint(55.751574, 37.573856), { results : 3 } )
+        // // Обработчик успешного завершения
+        // yMaps.Events.observe(metro, metro.Events.Load, function (metro) {
+        //     if (metro.length()) {
+        //         metro.setStyle("default#greenSmallPoint");
+        //         yMaps.addOverlay(metro);
+        //     } else {
+        //         alert("Поблизости не найдено станций метро");
+        //     }
+        // });
+        //
+        // yMaps.Events.observe(metro, metro.Events.Fault, function (metro, error) {
+        //     alert("При выполнении запроса произошла ошибка: " + error);
+        // });
     }
 
     // для якорной ссылки
@@ -171,13 +195,12 @@ export default function WorkerPage(props) {
                         <SearchWorkSteps content={workerContent}/>
                     </div>
 
-                    <div className="search-work-reg-button-div">
+                    <div className="search-work-reg-button-div" hidden={user}>
                         <NavLink className="reg-button-navLink"
                                  to={"/reg/employees"}
                         > Регистрация
                         </NavLink>
                     </div>
-
                     <Carousel isRTL={true} breakPoints={breakPoints}>
                         {vacancies.map((c,index) => <Item content={c} key={index}/>)}
                     </Carousel>
@@ -208,7 +231,7 @@ export default function WorkerPage(props) {
                                 <AdItem vacancy = {Ad[0]} />
                             </div>
                             <div>
-                                <AdItem vacancy = {Ad[1]} />
+                                <AdItem vacancy = {Ad[1]}  />
                             </div>
                         </div>
                     </div>
@@ -281,7 +304,7 @@ export default function WorkerPage(props) {
                     </div>
                 </div>
 
-                <div className="search-work-wrapper">
+                <div className="search-work-wrapper" hidden={user}>
                     <div className="search-work-reg-button-div">
                         <NavLink className="reg-button-navLink"
                                  to={"/reg/employees"}

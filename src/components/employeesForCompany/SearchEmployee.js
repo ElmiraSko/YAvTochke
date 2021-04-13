@@ -7,11 +7,13 @@ import SearchWorkSteps from "../forWorker/SearchWorkSteps";
 import {NavLink} from "react-router-dom";
 import Carousel from "react-elastic-carousel";
 import Item from "../forWorker/Item";
-import AdItem from "../AdItem";
-import Ad from "./VacanciesText";
 import {Circle, Map, Placemark, YMaps} from "react-yandex-maps";
 import Content from './textForMainPageCompany';
 import Context from "../Context";
+import EmployeesItem from "./EmployeesItem";
+import EmplInfo from './EmployeesInfo'
+import Photo2 from "../../img/worker2.jpg";
+import Photo1 from "../../img/worker1.jpg";
 
 export default function SearchEmployee() {
     // контекст, чтоб проверить, авторизован работодатель или нет
@@ -28,7 +30,7 @@ export default function SearchEmployee() {
     // получили текст для главной страницы, шаг 1, 2, 3
     const content = Content
 
-    // здесь пересмотреть, может изменить или убрать лишние стайты
+    // здесь пересмотреть, может изменить или убрать лишние стэйты
     const [sliderValue, setSliderValue] = useState(5)
     const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
@@ -208,10 +210,10 @@ export default function SearchEmployee() {
                     <div className="vacancy-div">
                         <div>
                             <div>
-                                <AdItem vacancy = {Ad[0]}/>
+                                <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2} />
                             </div>
                             <div>
-                                <AdItem vacancy = {Ad[1]}/>
+                                <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1} />
                             </div>
                         </div>
                     </div>
@@ -284,7 +286,7 @@ export default function SearchEmployee() {
                     </div>
                 </div>
 
-                <div className="search-work-wrapper">
+                <div className="search-work-wrapper" hidden={company}>
                     <div className="search-work-reg-button-div">
                         <NavLink className="reg-button-navLink"
                                  to={"/reg/company"}

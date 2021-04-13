@@ -10,6 +10,7 @@
     height: auto;
     font-size: 1.1rem;
     font-weight: 500;
+    font-family: Arial, Tahoma, sans-serif;
     cursor: pointer;
 }
 .confirm-button {

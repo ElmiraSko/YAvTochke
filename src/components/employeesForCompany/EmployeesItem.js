@@ -1,7 +1,4 @@
 import React, {useState} from "react";
-import Logo from "../../img/Logo.png";
-import {Button} from "@material-ui/core";
-import PinDropRoundedIcon from '@material-ui/icons/PinDropRounded';
 import './styles2/EmployeesItem.css'
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
@@ -25,15 +22,15 @@ export default function EmployeesItem(props){
 
                 <div
                     // onClick={() => showDetails(vacancy.id)}
-                    className="description-area" >
+                    className="description" >
                     <h3 className="vacancy-title">
                         {info.requiredPosition}
                     </h3>
-                    <strong className="vacancy-price">
-                        {/*Текущая должность: {info.currentPosition}*/}
-                    </strong>
                     <p  className="desc">
                         Текущая должность: {info.currentPosition}
+                    </p>
+                    <p className="red-text">
+                        {info.work_type}
                     </p>
                     <div style={{display: "flex",}}>
                         <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
@@ -41,9 +38,9 @@ export default function EmployeesItem(props){
                     </div>
                 </div>
 
-                <div style={{textAlign: 'center', }}>
+                <div style={{textAlign: 'center', width: '30%'}}>
                     <div style={{borderRadius: '50%', }}>
-                    {/* Нужно будет добавить альтернативу для фото, еслифото нет  */}
+                    {/* Нужно будет добавить альтернативу для фото, если фото нет  */}
                     <img src={props.photo}
                          alt="logo" style={{width: '4.0rem',
                         padding: "10px 0 10px 0", borderRadius: '50%',}}/>

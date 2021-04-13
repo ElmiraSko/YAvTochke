@@ -111,7 +111,7 @@ export default function WorkerProfile() {
                             width: '6.0rem', height: '6.0rem', borderRadius: '50%',
                             marginLeft: 'auto', marginRight: 'auto', }}>
                             <img src={addPhoto} alt="logo"
-                                 style={{width: '5.0rem', marginTop: '10px'}}/>
+                                 style={{width: '2.0rem', marginTop: '30px'}}/>
                         </div>
 
                         <div style={{ fontSize: '1.6rem', fontWeight: '700',

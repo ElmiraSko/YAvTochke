@@ -5,6 +5,10 @@ import Context from "../Context";
 import Loader from "../Loader";
 import './styles2/signInCompany.css'
 import SignIn from "../SignIn";
+import telegram2 from "../../img/telegram-grey.png";
+import vk2 from "../../img/vk-grey.png";
+import facebook2 from "../../img/facebook-3-2.png";
+import {NavLink} from "react-router-dom";
 
 export default function SignInCompany() {
     // Контекст
@@ -58,8 +62,8 @@ export default function SignInCompany() {
         //             setLoading(false) // конец загрузки
         //
         //             let stateObj = { foo: "auth" }
-        //             window.history.replaceState(stateObj, null, "/user")
-        //             window.location.href='/user'
+        //             window.history.replaceState(stateObj, null, "/employer/personal-account")
+        //             window.location.href='/employer/personal-account'
         //         });
 
         setCompany("Company")
@@ -67,7 +71,7 @@ export default function SignInCompany() {
         setSignInCompany(!signInCompany)
         setSignUpCompany(!signUpCompany)
         setLoading(false) // конец загрузки
-        window.location.href='/personal-account/company'
+        window.location.href='/employer/personal-account'
         }
     // }
 
@@ -135,10 +139,13 @@ export default function SignInCompany() {
     console.log('Форма авторизации company')
 
     return (
-        <Container component="main" maxWidth="xs">
-            {loading && <Loader />}
+        <Container component="main" maxWidth="md">
+            <div className="div-louder">
+                {loading && <Loader />}
+            </div>
             <div className="wr">
-                <form noValidate autoComplete="off" hidden={formHidden} >
+                <form noValidate autoComplete="off" hidden={formHidden}
+                      style={{width: '360px', margin: 'auto'}}>
                     <Typography component="h1" variant="h5" align={"center"}>
                         Вход в личный кабинет
                     </Typography>
@@ -157,6 +164,41 @@ export default function SignInCompany() {
                     />
                 </form>
             </div>
+
+            <div hidden={formHidden} style={{fontSize: '1.0rem',
+                paddingBottom: "40px", height: 'auto', width: '600px', margin: 'auto',}}>
+                <div style={{textAlign: 'center'}}>
+                    Войти через соцсеть
+                </div>
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex', justifyContent: 'center'}} >
+                    <div >
+                        <img src={telegram2} alt="Иконка Telegram"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                    <div >
+                        <img src={vk2} alt="Иконка VK"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                    <div >
+                        <img src={facebook2} alt="Иконка FaceBook"
+                             style={{width: '40px', height: '40px', padding: '15px'}} />
+                    </div>
+                </div>
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex', fontWeight: '700',
+                    fontSize: '1.0rem',  justifyContent: 'space-around', }} >
+                    <div >
+                        Зарегистрироваться
+                    </div>
+                    <NavLink to={'/reg/employees'} style={{color: '#f04d2d', textDecoration: 'none'}}>
+                        как соискатель
+                    </NavLink>
+                    <NavLink to={'/reg/company'} style={{color: '#f04d2d', textDecoration: 'none'}}>
+                        как работодатель
+                    </NavLink>
+                </div>
+            </div>
+
+
         </Container>
     );
 }

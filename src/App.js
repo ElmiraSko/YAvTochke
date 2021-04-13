@@ -28,6 +28,8 @@ import VacancyDetails from "./components/forWorker/VacancyDetails";
 import Responses from "./components/forWorker/Responses";
 import VacancyCompany from "./components/forWorker/VacancyCompany";
 import NewVacancy from "./components/employeesForCompany/NewVacancy";
+import WelcomeEmployer from "./components/employeesForCompany/WelcomeEmployer";
+import ArchiveCompany from "./components/employeesForCompany/ArchiveCompany";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -154,10 +156,10 @@ function App() {
                               <Route exact path="/confirm-745-phone">
                                   <ConfirmCompanyPhone />
                               </Route>
-                              <Route exact path="/company-page">
-                                  <AtCompany />
+                              <Route exact path="/welcome-page">
+                                  <WelcomeEmployer />
                               </Route>
-                              <Route exact path="/vacancies">
+                              <Route exact path="/employer/vacancies">
                                   <VacanciesOfTheCompany />
                               </Route>
                               <Route exact path="/profiles">
@@ -166,9 +168,13 @@ function App() {
                               <Route exact path="/new-vacancy">
                                   <NewVacancy />
                               </Route>
-                              <Route exact path="/personal-account/company">
+                              <Route exact path="/employer/personal-account">
                                   <CompanyPage />
                               </Route>
+                              <Route exact path="/employer/archive-c">
+                                  <ArchiveCompany />
+                              </Route>
+
 
 
                               <Route exact path="/personal-account/employees">
@@ -189,7 +195,7 @@ function App() {
                               <Route exact path="/confirm/user-phone">
                                   <ConfirmUserPhone />
                               </Route>
-                              <Route exact path="/after-r57ph7-page">
+                              <Route exact path="/welcome/employees">
                                   <WelcomeWorker />
                               </Route>
                               <Route exact path="/vacancy-details">

@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import creon from "../img/creon-logo-1.png";
 import './styles/AdItem.css'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Context from "./Context";
@@ -10,10 +9,11 @@ export default function AdItem(props) {
     // надпись на кнопке, откликнулся соискатель или нет
     const [jobsButton, setJobsButton] = useState('Откликнуться')
     const [sent, setSent] = useState(false)
+
     // записали в переменную vacancy объект из props - vacancy - данные по вакансии из json
     const vacancy = props.vacancy
 
-    // меняем стили
+    // меняем стили: sent - состояние - отправлен отклик(true) или нет(false)
     function responseSent(sent) {
         return (sent ? 'sent-ok' : " ");
     }
@@ -32,7 +32,8 @@ export default function AdItem(props) {
 
     return(
             <div className="adItem-main" id = {vacancy.id}>
-                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}} >
+                <div style={{display: "flex", justifyContent: "space-between",
+                    margin: "0px 20px", }} >
 
                     <div onClick={() => showDetails(vacancy.id)} className="description-area" >
                         <h3 className="vacancy-title">
@@ -44,10 +45,6 @@ export default function AdItem(props) {
                         <p  className="desc">
                             {vacancy.desc}
                         </p>
-                        <div style={{display: "flex",}}>
-                            <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
-                            <div style={{ paddingTop: '10px'}}> {vacancy.point} </div>
-                        </div>
                     </div>
 
                     <div style={{textAlign: 'center', }}>
@@ -60,6 +57,16 @@ export default function AdItem(props) {
                         <h4 id="cn">
                             {vacancy.companyName}
                         </h4>
+
+                    </div>
+                </div>
+
+                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}}>
+                    <div style={{display: "flex",}}>
+                        <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
+                        <div style={{ paddingTop: '10px'}}> {vacancy.point} </div>
+                    </div>
+                    <div >
                         <button className={`sent-button ${responseSent(sent)} `}
                                 onClick={respond}
                         > {jobsButton}</button>

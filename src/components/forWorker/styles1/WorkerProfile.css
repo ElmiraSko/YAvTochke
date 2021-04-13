@@ -39,6 +39,10 @@ td {
     width: 60%;
     box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
 }
+.right-side-wrapper-comp {
+    width: 60%;
+    border: 2px solid rgba(132, 140, 142, 0.5);
+}
 .details-title {
     margin: 15px 0;
     font-weight: 700;
@@ -49,6 +53,13 @@ td {
     width: 90%;
     height: auto;
     border: 2px solid #e1e1e1;
+    padding-bottom: 30px;
+    margin: auto auto 15px;
+    font-weight: 500;
+}
+.details-wrapper2 {
+    width: 90%;
+    height: auto;
     padding-bottom: 30px;
     margin: auto auto 15px;
     font-weight: 500;

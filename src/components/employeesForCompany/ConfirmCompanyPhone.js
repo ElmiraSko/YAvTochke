@@ -43,7 +43,7 @@ export default function ConfirmCompanyPhone() {
         //         console.log(error)
         //         alert(error)
         //     });
-        window.location.href='/company-page'
+        window.location.href='/welcome-page'
     }
 
     // обработчик поля code

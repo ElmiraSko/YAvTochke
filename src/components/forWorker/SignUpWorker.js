@@ -105,8 +105,8 @@ export default function SignUpWorker() {
 
         // убрать потом
         setUser(5)
-        setSignIn(!signIn)
-        setSignUp(!signUp)
+        setSignIn(true)
+        setSignUp(true)
         window.location.href='/confirm/user-phone'
     }
 

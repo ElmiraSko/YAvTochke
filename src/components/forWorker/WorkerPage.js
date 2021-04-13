@@ -50,7 +50,9 @@ export default function WorkerPage() {
     const [phoneColor, setPhoneColor] = useState('#848c8e')
 
     // Состояние: вид работы: постоянная или подработка
-    const [workType, setWorkType] = useState('')
+    const [fullTime, setFullTime] = useState(false)
+    const [tempTime, setTempTime] = useState(false)
+
 
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
@@ -143,11 +145,14 @@ export default function WorkerPage() {
         setSelectedDate(event.target.value);
     };
 
-    // Функция выбора типа работы: Постоянная работа или Подработка
-    const workTypeHandler =(event) => {
-        setWorkType(event.target.value)
-        console.log(workType)
+    // Функция выбора типа работы: Постоянная работа и Подработка
+    const fullTimeHandler =(event) => {
+        setFullTime(event.target.checked)
     }
+    const tempTimeHandler =(event) => {
+        setTempTime(event.target.checked)
+    }
+
     // функция для бегунка
     function getFirstRadius() {
         const size = document.getElementById("radius1").value;
@@ -234,7 +239,7 @@ export default function WorkerPage() {
                                 width: '6.0rem', height: '6.0rem', borderRadius: '50%',
                             marginLeft: 'auto', marginRight: 'auto', cursor: 'pointer'}}>
                                 <img src={addPhoto} alt="logo"
-                                     style={{width: '5.0rem', marginTop: '10px'}}/>
+                                     style={{width: '2.0rem', marginTop: '30px'}}/>
                             </div>
 
                             <div style={{ fontSize: '1.6rem', fontWeight: '700',
@@ -272,9 +277,9 @@ export default function WorkerPage() {
 
                             <div style={{textAlign: "left", width: '240px', margin: 'auto', }}>
                                 <div>
-                                    <RedRadio
-                                        checked={workType === 'Постоянная работа'}
-                                        onChange={workTypeHandler}
+                                    <RedCheckbox
+                                        checked={fullTime}
+                                        onChange={fullTimeHandler}
                                         value="Постоянная работа"
                                         // name="radio-button-demo"
                                         // inputProps={{ 'aria-label': 'C' }}
@@ -283,9 +288,9 @@ export default function WorkerPage() {
                                     /> Постоянная работа
                                 </div>
                                 <div>
-                                    <RedRadio
-                                        checked={workType === 'Подработка'}
-                                        onChange={workTypeHandler}
+                                    <RedCheckbox
+                                        checked={tempTime}
+                                        onChange={tempTimeHandler}
                                         value="Подработка"
                                         // name="radio-button-demo"
                                         // inputProps={{ 'aria-label': 'C' }}
@@ -358,7 +363,7 @@ export default function WorkerPage() {
                                         <div style={{marginBottom: '9px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'telegram'}
-                                                      onChange={setPreferredVK}
+                                                      onChange={setPreferredTelegram}
                                                       value={preferredCommunication}
                                                       disableRipple={true}
                                                 // name="radio-button-demo"
@@ -368,7 +373,7 @@ export default function WorkerPage() {
                                         <div style={{marginBottom: '10px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'vk'}
-                                                      onChange={setPreferredTelegram}
+                                                      onChange={setPreferredVK}
                                                       value={preferredCommunication}
                                                       disableRipple={true}
                                                 // name="radio-button-demo"
