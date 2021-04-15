@@ -30,6 +30,10 @@ import VacancyCompany from "./components/forWorker/VacancyCompany";
 import NewVacancy from "./components/employeesForCompany/NewVacancy";
 import WelcomeEmployer from "./components/employeesForCompany/WelcomeEmployer";
 import ArchiveCompany from "./components/employeesForCompany/ArchiveCompany";
+import CompanyBalance from "./components/employeesForCompany/CompanyBalance";
+import CompanyStatistics from "./components/employeesForCompany/CompanyStatistics";
+import CompanyDocuments from "./components/employeesForCompany/CompanyDocuments";
+import CompanySettings from "./components/employeesForCompany/CompanySettings";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -170,6 +174,18 @@ function App() {
                               </Route>
                               <Route exact path="/employer/personal-account">
                                   <CompanyPage />
+                              </Route>
+                              <Route exact path="/employer/personal-account/balance">
+                                  <CompanyBalance />
+                              </Route>
+                              <Route exact path="/employer/personal-account/statistics">
+                                  <CompanyStatistics />
+                              </Route>
+                              <Route exact path="/employer/personal-account/documents">
+                                  <CompanyDocuments />
+                              </Route>
+                              <Route exact path="/employer/personal-account/settings">
+                                  <CompanySettings />
                               </Route>
                               <Route exact path="/employer/archive-c">
                                   <ArchiveCompany />

@@ -41,6 +41,10 @@ td {
 }
 .right-side-wrapper-comp {
     width: 60%;
+    /*border: 2px solid rgba(132, 140, 142, 0.5);*/
+}
+.company {
+    width: 100%;
     border: 2px solid rgba(132, 140, 142, 0.5);
 }
 .details-title {
@@ -84,11 +88,13 @@ td {
     display: flex;
     justify-content: space-around;
 }
-#cont {
+.cont {
     width: 13rem;
+    margin-bottom: 10px;
 }
-#contT {
+.contT {
     width: 6rem;
+    font-weight: 500;
 }
 .absolute-button {
     position: absolute;

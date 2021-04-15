@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Container} from "@material-ui/core";
 import './styles2/Emploees.css';
-import Logo from "../../img/Logo.png";
 import CompanyDescription from './CompanyDescription'
 import Ad from "./VacanciesText";
 import AdItemForCompany from "../AdItemForCompany";
@@ -10,8 +9,8 @@ import addPhoto from "../../img/Add-a-photo.png";
 import Button from "@material-ui/core/Button";
 import SmallProgressBar from "../progressBar/SmallProgressBar";
 import vk2 from "../../img/vk-grey.png";
-import telegram3 from "../../img/telegram-red.png";
 import telegram2 from "../../img/telegram-grey.png";
+import {NavLink} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,12 +18,83 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const companyInfo ={
-    companyDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-}
 
 export default function CompanyPage() {
     const classes = useStyles();
+    const [companyInfo, setCompanyInfo] = useState({
+        companyDescription: `«RATOS GROUP» предоставит Вам весь спектр мерчендайзинговых услуг,
+     а главное, уверенность в том, что Вашей продукцией будет заниматься команда
+      специалистов, действительно способных качественно осуществить поддержку торговой марки
+    
+Мы не берёмся за заказы, если хотя бы на 1% сомневаемся в своих силах!
+ Наша философия состоит в том, что сотрудничество должно быть качественным, 
+ а не количественным.`,
+        contacts: {
+            email: "pochta@mail.ru",
+            phone: "+79056785432",
+            telegram: "",
+            vk: "",
+        }
+    })
+
+    //Можно получить всю инфу сразу одним большим json-ном,
+    // но иметь возможность делать запрос в базу на обновление отделько контактов, отдельно описание компании и т.д.
+    const [contactsButtonTitle, setContactsButtonTitle] = useState("Изменить")
+    const [contactsFormHidden, setContactsFormHidden] = useState(true)
+    const [contactsInfoHidden, setContactsInfoHidden] = useState(false)
+
+    // для обновления телефона
+    const [editPhone, setEditPhone] = useState("")
+    function editPhoneChange(event) {
+        setEditPhone(event.target.value)
+    }
+    // для обновления почты
+    const [editEmail, setEditEmail] = useState("")
+    function editEmailChange(event) {
+        setEditEmail(event.target.value)
+    }
+    // для обновления почты
+    const [editTelegram, setEditTelegram] = useState("")
+    function editTelegramChange(event) {
+        setEditTelegram(event.target.value)
+    }
+    // для обновления почты
+    const [editVk, setEditVk] = useState("")
+    function editVkChange(event) {
+        setEditVk(event.target.value)
+    }
+
+
+    function changeContacts() {
+        if(contactsButtonTitle === "Изменить") {
+            setContactsButtonTitle("Сохранить")
+            setContactsFormHidden(false)
+            setContactsInfoHidden(true)
+            setEditPhone(companyInfo.contacts.phone)
+            setEditEmail(companyInfo.contacts.email)
+            setEditTelegram(companyInfo.contacts.telegram)
+            setEditVk(companyInfo.contacts.vk)
+        }else {
+            setContactsButtonTitle("Изменить")
+            setContactsFormHidden(true)
+            setContactsInfoHidden(false)
+            setCompanyInfo(prevState => {
+                return {
+                    ...prevState,
+                    contacts: {
+                        email: editEmail,
+                        phone: editPhone,
+                        telegram: editTelegram,
+                        vk: editVk,
+                    }
+                }
+            })
+        }
+
+    }
+
+
+
     const progressValue = '65'
 
     return(
@@ -66,10 +136,10 @@ export default function CompanyPage() {
                                 </div>
                                 <div className="contact-content-wr">
                                     <div style={{marginRight: '5px', }}>
-                                        <p id="contT" style={{fontWeight: '500'}}>
+                                        <p className="contT">
                                             Телефон:
                                         </p>
-                                        <p id="contT" style={{fontWeight: '500'}}>
+                                        <p className="contT">
                                             E-mail:
                                         </p>
                                         <p id="telegram">
@@ -82,45 +152,143 @@ export default function CompanyPage() {
                                                  alt="Иконка VK"
                                                  style={{width: '25px', height: '25px', }} />
                                         </p>
-
                                     </div>
 
-                                    <div>
-                                        <div style={{marginBottom: '10px'}}>
-                                            <p id="cont" >
-                                                +79056785432
-                                            </p>
+                                    <div hidden={contactsInfoHidden}>
+                                        <p className="cont">
+                                            {companyInfo.contacts.phone}
+                                        </p>
+                                        <p className="cont">
+                                            {companyInfo.contacts.email}
+                                        </p>
+                                        <p className="cont">
+                                            {companyInfo.contacts.telegram}
+                                        </p>
+                                        <p className="cont">
+                                            {companyInfo.contacts.vk}
+                                        </p>
+                                    </div>
+                                    <div hidden={contactsFormHidden}>
+                                        <div className="cont">
+                                            <input  type="tel"
+                                                    value={editPhone}
+                                                    onChange={editPhoneChange}
+                                                    style={{width: '96%'}}
+                                            />
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
-                                            <p id="cont">
-                                                petr@mail.ru
-                                            </p>
+                                        <div className="cont">
+                                            <input type="email"
+                                                   value={editEmail}
+                                                   onChange={editEmailChange}
+                                                   style={{width: '96%'}}
+                                            />
+                                        </div>
+                                        <div className="cont">
+                                            <input type="text"
+                                                   value={editTelegram}
+                                                   onChange={editTelegramChange}
+                                                   style={{width: '96%'}}
+                                            />
+                                        </div>
+                                        <div className="cont">
+                                            <input type="text"
+                                                   value={editVk}
+                                                   onChange={editVkChange}
+                                                   style={{width: '96%'}}
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="absolute-button">
+                            <div >
                                 <Button style={{background: '#f04d2d', color: 'white',}}
-                                        href='/personal-account/employees'
-                                >Изменить</Button>
+                                        onClick={changeContacts}
+                                >{contactsButtonTitle}</Button>
                             </div>
+
+                            <div style={{marginTop: '20px',
+                                width: '20.0rem', height: '12.0rem', marginLeft: 'auto', marginRight: 'auto',
+                            border: '1px solid #505350', fontSize: '1.1rem',}}>
+                                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px',}}>
+                                    <span className="material-icons">
+                                    account_balance_wallet
+                                </span>
+                                    <span style={{marginLeft: '10px', color: '#505350', fontWeight: '500',}}>
+                                        Баланс компании
+                                    </span>
+                                </div>
+                                <div style={{textAlign: 'left', marginLeft: '30px',}}>
+                                    <p>
+                                        Остаток пакета на текущее время:
+                                    </p>
+                                    <p>
+                                        Объявления: 15 Анкеты: 6
+                                    </p>
+                                    <p>
+                                        Администратор аккаунта: Иванова Л.П.
+                                    </p>
+                                    <div style={{textAlign: 'center', }}>
+                                        <NavLink to={"/employer/personal-account/balance"}
+                                                 style={{color: '#f04d2d',
+                                            textDecoration: 'none', fontWeight: '500',}}>
+                                            Подробнее
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div style={{marginTop: '25px',}}>
+                                    <NavLink to={"/employer/personal-account/documents"}
+                                             style={{color: '#505350',
+                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
+                                        Бухгалтерские документы
+                                    </NavLink>
+                                </div>
+                                <div style={{marginTop: '15px',}}>
+                                    <NavLink to={"/employer/personal-account/settings"}
+                                             style={{color: '#505350',
+                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
+                                        Пользовательские настройки
+                                    </NavLink>
+                                </div>
+                                <div style={{marginTop: '15px',}}>
+                                    <NavLink to={"/employer/personal-account/statistics"}
+                                             style={{color: '#505350',
+                                                 textDecoration: 'none',
+                                                 fontWeight: '500',
+                                                 }}>
+                                        Посмотреть статистику
+                                    </NavLink>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
+
+
                     <div className="right-side-wrapper-comp">
-                        <div className="details-title">
-                            ОПИСАНИЕ КОМПАНИИ
+                        <div className="company">
+                            <div className="details-title">
+                                ОПИСАНИЕ КОМПАНИИ
+                            </div>
+
+                            <div className="details-wrapper2">
+                                <div style={{margin: '5px 0 20px 15px'}} >
+                                    <CompanyDescription
+                                        data = {companyInfo}
+                                    />
+                                </div>
+                                <div style={{margin: '5px 0 10px 15px', textAlign: 'right',
+                                cursor: 'pointer', }}>
+                                    Изменить
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="details-wrapper2">
-                            <div style={{margin: '5px 0 20px 15px'}}>
-                                <CompanyDescription data = {companyInfo} />
-                            </div>
-                            <div style={{margin: '5px 0 20px 15px', textAlign: 'right'}}>
-                                Изменить
-                            </div>
-                        </div>
                         <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
                                 fontWeight: "600", }}> Объявления
                             </div>
@@ -137,6 +305,8 @@ export default function CompanyPage() {
 
                             </div>
                     </div>
+
+
 
                 </div>
 
