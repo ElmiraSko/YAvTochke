@@ -1,17 +1,15 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /*font-family: -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen', 'Segoe UI',*/
+  /*'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+  /*  sans-serif;*/
+  font-family:'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
   color: #505350;
-  font-size: 62.5%;
-}
-.flex-between {
-  display: flex;
-  justify-content: space-between;
+  /*font-size: 62.5%;*/
+  font-size: 14px;
 }
 
 code {
@@ -22,10 +20,9 @@ code {
 .input-field {
   width: 100%;
   height: 25px;
-  font-size: 0.9rem;
+  font-size: 16px;
+  line-height: 21px;
   border-radius: 5px;
-  /*padding-left: 7px;*/
-
   border-color: #848c8e;
   outline: none;
   border-style:solid;
@@ -71,11 +68,18 @@ code {
   width: 90px;
 }
 p {
-  font-size: 1.0rem;
+  font-size: 14px;
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
 h1, h2, h3 {
   text-transform: uppercase;
 }
-
+.flex-space-around {
+  display: flex;
+  justify-content: space-around;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}

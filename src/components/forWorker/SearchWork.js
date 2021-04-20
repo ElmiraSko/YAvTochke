@@ -12,7 +12,6 @@ import {NavLink} from "react-router-dom";
 import Carousel from 'react-elastic-carousel';
 import Item from "./Item";
 import Context from "../Context";
-import ButtonForAdItem from "../buttons/ButtonForAdItem";
 
 
 export default function WorkerPage(props) {
@@ -204,6 +203,7 @@ export default function WorkerPage(props) {
                     <Carousel isRTL={true} breakPoints={breakPoints}>
                         {vacancies.map((c,index) => <Item content={c} key={index}/>)}
                     </Carousel>
+
                     {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}
 
                     <div className="pre-search-text">

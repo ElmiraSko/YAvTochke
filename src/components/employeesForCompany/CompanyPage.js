@@ -5,12 +5,11 @@ import './styles2/Emploees.css';
 import CompanyDescription from './CompanyDescription'
 import Ad from "./VacanciesText";
 import AdItemForCompany from "../AdItemForCompany";
-import addPhoto from "../../img/Add-a-photo.png";
 import Button from "@material-ui/core/Button";
-import SmallProgressBar from "../progressBar/SmallProgressBar";
 import vk2 from "../../img/vk-grey.png";
 import telegram2 from "../../img/telegram-grey.png";
 import {NavLink} from "react-router-dom";
+import CompanyPagePhotoPlace from "../companyPagePhotoPlace/CompanyPagePhotoPlace";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,9 +17,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 export default function CompanyPage() {
     const classes = useStyles();
+
+    const[companyName, setCompanyName] = useState('OOO "Хорошие люди"')
+
     const [companyInfo, setCompanyInfo] = useState({
         companyDescription: `«RATOS GROUP» предоставит Вам весь спектр мерчендайзинговых услуг,
      а главное, уверенность в том, что Вашей продукцией будет заниматься команда
@@ -90,7 +91,6 @@ export default function CompanyPage() {
                 }
             })
         }
-
     }
 
 
@@ -107,28 +107,7 @@ export default function CompanyPage() {
                         width: '30%',  position: 'relative', paddingBottom:'52px' }}>
 
                         <div style={{ textAlign: "center",}}>
-                            <div style={{display: "flex",}}>
-                                <div style={{marginTop: '15px', backgroundColor: 'grey',
-                                    width: '6.0rem', height: '6.0rem', borderRadius: '50%',
-                                    marginLeft: '15px',  }}>
-                                    <img src={addPhoto} alt="logo"
-                                         style={{width: '2.0rem', marginTop: '30px'}}/>
-                                </div>
-                                <div style={{marginTop: '15px',
-                                    width: '14.0rem', height: '6.0rem',
-                                    marginLeft: '15px', }}>
-                                    <div style={{fontSize: '1.3rem', fontWeight: '500',
-                                        marginBottom: '10px',  marginTop: '5px'}}>
-                                        OOO "Хорошие люди"
-                                    </div>
-                                    <div style={{fontSize: '1.1rem', margin: '0'}}>
-                                        Профиль заполнен на
-                                    </div>
-                                    <div >
-                                        <SmallProgressBar value={progressValue}/>
-                                    </div>
-                                </div>
-                            </div>
+                            <CompanyPagePhotoPlace progressValue={progressValue} compName={companyName}/>
 
                             <div className="contacts-wrapper">
                                 <div className="contact-title">
@@ -238,7 +217,6 @@ export default function CompanyPage() {
                                 </div>
                             </div>
 
-
                             <div>
                                 <div style={{marginTop: '25px',}}>
                                     <NavLink to={"/employer/personal-account/documents"}
@@ -264,7 +242,6 @@ export default function CompanyPage() {
                                     </NavLink>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
@@ -275,7 +252,6 @@ export default function CompanyPage() {
                             <div className="details-title">
                                 ОПИСАНИЕ КОМПАНИИ
                             </div>
-
                             <div className="details-wrapper2">
                                 <div style={{margin: '5px 0 20px 15px'}} >
                                     <CompanyDescription

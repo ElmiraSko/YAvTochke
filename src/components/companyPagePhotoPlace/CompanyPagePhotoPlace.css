@@ -1,0 +1,28 @@
+.wrapper_ {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+.photo_wrap_ {
+    margin-top: 15px;
+    background-color: grey;
+    width: 6.0rem;
+    height: 6.0rem;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+.photo_right_place {
+    margin-top: 15px;
+    width: 14.0rem;
+    height: 6.0rem;
+    margin-left: 15px;
+}
+.comp-name_ {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.prof {
+    font-size: 1.1rem;
+    margin: 0;
+}

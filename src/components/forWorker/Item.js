@@ -3,6 +3,7 @@ import './styles1/Carousel.css'
 
 export default function Item(props) {
     const content = props.content
+
     return(
         <div className="carousel-vacancy-wrapper"
              key={content.index}

@@ -32,7 +32,9 @@ export default function SearchWorkSteps(props) {
                         <div className='steps-icons'>
                             <LocationOnIcon style={{width: '36px', height: '36px'}} />
                         </div>
-                        {content.grey1}
+                        <span style={{padding: '0 5px'}}>
+                            {content.grey1}
+                        </span>
                     </div>
                 </div>
                 <div className='one'>
@@ -40,7 +42,9 @@ export default function SearchWorkSteps(props) {
                         <div className='steps-icons'>
                             <EditIcon style={{width: '36px', height: '36px'}} />
                         </div>
-                        {content.grey2}
+                        <span style={{padding: '0 5px'}}>
+                            {content.grey2}
+                        </span>
                     </div>
                 </div>
                 <div className='one'>
@@ -48,7 +52,9 @@ export default function SearchWorkSteps(props) {
                         <div className='steps-icons'>
                             <EmailIcon  style={{width: '36px', height: '36px'}} />
                         </div>
-                        {content.grey3}
+                        <span style={{padding: '0 5px'}}>
+                            {content.grey3}
+                        </span>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,9 @@
     background: #ffffff;
     border-radius: 4px;
     padding-bottom: 5px;
+    font-size: 16px;
+    color: #0C1618;
+    line-height: 19px;
 }
 
 .steps-icons {
@@ -29,13 +32,18 @@
 }
 .title-steps {
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .wr-stp {
     display: flex;
     justify-content: space-around;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 16px;
+    line-height: 19px;
     color: #f04d2d;
 }
 .wr-stp-div {
@@ -44,8 +52,10 @@
 }
 .how-title {
     text-transform: uppercase;
-    margin: 15px 0 15px 0;
-    font-size: 1.1rem;
+    margin: 20px 0 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
 }
 .how-wrapper {
     display: flex;

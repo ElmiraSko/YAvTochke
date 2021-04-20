@@ -1,16 +1,15 @@
 import React from 'react';
-import './RegButton.css'
-import {Button} from "@material-ui/core";
+import './SimpleButton.css'
+import {NavLink} from "react-router-dom";
 
 export default function SimpleButton(props) {
     return(
         <div style={{ margin: "15px 0px", }}>
-            <Button style={{backgroundColor: "#f04d2d", width: '150px',
-                color: "white", margin: "10px 10px 10px 5px", }}
-                     href={props.url}
+            <NavLink className='button_body'
+                     to={props.url}
             >
                 {props.buttonText}
-            </Button>
+            </NavLink>
         </div>
     )
 }

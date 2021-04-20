@@ -13,7 +13,7 @@ import telegram3 from "../../img/telegram-red.png";
 import vk2 from "../../img/vk-grey.png";
 import vk3 from "../../img/vk-red.png"
 
-export default function Responses(){
+export default function VacancyCompany(){
 
     //предпочтительный способ связи: mail или phone
     const [preferredCommunication, setPreferredCommunication] = useState('')

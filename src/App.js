@@ -34,6 +34,7 @@ import CompanyBalance from "./components/employeesForCompany/CompanyBalance";
 import CompanyStatistics from "./components/employeesForCompany/CompanyStatistics";
 import CompanyDocuments from "./components/employeesForCompany/CompanyDocuments";
 import CompanySettings from "./components/employeesForCompany/CompanySettings";
+import Pay from "./components/Pay";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -189,6 +190,9 @@ function App() {
                               </Route>
                               <Route exact path="/employer/archive-c">
                                   <ArchiveCompany />
+                              </Route>
+                              <Route exact path="/pay_by_card">
+                                  <Pay />
                               </Route>
 
 
