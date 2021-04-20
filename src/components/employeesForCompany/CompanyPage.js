@@ -10,6 +10,7 @@ import vk2 from "../../img/vk-grey.png";
 import telegram2 from "../../img/telegram-grey.png";
 import {NavLink} from "react-router-dom";
 import CompanyPagePhotoPlace from "../companyPagePhotoPlace/CompanyPagePhotoPlace";
+import CompanyBalanceComponent from "../companyBalanceComponent/CompanyBalanceComponent";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -96,15 +97,17 @@ export default function CompanyPage() {
 
 
     const progressValue = '65'
+    const ads = '5'
+    const profiles = '6'
 
     return(
         <div>
             <Container  maxWidth="lg" >
                 <div style={{display: "flex", justifyContent: "space-around",
-                    margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
+                    margin: "30px 0px", height: "auto",  fontSize: "14px", }}>
 
                     <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%',  position: 'relative', paddingBottom:'52px' }}>
+                        width: '30%',  position: 'relative', paddingBottom:'50px' }}>
 
                         <div style={{ textAlign: "center",}}>
                             <CompanyPagePhotoPlace progressValue={progressValue} compName={companyName}/>
@@ -113,7 +116,7 @@ export default function CompanyPage() {
                                 <div className="contact-title">
                                     КОНТАКТЫ
                                 </div>
-                                <div className="contact-content-wr">
+                                <div className="flex-space-around">
                                     <div style={{marginRight: '5px', }}>
                                         <p className="contT">
                                             Телефон:
@@ -181,67 +184,12 @@ export default function CompanyPage() {
                             </div>
 
                             <div >
-                                <Button style={{background: '#f04d2d', color: 'white',}}
+                                <button className="red-button_"
                                         onClick={changeContacts}
-                                >{contactsButtonTitle}</Button>
+                                >{contactsButtonTitle}</button>
                             </div>
+                            <CompanyBalanceComponent ads={ads} profiles={profiles}/>
 
-                            <div style={{marginTop: '20px',
-                                width: '20.0rem', height: '12.0rem', marginLeft: 'auto', marginRight: 'auto',
-                            border: '1px solid #505350', fontSize: '1.1rem',}}>
-                                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px',}}>
-                                    <span className="material-icons">
-                                    account_balance_wallet
-                                </span>
-                                    <span style={{marginLeft: '10px', color: '#505350', fontWeight: '500',}}>
-                                        Баланс компании
-                                    </span>
-                                </div>
-                                <div style={{textAlign: 'left', marginLeft: '30px',}}>
-                                    <p>
-                                        Остаток пакета на текущее время:
-                                    </p>
-                                    <p>
-                                        Объявления: 15 Анкеты: 6
-                                    </p>
-                                    <p>
-                                        Администратор аккаунта: Иванова Л.П.
-                                    </p>
-                                    <div style={{textAlign: 'center', }}>
-                                        <NavLink to={"/employer/personal-account/balance"}
-                                                 style={{color: '#f04d2d',
-                                            textDecoration: 'none', fontWeight: '500',}}>
-                                            Подробнее
-                                        </NavLink>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div style={{marginTop: '25px',}}>
-                                    <NavLink to={"/employer/personal-account/documents"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
-                                        Бухгалтерские документы
-                                    </NavLink>
-                                </div>
-                                <div style={{marginTop: '15px',}}>
-                                    <NavLink to={"/employer/personal-account/settings"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
-                                        Пользовательские настройки
-                                    </NavLink>
-                                </div>
-                                <div style={{marginTop: '15px',}}>
-                                    <NavLink to={"/employer/personal-account/statistics"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none',
-                                                 fontWeight: '500',
-                                                 }}>
-                                        Посмотреть статистику
-                                    </NavLink>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -253,20 +201,19 @@ export default function CompanyPage() {
                                 ОПИСАНИЕ КОМПАНИИ
                             </div>
                             <div className="details-wrapper2">
-                                <div style={{margin: '5px 0 20px 15px'}} >
+                                <div style={{margin: '5px 0'}} >
                                     <CompanyDescription
                                         data = {companyInfo}
                                     />
                                 </div>
                                 <div style={{margin: '5px 0 10px 15px', textAlign: 'right',
-                                cursor: 'pointer', }}>
+                                cursor: 'pointer', fontSize: '12px', color: '#848C8E', }}>
                                     Изменить
                                 </div>
                             </div>
                         </div>
 
-                        <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                                fontWeight: "600", }}> Объявления
+                        <div  className="details-title"> Объявления
                             </div>
                             <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
                                 <div>
@@ -281,9 +228,6 @@ export default function CompanyPage() {
 
                             </div>
                     </div>
-
-
-
                 </div>
 
             </Container>

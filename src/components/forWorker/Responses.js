@@ -9,7 +9,7 @@ export default function Responses(){
             <div style={{padding: "20px 0px 30px 0px", textTransform: 'uppercase',
                 textAlign: "center", fontSize: "1.2rem",
                 fontWeight: "600", }}>
-                Мои отклики
+                Ваши отклики
             </div>
 
             <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>

@@ -4,25 +4,27 @@
 }
 .photo_wrap_ {
     margin-top: 15px;
-    background-color: grey;
-    width: 6.0rem;
-    height: 6.0rem;
+    margin-bottom: 15px;
+    background-color: #848C8E;
+    width: 132px;
+    height: 132px;
     border-radius: 50%;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 .photo_right_place {
     margin-top: 15px;
-    width: 14.0rem;
-    height: 6.0rem;
-    margin-left: 15px;
+    width: 198px;
+    height: 81px;
 }
 .comp-name_ {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 .prof {
-    font-size: 1.1rem;
-    margin: 0;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 10px;
 }

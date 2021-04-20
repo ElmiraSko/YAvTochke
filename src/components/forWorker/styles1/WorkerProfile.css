@@ -45,13 +45,17 @@ td {
 }
 .company {
     width: 100%;
-    border: 2px solid rgba(132, 140, 142, 0.5);
+    border: 1px solid #848C8E;
 }
 .details-title {
     margin: 15px 0;
-    font-weight: 700;
-    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
     text-align: center;
+    color: #505350;
 }
 .details-wrapper {
     width: 90%;
@@ -64,7 +68,6 @@ td {
 .details-wrapper2 {
     width: 90%;
     height: auto;
-    padding-bottom: 30px;
     margin: auto auto 15px;
     font-weight: 500;
 }
@@ -79,7 +82,7 @@ td {
     margin: auto;
 }
 .contact-title {
-    font-weight: 700;
+    font-weight: 500;
     width: 100%;
     margin: 25px 0;
     text-align: center;
@@ -90,10 +93,11 @@ td {
 }
 .cont {
     width: 13rem;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 }
 .contT {
     width: 6rem;
+    margin-bottom: 17px;
     font-weight: 500;
 }
 .absolute-button {

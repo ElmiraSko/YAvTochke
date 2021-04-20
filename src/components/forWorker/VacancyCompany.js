@@ -6,7 +6,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import AdItem from "../AdItem";
 import Ad from "../employeesForCompany/VacanciesText";
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import ClearIcon from '@material-ui/icons/Clear';
 import {NavLink} from "react-router-dom";
 import telegram2 from "../../img/telegram-grey.png";
 import telegram3 from "../../img/telegram-red.png";
@@ -67,17 +67,19 @@ export default function VacancyCompany(){
         <Container  maxWidth="lg" >
             <div  style={{textAlign: 'right', margin: '1em 0 0.5em 0'}}>
                 <NavLink to='/vacancy-details' style={{color: '#505350'}}>
-                    <HighlightOffIcon />
+                    <ClearIcon />
                 </NavLink>
             </div>
 
-            <div style={{display: "flex", justifyContent: "space-between", margin: '0.5em 0 4em 0'}}>
+            <div style={{display: "flex", justifyContent: "space-between", margin: '0.5em 0 2em 0'}}>
 
                 <div style={{boxShadow: '0 0 3px 3px rgba(80, 83, 80, 0.5)',
                     width: '30%', textAlign: 'center'}}>
                     <img src={HorL} alt="logo" style={{width: '7.0rem',
                         padding: "15px 0 10px 0", }}/>
-                    <h2>
+                    <h2 style={{fontStyle: 'normal', fontWeight: 'bold',
+                        fontSize: '16px',
+                        lineHeight: '19px' }}>
                         {/*{vacancy.companyName}*/} ООО "Хорошие люди"
                     </h2>
                     <p>
@@ -111,7 +113,11 @@ export default function VacancyCompany(){
                         </IconButton>
                     </div>
 
-                    <h2>Контакты</h2>
+                    <div style={{fontStyle: 'normal', fontWeight: '500',
+                        fontSize: '14px', lineHeight: '20px', textTransform: 'uppercase' }}>
+                        Контакты
+                    </div>
+
                     <div style={{display: "flex", justifyContent: "space-around", margin: '0 0  30px 0'}}>
                         <section style={{textAlign: 'left', width: "70px"}}>
                             <p>Телефон:</p>
@@ -126,11 +132,14 @@ export default function VacancyCompany(){
                     </div>
 
                 </div>
-                <div style={{border: '2px solid #848c8e', width: '65%', }}>
-                    <div style={{textAlign: 'center' }}>
-                        <h1>О компании</h1>
+                <div style={{border: '1px solid #848c8e', width: '65%', }}>
+                    <div style={{textAlign: 'center' , paddingTop:'40px'}}>
+                        <h1 style={{fontStyle: 'normal', fontWeight: 'bold',
+                            fontSize: '16px',
+                            lineHeight: '19px' }}>О компании</h1>
                     </div>
-                    <div style={{padding: '15px 30px', fontWeight: '600',}}>
+                    <div style={{padding: '15px 30px', fontWeight: 'normal',
+                        fontStyle: 'normal', fontSize: '16px', color: '#0C1618', }}>
                         <p>
                             Рекламное БТЛ-агентство «Хорошие люди» специализируется на
                             комплексе маркетинговых мероприятий, направленных на прямой контакт
@@ -150,7 +159,10 @@ export default function VacancyCompany(){
                 </div>
             </div>
             <div style={{textAlign: 'center',  margin: '0 0  60px 0'}}>
-                <h1>Объявления</h1>
+                <h1 style={{fontWeight: 'bold', margin: '0 0  30px 0',
+                    fontStyle: 'normal', fontSize: '16px', lineHeight: '19px' }}>
+                    Объявления
+                </h1>
                 <AdItem vacancy = {Ad[0]}/>
             </div>
         </Container>

@@ -9,7 +9,7 @@ export default function CompanyPagePhotoPlace(props) {
         <div className="wrapper_">
             <div className="photo_wrap_">
                 <img src={addPhoto} alt="logo"
-                     style={{width: '2.0rem', marginTop: '30px'}}/>
+                     style={{width: '2rem', marginTop: '50px'}}/>
             </div>
 
             <div className="photo_right_place">

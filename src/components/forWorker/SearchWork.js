@@ -184,7 +184,7 @@ export default function WorkerPage(props) {
 
     return(
         <div>
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
                 <div className="search-work-wrapper">
                     <div className="search-work-img">
                         <div>

@@ -8,8 +8,9 @@ import '../forWorker/styles1/WorkerProfile.css'
 import withStyles from "@material-ui/core/styles/withStyles";
 import Checkbox from "@material-ui/core/Checkbox";
 import ClearIcon from '@material-ui/icons/Clear';
-import LiveHelpIcon from '@material-ui/icons/LiveHelp';
-import SimpleButton from "../buttons/SimpleButton";
+import CompanyBalanceComponent from "../companyBalanceComponent/CompanyBalanceComponent";
+import plus from '../../img/plus.png'
+import minus from '../../img/minus.png'
 
 export default function CompanyBalance() {
 
@@ -18,6 +19,9 @@ export default function CompanyBalance() {
 
     // получили процент заполненности профиля
     const progressValue = '65'
+    const ads = '5'
+    const profiles = '6'
+
     const [companyInfo, setCompanyInfo] = useState({
         companyDescription: `«RATOS GROUP» предоставит Вам весь спектр мерчендайзинговых услуг,
      а главное, уверенность в том, что Вашей продукцией будет заниматься команда
@@ -50,10 +54,10 @@ export default function CompanyBalance() {
         <div>
             <Container  maxWidth="lg" >
                 <div style={{display: "flex", justifyContent: "space-around",
-                    margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
+                    margin: "30px 0px", height: "auto",  fontSize: "14px", }}>
 
                     <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%',  position: 'relative', paddingBottom:'52px' }}>
+                        width: '30%',  position: 'relative', paddingBottom:'50px' }}>
 
                         <div style={{ textAlign: "center",}}>
                             <CompanyPagePhotoPlace progressValue={progressValue} compName={companyName}/>
@@ -111,66 +115,9 @@ export default function CompanyBalance() {
                             {/*    >{contactsButtonTitle}</Button>*/}
                             {/*</div>*/}
 
-                            <div style={{marginTop: '20px',
-                                width: '20.0rem', height: '12.0rem', marginLeft: 'auto', marginRight: 'auto',
-                                border: '1px solid #505350', fontSize: '1.1rem',}}>
-                                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px',}}>
-                                    <span className="material-icons">
-                                    account_balance_wallet
-                                </span>
-                                    <span style={{marginLeft: '10px', color: '#505350', fontWeight: '500',}}>
-                                        Баланс компании
-                                    </span>
-                                </div>
-                                <div style={{textAlign: 'left', marginLeft: '30px',}}>
-                                    <p>
-                                        Остаток пакета на текущее время:
-                                    </p>
-                                    <p>
-                                        Объявления: 15 Анкеты: 6
-                                    </p>
-                                    <p>
-                                        Администратор аккаунта: Иванова Л.П.
-                                    </p>
-                                    <div style={{textAlign: 'center', }}>
-                                        <NavLink to={"/employer/personal-account/balance"}
-                                                 style={{color: '#f04d2d',
-                                                     textDecoration: 'none', fontWeight: '500',}}>
-                                            Подробнее
-                                        </NavLink>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div style={{marginTop: '25px',}}>
-                                    <NavLink to={"/employer/personal-account/documents"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
-                                        Бухгалтерские документы
-                                    </NavLink>
-                                </div>
-                                <div style={{marginTop: '15px',}}>
-                                    <NavLink to={"/employer/personal-account/settings"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
-                                        Пользовательские настройки
-                                    </NavLink>
-                                </div>
-                                <div style={{marginTop: '15px',}}>
-                                    <NavLink to={"/employer/personal-account/statistics"}
-                                             style={{color: '#505350',
-                                                 textDecoration: 'none',
-                                                 fontWeight: '500',
-                                             }}>
-                                        Посмотреть статистику
-                                    </NavLink>
-                                </div>
-                            </div>
+                            <CompanyBalanceComponent ads={ads} profiles={profiles}/>
                         </div>
                     </div>
-
-
 
                     <div className="right-side-wrapper-company-balance">
                             <div className="flex-between margin_B">
@@ -196,7 +143,7 @@ export default function CompanyBalance() {
                                     <div className="bold_">
                                         Остаток на текущее время
                                     </div>
-                                    <div className="bold_ red-text this_link">
+                                    <div className="red-text this_link f_14">
                                         История заказов
                                     </div>
                                 </div>
@@ -224,54 +171,54 @@ export default function CompanyBalance() {
                                         <tbody>
                                             <tr>
                                                 <td className="td_comp_L">Объявления</td>
-                                                <td className="td_comp bold_">
-                                                    5
-                                                </td>
-                                                <td className="td_comp bold_">50</td>
-                                                <td className="td_comp bold_">100</td>
-                                                <td className="td_comp bold_">
+                                                <td className="td_comp bold_ f_16">5 </td>
+                                                <td className="td_comp bold_ f_16">50</td>
+                                                <td className="td_comp bold_ f_16" >100</td>
+                                                <td className="td_comp bold_ f_16">
                                                     <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}}>
-                                                            remove_circle_outline
-                                                        </span>
-                                                        <span className="margin_L_R_7 width-td">
+                                                         <img src={minus} alt="Minus"
+                                                              style={{width: '30px', height: '30px',}} />
+                                                        <span className="margin_L_R_7 width-td margin_T">
                                                             5
                                                         </span>
-                                                        <span className="material-icons"
-                                                              style={{color: '#848c8e'}}>
-                                                            control_point
-                                                        </span>
+                                                        <img src={plus} alt="Plus"
+                                                             style={{width: '30px', height: '30px',}} />
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td className="td_comp_L">Анкеты</td>
-                                                <td className="td_comp bold_">5</td>
-                                                <td className="td_comp bold_">50</td>
-                                                <td className="td_comp bold_">100</td>
-                                                <td className="td_comp bold_ ">
+                                                <td className="td_comp bold_ f_16">5</td>
+                                                <td className="td_comp bold_ f_16">50</td>
+                                                <td className="td_comp bold_ f_16">100</td>
+                                                <td className="td_comp bold_ f_16">
                                                     <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}} >
-                                                            remove_circle_outline
-                                                        </span>
-                                                        <span className="margin_L_R_7 width-td">
+                                                        {/* <span className="material-icons"*/}
+                                                        {/*       style={{color: '#848c8e',*/}
+                                                        {/*           cursor: 'pointer', }} >*/}
+                                                        {/*    remove_circle_outline*/}
+                                                        {/*</span>*/}
+                                                        <img src={minus} alt="Minus"
+                                                             style={{width: '30px', height: '30px',}} />
+                                                        <span className="margin_L_R_7 width-td margin_T">
                                                             15
                                                         </span>
-                                                        <span className="material-icons"
-                                                              style={{color: '#848c8e'}} >
-                                                            control_point
-                                                        </span>
+                                                        {/*<span className="material-icons"*/}
+                                                        {/*      style={{color: '#848c8e',*/}
+                                                        {/*          cursor: 'pointer', }} >*/}
+                                                        {/*    control_point*/}
+                                                        {/*</span>*/}
+                                                        <img src={plus} alt="Plus"
+                                                             style={{width: '30px', height: '30px',}} />
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td className="td_comp_L">Цена</td>
-                                                <td className="td_comp bold_">3000</td>
-                                                <td className="td_comp bold_">5000</td>
-                                                <td className="td_comp bold_">25000</td>
-                                                <td className="td_comp bold_">50000</td>
+                                                <td className="td_comp bold_ f_16">3000</td>
+                                                <td className="td_comp bold_ f_16">5000</td>
+                                                <td className="td_comp bold_ f_16">25000</td>
+                                                <td className="td_comp bold_ f_16">50000</td>
                                             </tr>
                                             <tr>
                                                 <td className="td_comp hidden_">2</td>
@@ -327,11 +274,11 @@ export default function CompanyBalance() {
                                     </div>
 
                                     <div className="flex_ this_link">
-                                        <div className="bold_ red-text">
+                                        <div className="bold_ red-text margin_L_R f_14 padding_T">
                                             Заказать счет
                                         </div>
                                         <div>
-                                            <NavLink className="pay_by_card" to={'/pay_by_card'}>
+                                            <NavLink className="pay_by_card f_14" to={'/pay_by_card'}>
                                                 Оплатить картой
                                             </NavLink>
                                         </div>
@@ -344,103 +291,101 @@ export default function CompanyBalance() {
                                     </div>
                                     <table className="table-balance">
                                         <thead>
-                                        <tr>
-                                            <th className="td_comp th left-al" >Имя</th>
-                                            <th className="td_comp red-text th">Роль</th>
-                                            <th className="td_comp red-text th">Объявления</th>
-                                            <th className="td_comp red-text th">Анкета</th>
-                                            <th className="td_comp red-text th">Общий баланс</th>
+                                        <tr >
+                                            <th className="td_comp th left-al f_14" >Имя</th>
+                                            <th className="td_comp red-text th f_14">Роль</th>
+                                            <th className="td_comp red-text th f_14">Объявления</th>
+                                            <th className="td_comp red-text th f_14">Анкета</th>
+                                            <th className="td_comp red-text th f_14">Общий баланс</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td className="td_comp_L">Рекрутеров И.Р.</td>
-                                            <td className="td_comp bold_">Пользователь</td>
+                                            <td className="td_comp ">Пользователь</td>
                                             <td className="td_comp bold_">
-                                                <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}}>
+                                                <div className="flex_ f_16">
+                                                         <span className="material-icons this_link"
+                                                               style={{color: '#848c8e',}}>
                                                             remove_circle_outline
                                                         </span>
-                                                    <span className="margin_L_R_7 width-td">
+                                                    <span className="margin_L_R_7 width-td red-text">
                                                             5
                                                         </span>
-                                                    <span className="material-icons"
-                                                          style={{color: '#848c8e'}}>
+                                                    <span className="material-icons this_link"
+                                                          style={{color: '#848c8e',}}>
                                                             control_point
                                                         </span>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
-                                                <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}}>
+                                                <div className="flex_ f_16">
+                                                         <span className="material-icons this_link"
+                                                               style={{color: '#848c8e',}}>
                                                             remove_circle_outline
                                                         </span>
-                                                    <span className="margin_L_R_7 width-td">
+                                                    <span className="margin_L_R_7 width-td red-text">
                                                             2
                                                         </span>
-                                                    <span className="material-icons"
-                                                          style={{color: '#848c8e'}}>
+                                                    <span className="material-icons this_link"
+                                                          style={{color: '#848c8e',}}>
                                                             control_point
                                                         </span>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
-                                                <td className="td_comp">
-                                                    <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
-                                                        value=""
-                                                        disableRipple={true}
-                                                        style={{ backgroundColor: 'transparent' }}
-                                                    />
-                                                </td>
+                                                <RedCheckbox
+                                                    // checked={fullTime}
+                                                    // onChange={fullTimeHandler}
+                                                    value=""
+                                                    disableRipple={true}
+                                                    style={{ backgroundColor: 'transparent' }}
+                                                />
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <td className="td_comp_L">Иванова Л.П.</td>
-                                            <td className="td_comp bold_">Администратор</td>
+                                            <td className="td_comp ">Администратор</td>
                                             <td className="td_comp bold_">
-                                                <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}}>
+                                                <div className="flex_ f_16">
+                                                         <span className="material-icons this_link"
+                                                               style={{color: '#848c8e' }}>
                                                             remove_circle_outline
                                                         </span>
-                                                    <span className="margin_L_R_7 width-td">
+                                                    <span className="margin_L_R_7 width-td red-text ">
                                                             15
                                                         </span>
-                                                    <span className="material-icons"
-                                                          style={{color: '#848c8e'}}>
+                                                    <span className="material-icons this_link"
+                                                          style={{color: '#848c8e',}}>
                                                             control_point
                                                         </span>
                                                 </div>
                                             </td>
-                                            <td className="td_comp bold_">
-                                                <div className="flex_">
-                                                         <span className="material-icons"
-                                                               style={{color: '#848c8e'}}>
+                                            <td className="td_comp bold_ ">
+                                                <div className="flex_  f_16">
+                                                         <span className="material-icons this_link"
+                                                               style={{color: '#848c8e',}}>
                                                             remove_circle_outline
                                                         </span>
-                                                    <span className="margin_L_R_7 width-td">
+                                                    <span className="margin_L_R_7 width-td red-text ">
                                                             6
                                                         </span>
-                                                    <span className="material-icons"
-                                                          style={{color: '#848c8e'}}>
+                                                    <span className="material-icons this_link"
+                                                          style={{color: '#848c8e',}}>
                                                             control_point
                                                         </span>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
-                                                <td className="td_comp">
-                                                    <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
-                                                        value=""
-                                                        disableRipple={true}
-                                                        style={{ backgroundColor: 'transparent' }}
-                                                    />
-                                                </td>
+                                                <RedCheckbox
+                                                    // checked={fullTime}
+                                                    // onChange={fullTimeHandler}
+                                                    value=""
+                                                    disableRipple={true}
+                                                    style={{ backgroundColor: 'transparent' }}
+                                                />
+
                                             </td>
                                         </tr>
                                         </tbody>

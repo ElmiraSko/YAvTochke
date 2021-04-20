@@ -69,8 +69,8 @@ code {
 }
 p {
   font-size: 14px;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
+  /*margin-block-start: 0.5em;*/
+  /*margin-block-end: 0.5em;*/
 }
 h1, h2, h3 {
   text-transform: uppercase;
@@ -82,4 +82,16 @@ h1, h2, h3 {
 .flex-between {
   display: flex;
   justify-content: space-between;
+}
+.red-button_ {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  cursor: pointer;
+  background-color: #f04d2d;
+  border: 1px solid #f04d2d;
+  outline: none;
+  color: #ffffff;
+  border-radius: 5px;
 }

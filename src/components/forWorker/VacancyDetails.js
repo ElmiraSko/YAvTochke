@@ -6,7 +6,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Button from "@material-ui/core/Button";
 import creon from "../../img/creon-logo-1.png";
 import {NavLink} from "react-router-dom";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import ClearIcon from '@material-ui/icons/Clear';
 
 export default function VacancyDetails() {
     let vacancies = Ad
@@ -71,7 +71,7 @@ export default function VacancyDetails() {
             <Container maxWidth="md">
                 <div  style={{textAlign: 'right', margin: '1em 0 0 0'}}>
                     <NavLink to={url} style={{color: '#505350'}}>
-                        <HighlightOffIcon />
+                        <ClearIcon />
                     </NavLink>
                 </div>
                 {/*<h4>Детали вакансии - {selectedVacancyId}  </h4>*/}

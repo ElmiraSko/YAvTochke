@@ -6,7 +6,7 @@
 
     font-size: 14px;
     font-weight: 600;
-    max-width: 50rem;
+    max-width: 660px;
     min-width: 30rem;
     min-height: 180px;
     margin-bottom: 15px;
@@ -33,7 +33,7 @@
 .description-area {
     cursor: pointer;
     margin-right: 0.5rem;
-    width: 400px;
+    width: 450px;
 }
 .desc {
     font-weight: 400;
@@ -57,13 +57,20 @@
     line-height: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    width: 140px;
+    width: 120px;
     height: 30px;
 }
 .sent-ok {
-    font-size: 0.9rem;
+    font-size: 12px;
     background-color: #848c8e;
-    border-color: #848c8e;
+    border-color: #ffffff;
+    color: #505350;
+}
+.sent-ok {
+    font-size: 12px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #505350;
 }
 .vacancy-title {
     font-size: 16px;

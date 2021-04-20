@@ -30,6 +30,10 @@ export default function AdItem(props) {
         window.location.href="/vacancy-details"
     }
 
+    function cancel() {
+
+    }
+
     return(
             <div className="adItem-main" id = {vacancy.id}>
                 <div style={{display: "flex", justifyContent: "space-between",
@@ -71,6 +75,11 @@ export default function AdItem(props) {
                                 onClick={respond}
                         > {jobsButton}</button>
                     </div>
+                    {/*<div >*/}
+                    {/*    <button className=""*/}
+                    {/*            onClick={cancel}*/}
+                    {/*    > Отмена</button>*/}
+                    {/*</div>*/}
 
                 </div>
             </div>
