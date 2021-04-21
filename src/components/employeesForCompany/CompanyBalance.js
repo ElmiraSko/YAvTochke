@@ -99,41 +99,6 @@ export default function CompanyBalance() {
                                 <div className="contact-title">
                                     КОНТАКТЫ
                                 </div>
-                                {/*<div className="contact-content-wr">*/}
-                                {/*    <div style={{marginRight: '5px', }}>*/}
-                                {/*        <p className="contT">*/}
-                                {/*            Телефон:*/}
-                                {/*        </p>*/}
-                                {/*        <p className="contT">*/}
-                                {/*            E-mail:*/}
-                                {/*        </p>*/}
-                                {/*        <p id="telegram">*/}
-                                {/*            <img src={telegram2}*/}
-                                {/*                 alt="Иконка Telegram"*/}
-                                {/*                 style={{width: '25px', height: '25px',}} />*/}
-                                {/*        </p>*/}
-                                {/*        <p id="vk">*/}
-                                {/*            <img src={vk2}*/}
-                                {/*                 alt="Иконка VK"*/}
-                                {/*                 style={{width: '25px', height: '25px', }} />*/}
-                                {/*        </p>*/}
-                                {/*    </div>*/}
-
-                                {/*    <div>*/}
-                                {/*        /!*<p className="cont">*!/*/}
-                                {/*        /!*    {companyInfo.contacts.phone}*!/*/}
-                                {/*        /!*</p>*!/*/}
-                                {/*        /!*<p className="cont">*!/*/}
-                                {/*        /!*    {companyInfo.contacts.email}*!/*/}
-                                {/*        /!*</p>*!/*/}
-                                {/*        /!*<p className="cont">*!/*/}
-                                {/*        /!*    {companyInfo.contacts.telegram}*!/*/}
-                                {/*        /!*</p>*!/*/}
-                                {/*        /!*<p className="cont">*!/*/}
-                                {/*        /!*    {companyInfo.contacts.vk}*!/*/}
-                                {/*        /!*</p>*!/*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                                 <CompanyPageContactsPlace
                                     contPhone={companyInfo.contacts.phone}
                                     contEmail={companyInfo.contacts.email}
@@ -141,13 +106,6 @@ export default function CompanyBalance() {
                                     contVk={companyInfo.contacts.vk}
                                 />
                             </div>
-
-                            {/*<div >*/}
-                            {/*    <Button style={{background: '#f04d2d', color: 'white',}}*/}
-                            {/*            onClick={changeContacts}*/}
-                            {/*    >{contactsButtonTitle}</Button>*/}
-                            {/*</div>*/}
-
                             <CompanyBalanceComponent ads={ads} profiles={profiles}/>
                         </div>
                     </div>
@@ -438,11 +396,7 @@ export default function CompanyBalance() {
                             </div>
 
                 </div>
-
-
-
                 </div>
-
             </Container>
         </div>
     )

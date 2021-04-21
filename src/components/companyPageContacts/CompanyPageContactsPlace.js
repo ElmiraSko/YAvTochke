@@ -24,9 +24,7 @@ export default function CompanyPageContactsPlace(props) {
                 </p>
             </div>
 
-            <div
-                // hidden={contactsInfoHidden}
-            >
+            <div hidden={props.contactsInfoHidden}>
                 <p className="cont">
                     {props.contPhone}
                 </p>
@@ -40,38 +38,44 @@ export default function CompanyPageContactsPlace(props) {
                     {props.contVk}
                 </p>
             </div>
-            {/*<div */}
-            {/*    // hidden={contactsFormHidden}*/}
-            {/*>*/}
-            {/*    <div className="cont">*/}
-            {/*        <input  type="tel"*/}
-            {/*                value={editPhone}*/}
-            {/*                onChange={editPhoneChange}*/}
-            {/*                style={{width: '96%'}}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div className="cont">*/}
-            {/*        <input type="email"*/}
-            {/*               value={editEmail}*/}
-            {/*               onChange={editEmailChange}*/}
-            {/*               style={{width: '96%'}}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div className="cont">*/}
-            {/*        <input type="text"*/}
-            {/*               value={editTelegram}*/}
-            {/*               onChange={editTelegramChange}*/}
-            {/*               style={{width: '96%'}}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div className="cont">*/}
-            {/*        <input type="text"*/}
-            {/*               value={editVk}*/}
-            {/*               onChange={editVkChange}*/}
-            {/*               style={{width: '96%'}}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div
+                // hidden={props.contactsFormHidden}
+                hidden={true}
+            >
+                <div className="cont">
+                    <input  type="tel"
+                            value={props.editPhone}
+                            onChange={props.editPhoneChange}
+                            style={{width: '96%'}}
+                    />
+                </div>
+                <div className="cont">
+                    <input type="email"
+                           value={props.editEmail}
+                           onChange={props.editEmailChange}
+                           style={{width: '96%'}}
+                    />
+                </div>
+                <div className="cont">
+                    <input type="text"
+                           value={props.editTelegram}
+                           onChange={props.editTelegramChange}
+                           style={{width: '96%'}}
+                    />
+                </div>
+                <div className="cont">
+                    <input type="text"
+                           value={props.editVk}
+                           onChange={props.editVkChange}
+                           style={{width: '96%'}}
+                    />
+                </div>
+            </div>
+            <div hidden={true}>
+                <button className="red-button_ c-p-save-button"
+                        onClick={props.changeContacts}
+                >{props.contactsButtonTitle}</button>
+            </div>
         </div>
     )
 }

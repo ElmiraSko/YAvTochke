@@ -1,0 +1,19 @@
+.c-sett-select {
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.f-16 {
+    font-size: 16px;
+}
+.grey-title {
+    color: #505350;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+.margin_T_B {
+    margin: 15px 0;
+}
