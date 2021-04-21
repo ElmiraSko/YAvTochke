@@ -5,10 +5,8 @@ import './styles2/Emploees.css';
 import CompanyDescription from './CompanyDescription'
 import Ad from "./VacanciesText";
 import AdItemForCompany from "../AdItemForCompany";
-import Button from "@material-ui/core/Button";
 import vk2 from "../../img/vk-grey.png";
 import telegram2 from "../../img/telegram-grey.png";
-import {NavLink} from "react-router-dom";
 import CompanyPagePhotoPlace from "../companyPagePhotoPlace/CompanyPagePhotoPlace";
 import CompanyBalanceComponent from "../companyBalanceComponent/CompanyBalanceComponent";
 
@@ -184,7 +182,7 @@ export default function CompanyPage() {
                             </div>
 
                             <div >
-                                <button className="red-button_"
+                                <button className="red-button_ c-p-save-button"
                                         onClick={changeContacts}
                                 >{contactsButtonTitle}</button>
                             </div>

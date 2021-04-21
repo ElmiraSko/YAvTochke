@@ -47,7 +47,7 @@ export default function AdItemForCompany(props) {
                     </p>
                 </div>
 
-                <div style={{textAlign: 'center', width: '200px' }}>
+                <div style={{textAlign: 'center', width: '130px' }}>
                     {/*<div>*/}
                     {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
                     <img src={vacancy.imgUrl}

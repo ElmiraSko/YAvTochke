@@ -177,12 +177,12 @@ export default function CompanyBalance() {
                                                 <td className="td_comp bold_ f_16">
                                                     <div className="flex_">
                                                          <img src={minus} alt="Minus"
-                                                              style={{width: '30px', height: '30px',}} />
+                                                              className="plus-minus" />
                                                         <span className="margin_L_R_7 width-td margin_T">
                                                             5
                                                         </span>
                                                         <img src={plus} alt="Plus"
-                                                             style={{width: '30px', height: '30px',}} />
+                                                             className="plus-minus" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -199,7 +199,7 @@ export default function CompanyBalance() {
                                                         {/*    remove_circle_outline*/}
                                                         {/*</span>*/}
                                                         <img src={minus} alt="Minus"
-                                                             style={{width: '30px', height: '30px',}} />
+                                                             className="plus-minus" />
                                                         <span className="margin_L_R_7 width-td margin_T">
                                                             15
                                                         </span>
@@ -209,7 +209,7 @@ export default function CompanyBalance() {
                                                         {/*    control_point*/}
                                                         {/*</span>*/}
                                                         <img src={plus} alt="Plus"
-                                                             style={{width: '30px', height: '30px',}} />
+                                                             className="plus-minus" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -305,32 +305,24 @@ export default function CompanyBalance() {
                                             <td className="td_comp ">Пользователь</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
-                                                         <span className="material-icons this_link"
-                                                               style={{color: '#848c8e',}}>
-                                                            remove_circle_outline
-                                                        </span>
+                                                    <img src={minus} alt="Minus"
+                                                         className="plus-minus" />
                                                     <span className="margin_L_R_7 width-td red-text">
                                                             5
                                                         </span>
-                                                    <span className="material-icons this_link"
-                                                          style={{color: '#848c8e',}}>
-                                                            control_point
-                                                        </span>
+                                                    <img src={plus} alt="Plus"
+                                                         className="plus-minus" />
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
-                                                         <span className="material-icons this_link"
-                                                               style={{color: '#848c8e',}}>
-                                                            remove_circle_outline
-                                                        </span>
+                                                    <img src={minus} alt="Minus"
+                                                         className="plus-minus" />
                                                     <span className="margin_L_R_7 width-td red-text">
                                                             2
                                                         </span>
-                                                    <span className="material-icons this_link"
-                                                          style={{color: '#848c8e',}}>
-                                                            control_point
-                                                        </span>
+                                                    <img src={plus} alt="Plus"
+                                                         className="plus-minus" />
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
@@ -349,32 +341,24 @@ export default function CompanyBalance() {
                                             <td className="td_comp ">Администратор</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
-                                                         <span className="material-icons this_link"
-                                                               style={{color: '#848c8e' }}>
-                                                            remove_circle_outline
-                                                        </span>
+                                                    <img src={minus} alt="Minus"
+                                                         className="plus-minus" />
                                                     <span className="margin_L_R_7 width-td red-text ">
                                                             15
                                                         </span>
-                                                    <span className="material-icons this_link"
-                                                          style={{color: '#848c8e',}}>
-                                                            control_point
-                                                        </span>
+                                                    <img src={plus} alt="Plus"
+                                                         className="plus-minus" />
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_ ">
                                                 <div className="flex_  f_16">
-                                                         <span className="material-icons this_link"
-                                                               style={{color: '#848c8e',}}>
-                                                            remove_circle_outline
-                                                        </span>
+                                                    <img src={minus} alt="Minus"
+                                                         className="plus-minus" />
                                                     <span className="margin_L_R_7 width-td red-text ">
                                                             6
                                                         </span>
-                                                    <span className="material-icons this_link"
-                                                          style={{color: '#848c8e',}}>
-                                                            control_point
-                                                        </span>
+                                                    <img src={plus} alt="Plus"
+                                                         className="plus-minus" />
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">

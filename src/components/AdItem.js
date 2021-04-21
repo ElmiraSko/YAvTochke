@@ -8,7 +8,10 @@ export default function AdItem(props) {
     const {user, setSelectedVacancyId} = useContext(Context)
     // надпись на кнопке, откликнулся соискатель или нет
     const [jobsButton, setJobsButton] = useState('Откликнуться')
+    // откликнулся или нет
     const [sent, setSent] = useState(false)
+    // отмена отклика на вакансию, для отображения соответствующей кнопки
+    const [cancel, setCancel] = useState(true)
 
     // записали в переменную vacancy объект из props - vacancy - данные по вакансии из json
     const vacancy = props.vacancy
@@ -17,11 +20,13 @@ export default function AdItem(props) {
     function responseSent(sent) {
         return (sent ? 'sent-ok' : " ");
     }
+    // откликнуться на вакансию
     function respond() {
         if (user===null) {
             window.location.href="/auth/employees"
         } else {
             setSent(true)
+            setCancel(false)
             setJobsButton("Отклик отправлен")
         }
     }
@@ -30,8 +35,15 @@ export default function AdItem(props) {
         window.location.href="/vacancy-details"
     }
 
-    function cancel() {
-
+    // отмена отклика на вакансию
+    function cancelHandler() {
+        if (user===null) {
+            window.location.href="/auth/employees"
+        } else {
+            setSent(false)
+            setCancel(true)
+            setJobsButton("Откликнуться")
+        }
     }
 
     return(
@@ -66,20 +78,22 @@ export default function AdItem(props) {
                 </div>
 
                 <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}}>
-                    <div style={{display: "flex",}}>
+                    <div className="flex-only">
                         <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
                         <div style={{ paddingTop: '10px'}}> {vacancy.point} </div>
                     </div>
-                    <div >
-                        <button className={`sent-button ${responseSent(sent)} `}
-                                onClick={respond}
-                        > {jobsButton}</button>
+                    <div className="flex-center">
+                        <div >
+                            <button className={`sent-button ${responseSent(sent)} `}
+                                    onClick={respond}
+                            > {jobsButton}</button>
+                        </div>
+                        <div hidden={cancel}>
+                            <button className="cancel"
+                                    onClick={cancelHandler}
+                            > Отмена</button>
+                        </div>
                     </div>
-                    {/*<div >*/}
-                    {/*    <button className=""*/}
-                    {/*            onClick={cancel}*/}
-                    {/*    > Отмена</button>*/}
-                    {/*</div>*/}
 
                 </div>
             </div>

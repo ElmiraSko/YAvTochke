@@ -104,6 +104,8 @@
 .width-td {
     width: 25px;
 }
-.tr_space {
-
+.plus-minus {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }

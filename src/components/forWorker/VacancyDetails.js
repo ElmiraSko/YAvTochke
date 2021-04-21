@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import creon from "../../img/creon-logo-1.png";
 import {NavLink} from "react-router-dom";
 import ClearIcon from '@material-ui/icons/Clear';
+import './styles1/VacancyDetails.css'
 
 export default function VacancyDetails() {
     let vacancies = Ad
@@ -41,11 +42,12 @@ export default function VacancyDetails() {
         point: "В точке",
         work_type: "Подработка",
         work_schedule: "5/2 или 2/2",
-        full_description: `Работа рядом с домом - выбери супермаркет, ближе к твоему дому!
-                    Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц.
-                                Бесплатное корпоративное обучение, возможность профессионального роста.
-                                Накопление повышенного процента баллов по карте лояльности "Вместе", 
-                                скидка на кулинарию 30 процентов.`,
+        full_description: `Работа рядом с домом – выбери супермаркет, ближайший к твоему дому! 
+        График работы: 5/2, 2/2, также возможны частичная занятость и работа по совместительству; 
+        Оформление по ТК РФ с 1-го рабочего дня; Белая заработная плата, выплата 2 раза в месяц; 
+        Ежемесячные премии-надбавки; Премии и призы по результатам профессиональных и творческих конкурсов; 
+        Подарки детям на Новый год! Бесплатное профессиональное обучение; 
+        Накопление повышенного процента баллов по карте лояльности «Вместе», скидка на кулинарию 30%.`,
         duties: `Обслуживание покупателей на кассе и в торговом зале;
         Выкладка товара;
         Контроль сроков годности продуктов; Проверка наличия и соответствия ценников.`,
@@ -68,60 +70,56 @@ export default function VacancyDetails() {
 
     return(
         <div>
-            <Container maxWidth="md">
-                <div  style={{textAlign: 'right', margin: '1em 0 0 0'}}>
+            <Container maxWidth="lg">
+                <div  style={{textAlign: 'right', margin: '15px 10px 0 0'}}>
                     <NavLink to={url} style={{color: '#505350'}}>
                         <ClearIcon />
                     </NavLink>
                 </div>
-                {/*<h4>Детали вакансии - {selectedVacancyId}  </h4>*/}
+            </Container>
 
-                <div style={{display: "flex", justifyContent: "space-between",}}>
+            <Container maxWidth="md">
+                {/*<h4>Детали вакансии - {selectedVacancyId}  </h4>*/}
+                <div className="flex-between">
                     <div>
-                        <div style={{color: "#f04d2d", fontWeight: "700",
-                            fontSize: "1.6rem"}}>
+                        <div className="v-d-title">
                             {v1.title}
                         </div>
-                        <div style={{fontWeight: "700", margin: '10px 0',
-                            fontSize: "1.4rem"}}>
+                        <div className="v-d-price">
                             {v1.price} {v1.unit_of_time}
                         </div>
-                        <div style={{fontWeight: "600", margin: '10px 0 15px 0',
-                            fontSize: "1.1rem"}}>
+                        <div className="v-d-icon flex-only">
                             <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
-                            {v1.point}
+                            <div className="point-t">
+                                {v1.point}
+                            </div>
                         </div>
-                        <div style={{ margin: '10px 0',
-                            fontSize: "1.1rem"}}>
+                        <div className="v-d-address ">
                             {v1.address}
                         </div>
-                        <div style={{margin: '10px 0', color: "#f04d2d", fontWeight: "600",
-                            fontSize: "1.1rem"}}>
+                        <div className="v-d-work_type">
                             {v1.work_type}
                         </div>
-                        <div style={{fontWeight: "400", margin: '10px 0',
-                            fontSize: "1.2rem"}}>
-                            <span style={{margin: '0 10px 0 0', fontWeight: "600"}}>График работы:</span>
-
+                        <div className="v-d-work_sch">
+                            <span style={{marginRight: '10px',}}>
+                                График работы:
+                            </span>
                             {v1.work_schedule}
                         </div>
-
                     </div>
-                    <div style={{textAlign: 'center'}}>
+
+                    <div style={{textAlign: 'center', }}>
                         <NavLink
                             to={`${path.startsWith('/employer') ? '/employer/personal-account':'/vacancy-details/company'}`}
                             style={{textDecoration: 'none'}}>
-
                             <div>
-                                {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
-                                <img src={creon} alt="logo" style={{width: '4.0rem',
-                                    padding: "10px 0 10px 0", }}/>
+                                <img src={creon} alt="logo" style={{width: '120px',
+                                    }}/>
                             </div>
-
-                            <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#505350'}}>
-                                ООО "Рога и Копыта"
-                                {/*{vacancy.companyName}*/}
-                            </div>
+                            {/*<div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#505350'}}>*/}
+                            {/*    ООО "Рога и Копыта"*/}
+                            {/*    /!*{vacancy.companyName}*!/*/}
+                            {/*</div>*/}
                         </NavLink>
                         {path.startsWith('/employer') ? '' :
                             <Button style={{margin: '15px 15px 15px 10px',
@@ -129,47 +127,36 @@ export default function VacancyDetails() {
                                     href='my-responses'
                         >Откликнуться</Button>
                         }
-
                     </div>
                 </div>
 
 
 
 
-                <div style={{fontWeight: "600", margin: '10px 0', color: "#f04d2d",
-                    fontSize: "1.1rem"}}> Описание:
+                <div className="v-d-desc-t"> Описание:
                 </div>
-                <div style={{fontWeight: "400", fontSize: "1.1rem", }}>
+                <div className="v-d-desc">
                     {v1.full_description}
                 </div>
-
-                <div style={{fontWeight: "600", margin: '10px 0', color: "#f04d2d",
-                    fontSize: "1.1rem"}}> Обязанности:
+                <div className="v-d-desc-t"> Обязанности:
                 </div>
-                <div style={{fontWeight: "400", fontSize: "1.1rem", }}>
+                <div className='v-d-desc'>
                     {v1.duties}
                 </div>
-
-                <div style={{fontWeight: "600", margin: '10px 0', color: "#f04d2d",
-                    fontSize: "1.1rem"}}> Требования:
+                <div className="v-d-desc-t"> Требования:
                 </div>
-                <div style={{fontWeight: "400", fontSize: "1.1rem", }}>
+                <div className="v-d-desc">
                     {v1.requirements}
                 </div>
-
-                <div style={{fontWeight: "600", margin: '10px 0', color: "#f04d2d",
-                    fontSize: "1.1rem"}}>
-                </div>
-                <div style={{fontWeight: "400", fontSize: "1.1rem", margin: '10px 0 60px 0' }}>
+                <div className="v-d-desc">
                     {v1.idea}
                 </div>
+
                 {path.startsWith('/employer') ? '' :
-                <div style={{marginRight: "auto", marginLeft: "auto", padding: "10px 0 80px 0",
-                    width: '6.0rem', height: "auto", }}>
-                    <Button style={{backgroundColor: "#f04d2d", borderRadius: '10px',
-                    color: "#fff", padding: "7px 12px" }}
-                    // onClick={() => respond(vacancy.id)}
-                    > Откликнуться</Button>
+                <div className="v-d-button">
+                    <button className="v-d-b red-button_"
+                        // onClick={() => respond(vacancy.id)}
+                    > Откликнуться</button>
                 </div>  }
 
             </Container>

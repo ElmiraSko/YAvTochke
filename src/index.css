@@ -75,19 +75,26 @@ p {
 h1, h2, h3 {
   text-transform: uppercase;
 }
-.flex-space-around {
+
+.flex-only, .flex-space-around, .flex-between, .flex-center, .flex-start {
   display: flex;
+}
+.flex-space-around {
   justify-content: space-around;
 }
 .flex-between {
-  display: flex;
   justify-content: space-between;
 }
+.flex-center {
+  justify-content: center;
+}
+.flex-start {
+  justify-content: start;
+}
+
 .red-button_ {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 20px;
+  height: 32px;
+  width: auto;
   cursor: pointer;
   background-color: #f04d2d;
   border: 1px solid #f04d2d;

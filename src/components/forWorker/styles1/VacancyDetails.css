@@ -1,0 +1,76 @@
+.v-d-title {
+    color: #f04d2d;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+}
+.v-d-price {
+    color: #0C1618;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+.v-d-icon {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 15px;
+}
+.point-t {
+    margin-top: 12px;
+}
+.v-d-address {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 25px;
+}
+.v-d-work_type {
+    color: #f04d2d;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 15px;
+}
+.v-d-work_sch {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #505350;
+    margin-top: 15px;
+}
+.v-d-desc-t {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #F04D2D;
+    margin-top: 34px;
+}
+.v-d-desc {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 20px;
+}
+.v-d-button {
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 0 30px 0;
+    width: 6.0rem;
+    height: auto;
+}
+.v-d-b {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    padding: 0 15px;
+}
