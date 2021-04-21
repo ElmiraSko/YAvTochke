@@ -35,18 +35,7 @@ td {
 .td-r{
     width: 54%;
 }
-.right-side-wrapper {
-    width: 60%;
-    box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
-}
-.right-side-wrapper-comp {
-    width: 60%;
-    /*border: 2px solid rgba(132, 140, 142, 0.5);*/
-}
-.company {
-    width: 100%;
-    border: 1px solid #848C8E;
-}
+
 .details-title {
     margin: 15px 0;
     font-style: normal;

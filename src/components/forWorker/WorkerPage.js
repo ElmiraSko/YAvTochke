@@ -224,11 +224,8 @@ export default function WorkerPage() {
 
     return(
             <Container  maxWidth="lg" >
-                <div style={{display: "flex", justifyContent: "space-around",
-                    margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
-
-                    <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%', position: 'relative', paddingBottom:'52px'}}>
+                <div className="wrapper-personal-account">
+                    <div className="left-wrapper-personal-account">
 
                         <div style={{ textAlign: "center",}}>
                             {/*<div style={{marginTop: '15px'}}>*/}
@@ -413,7 +410,7 @@ export default function WorkerPage() {
                         </div>
                     </div>
 
-                    <div style={{width: '60%', boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',}}>
+                    <div className="right-wrapper-personal-account">
                         <div style={{margin: '10px 0', fontWeight: '700',
                             fontSize: '18px', textAlign: "center",}}>
                             АНКЕТА РАБОТНИКА

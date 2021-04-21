@@ -4,3 +4,11 @@
     font-size: 12px;
     line-height: 20px;
 }
+.c-page-mTop {
+    margin-top: 15px;
+    width: 100%;
+}
+.company {
+    width: 100%;
+    border: 1px solid #848C8E;
+}

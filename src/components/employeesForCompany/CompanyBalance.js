@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
 import CompanyPagePhotoPlace from "../companyPagePhotoPlace/CompanyPagePhotoPlace";
@@ -16,6 +16,13 @@ export default function CompanyBalance() {
 
     // получили название компании
     const[companyName, setCompanyName] = useState('OOO "Хорошие люди"')
+    // персональный выбор: количество объявлений и анкет
+    const[personalAds, setPersonalAds] = useState(0)
+    const[personalProfiles, setPersonalProfiles] = useState(0)
+    const[personalCost, setPersonalCost] = useState(0)
+    // стоимость объявлений и анкет
+    let adCost = 500
+    let profileCost = 1000
 
     // получили процент заполненности профиля
     const progressValue = '65'
@@ -48,16 +55,42 @@ export default function CompanyBalance() {
     })((props) =>
         <Checkbox color="default" {...props} />);
 
+    // увеличить количество объявлений
+    function incrementAds() {
+        setPersonalAds((prev) => {return prev + 1})
+    }
+    // уменьшить количество объявлений
+    function decrementAds() {
+        if (personalAds > 0) {
+            setPersonalAds(prev => prev - 1)
+        }
+    }
+    // увеличить количество анкет
+    function incrementProfiles() {
+        setPersonalProfiles((prev) => {return prev + 1})
+    }
+    // уменьшить количество анкет
+    function decrementProfiles() {
+        if (personalProfiles > 0) {
+            setPersonalProfiles(prev => prev - 1)
+        }
+    }
+    function calculateTheCost() {
+        let personCost = personalAds*adCost + personalProfiles*profileCost
+        setPersonalCost(personCost)
+    }
+    // при изменении количества объявлений и вакансий происходит пересчет стоимости
+    useEffect(() => {
+        calculateTheCost()
+    }, [personalAds, personalProfiles])
+
     let source = document.referrer // получили адрес с которого перешли, полный путь
     console.log(source)
     return(
         <div>
             <Container  maxWidth="lg" >
-                <div style={{display: "flex", justifyContent: "space-around",
-                    margin: "30px 0px", height: "auto",  fontSize: "14px", }}>
-
-                    <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%',  position: 'relative', paddingBottom:'50px' }}>
+                <div className="wrapper-personal-account">
+                    <div className="left-wrapper-personal-account">
 
                         <div style={{ textAlign: "center",}}>
                             <CompanyPagePhotoPlace progressValue={progressValue} compName={companyName}/>
@@ -176,13 +209,17 @@ export default function CompanyBalance() {
                                                 <td className="td_comp bold_ f_16" >100</td>
                                                 <td className="td_comp bold_ f_16">
                                                     <div className="flex_">
-                                                         <img src={minus} alt="Minus"
-                                                              className="plus-minus" />
+                                                        <div className="c-b-row" onClick={decrementAds}>
+                                                            <img src={minus} alt="Minus"
+                                                                 className="plus-minus" />
+                                                        </div>
                                                         <span className="margin_L_R_7 width-td margin_T">
-                                                            5
+                                                            {personalAds}
                                                         </span>
-                                                        <img src={plus} alt="Plus"
-                                                             className="plus-minus" />
+                                                        <div className="c-b-row" onClick={incrementAds}>
+                                                            <img src={plus} alt="Plus"
+                                                                 className="plus-minus" />
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -198,18 +235,22 @@ export default function CompanyBalance() {
                                                         {/*           cursor: 'pointer', }} >*/}
                                                         {/*    remove_circle_outline*/}
                                                         {/*</span>*/}
-                                                        <img src={minus} alt="Minus"
-                                                             className="plus-minus" />
+                                                        <div className="c-b-row" onClick={decrementProfiles}>
+                                                            <img src={minus} alt="Minus"
+                                                                 className="plus-minus" />
+                                                        </div>
                                                         <span className="margin_L_R_7 width-td margin_T">
-                                                            15
+                                                            {personalProfiles}
                                                         </span>
                                                         {/*<span className="material-icons"*/}
                                                         {/*      style={{color: '#848c8e',*/}
                                                         {/*          cursor: 'pointer', }} >*/}
                                                         {/*    control_point*/}
                                                         {/*</span>*/}
-                                                        <img src={plus} alt="Plus"
-                                                             className="plus-minus" />
+                                                        <div className="c-b-row" onClick={incrementProfiles}>
+                                                            <img src={plus} alt="Plus"
+                                                                 className="plus-minus" />
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -218,7 +259,7 @@ export default function CompanyBalance() {
                                                 <td className="td_comp bold_ f_16">3000</td>
                                                 <td className="td_comp bold_ f_16">5000</td>
                                                 <td className="td_comp bold_ f_16">25000</td>
-                                                <td className="td_comp bold_ f_16">50000</td>
+                                                <td className="td_comp bold_ f_16">{personalCost}</td>
                                             </tr>
                                             <tr>
                                                 <td className="td_comp hidden_">2</td>
@@ -305,22 +346,32 @@ export default function CompanyBalance() {
                                             <td className="td_comp ">Пользователь</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
-                                                    <img src={minus} alt="Minus"
-                                                         className="plus-minus" />
+                                                    <div className="c-b-row">
+                                                        <img src={minus} alt="Minus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                     <span className="margin_L_R_7 width-td red-text">
                                                             5
-                                                        </span>
-                                                    <img src={plus} alt="Plus"
-                                                         className="plus-minus" />
+                                                    </span>
+                                                    <div className="c-b-row">
+                                                        <img src={plus} alt="Plus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
+                                                    <div className="c-b-row">
+
+                                                    </div>
                                                     <img src={minus} alt="Minus"
                                                          className="plus-minus" />
                                                     <span className="margin_L_R_7 width-td red-text">
                                                             2
-                                                        </span>
+                                                    </span>
+                                                    <div className="c-b-row">
+
+                                                    </div>
                                                     <img src={plus} alt="Plus"
                                                          className="plus-minus" />
                                                 </div>
@@ -341,24 +392,32 @@ export default function CompanyBalance() {
                                             <td className="td_comp ">Администратор</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
-                                                    <img src={minus} alt="Minus"
-                                                         className="plus-minus" />
+                                                    <div className="c-b-row">
+                                                        <img src={minus} alt="Minus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                     <span className="margin_L_R_7 width-td red-text ">
                                                             15
-                                                        </span>
-                                                    <img src={plus} alt="Plus"
-                                                         className="plus-minus" />
+                                                    </span>
+                                                    <div className="c-b-row">
+                                                        <img src={plus} alt="Plus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_ ">
                                                 <div className="flex_  f_16">
-                                                    <img src={minus} alt="Minus"
-                                                         className="plus-minus" />
+                                                    <div className="c-b-row">
+                                                        <img src={minus} alt="Minus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                     <span className="margin_L_R_7 width-td red-text ">
                                                             6
-                                                        </span>
-                                                    <img src={plus} alt="Plus"
-                                                         className="plus-minus" />
+                                                    </span>
+                                                    <div className="c-b-row">
+                                                        <img src={plus} alt="Plus"
+                                                             className="plus-minus" />
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="td_comp bold_">

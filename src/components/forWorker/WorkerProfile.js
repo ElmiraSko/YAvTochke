@@ -5,7 +5,6 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerProfile.css'
-import Brightness1Icon from "@material-ui/icons/Brightness1";
 import Button from "@material-ui/core/Button";
 import addPhoto from "../../img/Add-a-photo.png";
 
@@ -169,7 +168,7 @@ export default function WorkerProfile() {
                     </div>
                 </div>
 
-                <div className="right-side-wrapper">
+                <div className="right-wrapper-personal-account">
                     <div className="details-title">
                         АНКЕТА РАБОТНИКА
                     </div>

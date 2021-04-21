@@ -102,3 +102,23 @@ h1, h2, h3 {
   color: #ffffff;
   border-radius: 5px;
 }
+.wrapper-personal-account {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0;
+  height: auto;
+  font-size: 14px;
+}
+.left-wrapper-personal-account {
+  box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
+  width: 30%;
+  position: relative;
+  padding-bottom: 50px;
+}
+.right-wrapper-personal-account-comp {
+  width: 62%;
+}
+.right-wrapper-personal-account {
+  width: 62%;
+  box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
+}

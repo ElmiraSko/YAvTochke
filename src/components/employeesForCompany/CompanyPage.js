@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Container} from "@material-ui/core";
 import './styles2/Emploees.css';
+import './styles2/CompanyPage.css'
 import CompanyDescription from './CompanyDescription'
 import Ad from "./VacanciesText";
 import AdItemForCompany from "../AdItemForCompany";
@@ -101,11 +102,8 @@ export default function CompanyPage() {
     return(
         <div>
             <Container  maxWidth="lg" >
-                <div style={{display: "flex", justifyContent: "space-around",
-                    margin: "30px 0px", height: "auto",  fontSize: "14px", }}>
-
-                    <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
-                        width: '30%',  position: 'relative', paddingBottom:'50px' }}>
+                <div className="wrapper-personal-account">
+                    <div className="left-wrapper-personal-account">
 
                         <div style={{ textAlign: "center",}}>
                             <CompanyPagePhotoPlace progressValue={progressValue} compName={companyName}/>
@@ -148,7 +146,7 @@ export default function CompanyPage() {
                                             {companyInfo.contacts.vk}
                                         </p>
                                     </div>
-                                    <div hidden={contactsFormHidden}>
+                                    <div hidden={contactsFormHidden} className="c-page-mTop">
                                         <div className="cont">
                                             <input  type="tel"
                                                     value={editPhone}
@@ -187,13 +185,10 @@ export default function CompanyPage() {
                                 >{contactsButtonTitle}</button>
                             </div>
                             <CompanyBalanceComponent ads={ads} profiles={profiles}/>
-
                         </div>
                     </div>
 
-
-
-                    <div className="right-side-wrapper-comp">
+                    <div className="right-wrapper-personal-account-comp">
                         <div className="company">
                             <div className="details-title">
                                 ОПИСАНИЕ КОМПАНИИ
