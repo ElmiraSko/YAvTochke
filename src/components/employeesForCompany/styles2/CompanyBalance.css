@@ -12,7 +12,7 @@
 .bold_700 {
     font-weight: 700;
 }
-.red-text {
+.cb-red-text {
     color: #f04d2d;
 }
 .grey-title {
@@ -71,9 +71,6 @@
 .hidden_ {
     color: white;
 }
-.td_comp_L {
-    text-align: left;
-}
 .pay_by_card {
     background-color: #f04d2d;
     color: white;
@@ -88,9 +85,6 @@
 }
 .th {
     font-weight: normal;
-}
-.left-al {
-    text-align: left;
 }
 .width-height-circle {
     width: 25px;

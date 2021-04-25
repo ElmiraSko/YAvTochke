@@ -1,0 +1,39 @@
+.vert-wrapper {
+    width: 155px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.vertical-progress {
+    width: 155px;
+    height: 40px;
+    border-radius: 6px;
+    background: #FFA390;
+    transform:  rotate(270deg) ;
+    margin-top: 30px;
+}
+.vertical-progress::-webkit-progress-bar {
+    width: 155px;
+    height: 40px;
+    border-radius: 6px;
+    background: #FFA390;
+    border: 0 solid #FFA390;
+    /*margin: auto;*/
+}
+.vertical-progress::-webkit-progress-value {
+    border-radius: 6px;
+    background: #f04d2d;
+}
+.vertical-progress::-moz-progress-bar {
+    border-radius: 6px;
+    background: #f04d2d;
+}
+.dd {
+    position: absolute;
+}
+.dd2 {
+    height: 100px;
+    position: relative;
+}

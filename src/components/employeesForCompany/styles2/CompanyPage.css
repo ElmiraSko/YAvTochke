@@ -12,3 +12,125 @@
     width: 100%;
     border: 1px solid #848C8E;
 }
+.f_14 {
+    font-size: 14px;
+}
+.c-sett-select {
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+}
+.f-16, .c-sett-select, .sett-th, .sett-td {
+    font-size: 16px;
+}
+.sett-th {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    color: #F04D2D;
+    padding-bottom: 25px;
+    width: 100px;
+}
+
+.doc-th {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100px;
+}
+.pad_b_40 {
+    padding-bottom: 40px;
+}
+.doc-td {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+.pad_b_28 {
+    padding-bottom: 28px;
+}
+.pad_b_10 {
+    padding-bottom: 10px;
+}
+.d-input {
+    width: 84px;
+    font-size: 14px;
+}
+.m_left_38 {
+  margin-left: 38px;
+}
+.m_l_d {
+    margin-bottom: 14px;
+}
+.sett-td {
+    font-weight: normal;
+    line-height: 19px;
+    padding-bottom: 15px;
+    width: 100px;
+}
+.underT {
+    margin: 14px 0 14px 50px;
+}
+.grey-title {
+    color: #505350;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+.c-888 {
+    color: #888888;
+}
+.cs-black {
+    color: #000000;
+}
+.red-border{
+    border: 1px solid #F04D2D;
+    height: 370px;
+}
+
+.red-st {
+    width: 40px;
+    height: 94px;
+    border: 1px solid #F04D2D;
+    border-radius: 5px;
+
+}
+.pad_l_r {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    margin-bottom: 47px;
+}
+.td {
+    border: 1px solid #ffffff;
+    height: 120px;
+}
+.for_p_bar {
+    height: auto;
+}
+.red_square {
+    width: 20px;
+    height: 20px;
+    background-color: #F04D2D;
+    border: 1px solid #F04D2D;
+    border-radius: 20%;
+    display: inline-block;
+}
+.pink_square {
+    width: 20px;
+    height: 20px;
+    background-color: #FFA390;
+    border: 1px solid #FFA390;
+    border-radius: 20%;
+    display: inline-block;
+}
+.for_sq {
+    margin-left: 15px;
+    padding-top: 3px;
+}
+.width-200 {
+    width: 200px;
+}

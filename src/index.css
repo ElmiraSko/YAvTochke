@@ -69,8 +69,6 @@ code {
 }
 p {
   font-size: 14px;
-  /*margin-block-start: 0.5em;*/
-  /*margin-block-end: 0.5em;*/
 }
 h1, h2, h3 {
   text-transform: uppercase;
@@ -91,9 +89,8 @@ h1, h2, h3 {
 .flex-start {
   justify-content: start;
 }
-
 .red-button_ {
-  height: 32px;
+  height: 30px;
   width: auto;
   cursor: pointer;
   background-color: #f04d2d;
@@ -121,4 +118,14 @@ h1, h2, h3 {
 .right-wrapper-personal-account {
   width: 62%;
   box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
+}
+
+.align-l {
+  text-align: left;
+}
+.align-c {
+  text-align: center;
+}
+._red {
+  color: #F04D2D;
 }

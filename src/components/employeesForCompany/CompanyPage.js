@@ -65,7 +65,6 @@ export default function CompanyPage() {
         setEditVk(event.target.value)
     }
 
-
     function changeContacts() {
         if(contactsButtonTitle === "Изменить") {
             setContactsButtonTitle("Сохранить")
@@ -92,8 +91,6 @@ export default function CompanyPage() {
             })
         }
     }
-
-
 
     const progressValue = '65'
     const ads = '5'

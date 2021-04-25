@@ -20,6 +20,12 @@ export default function CompanyBalance() {
     const[personalAds, setPersonalAds] = useState(0)
     const[personalProfiles, setPersonalProfiles] = useState(0)
     const[personalCost, setPersonalCost] = useState(0)
+//?????????????????????????????????
+    const [adPackage, setAdPackage] = useState(false)
+    const adPackageHandler =(event) => {
+        setAdPackage(event.target.checked)
+    }
+
     // стоимость объявлений и анкет
     let adCost = 500
     let profileCost = 1000
@@ -134,15 +140,15 @@ export default function CompanyBalance() {
                                     <div className="bold_">
                                         Остаток на текущее время
                                     </div>
-                                    <div className="red-text this_link f_14">
+                                    <div className="cb-red-text this_link f_14">
                                         История заказов
                                     </div>
                                 </div>
                                 <div className='margin_T_B font_16'>
                                     Объявления компании:
-                                    <span className="margin_L_R red-text bold_700">15</span>
+                                    <span className="margin_L_R cb-red-text bold_700">15</span>
                                     Анкеты:
-                                    <span className="margin_L_R red-text bold_700">6</span>
+                                    <span className="margin_L_R cb-red-text bold_700">6</span>
                                 </div>
 
                                 <div className="margin_B">
@@ -153,15 +159,15 @@ export default function CompanyBalance() {
                                         <thead>
                                             <tr>
                                                 <th className="td_comp hidden_">1</th>
-                                                <th className="td_comp red-text th">Light</th>
-                                                <th className="td_comp red-text th">Medium</th>
-                                                <th className="td_comp red-text th">Professional</th>
-                                                <th className="td_comp red-text th">Personal</th>
+                                                <th className="td_comp cb-red-text th f_16">Light</th>
+                                                <th className="td_comp cb-red-text th f_16">Medium</th>
+                                                <th className="td_comp cb-red-text th f_16">Professional</th>
+                                                <th className="td_comp cb-red-text th f_16">Personal</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td className="td_comp_L">Объявления</td>
+                                                <td className="align-l">Объявления</td>
                                                 <td className="td_comp bold_ f_16">5 </td>
                                                 <td className="td_comp bold_ f_16">50</td>
                                                 <td className="td_comp bold_ f_16" >100</td>
@@ -182,17 +188,12 @@ export default function CompanyBalance() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className="td_comp_L">Анкеты</td>
+                                                <td className="align-l">Анкеты</td>
                                                 <td className="td_comp bold_ f_16">5</td>
                                                 <td className="td_comp bold_ f_16">50</td>
                                                 <td className="td_comp bold_ f_16">100</td>
                                                 <td className="td_comp bold_ f_16">
                                                     <div className="flex_">
-                                                        {/* <span className="material-icons"*/}
-                                                        {/*       style={{color: '#848c8e',*/}
-                                                        {/*           cursor: 'pointer', }} >*/}
-                                                        {/*    remove_circle_outline*/}
-                                                        {/*</span>*/}
                                                         <div className="c-b-row" onClick={decrementProfiles}>
                                                             <img src={minus} alt="Minus"
                                                                  className="plus-minus" />
@@ -200,11 +201,6 @@ export default function CompanyBalance() {
                                                         <span className="margin_L_R_7 width-td margin_T">
                                                             {personalProfiles}
                                                         </span>
-                                                        {/*<span className="material-icons"*/}
-                                                        {/*      style={{color: '#848c8e',*/}
-                                                        {/*          cursor: 'pointer', }} >*/}
-                                                        {/*    control_point*/}
-                                                        {/*</span>*/}
                                                         <div className="c-b-row" onClick={incrementProfiles}>
                                                             <img src={plus} alt="Plus"
                                                                  className="plus-minus" />
@@ -213,7 +209,7 @@ export default function CompanyBalance() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className="td_comp_L">Цена</td>
+                                                <td className="align-l">Цена</td>
                                                 <td className="td_comp bold_ f_16">3000</td>
                                                 <td className="td_comp bold_ f_16">5000</td>
                                                 <td className="td_comp bold_ f_16">25000</td>
@@ -223,8 +219,8 @@ export default function CompanyBalance() {
                                                 <td className="td_comp hidden_">2</td>
                                                 <td className="td_comp">
                                                     <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
+                                                        checked={adPackage}
+                                                        onChange={adPackageHandler}
                                                         value=""
                                                         disableRipple={true}
                                                         style={{ backgroundColor: 'transparent' }}
@@ -291,16 +287,16 @@ export default function CompanyBalance() {
                                     <table className="table-balance">
                                         <thead>
                                         <tr >
-                                            <th className="td_comp th left-al f_14" >Имя</th>
-                                            <th className="td_comp red-text th f_14">Роль</th>
-                                            <th className="td_comp red-text th f_14">Объявления</th>
-                                            <th className="td_comp red-text th f_14">Анкета</th>
-                                            <th className="td_comp red-text th f_14">Общий баланс</th>
+                                            <th className="td_comp th align-l f_14" >Имя</th>
+                                            <th className="td_comp cb-red-text th f_14">Роль</th>
+                                            <th className="td_comp cb-red-text th f_14">Объявления</th>
+                                            <th className="td_comp cb-red-text th f_14">Анкета</th>
+                                            <th className="td_comp cb-red-text th f_14">Общий баланс</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td className="td_comp_L">Рекрутеров И.Р.</td>
+                                            <td className="align-l">Рекрутеров И.Р.</td>
                                             <td className="td_comp ">Пользователь</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
@@ -346,7 +342,7 @@ export default function CompanyBalance() {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className="td_comp_L">Иванова Л.П.</td>
+                                            <td className="align-l">Иванова Л.П.</td>
                                             <td className="td_comp ">Администратор</td>
                                             <td className="td_comp bold_">
                                                 <div className="flex_ f_16">
