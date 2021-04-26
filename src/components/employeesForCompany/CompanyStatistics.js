@@ -7,7 +7,6 @@ import {NavLink} from "react-router-dom";
 import ClearIcon from "@material-ui/icons/Clear";
 import './styles2/CompanyPage.css'
 import VerticalProgressBar from "../progressBar/VerticalProgressBar";
-import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 
 export default function CompanyStatistics() {
     // получили процент заполненности профиля
@@ -153,7 +152,7 @@ export default function CompanyStatistics() {
                                                 <div >
                                                     <VerticalProgressBar value={staff}/>
                                                 </div>
-                                                <div style={{textAlign: 'center', marginTop: '45px'}}>
+                                                <div className="table-st-all">
                                                     {staff.all}
                                                 </div>
                                             </div>
@@ -163,7 +162,7 @@ export default function CompanyStatistics() {
                                                 <div>
                                                     <VerticalProgressBar value={candidates}/>
                                                 </div>
-                                                <div style={{textAlign: 'center', marginTop: '45px'}}>
+                                                <div className="table-st-all">
                                                     {candidates.all}
                                                 </div>
                                             </div>
@@ -173,7 +172,7 @@ export default function CompanyStatistics() {
                                                 <div>
                                                     <VerticalProgressBar value={responses}/>
                                                 </div>
-                                                <div style={{textAlign: 'center', marginTop: '45px'}}>
+                                                <div className="table-st-all">
                                                     {responses.all}
                                                 </div>
                                             </div>
@@ -183,7 +182,7 @@ export default function CompanyStatistics() {
                                                 <div>
                                                     <VerticalProgressBar value={profile}/>
                                                 </div>
-                                                <div style={{textAlign: 'center', marginTop: '45px'}}>
+                                                <div className="table-st-all">
                                                     {profile.all}
                                                 </div>
                                             </div>

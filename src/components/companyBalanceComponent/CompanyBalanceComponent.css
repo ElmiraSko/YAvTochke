@@ -1,0 +1,50 @@
+.comp-balance-box-wrapper {
+    margin-top: 20px;
+    width: 20.0rem;
+    height: 12.0rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #848C8E;
+}
+.comp-balance-icon {
+    margin-top: 20px;
+}
+.comp-balance-icon-text {
+    margin-left: 10px;
+    color: #505350;
+    font-size: 14px;
+    font-weight: bold;
+}
+.comp-balance-info-wrap {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    color: #848C8E;
+    margin-left: 30px;
+}
+.comp-balance-info-p {
+    line-height: 20px;
+    font-size: 12px;
+}
+.comp-balance-info-ads {
+    font-weight: bold;
+    line-height: 14px;
+    color: #505350;
+    margin: 0 7px;
+}
+.comp-balance-details-wr {
+    text-align: center;
+    margin-top: 11px;
+}
+.comp-balance-navlink {
+    color: #f04d2d;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+.comp-balance-links {
+    color: #505350;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+}

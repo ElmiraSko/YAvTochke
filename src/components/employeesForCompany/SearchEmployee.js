@@ -168,13 +168,14 @@ export default function SearchEmployee() {
             <Container maxWidth="lg">
                 <div className="search-work-wrapper">
                     <div className="search-work-img">
+
                         <SearchWorkSteps content={content}/>
+
                         <div style={{marginTop: '20px', }}>
                             <img src={Photo} alt="Photo-1"
                                  className="search-work-img-style" />
                         </div>
                     </div>
-
 
                     <div className="search-work-reg-button-div">
                         <button className="reg-button-navLink f-s"

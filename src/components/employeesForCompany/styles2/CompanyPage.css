@@ -9,7 +9,7 @@
     width: 100%;
 }
 .company {
-    width: 100%;
+    width: auto;
     border: 1px solid #848C8E;
 }
 .f_14 {
@@ -31,13 +31,18 @@
     padding-bottom: 25px;
     width: 100px;
 }
-
 .doc-th {
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
     width: 100px;
+}
+.m_r {
+    margin-right: 10px;
+}
+.m_r_20 {
+    margin-right: 20px;
 }
 .pad_b_40 {
     padding-bottom: 40px;
@@ -61,8 +66,18 @@
 .m_left_38 {
   margin-left: 38px;
 }
+.contacts-wrapper2 {
+    text-align: left;
+    width: 340px;
+}
 .m_l_d {
     margin-bottom: 14px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+}
+.m_t_b {
+    padding-bottom: 38px;
 }
 .sett-td {
     font-weight: normal;
@@ -85,6 +100,9 @@
 }
 .cs-black {
     color: #000000;
+}
+.ce-color {
+    color: #525252;
 }
 .red-border{
     border: 1px solid #F04D2D;
@@ -133,4 +151,17 @@
 }
 .width-200 {
     width: 200px;
+}
+.table-st-all {
+    text-align: center;
+    margin-top: 45px;
+}
+.company-sett-edit-icon {
+    width: 20px;
+}
+.comp-empl-edit-p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
 }

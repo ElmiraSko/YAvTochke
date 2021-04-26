@@ -1,53 +1,43 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import './CompanyBalanceComponent.css'
 
 export default function CompanyBalanceComponent(props) {
     return(
         <div>
-            <div style={{marginTop: '20px',
-                width: '20.0rem', height: '12.0rem', marginLeft: 'auto', marginRight: 'auto',
-                border: '1px solid #848C8E', }}>
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px',}}>
+            <div className="comp-balance-box-wrapper">
+                <div className="comp-balance-icon flex-center">
                     <div>
-                                        <span className="material-icons">
-                                            account_balance_wallet
-                                        </span>
+                        <span className="material-icons">
+                            account_balance_wallet
+                        </span>
                     </div>
                     <div style={{paddingTop: '4px'}}>
-                                        <span style={{marginLeft: '10px',  color: '#505350',
-                                            fontWeight: 'bold', fontSize: '14px'}}>
-                                            Баланс компании
-                                        </span>
+                        <span className="comp-balance-icon-text">
+                            Баланс компании
+                        </span>
                     </div>
                 </div>
-                <div style={{textAlign: 'left', marginLeft: '30px',
-                    fontSize: '12px', color: '#848C8E',fontWeight: '500', }}>
-                    <p style={{lineHeight: '20px', fontSize: '12px',}}>
+                <div  className="comp-balance-info-wrap">
+                    <p className="comp-balance-info-p">
                         Остаток пакета на текущее время:
                     </p>
-                    <p style={{lineHeight: '20px', fontSize: '12px',}}>
+                    <p className="comp-balance-info-p">
                         Объявления:
-                        <span style={{fontWeight: 'bold',
-                            fontSize: '12px',
-                            lineHeight: '14px',color: '#505350', margin: "0 7px"}}>
-                        {props.ads}
-                                        </span>
+                        <span className="comp-balance-info-ads">
+                                {props.ads}
+                        </span>
                         Анкеты:
-                        <span  style={{fontWeight: 'bold',
-                            fontSize: '12px',
-                            lineHeight: '14px',color: '#505350', margin: "0 7px"}}>
-                        {props.profiles}
-                    </span>
-
+                        <span  className="comp-balance-info-ads">
+                            {props.profiles}
+                        </span>
                     </p>
-                    <p style={{lineHeight: '20px', fontSize: '12px',}}>
+                    <p className="comp-balance-info-p">
                         Администратор аккаунта: Иванова Л.П.
                     </p>
-                    <div style={{textAlign: 'center', marginTop: '11px', }}>
+                    <div  className="comp-balance-details-wr">
                         <NavLink to={"/employer/personal-account/balance"}
-                                 style={{color: '#f04d2d',
-                                     textDecoration: 'none', fontWeight: 'bold',
-                                     fontSize: '14px',  }}>
+                                 className="comp-balance-navlink">
                             Подробнее
                         </NavLink>
                     </div>
@@ -55,25 +45,23 @@ export default function CompanyBalanceComponent(props) {
             </div>
             <div>
                 <div style={{marginTop: '25px',}}>
-                    <NavLink to={"/employer/personal-account/documents"}
-                             style={{color: '#505350',
-                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
+                    <NavLink exact to={"/employer/personal-account/documents"}
+                             className="comp-balance-links"
+                             activeStyle={{color: "#F04D2D",}}>
                         Бухгалтерские документы
                     </NavLink>
                 </div>
                 <div style={{marginTop: '15px',}}>
                     <NavLink to={"/employer/personal-account/settings"}
-                             style={{color: '#505350',
-                                 textDecoration: 'none', fontWeight: '500', marginTop: '20px',}}>
+                             className="comp-balance-links"
+                             activeStyle={{color: "#F04D2D",}}>
                         Пользовательские настройки
                     </NavLink>
                 </div>
                 <div style={{marginTop: '15px',}}>
-                    <NavLink to={"/employer/personal-account/statistics"}
-                             style={{color: '#505350',
-                                 textDecoration: 'none',
-                                 fontWeight: '500',
-                             }}>
+                    <NavLink exact to={"/employer/personal-account/statistics"}
+                             className="comp-balance-links"
+                             activeStyle={{color: "#F04D2D",}}>
                         Посмотреть статистику
                     </NavLink>
                 </div>

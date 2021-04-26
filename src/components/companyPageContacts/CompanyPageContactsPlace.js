@@ -4,7 +4,7 @@ import vk2 from "../../img/vk-grey.png";
 
 export default function CompanyPageContactsPlace(props) {
     return(
-        <div className="flex-space-around">
+        <div className="flex-space-around ce-color2">
             <div style={{marginRight: '5px', }}>
                 <p className="contT">
                     Телефон:

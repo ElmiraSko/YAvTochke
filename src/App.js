@@ -35,6 +35,7 @@ import CompanyStatistics from "./components/employeesForCompany/CompanyStatistic
 import CompanyDocuments from "./components/employeesForCompany/CompanyDocuments";
 import CompanySettings from "./components/employeesForCompany/CompanySettings";
 import Pay from "./components/Pay";
+import CompanyEmployerEdit from "./components/employeesForCompany/CompanyEmployerEdit";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -187,6 +188,9 @@ function App() {
                               </Route>
                               <Route exact path="/employer/personal-account/settings">
                                   <CompanySettings />
+                              </Route>
+                              <Route exact path="/employer/personal-account/settings/edit">
+                                  <CompanyEmployerEdit />
                               </Route>
                               <Route exact path="/employer/archive-c">
                                   <ArchiveCompany />

@@ -107,9 +107,9 @@ export default function CompanyPage() {
 
                             <div className="contacts-wrapper">
                                 <div className="contact-title">
-                                    КОНТАКТЫ
+                                    Контакты
                                 </div>
-                                <div className="flex-space-around">
+                                <div className="flex-space-around ce-color2">
                                     <div style={{marginRight: '5px', }}>
                                         <p className="contT">
                                             Телефон:

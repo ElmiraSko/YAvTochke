@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 import ClearIcon from "@material-ui/icons/Clear";
 import './styles2/CompanyPage.css'
 import IconButton from "@material-ui/core/IconButton";
+import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 
@@ -43,18 +44,21 @@ export default function CompanySettings() {
     const [personsData, setPersonData] = useState(
         [
             {
+                id: 1,
                 name: 'Иван Рекрутеров',
                 role: 'Пользователь',
                 email: 'Ivan@mail.ru',
                 access: 'Ограничен',
             },
             {
+                id: 2,
                 name: 'Оксана Петрова',
                 role: 'Пользователь',
                 email: 'Petrova@mail.ru',
                 access: 'Ограничен',
             },
             {
+                id: 3,
                 name: 'Людмила Петрова',
                 role: 'Администратор',
                 email: 'Lidmulaf@mail.ru',
@@ -62,26 +66,6 @@ export default function CompanySettings() {
             }
         ]
     )
-    // const persons = [
-    //     {
-    //         name: 'Иван Рекрутеров',
-    //         role: 'Пользователь',
-    //         email: 'Ivan@mail.ru',
-    //         access: 'Ограничен',
-    //     },
-    //     {
-    //         name: 'Оксана Петрова',
-    //         role: 'Пользователь',
-    //         email: 'Petrova@mail.ru',
-    //         access: 'Ограничен',
-    //     },
-    //     {
-    //         name: 'Людмила Петрова',
-    //         role: 'Администратор',
-    //         email: 'Lidmulaf@mail.ru',
-    //         access: 'Разрешен',
-    //     }
-    // ]
     // Чтоб изменить роль пользователя, отправка запроса на бэк
     // Не продумано и не работает
     function roleChange(event) {
@@ -155,7 +139,8 @@ export default function CompanySettings() {
                                 </div>
                                 <table className="table-balance">
                                     <thead>
-                                        <tr className=" ">
+                                        <tr>
+                                            <th className="hidden_ company-sett-edit-icon">1</th>
                                             <th className="align-l sett-th">Имя</th>
                                             <th className="align-c sett-th">Роль</th>
                                             <th className="align-c sett-th">Email</th>
@@ -164,7 +149,15 @@ export default function CompanySettings() {
                                     </thead>
                                     <tbody>
                                     {personsData.map(person =>
-                                        <tr key={person.name}>
+                                        <tr key={person.id}>
+                                            <td className="company-sett-edit-icon">
+                                                <NavLink style={{cursor: 'pointer',}}
+                                                to={'/employer/personal-account/settings/edit?id=' + person.id}>
+                                                    <EditIcon style={{width: '20px', height: '20px',
+                                                        color: '#F04D2D', paddingBottom : '8px', }}/>
+                                                </NavLink>
+                                            </td>
+
                                             <td className="sett-td align-l cs-black">{person.name}</td>
                                             <td className="sett-td align-c" >
                                                 <select value={person.role}

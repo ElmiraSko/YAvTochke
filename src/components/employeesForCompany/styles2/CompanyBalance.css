@@ -1,5 +1,5 @@
 .right-side-wrapper-company-balance {
-    width: 60%;
+    width: 62%;
     /*border: 1px solid rgba(132, 140, 142, 0.5);*/
     border: 1px solid #848C8E;
     color: #0c1618;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 .margin_L_R {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 .margin_L_R_7 {
     margin: 0 7px;
