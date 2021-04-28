@@ -132,3 +132,20 @@ h1, h2, h3 {
 .ce-color2 {
   color: #848C8E;
 }
+
+.company-page-title {
+  text-align: center;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #525252;
+  padding: 36px 0 32px 0;
+}
+.vacancy-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}

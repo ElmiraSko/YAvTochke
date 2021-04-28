@@ -16,7 +16,7 @@ export default [
             Бесплатное корпоративное обучение, возможность профессионального роста.`,
         imgUrl: `/images/logo_HL _1.png`,
         inArchive: 'false',
-
+        count: '8',
     },
     {
         id: 13,
@@ -35,6 +35,7 @@ export default [
             Предлагаем корпоративное обучение, возможность профессионального роста.`,
         imgUrl: `/images/logo_HL _1.png`,
         inArchive: 'false',
+        count: '4',
     },
     {
         id: 14,
@@ -53,6 +54,7 @@ export default [
              Предлагаем корпоративное обучение, возможность профессионального роста.`,
         imgUrl: `/images/creon-logo-1.png`,
         inArchive: 'true',
+        count: '5',
     },
     {
         id: 15,
@@ -71,6 +73,7 @@ export default [
              Предлагаем корпоративное обучение, возможность профессионального роста.`,
         imgUrl: `/images/creon-logo-1.png`,
         inArchive: 'true',
+        count: '1',
     }
 
 

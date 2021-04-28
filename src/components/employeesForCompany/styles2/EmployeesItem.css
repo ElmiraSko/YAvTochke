@@ -43,11 +43,11 @@
     font-size: 1.0rem;
     font-weight: 600;
 }
-.vacancy-price {
-    color: #f04d2d;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
+/*.vacancy-price {*/
+/*    color: #f04d2d;*/
+/*    font-weight: 700;*/
+/*    font-size: 1.2rem;*/
+/*}*/
 .show-cont-button {
     background-color: #f04d2d;
     border-radius: 5px;
@@ -67,10 +67,10 @@
     background-color: #848c8e;
     border-color: #848c8e;
 }
-.vacancy-title {
-    font-size: 1.3rem;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-}
+/*.vacancy-title {*/
+/*    font-size: 1.3rem;*/
+/*    margin-block-start: 0.5em;*/
+/*    margin-block-end: 0.5em;*/
+/*}*/
 
 

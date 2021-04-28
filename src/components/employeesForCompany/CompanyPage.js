@@ -95,6 +95,8 @@ export default function CompanyPage() {
     const progressValue = '65'
     const ads = '5'
     const profiles = '6'
+    //флаг - показывать псевдо элемент вакансии(true) или нет(false)
+    const showPsevdo = false
 
     return(
         <div>
@@ -208,7 +210,7 @@ export default function CompanyPage() {
                             <div style={{display: "flex", justifyContent: "space-around", marginBottom: "50px"}}>
                                 <div>
                                     <div>
-                                        <AdItemForCompany vacancy = {Ad[0]}/>
+                                        <AdItemForCompany vacancy = {Ad[0]} show={showPsevdo}/>
                                     </div>
                                     <div>
                                         <AdItemForCompany vacancy = {Ad[1]}/>

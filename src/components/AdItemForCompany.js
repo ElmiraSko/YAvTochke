@@ -32,56 +32,62 @@ export default function AdItemForCompany(props) {
     }
 
     return(
-        <div className="adItem-main" id = {vacancy.id}>
-            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}} >
-
-                <div onClick={() => showDetails(vacancy.id)} className="description-area" >
-                    <h3 className="vacancy-title">
-                        {vacancy.title}
-                    </h3>
-                    <strong className="vacancy-price">
-                        {vacancy.price} {vacancy.unit_of_time}
-                    </strong>
-                    <p  className="desc">
-                        {vacancy.desc}
-                    </p>
+        <div style={{width: '700px', margin: 'auto', position: 'relative', }}
+             // пока значение inArchive есть string!
+             id={props.show ? 'psevdo' : 'no'} >
+            <div style={{ width: '692px', textAlign: 'right',
+                position: 'absolute', top: '-3px', color: '#ffffff'}} >
+                <div style={{textAlign: 'center', width: '22px', marginLeft: '675px'}}>
+                    {vacancy.count}
                 </div>
-
-                <div style={{textAlign: 'center', width: '130px' }}>
-                    {/*<div>*/}
-                    {/*<Brightness1Icon style={{width: '70px', height: '70px', color: '#848c8e', }}/>*/}
-                    <img src={vacancy.imgUrl}
-                         alt="logo" style={{width: '4.0rem',
-                        padding: "10px 0 10px 0", }}/>
-                    {/*</div>*/}
-                    <h4 id="cn">
-                        {vacancy.companyName}
-                    </h4>
-                </div>
-
             </div>
 
-            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}}>
-                <div style={{display: "flex",}}>
-                    <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
-                    <div style={{ paddingTop: '10px'}}> {vacancy.point} </div>
-                </div>
-                <div style={{display: "flex",}}>
-                    <button className="red-button-text"
-                        // onClick={change}
-                    > Изменить</button>
+            <div className="adItem-main " >
+                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}}
+                     id = {vacancy.id}>
 
-                    {vacancy.inArchive==='true' ?
-                        <button className="sent-button"
-                            // onClick={change}
-                        >Опубликовать</button> :
+                    <div onClick={() => showDetails(vacancy.id)} className="description-area" >
+                        <h3 className="vacancy-title">
+                            {vacancy.title}
+                        </h3>
+                        <strong className="vacancy-price">
+                            {vacancy.price} {vacancy.unit_of_time}
+                        </strong>
+                        <p  className="desc">
+                            {vacancy.desc}
+                        </p>
+                    </div>
+
+                    <div style={{textAlign: 'center', width: '130px' }} >
+                        <img src={vacancy.imgUrl}
+                             alt="logo" style={{width: '4.0rem',
+                            padding: "10px 0 10px 0", }}/>
+                        <h4 id="cn">
+                            {vacancy.companyName}
+                        </h4>
+                    </div>
+                </div>
+
+                <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px 10px 20px"}}>
+                    <div style={{display: "flex",}}>
+                        <LocationOnIcon style={{width: '40px', height: '40px', color: '#f04d2d'}}/>
+                        <div style={{ paddingTop: '10px'}}> {vacancy.point} </div>
+                    </div>
+                    <div style={{display: "flex",}}>
                         <button className="red-button-text"
-                        // onClick={change}
-                    > В архив</button> }
+                            // onClick={change}
+                        > Изменить</button>
+
+                        {vacancy.inArchive==='true' ?
+                            <button className="sent-button"
+                                // onClick={change}
+                            >Опубликовать</button> :
+                            <button className="red-button-text"
+                                // onClick={change}
+                            > В архив</button> }
+                    </div>
                 </div>
-
             </div>
-
         </div>
     )
 }

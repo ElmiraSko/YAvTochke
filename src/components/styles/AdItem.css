@@ -9,7 +9,7 @@
     max-width: 664px;
     min-width: 30rem;
     min-height: 180px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     border-radius: 10px;
     text-align: left;
 
@@ -85,11 +85,6 @@
     border-color: #ffffff;
     color: #505350;
 }
-.vacancy-title {
-    font-size: 16px;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-}
 .red-button-text {
     color: #f04d2d;
     font-weight: bold;
@@ -107,6 +102,18 @@
     border: 0;
     outline: none;
 }
-
+#psevdo:before{
+    content: "";
+    background-color: #F04D2D;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: 10px;
+    left: 670px;
+    top: -20px;
+    display: block;
+    vertical-align: middle;
+    position: absolute;
+}
 
 
