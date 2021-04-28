@@ -1,0 +1,30 @@
+.box-main {
+    width: 1080px;
+    margin: 0 auto 35px auto;
+}
+.box-1, .box-2 {
+    border: 1px solid #848C8E;
+    padding: 24px 20px;
+}
+.box-1 {
+    height: 225px;
+}
+.box-2 {
+    height: 476px;
+}
+.box-2-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 25px;
+    margin-bottom: 14px;
+}
+.tt {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}

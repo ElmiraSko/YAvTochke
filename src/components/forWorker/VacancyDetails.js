@@ -56,7 +56,9 @@ export default function VacancyDetails() {
         idea: `Мы объединяем амбициозных профессионалов своего дела. Мы строим дружеские 
         отношения в коллективе и считаем, что работа - наш второй дом.
         
-        Благодарим Вас за проявленный интерес к нашей компании`,
+        Благодарим Вас за проявленный интерес к нашей компании!
+Нет ответа в течении пяти рабочих дней после отправки резюме? 
+Просьба позвонить нам по номеру телефона горячей линии. Звонок для Вас бесплатный.`,
     }
     // useEffect(() => {
     //     let vacancy = vacancies.find(item => item.id === selectedVacancyId);
@@ -130,9 +132,6 @@ export default function VacancyDetails() {
                     </div>
                 </div>
 
-
-
-
                 <div className="v-d-desc-t"> Описание:
                 </div>
                 <div className="v-d-desc">
@@ -152,7 +151,9 @@ export default function VacancyDetails() {
                     {v1.idea}
                 </div>
 
-                {path.startsWith('/employer') ? '' :
+                {path.startsWith('/employer') ?
+                    <div style={{width: '10px', height: '90px'}}/>
+                    :
                 <div className="v-d-button">
                     <button className="v-d-b red-button_"
                         // onClick={() => respond(vacancy.id)}

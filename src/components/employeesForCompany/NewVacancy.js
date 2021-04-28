@@ -1,16 +1,31 @@
 import React from 'react';
 import Container from "@material-ui/core/Container";
+import './styles2/NewVacancy.css'
+
 export default function NewVacancy() {
+
     return(
         <Container maxWidth="lg">
-            <div style={{padding: "20px 0px 30px 0px", textAlign: "center", fontSize: "1.4rem",
-                fontWeight: "600", }}> Создание вакансии
+            <div className="company-page-title">
+                Создание вакансии
+            </div>
+            <div className="box-main">
+                <div className="box-1">
+                   <div>
+                       <span className="tt">
+                           Название вакансии
+                       </span>
+
+                   </div>
+                </div>
+                <div className="box-2-title">
+                    должностные обязанности и условия работы
+                </div>
+                <div className="box-2">
+                    В разработке
+                </div>
             </div>
 
-            <div style={{width: '700px', height: '200px', margin: 'auto',
-                border: '2px solid #e1e1e1'}}>
-                В разработке
-            </div>
 
         </Container>
     )
