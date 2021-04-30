@@ -29,7 +29,12 @@
     line-height: 19px;
     color: #F04D2D;
     padding-bottom: 25px;
-    width: 100px;
+}
+.sett-td {
+    font-weight: normal;
+    line-height: 19px;
+    padding-bottom: 15px;
+    /*width: 170px;*/
 }
 .doc-th {
     font-style: normal;
@@ -78,12 +83,6 @@
 }
 .m_t_b {
     padding-bottom: 38px;
-}
-.sett-td {
-    font-weight: normal;
-    line-height: 19px;
-    padding-bottom: 15px;
-    width: 100px;
 }
 .underT {
     margin: 14px 0 14px 50px;
@@ -152,12 +151,18 @@
 .width-200 {
     width: 200px;
 }
+.width-170 {
+    width: 170px;
+}
+.width-140 {
+    width: 170px;
+}
 .table-st-all {
     text-align: center;
     margin-top: 45px;
 }
 .company-sett-edit-icon {
-    width: 20px;
+    width: 25px;
 }
 .comp-empl-edit-p {
     font-style: normal;

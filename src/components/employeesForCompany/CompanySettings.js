@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container} from "@material-ui/core";
 import CompanyPagePhotoPlace from "../companyPagePhotoPlace/CompanyPagePhotoPlace";
 import CompanyPageContactsPlace from "../companyPageContacts/CompanyPageContactsPlace";
@@ -9,6 +9,7 @@ import './styles2/CompanyPage.css'
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import SaveIcon from '@material-ui/icons/Save';
 
 
 export default function CompanySettings() {
@@ -34,12 +35,17 @@ export default function CompanySettings() {
             vk: "",
         }
     })
-    const [personRole, setPersonRole] = useState('Админ')
-    const [personAcc, setPersonAcc] = useState('Админ')
+    const [editRole, setEditRole] = useState('')
+    const [editAcc, setEditAcc] = useState('')
+    const [editName, setEditName] = useState('')
+    const [editEmail, setEditEmail] = useState('')
 
     // Флаги для скрытия и отображения формы, для добавления нового пользователя
     const [formHidden, setFormHidden] = useState(true)
     const [addIconHidden, setAddIconHidden] = useState(false)
+    //Вспомогательная переменная для того, что бы отображать форму редактирования пользователя
+    const [nameAndEmailEditId, setNameAndEmailEditId] = useState('-1')
+
     // Данные о пользователях
     const [personsData, setPersonData] = useState(
         [
@@ -71,11 +77,28 @@ export default function CompanySettings() {
     function roleChange(event) {
         // setPersonRole(prevState => {
         // return {...prevState, role: event.target.value}})
-        // }
+        setEditRole(event.target.value)
     }
+
     // Чтоб изменить права пользователя, отправка запроса на бэк
     function accessChange(event) {
-        setPersonAcc(event.target.value)
+        setEditAcc(event.target.value)
+    }
+    // Изменние переменной связанной с id, для редактирования пользователя
+    function editPersonNameAndEmail(id) {
+        if (nameAndEmailEditId === id) { // если редактируем, то
+            setNameAndEmailEditId('-1') // скрыли иконку редактирования и открыли иконку Сохранить
+        } else {
+            setNameAndEmailEditId(id)
+        }
+    }
+
+    // Изменение значение поля для имени
+    function nameHandler(event) {
+       setEditName(event.target.value)
+    }
+    function emailHandler(event) {
+        setEditEmail(event.target.value)
     }
 
     // Добавить нового пользователя, отобразить форму
@@ -140,43 +163,95 @@ export default function CompanySettings() {
                                 <table className="table-balance">
                                     <thead>
                                         <tr>
-                                            <th className="hidden_ company-sett-edit-icon">1</th>
-                                            <th className="align-l sett-th">Имя</th>
-                                            <th className="align-c sett-th">Роль</th>
-                                            <th className="align-c sett-th">Email</th>
+                                            <th />
+                                            <th className="align-l sett-th width-170">Имя</th>
+                                            <th className="align-c sett-th width-170">Роль</th>
+                                            <th className="align-c sett-th width-170" >Email</th>
                                             <th className="align-c sett-th">Доступ</th>
+                                            <th className="company-sett-edit-icon" />
                                         </tr>
                                     </thead>
                                     <tbody>
                                     {personsData.map(person =>
                                         <tr key={person.id}>
+                                            {/*<td className="company-sett-edit-icon">*/}
+                                            {/*    <NavLink style={{cursor: 'pointer',}}*/}
+                                            {/*    to={'/employer/personal-account/settings/edit?id=' + person.id}>*/}
+                                            {/*        <EditIcon style={{width: '20px', height: '20px',*/}
+                                            {/*            color: '#F04D2D', paddingBottom : '8px', }}/>*/}
+                                            {/*    </NavLink>*/}
+                                            {/*</td>*/}
+
                                             <td className="company-sett-edit-icon">
-                                                <NavLink style={{cursor: 'pointer',}}
-                                                to={'/employer/personal-account/settings/edit?id=' + person.id}>
-                                                    <EditIcon style={{width: '20px', height: '20px',
+                                                <div style={{cursor: 'pointer',}}
+                                                     onClick={() => {
+                                                         editPersonNameAndEmail(person.id)
+                                                         setEditRole(person.role)
+                                                         setEditAcc(person.access)
+                                                         setEditName(person.name)
+                                                         setEditEmail(person.email)}}>
+                                                    {nameAndEmailEditId === person.id ?
+                                                    <SaveIcon style={{width: '22px', height: '22px',
                                                         color: '#F04D2D', paddingBottom : '8px', }}/>
-                                                </NavLink>
+                                                :
+                                                    <EditIcon style={{width: '20px', height: '20px',
+                                                        color: '#F04D2D', paddingBottom : '10px', }}/>
+                                                    }
+                                                </div>
                                             </td>
 
-                                            <td className="sett-td align-l cs-black">{person.name}</td>
-                                            <td className="sett-td align-c" >
-                                                <select value={person.role}
-                                                    onChange={roleChange}
-                                                        className="c-sett-select c-888"
-                                                >
-                                                    <option value="Пользователь">Пользователь</option>
-                                                    <option value="Администратор">Администратор</option>
-                                                </select>
+                                            <td className="sett-td align-l cs-black">
+                                                {nameAndEmailEditId === person.id ?
+                                                    <input value={editName} style={{width: '140px'}}
+                                                    onChange={nameHandler}/>
+                                                           :
+                                                    <span>{person.name}</span>
+                                                }
                                             </td>
-                                            <td className="sett-td align-c cs-black">{person.email}</td>
+
+                                            <td className="sett-td align-c" >
+                                                {nameAndEmailEditId === person.id ?
+                                                    <select
+                                                        value={editRole}
+                                                        onChange={roleChange}
+                                                        className="c-sett-select c-888"
+                                                    >
+                                                        <option value="Пользователь">Пользователь</option>
+                                                        <option value="Администратор">Администратор</option>
+                                                    </select>
+                                                    :
+                                                    <span>{person.role}</span>
+                                                }
+
+                                            </td>
+                                            <td className="sett-td align-c cs-black">
+                                                {nameAndEmailEditId === person.id ?
+                                                    <input value={editEmail} style={{width: '140px'}}
+                                                    type='email'
+                                                           onChange={emailHandler}/>
+                                                    :
+                                                    <span>{person.email}</span>
+                                                }
+                                            </td>
                                             <td className="sett-td align-c">
-                                                <select value={person.access}
-                                                        onChange={accessChange}
-                                                        className="c-sett-select cs-black"
-                                                >
-                                                    <option value="Ограничен">Ограничен</option>
-                                                    <option value="Разрешен">Разрешен</option>
-                                                </select>
+                                                {nameAndEmailEditId === person.id ?
+                                                    <select value={editAcc}
+                                                            onChange={accessChange}
+                                                            className="c-sett-select cs-black"
+                                                    >
+                                                        <option value="Ограничен">Ограничен</option>
+                                                        <option value="Разрешен">Разрешен</option>
+                                                    </select>
+                                                    :
+                                                    <span>{person.access}</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <div style={{cursor: 'pointer',}}>
+                                                    <ClearIcon
+                                                        style={{width: '20px', height: '20px',
+                                                            color: '#F04D2D', paddingBottom : '10px', }}/>
+                                                </div>
                                             </td>
                                         </tr>
                                     )}
@@ -234,18 +309,19 @@ export default function CompanySettings() {
                             </div>
 
 
-                            <div style={{cursor: "pointer"}} onClick={addNewPerson} hidden={addIconHidden}>
+                            <div style={{cursor: "pointer",width: '200px' }}
+                                 onClick={addNewPerson} hidden={addIconHidden}>
                                 <IconButton style={{padding: '0px', backgroundColor: 'transparent'}}>
                                     <AddCircleOutlineIcon style={{color: '#f04d2d'}} />
                                 </IconButton>
-                                <span style={{margin: '0 10px 0 10px', fontSize: '14px', fontWeight: '500', }}>
+                                <span style={{marginLeft: '10px',
+                                    fontSize: '14px', fontWeight: '500', }}>
                                         Добавить пользователя
                                 </span>
                             </div>
                         </div>
 
                     </div>
-
                 </div>
             </Container>
         </div>
