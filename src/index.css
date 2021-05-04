@@ -73,7 +73,6 @@ p {
 h1, h2, h3 {
   text-transform: uppercase;
 }
-
 .flex-only, .flex-space-around, .flex-between, .flex-center, .flex-start {
   display: flex;
 }
@@ -88,6 +87,10 @@ h1, h2, h3 {
 }
 .flex-start {
   justify-content: start;
+}
+.flex-vert{
+  justify-content: start;
+  flex-direction: column;
 }
 .red-button_ {
   height: 30px;
@@ -148,4 +151,13 @@ h1, h2, h3 {
   font-weight: bold;
   font-size: 16px;
   letter-spacing: 0.5px;
+}
+textarea {
+  resize: none;
+}
+.font-12-norm {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #0C1618
 }

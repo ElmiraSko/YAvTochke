@@ -25,9 +25,11 @@ function FooterApp() {
             <div className="left">
                 <div className="group">
                     <div style={{padding: "0px 20px"}}>
-                        <img src={Logo} alt="logo" style={{width: '1.8rem', padding: "10px 10px 0 0"}}/>
-                        <span className="tit" >Я в точке</span>
-                        <div>
+                        <div className="flex-start ">
+                            <img src={Logo} alt="logo" style={{width: '1.8rem', padding: "10px 10px 0 0"}}/>
+                            <span className="tit padd-t" >Я в точке</span>
+                        </div>
+                        <div className="font-12-norm padding_T">
                                 {'Я в точке '}
                                 {new Date().getFullYear()}
                                 {'. Все права защищены'}
