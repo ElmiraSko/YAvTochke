@@ -1,0 +1,46 @@
+.sel-vac-table {
+    width: 880px;
+    height: auto;
+    margin: auto;
+    border-spacing: 0 7px;
+}
+
+.sel-vac-td1, .sel-vac-td {
+    border-top: 1px solid #525252;
+    border-bottom: 1px solid #525252;
+    padding: 0 10px;
+}
+.sel-vac-td1 {
+    width: 300px;
+    font-weight: 300;
+    border-left: 1px solid #525252;
+}
+.sel-vac-td {
+    width: 145px;
+    text-align: center;
+    font-weight: 500;
+}
+.sel-td-bg {
+    background-color: #9D9D9D;
+    color: white;
+}
+.border-5 {
+    border-right: 1px solid #525252;;
+}
+.filter {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    border-bottom: none;
+}
+.sel-table-th {
+    border-bottom: none;
+    text-align: center;
+}
+.th-select {
+    color: #F04D2D;
+    border: 1px solid #ffffff;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+}

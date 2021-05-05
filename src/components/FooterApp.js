@@ -26,7 +26,7 @@ function FooterApp() {
                 <div className="group">
                     <div style={{padding: "0px 20px"}}>
                         <div className="flex-start ">
-                            <img src={Logo} alt="logo" style={{width: '1.8rem', padding: "10px 10px 0 0"}}/>
+                            <img src={Logo} alt="logo" style={{width: '1.6rem', padding: "10px 10px 0 0"}}/>
                             <span className="tit padd-t" >Я в точке</span>
                         </div>
                         <div className="font-12-norm padding_T">

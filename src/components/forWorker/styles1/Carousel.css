@@ -4,7 +4,7 @@
 /*    justify-content: space-around;*/
 /*}*/
 
-.carousel-vacancy-wrapper {
+.carousel-vac-wrapper {
     box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
     border-radius: 5px;
     width: 240px;
@@ -26,7 +26,6 @@
     margin: auto;
 }
 .vacancy-count {
-    background-color: rgba(245, 131, 108, 1);
     display: flex;
     border-radius: 5px;
     height: 40px;
@@ -34,6 +33,12 @@
     font-weight: normal;
     font-size: 18px;
     width: auto;
+}
+.vac-count-red {
+    background-color: rgba(245, 131, 108, 1);
+}
+.vac-count-grey {
+    background-color: #505350;
 }
 .vacancy-button {
     height: 40px;
@@ -54,21 +59,41 @@
     display: none;
 }
 
-button.rec-arrow:hover, button.rec-arrow:focus {
+.red button.rec-arrow:hover, .red button.rec-arrow:focus {
     background-color: rgba(245, 131, 108, 0.5);
 }
-button.rec-arrow {
+.red button.rec-arrow {
     background-color: rgba(245, 131, 108, 0.5);
 }
 
-button.lgksPe:hover:enabled, button.lgksPe:focus:enabled {
+.red button.lgksPe:hover:enabled, .red button.lgksPe:focus:enabled {
     color: #fff;
     background-color: rgba(245, 131, 108, 1);
     box-shadow: 0 0 2px 0 #333;
 }
-button.lgksPe, button.lgksPe:focus{
+.red button.lgksPe, .red button.lgksPe:focus{
     color: #fff;
     background-color: rgba(245, 131, 108, 1);
+    box-shadow: 0 0 2px 0 #333;
+}
+
+.grey button.rec-arrow:hover, .grey button.rec-arrow:focus {
+    background-color: rgba(80, 83, 80, 0.3);
+    color: #848c8e;
+}
+.grey button.rec-arrow {
+    background-color: rgba(80, 83, 80, 0.3);
+    color: #848c8e;
+}
+
+.grey button.lgksPe:hover:enabled, .grey button.lgksPe:focus:enabled {
+    color: #fff;
+    background-color: #505350;
+    box-shadow: 0 0 2px 0 #333;
+}
+.grey button.lgksPe, .grey button.lgksPe:focus{
+    color: #fff;
+    background-color: #505350;
     box-shadow: 0 0 2px 0 #333;
 }
 

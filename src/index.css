@@ -161,3 +161,19 @@ textarea {
   line-height: 12px;
   color: #0C1618
 }
+.red-input {
+  height: 40px;
+  width: 400px;
+  border: 2px solid #F04D2D;
+  margin-right: 30px;
+  border-radius: 4px;
+}
+.left-red-button {
+  width: 130px;
+  height: 32px;
+  margin: auto;
+  cursor: pointer;
+}
+.color-pink {
+
+}

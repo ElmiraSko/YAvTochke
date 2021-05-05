@@ -6,4 +6,5 @@ npm i styled-components
 (+ styled-components@5.2.1)
 Еще не разобралась до конца с styled-components
 
-
+Посмотреть
+https://sag1v.github.io/react-elastic-carousel/autoTabIndexVisibleItems#link2

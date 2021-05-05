@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import './styles/AdItem.css'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Context from "./Context";
+import {Link} from "react-router-dom";
 
 export default function AdItemForCompany(props) {
 
@@ -36,9 +37,12 @@ export default function AdItemForCompany(props) {
              // пока значение inArchive есть string!
              id={props.show ? 'psevdo' : 'no'} >
             <div style={{ width: '692px', textAlign: 'right',
-                position: 'absolute', top: '-3px', color: '#ffffff'}} >
-                <div style={{textAlign: 'center', width: '22px', marginLeft: '675px'}}>
-                    {vacancy.count}
+                position: 'absolute', top: '-3px', }} >
+                <div style={{textAlign: 'center', width: '22px', marginLeft: '675px',}}>
+                    <Link to='/selected-vacancy'
+                          style={{textDecoration: 'none', color: '#ffffff', cursor: 'pointer'}}>
+                        {vacancy.count}
+                    </Link>
                 </div>
             </div>
 

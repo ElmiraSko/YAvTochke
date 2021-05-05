@@ -14,11 +14,10 @@ import Item from "./Item";
 import Context from "../Context";
 
 
-export default function WorkerPage(props) {
+export default function WorkerPage() {
 
     // для функции activeSearchWork
     const {setSearchWork, searchWork, user} = useContext(Context)
-
 
     // для карусели, сколько элементов отображать в
     // зависимости от экрана, нужно потестить
@@ -30,6 +29,8 @@ export default function WorkerPage(props) {
     ];
 
     const workerContent = WorkerContent
+    // Вспомогательное свойство для карусели, чтоб менять цвет
+    const carouselFor = "Work"
 
     // здесь пересмотреть, может изменить или убрать лишние стайты
     const [sliderValue, setSliderValue] = useState(5)
@@ -184,7 +185,7 @@ export default function WorkerPage(props) {
 
     return(
         <div>
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
                 <div className="search-work-wrapper">
                     <div className="search-work-img">
                         <div>
@@ -200,8 +201,16 @@ export default function WorkerPage(props) {
                         > Регистрация
                         </NavLink>
                     </div>
-                    <Carousel isRTL={true} breakPoints={breakPoints}>
-                        {vacancies.map((c,index) => <Item content={c} key={index}/>)}
+                    <h2 className="red-text align-l margin_L_R">Вакансии</h2>
+                    <Carousel
+                        isRTL={true}
+                        breakPoints={breakPoints}
+                        className={`${carouselFor==='Work' ? 'red' : 'grey'}`}>
+                        {vacancies.map((c,index) => <Item
+                            content={c}
+                            key={index}
+                            carouselFor={carouselFor}
+                        />)}
                     </Carousel>
 
                     {/*<Carousel vacancies={getVac()} prev={prev} next={next}/>*/}

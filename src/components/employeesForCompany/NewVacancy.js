@@ -3,7 +3,6 @@ import Container from "@material-ui/core/Container";
 import './styles2/NewVacancy.css'
 import withStyles from "@material-ui/core/styles/withStyles";
 import Checkbox from "@material-ui/core/Checkbox";
-import ClearIcon from '@material-ui/icons/Clear';
 
 export default function NewVacancy() {
 

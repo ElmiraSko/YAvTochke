@@ -1,0 +1,79 @@
+/*.vacancy-name {*/
+/*    border-radius: 5px;*/
+/*    height: 50px;*/
+/*    display: flex;*/
+/*    color: #0C1618;*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*    margin: 0 10px;*/
+/*}*/
+/*.vacancy-name-inner {*/
+/*    height: auto;*/
+/*    margin: auto;*/
+/*}*/
+.vacancy-count2 {
+    background-color: #505350;
+    display: flex;
+    border-radius: 5px;
+    height: 40px;
+    color: white;
+    font-weight: normal;
+    font-size: 18px;
+    width: auto;
+}
+.vacancy-button {
+    height: 40px;
+    margin-top: 68px;
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.text {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+.rec-dot {
+    display: none;
+}
+
+button.rec-arrow:hover, button.rec-arrow:focus {
+    background-color: rgba(245, 131, 108, 0.5);
+}
+button.rec-arrow {
+    background-color: rgba(245, 131, 108, 0.5);
+}
+
+button.lgksPe:hover:enabled, button.lgksPe:focus:enabled {
+    color: #fff;
+    background-color: rgba(245, 131, 108, 1);
+    box-shadow: 0 0 2px 0 #333;
+}
+button.lgksPe, button.lgksPe:focus{
+    color: #fff;
+    background-color: rgba(245, 131, 108, 1);
+    box-shadow: 0 0 2px 0 #333;
+}
+
+.rec.rec-arrow:disabled {
+    /*visibility: hidden;*/
+    cursor: inherit;
+}
+
+@media screen and (max-width: 960px) {
+    .carousel-wrapper {
+        font-size: 1.0rem;
+    }
+    .text {
+        font-size: 0.8rem;
+    }
+    .vacancy-name {
+        height: 46px;
+    }
+    .vacancy-count {
+        font-size: 0.9rem;
+    }
+}

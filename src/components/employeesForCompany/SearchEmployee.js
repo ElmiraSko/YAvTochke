@@ -29,6 +29,8 @@ export default function SearchEmployee() {
     ];
     // получили текст для главной страницы, шаг 1, 2, 3
     const content = Content
+    // Вспомогательное свойство для карусели, чтоб менять цвет
+    const carouselFor = "Emp"
 
     // здесь пересмотреть, может изменить или убрать лишние стэйты
     const [sliderValue, setSliderValue] = useState(5)
@@ -184,9 +186,16 @@ export default function SearchEmployee() {
                         > Разместить вакансию
                         </button>
                     </div>
-
-                    <Carousel breakPoints={breakPoints} isRTL={true}>
-                        {vacancies.map((c,index) => <Item content={c} key={index}/>)}
+                    <h2 className="red-text align-l margin_L_R">Анкеты</h2>
+                    <Carousel
+                        breakPoints={breakPoints}
+                        isRTL={true}
+                        className={`${carouselFor==='Work' ? 'red' : 'grey'}`}>
+                        {vacancies.map((c,index) => <Item
+                            content={c}
+                            key={index}
+                            carouselFor={carouselFor}
+                        />)}
                     </Carousel>
 
                     <div className="pre-search-text">

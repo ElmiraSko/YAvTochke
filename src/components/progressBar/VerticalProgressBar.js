@@ -7,8 +7,8 @@ export default function VerticalProgressBar(props) {
     const [color, setColor] = useState('#505350')
 
     const v = props.value
-    console.log(v)
-    console.log(v.response)
+    // console.log(v)
+    // console.log(v.response)
 
     // useEffect(() =>{
     //     if(props.value > 56) {setColor('#ffffff')}
@@ -25,7 +25,6 @@ export default function VerticalProgressBar(props) {
                         {v.response > 0 ? v.response : ' '}
                     </span>
                 </div>
-
                     {/*   //Нижнее - значение value  */}
                     <div className="dd">
                         <span style={{position: 'relative',  left: '68px', color: '#fff', margin: 'auto'}}>
