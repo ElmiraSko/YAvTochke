@@ -37,6 +37,7 @@ import CompanySettings from "./components/employeesForCompany/CompanySettings";
 import Pay from "./components/Pay";
 import CompanyEmployerEdit from "./components/employeesForCompany/CompanyEmployerEdit";
 import SelectedVacancy from "./components/employeesForCompany/SelectedVacancy";
+import SelectedVacancyAddress from "./components/employeesForCompany/SelectedVacancyAddress";
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -177,6 +178,9 @@ function App() {
                               </Route>
                               <Route exact path="/selected-vacancy">
                                   <SelectedVacancy />
+                              </Route>
+                              <Route exact path="/selected-vacancy/address">
+                                  <SelectedVacancyAddress />
                               </Route>
                               <Route exact path="/employer/personal-account">
                                   <CompanyPage />

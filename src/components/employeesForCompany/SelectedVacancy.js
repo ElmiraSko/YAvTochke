@@ -1,96 +1,101 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from "@material-ui/core/Container";
 import AdItemForCompany from "../AdItemForCompany";
 import Ad from "./VacanciesText";
+import tableData from './VacancyAddressArray'
 import './styles2/SelectedVacancy.css'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import {Link} from "react-router-dom";
 
 export default function SelectedVacancy() {
     //флаг - показывать псевдо элемент вакансии(true) или нет(false)
     const showPsevdo = true
+    //Достаем id вакансии из url:
+    let urlVar = window.location.href;
+    let items = urlVar.split('='); // разделили на две части по разделителю =, получили массив
+    let vacancyId = Number(items[1]);
+    // Статус кнопки, нажата кнопка или отжата
+    const [firstButtonActive, setFirstButtonActive] = useState(true)
+    const [lastButtonActive, setLastButtonActive] = useState(false)
+    // переменная showOtkliki, для содержания массива из отображаемых откликов
+    // изначально присваиваем пустой массив
+    const [showOtkliki, setShowOtkliki] = useState([])
+    //search поле
+    const [searchText, setSearchText] = useState("")
+    // moreIcon  and lessIcon
+    const [moreIconStaff, setMoreIconStaff] = useState(false)
+    const [lessIconStaff, setLessIconStaff] = useState(true)
+    const [moreIconCandidates, setMoreIconCandidates] = useState(false)
+    const [lessIconCandidates, setLessIconCandidates] = useState(true)
+    const [moreIconResponses, setMoreIconResponses] = useState(false)
+    const [lessIconResponses, setLessIconResponses] = useState(true)
+    const [moreIconProfiles, setMoreIconProfiles] = useState(false)
+    const [lessIconProfiles, setLessIconProfiles] = useState(true)
 
-    const tableData = [
-        {
-            id: 1,
-            address: 'г. Москва, Новокосинская, 14А',
-            empl: 'нет',
-            cond: '1',
-            otckliki: '6',
-            profiles: '14',
-        },
-        {
-            id: 2,
-            address: 'г. Москва, Арбат, 21',
-            empl: 'нет',
-            cond: '2',
-            otckliki: '2',
-            profiles: '12',
-        },
-        {
-            id: 3,
-            address: 'г. Москва, Салтыковская, 72',
-            empl: 'нет',
-            cond: '0',
-            otckliki: '1',
-            profiles: '4',
-        },
-        {
-            id: 4,
-            address: 'г. Москва, Батурина, 13',
-            empl: 'нет',
-            cond: '0',
-            otckliki: '1',
-            profiles: '11',
-        },
-        {
-            id: 5,
-            address: 'г. Москва, Батурина, 18',
-            empl: 'нет',
-            cond: '1',
-            otckliki: '+6',
-            profiles: '9',
-        },
-        {
-            id: 6,
-            address: 'г. Москва,  Металлургов, 54',
-            empl: 'нет',
-            cond: '1',
-            otckliki: '+6',
-            profiles: '8',
-        },
-        {
-            id: 7,
-            address: 'г. Москва,  Вальдэса, 49',
-            empl: 'нет',
-            cond: '1',
-            otckliki: '6',
-            profiles: '14',
-        },
-        {
-            id: 8,
-            address: 'г. Москва,  Ленина, 81',
-            empl: 'есть',
-            cond: '0',
-            otckliki: '+6',
-            profiles: '7',
-        },
-        {
-            id: 9,
-            address: 'г. Москва,  Молокова, 35',
-            empl: 'есть',
-            cond: '1',
-            otckliki: '+6',
-            profiles: '5',
-        },
-        {
-            id: 10,
-            address: 'г. Москва,  Вальдэса, 49',
-            empl: 'есть',
-            cond: '0',
-            otckliki: '+6',
-            profiles: '10',
-        },
-    ]
+    // предполагается, что tableData - это все отклики по данной вакансии
 
+    // Получение новых откликов
+    function getNewOtkliki() {
+        if (tableData) { // если не пустой массив
+            let newOtk = tableData.filter((item) => (item.otkStatus==='new'))
+            setShowOtkliki(newOtk)
+            }
+        }
+    useEffect(() => {
+        doActiveFirstButton()
+    }, [])
+
+
+    // Активация кнопки "Новые отклики"
+    function doActiveFirstButton() {
+        setFirstButtonActive(true)
+        setLastButtonActive(false)
+        getNewOtkliki()
+    }
+    // Активация кнопки "Все отклики"
+    function doActiveLastButton() {
+        setFirstButtonActive(false)
+        setLastButtonActive(true)
+        setShowOtkliki(tableData)
+    }
+    // Поисковое поле - инпут
+    function search(event) {
+        setSearchText(event.target.value)
+    }
+    // Сортировка по возрастанию и убыванию:
+    function staffMoreSort() {
+        setMoreIconStaff(true)
+        setLessIconStaff(false)
+    }
+    function staffLessSort() {
+        setMoreIconStaff(false)
+        setLessIconStaff(true)
+    }
+    function candidatesMoreSort() {
+        setMoreIconCandidates(true)
+        setLessIconCandidates(false)
+    }
+    function candidatesLessSort() {
+        setMoreIconCandidates(false)
+        setLessIconCandidates(true)
+    }
+    function responsesMoreSort() {
+        setMoreIconResponses(true)
+        setLessIconResponses(false)
+    }
+    function responsesLessSort() {
+        setMoreIconResponses(false)
+        setLessIconResponses(true)
+    }
+    function profilesMoreSort() {
+        setMoreIconProfiles(true)
+        setLessIconProfiles(false)
+    }
+    function profilesLessSort() {
+        setMoreIconProfiles(false)
+        setLessIconProfiles(true)
+    }
 
     return(
         <Container maxWidth="lg">
@@ -99,27 +104,22 @@ export default function SelectedVacancy() {
             </div>
 
             <div style={{ marginBottom: "30px", marginTop: '30px',
-                textAlign: "center", width: '700px', margin: 'auto'}}>
+                textAlign: "center", width: '740px', margin: 'auto'}}>
                 <div className="flex-start">
-                    <input className="red-input"/>
-
-                    <div>
-                        <div className="dd2">
-                            <progress value="50" max="100"
-                            style={{width: '34px'}}>А</progress>
-                            <div className="dd">
-                                <span style={{position: 'relative',   left: '70px',
-                                    top: '-20px',  color: '#111106',}}>
-                                    Новые отклики
-                                </span>
-                            </div>
-                            <div className="dd">
-                                <span style={{position: 'relative',  left: '200px',top: '-20px',
-                                    color: '#080811', margin: 'auto'}}>
-                                    Все отклики
-                                </span>
-                            </div>
-                        </div>
+                    <input className="red-input padding-left-7"
+                           onChange={search}
+                           value={searchText}
+                           placeholder="Поиск по адресу"
+                    />
+                    <div className="two_buttons_wr">
+                        <button className={`${firstButtonActive ? 'active_button' : 'no_active'}`}
+                                onClick={doActiveFirstButton}>
+                            Новые отклики
+                        </button>
+                        <button className={`${lastButtonActive ? 'active_button' : 'no_active'}`}
+                                onClick={doActiveLastButton}>
+                            Все отклики
+                        </button>
                     </div>
 
                 </div>
@@ -132,39 +132,97 @@ export default function SelectedVacancy() {
                             Фильтры:
                         </td>
                         <td className="sel-table-th">
-                            <select className="th-select ">
-                                <option>Сотрудники</option>
-                            </select>
+                            <div className="th-select flex-center ">
+                                <div className="padd-t">Сотрудники</div>
+                                <div hidden={moreIconStaff}
+                                      className="this_link"
+                                      onClick={staffMoreSort}
+                                >
+                                    <ExpandMoreIcon/>
+                                </div>
+                                <div hidden={lessIconStaff}
+                                      className="this_link"
+                                      onClick={staffLessSort}
+                                >
+                                    <ExpandLessIcon/>
+                                </div>
+                            </div>
                         </td>
                         <td className="sel-table-th">
-                            <select className="th-select ">
-                                <option>Кандидаты</option>
-                            </select>
+                            <div className="th-select flex-center ">
+                                <div className="padd-t">Кандидаты</div>
+                                <div hidden={moreIconCandidates}
+                                     className="this_link"
+                                     onClick={candidatesMoreSort}
+                                >
+                                    <ExpandMoreIcon/>
+                                </div>
+                                <div hidden={lessIconCandidates}
+                                     className="this_link"
+                                     onClick={candidatesLessSort}
+                                >
+                                    <ExpandLessIcon/>
+                                </div>
+                            </div>
                         </td>
                         <td className="sel-table-th">
-                            <select className="th-select ">
-                                <option>Отклики</option>
-                            </select>
+                            <div className="th-select flex-center ">
+                                <div className="padd-t">Отклики</div>
+                                <div hidden={moreIconResponses}
+                                     className="this_link"
+                                     onClick={responsesMoreSort}
+                                >
+                                    <ExpandMoreIcon/>
+                                </div>
+                                <div hidden={lessIconResponses}
+                                     className="this_link"
+                                     onClick={responsesLessSort}
+                                >
+                                    <ExpandLessIcon/>
+                                </div>
+                            </div>
                         </td>
                         <td className="sel-table-th">
-                            <select className="th-select ">
-                                <option>Профили</option>
-                            </select>
+                            <div className="th-select flex-center ">
+                                <div className="padd-t">Профили</div>
+                                <div hidden={moreIconProfiles}
+                                     className="this_link"
+                                     onClick={profilesMoreSort}
+                                >
+                                    <ExpandMoreIcon/>
+                                </div>
+                                <div hidden={lessIconProfiles}
+                                     className="this_link"
+                                     onClick={profilesLessSort}
+                                >
+                                    <ExpandLessIcon/>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </thead>
                     <tbody className="f_14">
-                    {tableData.map(data =>
+                    {showOtkliki.length>0 ? (showOtkliki.map(data =>
                         <tr key={data.id}>
-                            <td className="sel-vac-td1">
-                                {data.address}
+                            <td className="sel-vac-td1 " id="address">
+                                <Link to={'/selected-vacancy/address?address_id=' + data.id}
+                                      className="noLink-decoration">
+                                    {data.address}
+                                </Link>
+                                <span className="help-text">Посмотреть детали</span>
                             </td>
                             <td className="sel-vac-td sel-td-bg">{data.empl}</td>
                             <td className="sel-vac-td">{data.cond}</td>
                             <td className="sel-vac-td sel-td-bg">{data.otckliki}</td>
                             <td className="sel-vac-td border-5">{data.profiles}</td>
                         </tr>
-                    )}
+                    )) :
+                        (<tr>
+                        <td colSpan="5" style={{textAlign: 'center'}}>
+                            Нет новых откликов
+                      </td>
+                     </tr>)
+                        }
                     </tbody>
                 </table>
             </div>

@@ -17,13 +17,13 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 export default function CompanyEmployerEdit() {
 
-    // С другой страницы переходтим по ссылке http://localhost:3000/employer/personal-account/edit/?id=1
+    // С другой страницы переходтим по ссылке http://localhost:3000/employer/personal-account/edit?id=1
     let urlVar = window.location.href;
     console.log("Переход") // получаем
-    console.log(urlVar) // http://localhost:3000/employer/personal-account/edit/?id=1
+    console.log(urlVar) // http://localhost:3000/employer/personal-account/edit?id=1
     let item = urlVar.split('='); // разделили на две части по разделителю =, получили массив
-    // console.log(item)       // ["http://localhost:3000/employer/personal-account/edit/?id", "1"]
-    // console.log(item[0])   // первый элемент массива: http://localhost:3000/employer/personal-account/edit/?id
+    // console.log(item)       // ["http://localhost:3000/employer/personal-account/edit?id", "1"]
+    // console.log(item[0])   // первый элемент массива: http://localhost:3000/employer/personal-account/edit?id
     // console.log(item[1])  //  второй: 1 - id пользователя, тип - строка
 
     let numId = Number(item[1]);

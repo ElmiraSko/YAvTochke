@@ -39,7 +39,7 @@ export default function AdItemForCompany(props) {
             <div style={{ width: '692px', textAlign: 'right',
                 position: 'absolute', top: '-3px', }} >
                 <div style={{textAlign: 'center', width: '22px', marginLeft: '675px',}}>
-                    <Link to='/selected-vacancy'
+                    <Link to={'/selected-vacancy?id='+ vacancy.id}
                           style={{textDecoration: 'none', color: '#ffffff', cursor: 'pointer'}}>
                         {vacancy.count}
                     </Link>

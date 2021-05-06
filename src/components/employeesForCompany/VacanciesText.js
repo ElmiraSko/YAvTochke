@@ -1,4 +1,4 @@
-export default [
+const vacancies = [
     {
         id: 12,
         title: "Промоутер",
@@ -75,6 +75,5 @@ export default [
         inArchive: 'true',
         count: '1',
     }
-
-
 ]
+export default vacancies;

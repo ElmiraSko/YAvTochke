@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function VacanciesOfTheCompany() {
     const classes = useStyles();
 
-    //флаг - показывать псевдо элемент вакансии(true) или нет(false)
+    //флаг - показывать псевдо элемент у блока вакансии(true) или нет(false)
     const showPsevdo = true
 
     return(
