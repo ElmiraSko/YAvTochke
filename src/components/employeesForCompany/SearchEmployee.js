@@ -97,6 +97,23 @@ export default function SearchEmployee() {
         },
     ]
 
+    // Временное решение для отображения контактов, нужно подумать
+    const workerContacts = [
+        {
+            showContact: false,
+            phone: "8 (960) 415-12-12",
+            email: 'Stepan@mail.ru',
+            telegram: '@Stepan100500',
+            vk: 'vk.com/Stepan',
+        },
+        {
+            showContact: false,
+            phone: "8 (960) 415-12-12",
+            email: 'Ivan@mail.ru',
+            telegram: '@Ivan100500',
+            vk: 'vk.com/ivanich',
+        },
+    ]
     //=== получаем значение ползунка
     function getRadius() {
         const size = document.getElementById("radius").value;
@@ -220,10 +237,12 @@ export default function SearchEmployee() {
                     <div className="vacancy-div">
                         <div>
                             <div>
-                                <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2} />
+                                <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2}
+                                contacts={workerContacts[0]}/>
                             </div>
                             <div>
-                                <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1} />
+                                <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1}
+                                contacts={workerContacts[1]}/>
                             </div>
                         </div>
                     </div>

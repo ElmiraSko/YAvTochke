@@ -1,4 +1,4 @@
-export default [
+const empInfo = [
     {
         firstName: "Степан",
         lastName: "Степанов",
@@ -18,3 +18,4 @@ export default [
         work_type: "Полная занятость"
     }
 ]
+export default empInfo

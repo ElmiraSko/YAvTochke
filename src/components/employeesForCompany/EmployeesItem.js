@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import './styles2/EmployeesItem.css'
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-
+import telegram2 from "../../img/telegram-grey.png";
+import vk2 from "../../img/vk-grey.png";
 
 export default function EmployeesItem(props){
     const info = props.emplInf
+    const contacts = props.contacts
     // надпись на кнопке, откликнулся соискатель или нет
     const [jobsButton, setJobsButton] = useState('Показать контакты')
     const [sent, setSent] = useState(false)
@@ -18,7 +20,7 @@ export default function EmployeesItem(props){
         <div className="employeesItem-main"
              // id = {vacancy.id}
         >
-            <div style={{display: "flex", justifyContent: "space-between", margin: "0px 20px"}} >
+            <div className="flex-between margin_L_R">
 
                 <div
                     // onClick={() => showDetails(vacancy.id)}
@@ -37,8 +39,34 @@ export default function EmployeesItem(props){
                         <div style={{ paddingTop: '10px'}}> {info.atPoint} </div>
                     </div>
                 </div>
+                <div  style={{textAlign: 'center', width: '25%'}}>
+                    {contacts.showContact ? (
+                    <div>
+                        <p className="desc">
+                            Тел: {contacts.phone}
+                        </p>
+                        <p className="desc">
+                            E-mail: {contacts.email}
+                        </p>
+                        <p className="desc flex-only">
+                            <img src={telegram2} style={{width: '20px', height: '20px',}}/>
+                            <span className="margin_L_R_7">
+                                {contacts.telegram}
+                            </span>
+                        </p>
+                        <p className="desc flex-only">
+                            <img src={vk2} style={{width: '20px', height: '20px',}}/>
+                            <span className="margin_L_R_7">
+                                 {contacts.vk}
+                            </span>
+                        </p>
+                    </div>
+                    ) : (
+                        ''
+                    )}
+                </div>
 
-                <div style={{textAlign: 'center', width: '30%'}}>
+                <div style={{textAlign: 'center', width: '24%'}}>
                     <div style={{borderRadius: '50%', }}>
                     {/* Нужно будет добавить альтернативу для фото, если фото нет  */}
                     <img src={props.photo}

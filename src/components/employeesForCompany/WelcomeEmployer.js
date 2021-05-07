@@ -17,6 +17,16 @@ export default function WelcomeEmployer() {
         atPoint: "В точке",
         work_type: "Подработка"
     }
+    // Временное решение для отображения контактов, нужно подумать
+    const workerContacts = [
+        {
+            showContact: false,
+            phone: "8 (960) 415-12-12",
+            email: 'Stepan@mail.ru',
+            telegram: '@Stepan100500',
+            vk: 'vk.com/Stepan',
+        },
+    ]
 
     const buttonText = "Дополнить"
     const buttonHref = "/employer/personal-account"
@@ -24,7 +34,7 @@ export default function WelcomeEmployer() {
 
     return(
         <div>
-            <Container  maxWidth="md" >
+            <Container  maxWidth="lg" >
                 <div style={{ fontSize: "1.2rem",
                     fontWeight: "600", textAlign: "center", margin: "20px 0px"}}>
                     <CheckCircleOutlineIcon style={{width: '36px', height: '36px', color: '#f04d2d' }}/>
@@ -35,8 +45,8 @@ export default function WelcomeEmployer() {
                         Рекомендуем
                     </div>
 
-                    <div style={{display: "flex", justifyContent: "space-around", marginBottom: "20px", }}>
-                        <EmployeesItem emplInf={worker} photo={Photo1} />
+                    <div>
+                        <EmployeesItem emplInf={worker} photo={Photo1} contacts={workerContacts[0]} />
                     </div>
 
                     <div style={{ margin: "40px 0px 0px 0px", }}>

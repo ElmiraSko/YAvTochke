@@ -20,7 +20,26 @@ export default function SelectedVacancy() {
     let items = urlVar.split('='); // разделили на две части по разделителю =, получили массив
     let addressId = Number(items[1]);
     console.log(addressId)
+    // Информация по конкретному адресу
     const [selectedAddress, setSelectedAddress] = useState({})
+
+    // Временное решение для отображения контактов, нужно подумать
+    const workerContacts = [
+        {
+            showContact: true,
+            phone: "8 (960) 415-12-12",
+            email: 'Stepan@mail.ru',
+            telegram: '@Stepan100500',
+            vk: 'vk.com/Stepan',
+        },
+        {
+            showContact: false,
+            phone: "8 (960) 415-12-12",
+            email: 'Ivan@mail.ru',
+            telegram: '@Ivan100500',
+            vk: 'vk.com/ivanich',
+        },
+    ]
 
     function getAddressById(id) {
         if(address) {
@@ -97,10 +116,12 @@ export default function SelectedVacancy() {
                                         {selectedAddress[0].address}
                                     </div>
                                 </td>
-                                <td className="sel-vac-td sel-td-bg">{selectedAddress[0].empl}</td>
+                                <td className="sel-vac-td">{selectedAddress[0].empl}</td>
                                 <td className="sel-vac-td">{selectedAddress[0].cond}</td>
-                                <td className="sel-vac-td sel-td-bg">{selectedAddress[0].otckliki}</td>
-                                <td className="sel-vac-td border-5">{selectedAddress[0].profiles}</td>
+                                <td className="sel-vac-td">{selectedAddress[0].otckliki}</td>
+                                <td className="sel-vac-td color-FFAB9A border-5">
+                                    {selectedAddress[0].profiles}
+                                </td>
                                 <td className="sel-vac-td2 border-0">
                                     <button className="red-button_">Закрыть точку</button>
                                 </td>
@@ -117,10 +138,10 @@ export default function SelectedVacancy() {
             </div>
             <div>
                 <div>
-                    <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2} />
+                    <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2} contacts={workerContacts[0]}/>
                 </div>
                 <div>
-                    <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1} />
+                    <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1} contacts={workerContacts[1]}/>
                 </div>
             </div>
         </Container>
