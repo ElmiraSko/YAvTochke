@@ -6,16 +6,18 @@ const empInfo = [
         requiredPosition: "Мерчендайзер",
         address: "Новокосинская, д. 14а",
         atPoint: "В точке",
-        work_type: "Полная занятость, Подработка"
+        work_type: "Полная занятость, Подработка",
+        starStatus: true,
     },
     {
-        firstName: "Павел",
-        lastName: "Сидоров",
+        firstName: "Фархад",
+        lastName: "Абдусаматов",
         requiredPosition: "Консультант",
         currentPosition: "Продавец-кассир",
         address: "Новокосинская, д. 14а",
         atPoint: "В точке",
-        work_type: "Полная занятость"
+        work_type: "Полная занятость",
+        starStatus: false,
     }
 ]
 export default empInfo

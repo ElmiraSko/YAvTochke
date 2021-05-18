@@ -21,7 +21,7 @@ export default function SignUpCompanyComponent(props) {
     // Радиобатн
     const RedRadio = withStyles({
         root: {
-            color: '#e3d5d2',
+            color: '#848C8E',
             '&$checked': {
                 color: '#f04d2d',
             },
@@ -32,20 +32,42 @@ export default function SignUpCompanyComponent(props) {
 
     return(
         <Container maxWidth="lg">
-            <div style={{ fontSize: "1.2rem", paddingBottom: "45px",}}>
+            <div style={{ paddingBottom: "45px",}}>
 
-                <div style={{padding: "30px 0px 30px 0px", marginBottom: "15px",
-                    fontSize: "1.6rem",  fontWeight: "700", textAlign: 'center', textTransform: 'uppercase',}}>
+                <div className="font-20-bold align-c marg-b-15 pad-t-b-30 color-0C1618 text-up">
                     регистрация работодателя
                 </div>
 
-                <div style={{display: "flex", justifyContent: "space-around",
-                    marginBottom: "30px", height: "180px", fontSize: "1.0rem", fontWeight: '600' }}>
+                <div style={{marginBottom: "30px", height: "180px",}} className="color-0C1618 flex-space-around">
 
                     <div style={{width: "30%", height: "auto", borderRadius: '50%'}}>
-                        <div style={{marginBottom: "15px"}} >
+                        <div className="marg-b-9 c_848C8E font-bold">
+                            Данные контактного лица
+                        </div>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500 color-0C1618">Фамилия
+                                    <span className="c_red">{' '}*</span>
+                                </label>
+                            </div>
                             <div>
-                                <label >Имя*</label>
+                                <input type="text"
+                                       name="lastName"
+                                       autoComplete="off"
+                                       className={`input-field ${fieldError(props.lastNameValid)}`}
+                                       value={props.lastName}
+                                       onChange={lastNameHandler}
+                                       onDoubleClick={props.cleanLastName}
+                                       onBlur={props.blurHandler}
+                                />
+                                {props.lastNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                            </div>
+                        </div>
+                        <div className="marg-b-15" >
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Имя
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="text"
@@ -61,27 +83,11 @@ export default function SignUpCompanyComponent(props) {
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Фамилия*</label>
-                            </div>
-                            <div>
-                                <input type="text"
-                                       name="lastName"
-                                       autoComplete="off"
-                                       className={`input-field ${fieldError(props.lastNameValid)}`}
-                                       value={props.lastName}
-                                       onChange={lastNameHandler}
-                                       onDoubleClick={props.cleanLastName}
-                                       onBlur={props.blurHandler}
-                                />
-                                {props.lastNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Мобильный телефон*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Мобильный телефон
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="tel"
@@ -101,9 +107,12 @@ export default function SignUpCompanyComponent(props) {
                     </div>
 
                     <div style={{width: "30%", height: "auto", borderRadius: '50%'}}>
-                        <div style={{marginBottom: "15px"}} >
-                            <div>
-                                <label >ИНН компании*</label>
+                        <div className="marg-b-9 c_848C8E font-bold">Информация о компании</div>
+                        <div className="marg-b-15" >
+                            <div className="marg-b-9">
+                                <label className="font-14-500">ИНН компании
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="text"
@@ -119,9 +128,11 @@ export default function SignUpCompanyComponent(props) {
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Тип компании*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Тип компании
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <RedRadio style={{padding: '5px 0', backgroundColor: 'transparent'}}
@@ -132,8 +143,10 @@ export default function SignUpCompanyComponent(props) {
                                     // name="radio-button-demo"
                                     // inputProps={{ 'aria-label': 'C' }}
                                 />
-                                <span style={{color: `${props.companyType==='Прямой работодатель' ? '#f04d2d' : ''}` , marginLeft: '10px'}}>
-                                    Прямой работодатель</span>
+                                <span className="font-bold"
+                                    style={{color: `${props.companyType==='Прямой работодатель' ? '#f04d2d' : '#848C8E'}` , marginLeft: '10px'}}>
+                                    Прямой работодатель
+                                </span>
                             </div>
                             <div>
                                 <RedRadio style={{padding: '5px 0', backgroundColor: 'transparent'}}
@@ -144,8 +157,10 @@ export default function SignUpCompanyComponent(props) {
                                     // name="radio-button-demo"
                                     // inputProps={{ 'aria-label': 'C' }}
                                 />
-                                <span style={{color: `${props.companyType==='Кадровое агенство' ? '#f04d2d' : ''}` , marginLeft: '10px'}}>
-                                    Кадровое агенство</span>
+                                <span className="font-bold"
+                                    style={{color: `${props.companyType==='Кадровое агенство' ? '#f04d2d' : '#848C8E'}` , marginLeft: '10px'}}>
+                                    Кадровое агенство
+                                </span>
                             </div>
                             <div>
                                 <RedRadio style={{padding: '5px 0', backgroundColor: 'transparent'}}
@@ -156,14 +171,18 @@ export default function SignUpCompanyComponent(props) {
                                     // name="radio-button-demo"
                                     // inputProps={{ 'aria-label': 'C' }}
                                 />
-                                <span style={{color: `${props.companyType==='Рекрутер' ? '#f04d2d' : ''}` , marginLeft: '10px'}}>
-                                    Рекрутер</span>
+                                <span className="font-bold"
+                                    style={{color: `${props.companyType==='Рекрутер' ? '#f04d2d' : '#848C8E'}` , marginLeft: '10px'}}>
+                                    Рекрутер
+                                </span>
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Название компании*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Название компании
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="text"
@@ -179,9 +198,11 @@ export default function SignUpCompanyComponent(props) {
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Город*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Город
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="text"
@@ -204,13 +225,15 @@ export default function SignUpCompanyComponent(props) {
                                     disabled={!props.formValid}
                             >Зарегистрироваться</button>
                         </div>
-
                     </div>
 
                     <div style={{ width: "30%", height: "auto", borderRadius: '50%'}}>
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label>E-mail*</label>
+                        <div className="marg-b-9 c_848C8E font-bold">Данные для регистрации</div>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">E-mail
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="email"
@@ -227,10 +250,12 @@ export default function SignUpCompanyComponent(props) {
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "25px"}}>
-                            <div>
-                                <label >Пароль*</label>
-                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Пароль
+                                    <span className="c_red">{' '}*</span>
+                                </label>
+                                {props.passwordValid ? '' : <span style={{color: 'red'}}>8-16 символов, латинские буквы и цифры</span>}
                             </div>
                             <div>
                                 <input type="password"
@@ -247,9 +272,11 @@ export default function SignUpCompanyComponent(props) {
                                 {props.passwordValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
                             </div>
                         </div>
-                        <div style={{marginBottom: "25px"}}>
-                            <div>
-                                <label >Подтвердить пароль*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Подтвердить пароль
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="password"

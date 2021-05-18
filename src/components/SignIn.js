@@ -12,10 +12,10 @@ export default function SignIn(props) {
 
     return(
             <div className="main-div">
-                    <div style={{marginBottom: "15px"}} >
-                        <div style={{marginBottom: "7px"}}>
-                            <label>E-mail или мобильный телефон
-                                <span style={{color: '#f04d2d'}}>*</span>
+                    <div style={{marginBottom: "18px"}} >
+                        <div className="marg-b-9">
+                            <label className="font-14-500 color-0C1618">E-mail или мобильный телефон
+                                <span className="c_red">{' '}*</span>
                             </label>
                         </div>
                         <div>
@@ -28,14 +28,14 @@ export default function SignIn(props) {
                                    onDoubleClick={props.cleanLogin}
                                    onBlur={props.blurHandler}
                             />
-                            {props.loginValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                            {props.loginValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                         </div>
                     </div>
 
-                    <div style={{marginBottom: "15px"}}>
-                        <div style={{marginBottom: "7px"}}>
-                            <label >Пароль
-                                <span style={{color: '#f04d2d'}}>*</span>
+                    <div style={{marginBottom: "18px"}}>
+                        <div className="marg-b-9">
+                            <label className="font-14-500 color-0C1618">Пароль
+                                <span className="c_red">{' '}*</span>
                             </label>
                         </div>
                         <div>
@@ -48,7 +48,7 @@ export default function SignIn(props) {
                                    onDoubleClick={props.cleanPassword}
                                    onBlur={props.blurHandler}
                             />
-                            {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
+                            {props.passwordValid ? '' : <span className="font-12-500 c_red"> 8-16 символов, латинские буквы и цифры</span>}
                         </div>
                     </div>
 

@@ -103,7 +103,7 @@ export default function SignInCompany() {
     }
     // === Валидация Password ===
     function validatePassword(password){
-        const ph = /^[A-Za-z]\w{7,15}$/;
+        const ph = /^[A-Za-z0-9]\w{7,15}$/;
         let passValid = ph.test(String(password).toLowerCase());
         if (passValid) {
             setPasswordValid(true)
@@ -146,9 +146,12 @@ export default function SignInCompany() {
             <div className="wr">
                 <form noValidate autoComplete="off" hidden={formHidden}
                       style={{width: '360px', margin: 'auto'}}>
-                    <Typography component="h1" variant="h5" align={"center"}>
+                    {/*<Typography component="h1" variant="h5" align={"center"}>*/}
+                    {/*    Вход в личный кабинет*/}
+                    {/*</Typography>*/}
+                    <div className="font-20-bold align-c marg-b-15 pad-t-b-30 color-0C1618 text-up">
                         Вход в личный кабинет
-                    </Typography>
+                    </div>
 
                     <SignIn loginHandler={loginHandler}
                             passwordHandler={passwordHandler}

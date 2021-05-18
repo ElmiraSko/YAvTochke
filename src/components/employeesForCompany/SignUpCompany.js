@@ -230,7 +230,7 @@ export default function SignUpCompany() {
     }
     // === Валидация Password ===
     function validatePassword(password){
-        const ph = /^[A-Za-z]\w{7,15}$/;
+        const ph = /^[A-Za-z0-9]\w{7,15}$/;
         let passValid = ph.test(String(password).toLowerCase());
         if (passValid) {
             setPasswordValid(true)

@@ -3,12 +3,12 @@ import Container from "@material-ui/core/Container";
 import './styles2/NewVacancy.css'
 import withStyles from "@material-ui/core/styles/withStyles";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import exel from "../../img/exel.png";
 export default function NewVacancy() {
 
     // Работа с выбранным файлом
     const [fileName, setFileName] = useState("Загрузить файл с адресами")
-    // Поля формы: Обязанности, Требования, Условия
+    // Текстовые области формы: Обязанности, Требования, Условия
     const [responsibilities, setResponsibilities] = useState("")
     const [requirements, setRequirements] = useState("")
     const [conditions, setConditions] = useState("")
@@ -24,7 +24,53 @@ export default function NewVacancy() {
     const [addr2CleanH, setAddr2CleanH] = useState(true)
     const [addr3CleanH, setAddr3CleanH] = useState(true)
 
+    // Чекбоксы: самозанятости
+    const [selfEmployed, setSelfEmployed] = useState(false)
+    const [noSelfEmployed, setNoSelfEmployed] = useState(false)
 
+    const selfEmployedHandler =(event, prev) => {
+        if (prev) {
+            setNoSelfEmployed(false)
+        }
+        setSelfEmployed(event.target.checked)
+    }
+    const noSelfEmployedHandler =(event, prev) => {
+        if (prev) {
+            setSelfEmployed(false)
+        }
+        setNoSelfEmployed(event.target.checked)
+    }
+    // Чекбоксы: медкнижка
+    const [medicalBook , setMedicalBook] = useState(false)
+    const [noMedicalBook, setNoMedicalBook] = useState(false)
+
+    const medicalBookHandler =(event, prev) => {
+        if (prev) {
+            setNoMedicalBook(false)
+        }
+        setMedicalBook(event.target.checked)
+    }
+    const noMedicalBookHandler =(event, prev) => {
+        if (prev) {
+            setMedicalBook(false)
+        }
+        setNoMedicalBook(event.target.checked)
+    }
+    //==============
+    const RedCheckbox = withStyles({
+        root: {
+            width: '0',
+            height: '0',
+            color: '#848C8E',
+            '&$checked': {
+                color: '#f04d2d',
+            },
+        },
+        checked: {},
+    })((props) =>
+        <Checkbox color="default" {...props} />);
+
+    // === для загрузки файла =========
     let fileInput = React.createRef();
     function handleFiles(event) {
         let selectedFile = event.target.value
@@ -46,7 +92,7 @@ export default function NewVacancy() {
     // );
     }
 
-    // Для поля адреса
+    // Для поля адреса, можно добавить три адреса либо загрузить файл с адресами
     function address1Handler(event) {
         setAddress1(event.target.value)
     }
@@ -117,18 +163,11 @@ export default function NewVacancy() {
         setConditions("")
     }
 
-    const RedCheckbox = withStyles({
-        root: {
-            width: '0',
-            height: '0',
-            color: '#848C8E',
-            '&$checked': {
-                color: '#f04d2d',
-            },
-        },
-        checked: {},
-    })((props) =>
-        <Checkbox color="default" {...props} />);
+    //====
+    function catalog() {
+
+    }
+
 
     return(
         <Container maxWidth="lg">
@@ -142,7 +181,7 @@ export default function NewVacancy() {
                            Название вакансии
                        </span>
                        <input className="inp" placeholder="Например, комплектовщик"/>
-                       <span className="tt-red">
+                       <span className="tt-red this_link" onClick={catalog}>
                            Выбрать название из каталога
                        </span>
                    </div>
@@ -150,7 +189,7 @@ export default function NewVacancy() {
                        <span className="tt">
                            Заработная плата
                        </span>
-                        <input className="inp marg-l1"/>
+                        <input className="inp marg-l1" type='text' />
                         <select className="inp2 marg-l font-14-bold">
                             <option value="Руб/мес">Руб/мес</option>
                             <option value="Руб/день">Руб/день</option>
@@ -189,8 +228,8 @@ export default function NewVacancy() {
                          </span>
                         <span className="marg-l">
                            <RedCheckbox
-                               // checked={fullTime}
-                               // onChange={fullTimeHandler}
+                               checked={selfEmployed}
+                               onChange={selfEmployedHandler}
                                value=""
                                disableRipple={true}
                                style={{ backgroundColor: 'transparent' }}
@@ -201,8 +240,8 @@ export default function NewVacancy() {
                        </span>
                         <span className="marg-l">
                            <RedCheckbox
-                               // checked={fullTime}
-                               // onChange={fullTimeHandler}
+                               checked={noSelfEmployed}
+                               onChange={noSelfEmployedHandler}
                                value=""
                                disableRipple={true}
                                style={{ backgroundColor: 'transparent' }}
@@ -216,8 +255,8 @@ export default function NewVacancy() {
                          </span>
                         <span className="marg-l">
                            <RedCheckbox
-                               // checked={fullTime}
-                               // onChange={fullTimeHandler}
+                               checked={medicalBook}
+                               onChange={medicalBookHandler}
                                value=""
                                disableRipple={true}
                                style={{ backgroundColor: 'transparent' }}
@@ -228,8 +267,8 @@ export default function NewVacancy() {
                        </span>
                         <span className="marg-l">
                             <RedCheckbox
-                                // checked={fullTime}
-                                // onChange={fullTimeHandler}
+                                checked={noMedicalBook}
+                                onChange={noMedicalBookHandler}
                                 value=""
                                 disableRipple={true}
                                 style={{ backgroundColor: 'transparent' }}
@@ -391,8 +430,11 @@ export default function NewVacancy() {
                                     </span>
                                 </div>
 
-                                <div className="f-12 marg-t-b" >
-                                    Шаблон для массовой загрузки адресов
+                                <div className="f-12 marg-t-b flex-only" >
+                                    <img src={exel} alt='Exel'
+                                    style={{height: '40px', width: '40px'}}/>
+                                    <span className="marg-and-padding-14">
+                                        Шаблон для массовой загрузки адресов</span>
                                 </div>
                                 <div>
                                     <input type="text" className="inp3 f12 br" value={fileName}

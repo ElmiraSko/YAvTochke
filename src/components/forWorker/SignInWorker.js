@@ -33,38 +33,44 @@ export default function SignInWorker() {
     // обработчик формы
     function submitHandler(event) {
         event.preventDefault()
-        setFormHidden(true) // скрыли форму
-        setLoading(true)    // начало загрузки
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email_phone: login, password: password})
-        };
-            fetch('https://iaminpoint.herokuapp.com/login', requestOptions)
-                .then(async response => {
-                    const  data = await response.json()
-                    if (response.status === 400) {
-                        setLoading(false)    // конец загрузки
-                        setFormHidden(false) // открыли форму
-                        setUser(null)
-                        setSignIn(false)
-                        setSignUp(false)
-                        alert(data.error)
-                    } else {
-                        setLoading(false)
-                        setUser(data.id)
-                        setSignIn(true)
-                        setSignUp(true)
-                        let stateObj = { foo: "auth/employees" }
-                        window.history.replaceState(stateObj, null, "/profile")
-                        window.location.href='/profile'
-                    }
-                })
-                .catch(error=>{
-                    console.log("Ошибка при авторизации пользователя!")
-                    console.log(error)
-                    setLoading(false)
-                })
+        // setFormHidden(true) // скрыли форму
+        // setLoading(true)    // начало загрузки
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ email_phone: login, password: password})
+        // };
+            // fetch('https://iaminpoint.herokuapp.com/login', requestOptions)
+            //     .then(async response => {
+            //         const  data = await response.json()
+            //         if (response.status === 400) {
+            //             setLoading(false)    // конец загрузки
+            //             setFormHidden(false) // открыли форму
+            //             setUser(null)
+            //             setSignIn(false)
+            //             setSignUp(false)
+            //             alert(data.error)
+            //         } else {
+            //             setLoading(false)
+            //             setUser(data.id)
+            //             setSignIn(true)
+            //             setSignUp(true)
+            //             let stateObj = { foo: "auth/employees" }
+            //             window.history.replaceState(stateObj, null, "/profile")
+            //             window.location.href='/profile'
+            //         }
+            //     })
+            //     .catch(error=>{
+            //         console.log("Ошибка при авторизации пользователя!")
+            //         console.log(error)
+            //         setLoading(false)
+            //     })
+
+        // временное решение, пока нет бэка
+        setUser(5)
+        setSignIn(true)
+        setSignUp(true)
+        window.location.href='/profile'
     }
 
     // сработывает при потере полем фокуса
@@ -95,7 +101,7 @@ export default function SignInWorker() {
     }
     // === Валидация Password ===
     function validatePassword(password){
-        const ph = /^[A-Za-z]\w{7,15}$/;
+        const ph = /^[A-Za-z0-9]\w{7,15}$/;
         let passValid = ph.test(String(password).toLowerCase());
         if (passValid) {
             setPasswordValid(true)
@@ -135,9 +141,12 @@ export default function SignInWorker() {
             </div>
             <div className="wr">
                 <form  hidden={formHidden} style={{width: '360px', margin: 'auto'}}>
-                    <Typography component="h1" variant="h5" align={"center"}>
+                    {/*<Typography component="h1" variant="h5" align={"center"}>*/}
+                    {/*    Вход в профиль*/}
+                    {/*</Typography>*/}
+                    <div className="font-20-bold align-c marg-b-15 pad-t-b-30 color-0C1618 text-up">
                         Вход в профиль
-                    </Typography>
+                    </div>
                     <SignIn loginHandler={loginHandler}
                             passwordHandler={passwordHandler}
                             cleanLogin={cleanLogin}
@@ -155,7 +164,7 @@ export default function SignInWorker() {
 
             <div hidden={formHidden} style={{fontSize: '1.0rem',
                 paddingBottom: "40px", height: 'auto', width: '600px', margin: 'auto',}}>
-                <div style={{textAlign: 'center'}}>
+                <div className="font-16-normal align-c c_848C8E">
                     Войти через соцсеть
                 </div>
                 <div style={{margin: "10px 0 20px 0 ", display: 'flex', justifyContent: 'center'}} >
@@ -172,9 +181,9 @@ export default function SignInWorker() {
                              style={{width: '40px', height: '40px', padding: '15px'}} />
                     </div>
                 </div>
-                <div style={{margin: "10px 0 20px 0 ", display: 'flex', fontWeight: '700',
-                    fontSize: '1.0rem',  justifyContent: 'space-around', }} >
-                    <div >
+                <div style={{margin: "10px 0 20px 0 ", display: 'flex',
+                     justifyContent: 'space-around', }} >
+                    <div className="font-16-normal c_848C8E">
                         Зарегистрироваться
                     </div>
                     <NavLink to={'/reg/employees'} style={{color: '#f04d2d', textDecoration: 'none'}}>

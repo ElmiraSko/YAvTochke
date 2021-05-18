@@ -165,7 +165,7 @@ export default function CompanyEmployerEdit() {
 
                         <div className="margin_L_R f-16">
                             <div className="margin_B_2 flex-start">
-                                <div className="comp-empl-edit-p _red">
+                                <div className="comp-empl-edit-p c_red">
                                     {personRole}:
                                 </div>
                                 <div className="comp-empl-edit-p m_left_38">
@@ -176,7 +176,7 @@ export default function CompanyEmployerEdit() {
                                     <div className="contact-title ce-color">
                                         Контакты
                                     </div>
-                                    <div className="flex-space-around ce-color2">
+                                    <div className="flex-space-around c_848C8E">
                                         <div style={{marginRight: '5px', }}>
                                             <p className="contT">
                                                 Телефон:
@@ -246,13 +246,13 @@ export default function CompanyEmployerEdit() {
                                         </div>
                                     </div>
 
-                            <div className="comp-empl-edit-p _red pad_b_10">
+                            <div className="comp-empl-edit-p c_red pad_b_10">
                                 Настройка уведомлений
                             </div>
-                            <div className="ce-color2 c-p-save-button margin_B">
+                            <div className="c_848C8E c-p-save-button margin_B">
                                 Выберите сервис, который будет использоваться для получения уведомлений
                             </div>
-                            <div className="flex-start ce-color2">
+                            <div className="flex-start c_848C8E">
                                 <div>
                                     <div className="flex-only m_r_20">
                                         <MessageIcon style={{color: '#505350',}}/>

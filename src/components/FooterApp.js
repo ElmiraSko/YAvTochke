@@ -29,7 +29,7 @@ function FooterApp() {
                             <img src={Logo} alt="logo" style={{width: '1.6rem', padding: "10px 10px 0 0"}}/>
                             <span className="tit padd-t" >Я в точке</span>
                         </div>
-                        <div className="font-12-norm padding_T">
+                        <div className="font-12-norm color-0C1618 padding_T">
                                 {'Я в точке '}
                                 {new Date().getFullYear()}
                                 {'. Все права защищены'}

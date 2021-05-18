@@ -43,7 +43,7 @@ export default function HeaderApp2() {
                         </NavLink>
                         {/*<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*/}
                         <div className={`link-padding-tab ${activeLink(searchWork)}`}>
-                            <NavLink className="links" onClick={() => setSearchWork(true)}
+                            <NavLink className="links font-16-bold" onClick={() => setSearchWork(true)}
                                      exact to={"/"}
                                      // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
                             >
@@ -51,7 +51,7 @@ export default function HeaderApp2() {
                             </NavLink>
                         </div>
                         <div className={`link-padding-tab ${activeLink(!searchWork)}`}>
-                            <NavLink className="links" onClick={() => setSearchWork(false)}
+                            <NavLink className="links font-16-bold" onClick={() => setSearchWork(false)}
                                      exact to={"/employees"}
                                      // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
                             >

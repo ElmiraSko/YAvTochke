@@ -10,6 +10,30 @@ import EmployeesItem from "./EmployeesItem";
 import EmplInfo from "./EmployeesInfo";
 import Photo2 from "../../img/worker2.jpg";
 import Photo1 from "../../img/worker1.jpg";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from "@material-ui/core/Fade";
+import SelectProfiles from "./SelectProfiles";
+import ErrorIcon from '@material-ui/icons/Error';
+
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: '#ffffff',
+        border: '1px solid #ffffff',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        width: '940px',
+        height: '540px'
+    },
+}));
 
 export default function SelectedVacancy() {
 
@@ -19,9 +43,29 @@ export default function SelectedVacancy() {
     let urlVar = window.location.href;
     let items = urlVar.split('='); // разделили на две части по разделителю =, получили массив
     let addressId = Number(items[1]);
-    console.log(addressId)
+    // console.log(addressId)
     // Информация по конкретному адресу
     const [selectedAddress, setSelectedAddress] = useState({})
+
+    // необходимо разобраться с количеством отображаемых откликов по данному адресу точки
+    const plus2= "+2"
+    // показывать звезду на анкете соискателя, передаем соответствующую метку
+    const showStar = "yes"
+    // const starStatus = "open"
+
+    //=============================
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    //=================================
 
     // Временное решение для отображения контактов, нужно подумать
     const workerContacts = [
@@ -83,23 +127,35 @@ export default function SelectedVacancy() {
                             Фильтры:
                         </td>
                         <td className="sel-table-th">
-                            <div className="th-select ">
+                            <div className="th-select flex-center  ">
                                 <div className="padd-t">Сотрудники</div>
+                                <div>
+                                    <ExpandMoreIcon/>
+                                </div>
                             </div>
                         </td>
                         <td className="sel-table-th">
-                            <div className="th-select">
+                            <div className="th-select flex-center">
                                 <div className="padd-t">Кандидаты</div>
+                                <div >
+                                    <ExpandMoreIcon/>
+                                </div>
                             </div>
                         </td>
                         <td className="sel-table-th">
-                            <div className="th-select">
+                            <div className="th-select flex-center">
                                 <div className="padd-t">Отклики</div>
+                                <div>
+                                    <ExpandMoreIcon/>
+                                </div>
                             </div>
                         </td>
                         <td className="sel-table-th">
-                            <div className="th-select">
+                            <div className="th-select flex-center">
                                 <div className="padd-t">Профили</div>
+                                <div >
+                                    <ExpandMoreIcon/>
+                                </div>
                             </div>
                         </td>
                         <td className="sel-table-th">
@@ -118,12 +174,25 @@ export default function SelectedVacancy() {
                                 </td>
                                 <td className="sel-vac-td">{selectedAddress[0].empl}</td>
                                 <td className="sel-vac-td">{selectedAddress[0].cond}</td>
-                                <td className="sel-vac-td">{selectedAddress[0].otckliki}</td>
+                                <td className="sel-vac-td ">
+                                    <div className="flex-center">
+                                        <span className="margin_T m_r">
+                                            {selectedAddress[0].otckliki}
+                                        </span>
+                                        <div style={{width: '24px', height: '24px',
+                                            background: '#F04D2D', borderRadius: '50%'}} >
+                                            <div className="margin_T c_white">
+                                                {plus2}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </td>
                                 <td className="sel-vac-td color-FFAB9A border-5">
                                     {selectedAddress[0].profiles}
                                 </td>
                                 <td className="sel-vac-td2 border-0">
-                                    <button className="red-button_">Закрыть точку</button>
+                                    <button className="red-button_" onClick={handleOpen}>Закрыть точку</button>
                                 </td>
                             </tr>
                         ):
@@ -136,14 +205,115 @@ export default function SelectedVacancy() {
                     </tbody>
                 </table>
             </div>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <div className="font-20-bold align-c marg-b-15 color-0C1618 text-up">
+                            закрытие точки
+                        </div>
+                        <div className="align-c marg-b-15 color-0C1618 font-bold ">
+                            Выберите исполнителя из списка кандидатов
+                        </div>
+                        <SelectProfiles
+                            emplInf = {EmplInfo[0]}
+                            photo={Photo1}
+                            contacts={workerContacts[0]}
+                        />
+                        <SelectProfiles
+                            emplInf = {EmplInfo[1]}
+                            photo={Photo2}
+                            contacts={workerContacts[0]}
+                        />
+                        <div className="flex-between text-up font-10-b"
+                             style={{width: '502px', margin: 'auto', color: '#818181', }}>
+                            <p>Нашли другого исполнителя</p>
+                            <p>Другая причина</p>
+                        </div>
+                        <div className="marg-b-15">
+                            <table className="sel-vac-table">
+                                <tbody className="f_14">
+                                <tr>
+                                    <td className="sel-vac-td1 ">
+                                        {selectedAddress[0] ?
+                                            <div className="noLink-decoration">
+                                                {selectedAddress[0].address}
+                                            </div> : ''}
+
+                                    </td>
+                                    <td className="sel-vac-td sel-td-bg">
+                                        {selectedAddress[0] ? selectedAddress[0].empl : ''}
+                                    </td>
+                                    <td className="sel-vac-td">
+                                        {selectedAddress[0] ? selectedAddress[0].cond : ''}
+                                    </td>
+                                    <td className="sel-vac-td sel-td-bg">
+                                        <div className="flex-center">
+                                        <span className="margin_T m_r">
+                                            {selectedAddress[0] ? selectedAddress[0].otckliki : ''}
+                                        </span>
+                                            <div style={{width: '24px', height: '24px',
+                                                background: '#F04D2D', borderRadius: '50%'}} >
+                                                <div className="margin_T c_white">
+                                                    {plus2}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="sel-vac-td border-5">
+                                        {selectedAddress[0] ? selectedAddress[0].profiles : ''}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div className="align-c c_red">
+                            <div className="flex-center">
+                                <ErrorIcon style={{color: '#F04D2D'}} />
+                                <span className="align-l margin_L_R_7">
+                                После назначения исполнителя указаннай точка<br/>
+                                по указанному адресу станет неактивна.
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </Fade>
+            </Modal>
+
             <div>
                 <div>
-                    <EmployeesItem emplInf = {EmplInfo[0]} photo={Photo2} contacts={workerContacts[0]}/>
+                    <EmployeesItem
+                        emplInf = {EmplInfo[0]}
+                        photo={Photo2}
+                        contacts={workerContacts[0]}
+                        star={showStar}
+                        // status={starStatus}
+                    />
                 </div>
                 <div>
-                    <EmployeesItem  emplInf = {EmplInfo[1]} photo={Photo1} contacts={workerContacts[1]}/>
+                    <EmployeesItem
+                        emplInf = {EmplInfo[1]}
+                        photo={Photo1}
+                        contacts={workerContacts[1]}
+                        star={showStar}
+                        // status={starStatus}
+                    />
                 </div>
             </div>
+
         </Container>
     )
 }

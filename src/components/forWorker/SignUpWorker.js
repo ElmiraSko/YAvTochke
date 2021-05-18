@@ -39,7 +39,7 @@ export default function SignUpWorker() {
     const [formValid, setFormValid] = useState(false)
 
     // состояние ползунка
-    const [sliderValue, setSliderValue] = useState(2)
+    const [sliderValue, setSliderValue] = useState(5)
     // Для загрузчика -
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
@@ -273,7 +273,7 @@ export default function SignUpWorker() {
     }
     // === Валидация Password ===
     function validatePassword(password){
-        const ph = /^[A-Za-z]\w{7,15}$/;
+        const ph = /^[A-Za-z0-9]\w{7,15}$/;
         let passValid = ph.test(String(password).toLowerCase());
         if (passValid) {
             setPasswordValid(true)
@@ -373,7 +373,7 @@ export default function SignUpWorker() {
                 </form>
 
                     <div className="search-block" hidden={formHidden}>
-                        <p style={{fontSize: "1.0rem"}}>
+                        <p className="font-16-bold c_848C8E" style={{letterSpacing: '0.05em', }}>
                             УКАЖИТЕ РАССТОЯНИЕ ОТ ТОЧКИ ПОИСКА РАБОТЫ
                         </p>
                         <p style={{width: '400px', margin: 'auto'}}>
@@ -382,10 +382,17 @@ export default function SignUpWorker() {
                                    value={sliderValue} id="radius"
                                    onInput={getRadius} />
                         </p>
-                        <p className="radius-text">
-                            Радиус: {sliderValue} км
-                        </p>
-
+                        {/*<p className="radius-text">*/}
+                        {/*    Радиус: {sliderValue} км*/}
+                        {/*</p>*/}
+                        <div style={{width: '400px', margin: 'auto',
+                            display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem', }} >
+                            <div style={{margin: '5px 0 15px 0'}}>1 км</div>
+                            <div  style={{margin: '5px 0 15px 0'}}>
+                                <b> {sliderValue} км </b>
+                            </div>
+                            <div  style={{margin: '5px 0 15px 0'}}>10 км</div>
+                        </div>
 
                         <button className="map-button"
                                 onClick={showTheMap} >

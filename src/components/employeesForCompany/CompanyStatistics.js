@@ -209,13 +209,13 @@ export default function CompanyStatistics() {
                                 <table className="table-balance">
                                     <thead>
                                     <tr >
-                                        <th className="align-l doc-th pad_b_28 _red width-200">
+                                        <th className="align-l doc-th pad_b_28 c_red width-200">
                                             Тип документа</th>
-                                        <th className="align-c doc-th pad_b_28 _red" >
+                                        <th className="align-c doc-th pad_b_28 c_red" >
                                             {february.month}{february.year}</th>
-                                        <th className="align-c doc-th pad_b_28 _red">
+                                        <th className="align-c doc-th pad_b_28 c_red">
                                             {january.month}{january.year}</th>
-                                        <th className="align-c doc-th pad_b_28 _red">
+                                        <th className="align-c doc-th pad_b_28 c_red">
                                             {december.month}{december.year}</th>
                                     </tr>
                                     </thead>

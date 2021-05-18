@@ -18,39 +18,18 @@ export default function SignUpComponent(props) {
 
     return(
         <Container maxWidth="lg">
-            <div style={{ fontSize: "1.2rem", }}>
-
-                <div style={{padding: "30px 0px 30px 0px", marginBottom: "15px",
-                    fontSize: "1.6rem",  fontWeight: "700", textAlign: 'center'}}>
-                    РЕГИСТРАЦИЯ СОИСКАТЕЛЯ
+            <div>
+                <div className="font-20-bold align-c marg-b-15 pad-t-b-30 color-0C1618 text-up">
+                    Регистрация соискателя
                 </div>
 
-                <div style={{display: "flex", justifyContent: "space-around",
-                    marginBottom: "30px", height: "180px", fontSize: "1.0rem", fontWeight: '600' }}>
-                    <div style={{
-                        width: "30%", height: "auto",
-                        borderRadius: '50%'}}>
-                        <div style={{marginBottom: "15px"}} >
-                            <div>
-                                <label >Имя*</label>
-                            </div>
-                            <div>
-                                <input type="text"
-                                       name="firstName"
-                                       autoComplete="off"
-                                       className={`input-field ${fieldError(props.firstNameValid)}`}
-                                       value={props.firstName}
-                                       onChange={firstNameHandler}
-                                       onDoubleClick={props.cleanFirstName}
-                                       onBlur={props.blurHandler}
-                                />
-                                {props.firstNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
-                            </div>
-                        </div>
-
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label >Фамилия*</label>
+                <div style={{marginBottom: "30px", height: "180px",  }} className="color-0C1618 flex-space-around">
+                    <div style={{ width: "30%", height: "auto", borderRadius: '50%'}}>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Фамилия
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="text"
@@ -62,13 +41,35 @@ export default function SignUpComponent(props) {
                                        onDoubleClick={props.cleanLastName}
                                        onBlur={props.blurHandler}
                                 />
-                                {props.lastNameValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                                {props.lastNameValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "15px"}}>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Имя
+                                    <span className="c_red">{' '}*</span>
+                                </label>
+                            </div>
                             <div>
-                                <label >Мобильный телефон*</label>
+                                <input type="text"
+                                       name="firstName"
+                                       autoComplete="off"
+                                       className={`input-field ${fieldError(props.firstNameValid)}`}
+                                       value={props.firstName}
+                                       onChange={firstNameHandler}
+                                       onDoubleClick={props.cleanFirstName}
+                                       onBlur={props.blurHandler}
+                                />
+                                {props.firstNameValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
+                            </div>
+                        </div>
+
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Мобильный телефон
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="tel"
@@ -81,17 +82,17 @@ export default function SignUpComponent(props) {
                                        onDoubleClick={props.cleanPhone}
                                        onBlur={props.blurHandler}
                                 />
-                                {props.phoneValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                                {props.phoneValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                             </div>
                         </div>
 
                     </div>
-                    <div style={{
-                        width: "30%", height: "auto",
-                        borderRadius: '50%'}}>
-                        <div style={{marginBottom: "15px"}}>
-                            <div>
-                                <label>E-mail*</label>
+                    <div style={{ width: "30%", height: "auto", borderRadius: '50%'}}>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">E-mail
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="email"
@@ -104,14 +105,16 @@ export default function SignUpComponent(props) {
                                        onDoubleClick={props.cleanEmail}
                                        onBlur={props.blurHandler}
                                 />
-                                {props.emailValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                                {props.emailValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                             </div>
                         </div>
 
-                        <div style={{marginBottom: "25px"}}>
-                            <div>
-                                <label >Пароль*</label>
-                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов. Вводим с буквы</span>}
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Пароль
+                                    <span className="c_red">{' '}*</span>
+                                </label>
+                                {props.passwordValid ? '' : <span style={{color: 'red'}}> 8-16 символов, латинские буквы и цифры</span>}
                             </div>
                             <div>
                                 <input type="password"
@@ -125,12 +128,14 @@ export default function SignUpComponent(props) {
                                        onDoubleClick={props.cleanPassword}
                                        onBlur={props.blurHandler}
                                 />
-                                {props.passwordValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                                {props.passwordValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                             </div>
                         </div>
-                        <div style={{marginBottom: "25px"}}>
-                            <div>
-                                <label >Подтвердить пароль*</label>
+                        <div className="marg-b-15">
+                            <div className="marg-b-9">
+                                <label className="font-14-500">Подтвердить пароль
+                                    <span className="c_red">{' '}*</span>
+                                </label>
                             </div>
                             <div>
                                 <input type="password"
@@ -142,7 +147,8 @@ export default function SignUpComponent(props) {
                                        onDoubleClick={props.cleanRepeatPassword}
                                        onBlur={props.blurHandler}
                                 />
-                                {props.repeatPasswordValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                                {props.repeatPasswordValid ? '' :
+                                    <span className="font-12-500 c_red"> Обязательное поле</span>}
                             </div>
                         </div>
 
@@ -168,7 +174,7 @@ export default function SignUpComponent(props) {
                                    onDoubleClick={props.cleanAddress}
                                    onBlur={props.blurHandler}
                             />
-                            {props.addressValid ? '' : <span style={{color: 'red'}}> Обязательное поле</span>}
+                            {props.addressValid ? '' : <span className="font-12-500 c_red"> Обязательное поле</span>}
                         </div>
                     </div>
                 </div>

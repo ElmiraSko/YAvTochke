@@ -20,10 +20,42 @@ export default function CompanyBalance() {
     const[personalAds, setPersonalAds] = useState(0)
     const[personalProfiles, setPersonalProfiles] = useState(0)
     const[personalCost, setPersonalCost] = useState(0)
-//?????????????????????????????????
-    const [adPackage, setAdPackage] = useState(false)
-    const adPackageHandler =(event) => {
-        setAdPackage(event.target.checked)
+    // Чекбоксы для выбираемых пакетов: light, medium, professional, personal
+    const [light, setLight] = useState(false)
+    const lightHandler =(event, prev) => {
+        if (prev) {
+            setMedium(false)
+            setProfessional(false)
+            setPersonal(false)
+        }
+        setLight(event.target.checked)
+    }
+    const [medium, setMedium] = useState(false)
+    const mediumHandler =(event, prev) => {
+        if (prev) {
+            setLight(false)
+            setProfessional(false)
+            setPersonal(false)
+        }
+        setMedium(event.target.checked)
+    }
+    const [professional, setProfessional] = useState(false)
+    const professionalHandler =(event, prev) => {
+        if (prev) {
+            setLight(false)
+            setMedium(false)
+            setPersonal(false)
+        }
+        setProfessional(event.target.checked)
+    }
+    const [personal, setPersonal] = useState(false)
+    const personalHandler =(event, prev) => {
+        if (prev) {
+            setLight(false)
+            setMedium(false)
+            setProfessional(false)
+        }
+        setPersonal(event.target.checked)
     }
 
     // стоимость объявлений и анкет
@@ -52,7 +84,7 @@ export default function CompanyBalance() {
     })
     const RedCheckbox = withStyles({
         root: {
-            color: '#f04d2d',
+            color: '#848C8E',
             '&$checked': {
                 color: '#f04d2d',
             },
@@ -177,7 +209,7 @@ export default function CompanyBalance() {
                                                             <img src={minus} alt="Minus"
                                                                  className="plus-minus" />
                                                         </div>
-                                                        <span className="margin_L_R_7 width-td margin_T">
+                                                        <span className="margin_L_R_7 width-td margin_T c_red">
                                                             {personalAds}
                                                         </span>
                                                         <div className="c-b-row" onClick={incrementAds}>
@@ -198,7 +230,7 @@ export default function CompanyBalance() {
                                                             <img src={minus} alt="Minus"
                                                                  className="plus-minus" />
                                                         </div>
-                                                        <span className="margin_L_R_7 width-td margin_T">
+                                                        <span className="margin_L_R_7 width-td margin_T c_red">
                                                             {personalProfiles}
                                                         </span>
                                                         <div className="c-b-row" onClick={incrementProfiles}>
@@ -219,8 +251,8 @@ export default function CompanyBalance() {
                                                 <td className="td_comp hidden_">2</td>
                                                 <td className="td_comp">
                                                     <RedCheckbox
-                                                        checked={adPackage}
-                                                        onChange={adPackageHandler}
+                                                        checked={light}
+                                                        onChange={lightHandler}
                                                         value=""
                                                         disableRipple={true}
                                                         style={{ backgroundColor: 'transparent' }}
@@ -228,8 +260,8 @@ export default function CompanyBalance() {
                                                 </td>
                                                 <td className="td_comp">
                                                     <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
+                                                        checked={medium}
+                                                        onChange={mediumHandler}
                                                         value=""
                                                         disableRipple={true}
                                                         style={{ backgroundColor: 'transparent' }}
@@ -237,8 +269,8 @@ export default function CompanyBalance() {
                                                 </td>
                                                 <td className="td_comp">
                                                     <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
+                                                        checked={professional}
+                                                        onChange={professionalHandler}
                                                         value=""
                                                         disableRipple={true}
                                                         style={{ backgroundColor: 'transparent' }}
@@ -246,8 +278,8 @@ export default function CompanyBalance() {
                                                 </td>
                                                 <td className="td_comp">
                                                     <RedCheckbox
-                                                        // checked={fullTime}
-                                                        // onChange={fullTimeHandler}
+                                                        checked={personal}
+                                                        onChange={personalHandler}
                                                         value=""
                                                         disableRipple={true}
                                                         style={{ backgroundColor: 'transparent' }}
@@ -273,9 +305,12 @@ export default function CompanyBalance() {
                                             Заказать счет
                                         </div>
                                         <div>
-                                            <NavLink className="pay_by_card f_14" to={'/pay_by_card'}>
+                                            {/*<NavLink className="pay_by_card f_14" to={'/pay_by_card'}>*/}
+                                            {/*    Оплатить картой*/}
+                                            {/*</NavLink>*/}
+                                            <div className="pay_by_card f_14" style={{margin: '0px'}}>
                                                 Оплатить картой
-                                            </NavLink>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

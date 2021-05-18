@@ -119,17 +119,17 @@ export default function CompanyDocuments() {
                                 <table className="table-balance">
                                     <thead>
                                     <tr >
-                                        <th className="align-l doc-th pad_b_40 _red">
+                                        <th className="align-l doc-th pad_b_40 c_red">
                                             Дата</th>
-                                        <th className="align-c doc-th pad_b_40 _red">
+                                        <th className="align-c doc-th pad_b_40 c_red">
                                             Тип документа</th>
-                                        <th className="align-c doc-th pad_b_40 _red">
+                                        <th className="align-c doc-th pad_b_40 c_red">
                                             Объявления</th>
-                                        <th className="align-c doc-th pad_b_40 _red">
+                                        <th className="align-c doc-th pad_b_40 c_red">
                                             Анкеты</th>
-                                        <th className="align-c doc-th pad_b_40 _red">
+                                        <th className="align-c doc-th pad_b_40 c_red">
                                             Сумма</th>
-                                        <th className="align-c doc-th pad_b_40 _red"/>
+                                        <th className="align-c doc-th pad_b_40 c_red"/>
                                     </tr>
                                     </thead>
                                     <tbody>
