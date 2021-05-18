@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        // backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
     paper: {
         backgroundColor: '#ffffff',
@@ -297,7 +298,7 @@ export default function SelectedVacancy() {
                 <div>
                     <EmployeesItem
                         emplInf = {EmplInfo[0]}
-                        photo={Photo2}
+                        photo={Photo1}
                         contacts={workerContacts[0]}
                         star={showStar}
                         // status={starStatus}
@@ -306,7 +307,7 @@ export default function SelectedVacancy() {
                 <div>
                     <EmployeesItem
                         emplInf = {EmplInfo[1]}
-                        photo={Photo1}
+                        photo={Photo2}
                         contacts={workerContacts[1]}
                         star={showStar}
                         // status={starStatus}
