@@ -14,8 +14,7 @@ import Item from "./Item";
 import Context from "../Context";
 
 
-export default function WorkerPage() {
-
+export default function SearchWork() {
     // для функции activeSearchWork
     const {setSearchWork, searchWork, user} = useContext(Context)
 
@@ -32,7 +31,7 @@ export default function WorkerPage() {
     // Вспомогательное свойство для карусели, чтоб менять цвет
     const carouselFor = "Work"
 
-    // здесь пересмотреть, может изменить или убрать лишние стайты
+    // здесь пересмотреть, может изменить или убрать лишние стэйты
     const [sliderValue, setSliderValue] = useState(5)
     const [zoom, setZoom] = useState(10)
     const [address, setAddress] = useState('')
@@ -45,6 +44,61 @@ export default function WorkerPage() {
             ({ center, zoom, controls: ['zoomControl', 'fullscreenControl']}),
         [center, zoom])
 
+
+    // временная функция-заглушка, для работы с вакансиями
+    // состояние нашей страницы: массив вакансий, получим с сервера
+    // после того, как отрисуется этот компонент Responses отработает useEffect()
+    const [myVacancies, setMyVacancies] = useState([])
+    // вспомогательный флаг, чтоб происходила перересовка компонента
+    const[paint, setPaint] = useState(false)
+
+    //выполнится после монтирования в DOM и обновления массива вакансий
+    useEffect(() => {
+        if(Ad.length>0) {
+            let tempArray = []
+            Ad.map(item => {
+                if (!item.is_respond) {
+                    tempArray.push(item)
+                }
+            })
+            setMyVacancies(tempArray)
+        }
+    }, [])
+
+    //выполнится после обновления
+    useEffect(() => {
+        if(myVacancies.length>0) {
+            let tempArray = []
+            myVacancies.map(item => {
+                if (!item.is_respond) {
+                    tempArray.push(item)
+                }
+            })
+            setMyVacancies(tempArray)
+        }
+    }, [paint])
+
+    // Здесь должен идти запрос на бэк, что на вакансию откликнулись
+    function respondHandler(id) {
+        respondButtonHandler(id, true)
+        setPaint(prevState => !prevState)
+    }
+    //Здесь должен идти запрос на бэк, что отменили отклик на вакансию
+    function cancelHandler(id) {
+        respondButtonHandler(id, false)
+    }
+    function respondButtonHandler(id, bool) {
+        if(myVacancies.length>0) {
+            let tempArray = []
+            myVacancies.map(item => {
+                if (item.id === id) {
+                    item.is_respond = bool
+                }
+                tempArray.push(item)
+            })
+            setMyVacancies(tempArray)
+        }
+    }
 
     let data = [
         {
@@ -96,6 +150,7 @@ export default function WorkerPage() {
             count: 9,
         },
     ]
+
 
     //=== получаем значение ползунка
     function getRadius() {
@@ -218,7 +273,7 @@ export default function WorkerPage() {
                     <div className="pre-search-text">
                         Найди работу в удобном месте
                     </div>
-                    <div>
+                    <div >
                         <input className="search-work-input"
                                placeholder="Город, улица и номер дома, где хотите работать"
                                value={address}
@@ -236,12 +291,16 @@ export default function WorkerPage() {
                 <div className="vacancy-and-map-wrapper">
                     <div className="vacancy-div">
                         <div>
-                            <div>
-                                <AdItem vacancy = {Ad[0]} />
-                            </div>
-                            <div>
-                                <AdItem vacancy = {Ad[1]}  />
-                            </div>
+                            {myVacancies.length > 0 ?
+                                myVacancies.map(ad =>
+                                    <div key={ad.id}>
+                                        <AdItem
+                                            vacancy = {ad}
+                                            respondHand={respondHandler}
+                                            cancelHandler={cancelHandler}
+                                        />
+                                    </div>
+                                ) : ""}
                         </div>
                     </div>
 
@@ -257,7 +316,7 @@ export default function WorkerPage() {
                                 <p style={{fontSize: "1.0rem"}}>
                                     Радиус: {sliderValue} км
                                 </p>
-                                <p style={{fontSize: "1.0rem", textTransform: 'uppercase', }}>
+                                <p className="text-top-map">
                                     <b>Укажите расстояние от точки поиска работы</b>
                                 </p>
                             </div>

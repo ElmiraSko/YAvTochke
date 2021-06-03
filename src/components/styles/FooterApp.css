@@ -1,10 +1,8 @@
 .main {
- /*flexGrow: 1,*/
     display: flex;
     justify-content: space-between;
     background-color: #ffffff;
     box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
-    /*text-align: center;*/
     padding: 5px 0;
     color: #0c1618;
     font-weight: 600;
@@ -27,9 +25,9 @@
     font-size: 1.0rem;
 }
 .tit {
-    font-size: 1.2rem;
+    font-size: 0.75rem;
     font-weight: bold;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 5px 0;
 }
 
 .right {
@@ -38,7 +36,16 @@
     padding-right: 30px;
     padding-top: 10px;
 }
-
+.footer-icon {
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+}
+.footer-text {
+    font-size: 0.75rem;
+    font-weight: normal;
+    line-height: 14px;
+}
 @media (max-width: 424.98px) {
     .group {
         flex-direction: column;
@@ -50,5 +57,15 @@
     }
     .right {
         justify-content: center;
+    }
+    .footer-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .footer-icon {
+        width: 28px;
+        height: 28px;
     }
 }

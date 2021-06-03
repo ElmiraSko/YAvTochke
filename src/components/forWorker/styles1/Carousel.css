@@ -1,23 +1,15 @@
-/*.carousel-wrapper {*/
-/*    padding: 5px 0;*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*}*/
-
 .carousel-vac-wrapper {
     box-shadow: 0 0 3px 2px rgba(132, 140, 142, 0.5);
     border-radius: 5px;
     width: 240px;
     margin: 40px 0;
-    /*padding: 0 10px;*/
-    /*font-size: 1.1rem;*/
 }
 .vacancy-name {
     border-radius: 5px;
     height: 50px;
     display: flex;
     color: #0C1618;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     margin: 0 10px;
 }
@@ -31,7 +23,7 @@
     height: 40px;
     color: white;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 1.125rem;  /* 18px */
     width: auto;
 }
 .vac-count-red {
@@ -49,7 +41,7 @@
     cursor: pointer;
 }
 .text {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: normal;
     text-transform: uppercase;
     font-style: normal;
@@ -102,17 +94,49 @@
     cursor: inherit;
 }
 
-@media screen and (max-width: 960px) {
-    .carousel-wrapper {
-        font-size: 1.0rem;
+@media screen and (max-width: 768px) {
+    .carousel-vac-wrapper {
+        width: 130px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .carousel-vac-wrapper {
+        width: 160px;
     }
     .text {
-        font-size: 0.8rem;
+        font-size: 0.81255rem;
     }
     .vacancy-name {
         height: 46px;
     }
     .vacancy-count {
-        font-size: 0.9rem;
+        font-size: 0.8125rem;
+    }
+}
+@media screen and (max-width: 1124px) {
+    .carousel-vac-wrapper {
+        width: 200px;
+    }
+    .vacancy-name {
+        font-size: 0.875rem;
+    }
+    .vacancy-count {
+        height: 40px;
+        font-size: 1rem;  /* 16px */
+    }
+    .text {
+        font-size: 0.9375rem;
+    }
+
+}
+@media screen and (max-width: 1150px) {
+    .carousel-vac-wrapper {
+        max-width: 210px;
+    }
+}
+@media screen and (max-width: 1170px) {
+    .carousel-vac-wrapper {
+        max-width: 230px;
     }
 }

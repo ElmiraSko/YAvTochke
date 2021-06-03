@@ -44,7 +44,7 @@ export default function SignUpWorker() {
     const [loading, setLoading] = React.useState(false)
     const [formHidden, setFormHidden] = React.useState(false)
 
-    const buttonText = 'Зарегистрироваться'
+    const buttonText = 'Регистрация'
     //
     function submitHandler(event) {
         event.preventDefault()

@@ -1,22 +1,28 @@
 .small-progress {
     /*border:1px solid #f04d2d;*/
-    width: 120px;
-    height: 20px;
-    border-radius: 6px;
+    width: 122px;
+    height: 18px;
+    border-radius: 7px;
     background: #ffffff;
 }
 .small-progress::-webkit-progress-bar {
-    width: 120px;
-    height: 20px;
-    border-radius: 6px;
+    width: 122px;
+    height: 18px;
+    border-radius: 7px;
     background: #ffffff;
-    border:2px solid #f04d2d;
+    border:1px solid #f04d2d;
 }
 .small-progress::-webkit-progress-value {
-    border-radius: 3px;
+    border-radius: 5px;
     background: #f04d2d;
 }
 .small-progress::-moz-progress-bar {
-    border-radius: 3px;
+    border-radius: 5px;
     background: #f04d2d;
+}
+.value-text {
+    position: relative;
+    top: -28px;
+    font-weight: 500;
+    font-size: 0.625rem;  /*10px*/
 }

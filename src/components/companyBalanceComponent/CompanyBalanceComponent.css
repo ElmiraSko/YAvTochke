@@ -45,6 +45,7 @@
 .comp-balance-links {
     color: #505350;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 0.875rem;
+    font-weight: bold;
     margin-top: 20px;
 }

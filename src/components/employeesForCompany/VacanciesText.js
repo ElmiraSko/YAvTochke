@@ -17,6 +17,8 @@ const vacancies = [
         imgUrl: `/images/logo_HL _1.png`,
         inArchive: 'false',
         count: '8',
+        is_respond: false,
+        response_viewed: false,
     },
     {
         id: 13,
@@ -36,6 +38,8 @@ const vacancies = [
         imgUrl: `/images/logo_HL _1.png`,
         inArchive: 'false',
         count: '4',
+        is_respond: false,
+        response_viewed: false,
     },
     {
         id: 14,
@@ -55,25 +59,71 @@ const vacancies = [
         imgUrl: `/images/creon-logo-1.png`,
         inArchive: 'true',
         count: '5',
+        is_respond: true,
+        response_viewed: false,
     },
     {
         id: 15,
-        title: "Продавец-кассир",
-        desc: `8 часов в неделю. Обслуживание покупателей на кассе, 
-        работа с товаром в торговом зале. Контроль сроков годности, ценников на товар.`,
+        title: "Курьер",
+        desc: `10 часов в неделю. Доставка продуктов по указанному адресу.
+         Контроль сроков выполнения заказа, качественная доставка товара.`,
         address: "Новокосинская, д. 14а",
-        price: "22 000",
+        price: "14 700",
         unit_of_time: "руб/мес",
         companyName: "ООО Рога и копыта",
         point: "В точке",
         work_type: "Постоянная работа",
-        work_schedule: "2/2",
+        work_schedule: "3/2",
         full_description: `Работа рядом с домом - выбери супермаркет, ближе к твоему дому! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц.
              Предлагаем корпоративное обучение, возможность профессионального роста.`,
         imgUrl: `/images/creon-logo-1.png`,
         inArchive: 'true',
         count: '1',
-    }
+        is_respond: false,
+        response_viewed: false,
+    },
+    {
+        id: 16,
+        title: "Мерчендайзер",
+        desc: `8 часов в неделю. Выкладка товара на полки. Проверка сроков годности. 
+        Замена ценников. Требования: Аккуратность, внимательность. Наличие медкнижки.`,
+        address: "Новокосинская, д. 14а",
+        price: "250",
+        unit_of_time: "руб/час",
+        companyName: `ООО "Хорошие люди"`,
+        point: "Точка рядом",
+        work_type: "Подработка",
+        work_schedule: "5/2",
+        full_description: `Работа рядом с домом ! 
+            Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
+            Предлагаем корпоративное обучение, возможность профессионального роста.`,
+        imgUrl: `/images/logo_HL _1.png`,
+        inArchive: 'false',
+        count: '4',
+        is_respond: true,
+        response_viewed: true,
+    },
+    {
+        id: 17,
+        title: "Продавец",
+        desc: `8 часов в неделю. Выкладка товара на полки. Проверка сроков годности. 
+        Замена ценников. Требования: Аккуратность, внимательность. Наличие медкнижки.`,
+        address: "ул. Тверская, 10",
+        price: "300",
+        unit_of_time: "руб/час",
+        companyName: `ООО "Хорошие люди"`,
+        point: "Точка рядом",
+        work_type: "Подработка",
+        work_schedule: "5/2",
+        full_description: `Работа рядом с домом! 
+            Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
+            Предлагаем корпоративное обучение, возможность профессионального роста.`,
+        imgUrl: `/images/logo_HL _1.png`,
+        inArchive: 'false',
+        count: '4',
+        is_respond: true,
+        response_viewed: false,
+    },
 ]
 export default vacancies;

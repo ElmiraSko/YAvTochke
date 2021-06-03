@@ -29,23 +29,23 @@ function FooterApp() {
                             <img src={Logo} alt="logo" style={{width: '1.6rem', padding: "10px 10px 0 0"}}/>
                             <span className="tit padd-t" >Я в точке</span>
                         </div>
-                        <div className="font-12-norm color-0C1618 padding_T">
+                        <div className="font-10-b color-0C1618 padding_T">
                                 {'Я в точке '}
                                 {new Date().getFullYear()}
                                 {'. Все права защищены'}
                         </div>
                     </div>
-                    <div style={{padding: "20px 20px 0 0"}}>
-                        <p style={{margin: "7px"}}>О компании</p>
-                        <p style={{margin: "7px"}}>Новости</p>
+                    <div style={{padding: "20px 20px 0 0"}} className="footer-text">
+                        <p style={{margin: "8px"}}>О компании</p>
+                        <p style={{margin: "8px"}}>Новости</p>
                     </div>
-                    <div style={{padding: "20px 20px 0 0"}}>
-                        <p style={{margin: "7px"}}>Вакансии</p>
-                        <p style={{margin: "7px"}}>Реклама у нас</p>
+                    <div style={{padding: "20px 20px 0 0"}} className="footer-text">
+                        <p style={{margin: "8px"}}>Вакансии</p>
+                        <p style={{margin: "8px"}}>Реклама у нас</p>
                     </div>
 
-                    <div style={{padding: "20px 20px 0 0"}}>
-                        <p style={{margin: "7px"}}>
+                    <div style={{padding: "20px 20px 0 0"}} className="footer-text">
+                        <p style={{margin: "8px"}}>
                             Политика конфиденциальности
                         </p>
                     </div>
@@ -55,15 +55,15 @@ function FooterApp() {
             <div className="right">
                 <div  style={{paddingLeft: "30px"}}>
                     <img src={telegram} alt="Photo-1"
-                         style={{width: '30px', height: '30px', padding: '10px'}} />
+                         className="footer-icon"/>
                 </div>
                 <div style={{margin: "10px, 20px 0px 20px"}}>
                     <img src={vk} alt="Photo-1"
-                         style={{width: '30px', height: '30px', padding: '10px'}} />
+                         className="footer-icon" />
                 </div>
                 <div style={{margin: "10px, 20px 0px 20px"}}>
                     <img src={facebook} alt="Photo-1"
-                         style={{width: '30px', height: '30px', padding: '10px'}} />
+                         className="footer-icon" />
                 </div>
 
             </div>

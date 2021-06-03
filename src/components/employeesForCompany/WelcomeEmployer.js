@@ -5,10 +5,11 @@ import SimpleButton from "../buttons/SimpleButton";
 import ProgressBar from "../progressBar/ProgressBar";
 import EmployeesItem from "./EmployeesItem";
 import Photo1 from '../../img/worker1.jpg'
+import WelcomeComponent from "./WelcomeComponent";
 
 export default function WelcomeEmployer() {
 
-    const worker = {
+    const workerInf = {
         firstName: "Степан",
         lastName: "Степанов",
         currentPosition: "Мерчендайзер",
@@ -28,44 +29,20 @@ export default function WelcomeEmployer() {
         },
     ]
 
-    const buttonText = "Дополнить"
+    const pageFor = <EmployeesItem emplInf={workerInf} photo={Photo1} contacts={workerContacts[0]} />
     const buttonHref = "/employer/personal-account"
+    const text2 = 'Заполните профиль для больших возможностей по подбору персонала'
     const progressValue = '30'
 
     return(
         <div>
             <Container  maxWidth="lg" >
-                <div style={{ fontSize: "1.2rem",
-                    fontWeight: "600", textAlign: "center", margin: "20px 0px"}}>
-                    <CheckCircleOutlineIcon style={{width: '36px', height: '36px', color: '#f04d2d' }}/>
-                    <div style={{margin: '15px 0', textTransform: 'uppercase'}}>
-                        Регистрация прошла успешно
-                    </div>
-                    <div style={{marginBottom: '40px', textTransform: 'uppercase', fontSize: "1.0rem",}} >
-                        Рекомендуем
-                    </div>
-
-                    <div>
-                        <EmployeesItem emplInf={worker} photo={Photo1} contacts={workerContacts[0]} />
-                    </div>
-
-                    <div style={{ margin: "40px 0px 0px 0px", }}>
-                        <div style={{ fontSize: "1.0rem", width: '400px', marginBottom: '60px',
-                            margin: "auto", textTransform: 'uppercase'}} >
-                            Дополните свой профиль, чтобы находить
-                            наиболее подходящие вакансии
-                        </div>
-                        <SimpleButton url={buttonHref} buttonText={buttonText}/>
-                    </div>
-                    <div style={{ textTransform: 'uppercase',
-                        fontSize: "1.0rem", padding: '15px 0', }} >
-                        Профиль
-                        <ProgressBar value={progressValue}/>
-                    </div>
-
-
-                </div>
-
+                <WelcomeComponent
+                    buttonHref={buttonHref}
+                    progressValue={progressValue}
+                    pageFor={pageFor}
+                    text2={text2}
+                />
             </Container>
 
         </div>

@@ -239,40 +239,40 @@ export default function WorkerPage() {
                                      style={{width: '2.0rem', marginTop: '30px'}}/>
                             </div>
 
-                            <div style={{ fontSize: '1.6rem', fontWeight: '700',
+                            <div style={{ fontSize: '1rem', fontWeight: 'bold',
                                 textTransform: 'uppercase', marginBottom: '30px',
                             marginTop: '10px'}}>
                                 Петр Петров
                             </div>
-                            <p>
+                            <div style={{padding: '15px 0 10 0', fontSize: '0.625rem', fontWeight: '500', }}>
                                 Предпочтительный способ связи:
-                            </p>
+                            </div>
                             <IconButton onClick={setPreferredEmail}
                                         style={{ backgroundColor: 'transparent' }}
                                         disableRipple={true}>
-                                <MailIcon style={{ fontSize: 30,  color: mailColor }} />
+                                <MailIcon style={{ fontSize: 40,  color: mailColor }} />
                             </IconButton>
                             <IconButton onClick={setPreferredPhone}
                                         style={{ backgroundColor: 'transparent' }}
                                         disableRipple={true}>
-                                <PhoneIcon style={{ fontSize: 30, color: phoneColor }} />
+                                <PhoneIcon style={{ fontSize: 40, color: phoneColor }} />
                             </IconButton>
                             <IconButton onClick={setPreferredVK}
                                         style={{ backgroundColor: 'transparent' }}
                                         disableRipple={true}>
                                 <img src={preferredCommunication==='vk' ? vk3 : vk2}
                                      alt="Иконка VK"
-                                     style={{width: '27px', height: '27px', }} />
+                                     style={{width: '32px', height: '32px', }} />
                             </IconButton>
                             <IconButton onClick={setPreferredTelegram}
                                         style={{ backgroundColor: 'transparent' }}
                                         disableRipple={true}>
                                 <img src={preferredCommunication==='telegram' ? telegram3 :telegram2}
                                      alt="Иконка Telegram"
-                                     style={{width: '27px', height: '27px',}} />
+                                     style={{width: '32px', height: '32px',}} />
                             </IconButton>
 
-                            <div style={{textAlign: "left", width: '240px', margin: 'auto', }}>
+                            <div style={{textAlign: "left", width: '240px', margin: 'auto', fontSize: '0.875rem' }}>
                                 <div>
                                     <RedCheckbox
                                         checked={fullTime}
@@ -300,44 +300,44 @@ export default function WorkerPage() {
                                 <div className="worker-left-cont-title">
                                     КОНТАКТЫ
                                 </div>
-                                <div className="worker-left-cont-flex">
+                                <div className="flex-space-around ">
 
-                                    <div className="worker-left-left">
-                                        <div style={{marginBottom: '10px'}}>
-                                            <label >Телефон:</label> <br/>
+                                    <div className="worker-left-left f_14 c_848C8E">
+                                        <div style={{margin: '10px 0 20px 0'}}>
+                                            Телефон:
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
-                                            <label>E-mail:</label>
+                                        <div style={{margin: '10px 0 20px 0'}}>
+                                            E-mail:
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
-                                            <label>Telegram:</label>
+                                        <div style={{margin: '22px 0 22px 0'}}>
+                                            Telegram:
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
-                                            <label>Vk:</label>
+                                        <div style={{margin: '24px 0 20px 0'}}>
+                                            Vk:
                                         </div>
                                     </div>
 
                                     <div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '12px'}}>
                                             <input type="text" className="worker-left-input"
                                                    value='+79056785432' readOnly={true}/>
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '12px'}}>
                                             <input type="text" className="worker-left-input"
                                                    value='petr@mail.ru' readOnly={true}/>
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '12px'}}>
                                             <input type="text" className="worker-left-input"
                                                    value='' readOnly={true}/>
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '12px'}}>
                                             <input type="text" className="worker-left-input"
                                                    value='' readOnly={true}/>
                                         </div>
                                     </div>
 
                                     <div>
-                                        <div style={{marginBottom: '8px'}}>
+                                        <div style={{margin: '2px 0 11px 0'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'phone'}
                                                       onChange={setPreferredPhone}
@@ -347,7 +347,7 @@ export default function WorkerPage() {
                                                       // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
-                                        <div style={{marginBottom: '8px'}}>
+                                        <div style={{marginBottom: '13px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'email'}
                                                       onChange={setPreferredEmail}
@@ -357,7 +357,7 @@ export default function WorkerPage() {
                                                       // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
-                                        <div style={{marginBottom: '9px'}}>
+                                        <div style={{marginBottom: '13px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'telegram'}
                                                       onChange={setPreferredTelegram}
@@ -367,7 +367,7 @@ export default function WorkerPage() {
                                                 // inputProps={{ 'aria-label': 'C' }}
                                             />
                                         </div>
-                                        <div style={{marginBottom: '10px'}}>
+                                        <div style={{marginBottom: '14px'}}>
                                             <RedRadio style={{padding: '0px', backgroundColor: 'transparent'}}
                                                       checked={preferredCommunication === 'vk'}
                                                       onChange={setPreferredVK}
@@ -380,7 +380,7 @@ export default function WorkerPage() {
                                     </div>
                                 </div>
 
-                                <div className="worker-left-check-box">
+                                <div className="worker-left-check-box font-14-500">
                                     <div>
                                         <RedCheckbox checked={showContactsState.showContacts}
                                                      onChange={showContactsHandler} name='showContacts'
@@ -418,13 +418,13 @@ export default function WorkerPage() {
 
                         <div style={{width: '90%', height:'auto',
                             margin: 'auto',  border: '2px solid #e1e1e1',
-                            marginBottom: '10px', fontWeight: '500', }}>
+                            marginBottom: '10px', fontSize: "0.875rem", fontWeight: '500', }}>
                             <div style={{margin: '5px 0 20px 15px'}}>
                                 ОСНОВНЫЕ СВЕДЕНИЯ
                             </div>
 
                             <div style={{display: "flex", justifyContent: "space-between",
-                                width: '100%', fontSize: "15px",}}>
+                                width: '100%', fontSize: "0.875rem", fontWeight: '500'}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px', }}>Пол</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
                                     <select className="select-css" onChange={handleChange}>
@@ -436,7 +436,7 @@ export default function WorkerPage() {
                             <hr style={{width: '96%', color: '#e1e1e1',
                                 backgroundColor: '#e1e1e1', border: 'none', height: '2px'}}/>
                             <div style={{display: "flex", justifyContent: "space-between",
-                                width: '100%', fontSize: "15px",}}>
+                                width: '100%', fontSize: "0.875rem", fontWeight: '500'}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>Дата рождения</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
                                     <input type="date" autoComplete='off' value={selectedDate}
@@ -449,7 +449,8 @@ export default function WorkerPage() {
                             </div>
                             <hr style={{width: '96%', color: '#e1e1e1',
                                 backgroundColor: '#e1e1e1', border: 'none', height: '2px'}}/>
-                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                            <div style={{display: "flex", justifyContent: "space-between",
+                                width: '100%', fontSize: "0.875rem", fontWeight: '500'}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>Гражданство</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
                                     <select className="select-css" onChange={handleChange}>
@@ -461,7 +462,7 @@ export default function WorkerPage() {
                             <hr style={{width: '96%', color: '#e1e1e1',
                                 backgroundColor: '#e1e1e1', border: 'none', height: '2px'}}/>
                             <div style={{display: "flex", justifyContent: "space-between",
-                                width: '100%', fontSize: "15px",}}>
+                                width: '100%', fontSize: "0.875rem", fontWeight: '500'}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>
                                     Статус самозанятого гражданина
                                 </div>
@@ -475,7 +476,7 @@ export default function WorkerPage() {
                             <hr style={{width: '96%', color: '#e1e1e1',
                                 backgroundColor: '#e1e1e1', border: 'none', height: '2px' }}/>
                             <div style={{display: "flex", justifyContent: "space-between",
-                                width: '100%', fontSize: "15px", }}>
+                                width: '100%', fontSize: "0.875rem", fontWeight: '500'}}>
                                 <div style={{marginTop: '8px', marginLeft: '20px'}}>Мед. книжка</div>
                                 <div style={{ marginRight: '15px', width: '370px', }}>
                                     <select className="select-css" onChange={handleChange}>
@@ -490,7 +491,7 @@ export default function WorkerPage() {
                         </div>
                         <div style={{width: '90%', height:'auto',
                             margin: 'auto',  border: '2px solid #e1e1e1',
-                            marginBottom: '10px', fontWeight: '500',}}>
+                            marginBottom: '10px', fontSize: "0.875rem", fontWeight: '500', }}>
                             <div style={{margin: '5px 0 20px 15px'}}>
                                 ПАРАМЕТРЫ ТОЧКИ
                             </div>
@@ -566,7 +567,7 @@ export default function WorkerPage() {
 
                         <div style={{width: '90%', height:'180px',
                             margin: 'auto',  border: '2px solid #e1e1e1',
-                            marginBottom: '10px', fontWeight: '500',}}>
+                            marginBottom: '10px', fontSize: "0.875rem", fontWeight: '500', }}>
                             <div style={{margin: '5px 0 20px 15px'}}>
                                 ТЕКУЩЕЕ МЕСТО РАБОТЫ
                             </div>

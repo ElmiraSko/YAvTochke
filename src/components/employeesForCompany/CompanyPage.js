@@ -111,8 +111,8 @@ export default function CompanyPage() {
                                 <div className="contact-title">
                                     Контакты
                                 </div>
-                                <div className="flex-space-around c_848C8E">
-                                    <div style={{marginRight: '5px', }}>
+                                <div className="flex-space-around c_848C8E font-14-500">
+                                    <div style={{marginRight: '5px', marginLeft: '20px'}}>
                                         <p className="contT">
                                             Телефон:
                                         </p>

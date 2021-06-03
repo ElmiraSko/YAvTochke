@@ -7,7 +7,7 @@
     position: relative;
     padding-left: 25px;
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 0.9375rem;
     /*color: #f04d2d;*/
 }
 .label:before {
@@ -37,9 +37,9 @@
 
 .select-css, .select-css-date {
     display: block;
-    font-size: 16px;
+    font-size: 0.875rem;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: bold;
     color: #505350;
     padding: .6em 1.4em 0 .8em;
     box-sizing: border-box;
@@ -79,9 +79,10 @@
     margin: auto;
 }
 .worker-left-cont-title {
-    text-align: center;
-    font-weight: 700;
-    margin: 25px 0;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin: 25px 0 5px 10px;
 }
 .worker-left-cont-flex {
     display: flex;
@@ -118,7 +119,7 @@
         width: 8rem;
     }
     .worker-left-check-box {
-        width: 280px;
+        width: 17.5rem; /* 280px*/
         font-size: 0.95rem;
         letter-spacing: 0;
     }
@@ -143,13 +144,13 @@
 }
 @media screen and (max-width: 768px) {
     .worker-left-details-wr {
-        width: 190px;
+        width: 11.875px; /* 190px*/
     }
     .worker-left-input {
         width: 7rem;
     }
     .worker-left-check-box {
-        width: 190px;
+        width: 11.875rem;
         font-size: 0.9rem;
     }
     .right-address-input {

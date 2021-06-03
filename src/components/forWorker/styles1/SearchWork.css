@@ -1,7 +1,7 @@
 .search-work-wrapper {
     padding: 20px 0 30px 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.875rem;   /* 14px */
 }
 .search-work-img {
     display: flex;
@@ -73,7 +73,10 @@
 .search-work-button:active {
     outline:none;
 }
-
+.text-top-map {
+    font-size: 1.0rem;
+    text-transform: uppercase;
+}
 .reg-button-navLink {
     background-color: #f04d2d;
     color: white;
@@ -91,6 +94,10 @@
         width: 480px;
         margin-left: auto;
         margin-right: auto;
+    }
+    .text-top-map {
+        font-size: 0.875rem;
+        text-transform: uppercase;
     }
 }
 
@@ -110,6 +117,13 @@
     }
     .search-slider-div {
         width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .m-maps {
+        width: 350px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -149,6 +163,12 @@
     }
     .vacancy-and-map-wrapper {
         margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vacancy-div {
+        margin-top: 20px;
     }
 }
 

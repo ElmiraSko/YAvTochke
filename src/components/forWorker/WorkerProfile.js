@@ -7,6 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 import './styles1/WorkerProfile.css'
 import Button from "@material-ui/core/Button";
 import addPhoto from "../../img/Add-a-photo.png";
+import {Link} from "react-router-dom";
+import SimpleButton from "../buttons/SimpleButton";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -96,7 +98,7 @@ export default function WorkerProfile() {
     return(
         <Container  maxWidth="lg" >
             <div style={{display: "flex", justifyContent: "space-around",
-                margin: "30px 0px", height: "auto",  fontSize: "1.0rem", }}>
+                margin: "30px 0px", height: "auto", fontSize: '0.875rem',  }}>
 
                 <div style={{boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)',
                     width: '30%',  position: 'relative', paddingBottom:'52px' }}>
@@ -113,34 +115,34 @@ export default function WorkerProfile() {
                                  style={{width: '2.0rem', marginTop: '30px'}}/>
                         </div>
 
-                        <div style={{ fontSize: '1.6rem', fontWeight: '700',
+                        <div style={{ fontSize: '1rem', fontWeight: 'bold',
                             textTransform: 'uppercase', marginBottom: '30px', marginTop: '10px' }}>
                             Петр Петров
                         </div>
-                        <div style={{padding: '15px 0 10 0',   }}>
+                        <div style={{padding: '15px 0 10 0', fontSize: '0.625rem', fontWeight: '500', }}>
                             Предпочтительный способ связи:
                         </div>
                         <IconButton >
-                            <MailIcon style={{ fontSize: 30,  color: mailColor }} />
+                            <MailIcon style={{ fontSize: 40,  color: mailColor }} />
                         </IconButton>
 
                         <IconButton  >
-                            <PhoneIcon style={{ fontSize: 30, color: phoneColor }} />
+                            <PhoneIcon style={{ fontSize: 40, color: phoneColor }} />
                         </IconButton>
 
-                        <p className="work-type-wr">
+                        <p className="work-type-wr c_848C8E">
                             Временная работа
                         </p>
                         <div className="contacts-wrapper">
                             <div className="contact-title">
                                 КОНТАКТЫ
                             </div>
-                            <div className="contact-content-wr">
+                            <div className="flex-space-around ">
                                 <div style={{marginRight: '5px', }}>
-                                    <p id="contT">
+                                    <p className="cont">
                                         Телефон:
                                     </p>
-                                    <p id="contT">
+                                    <p className="cont">
                                         E-mail:
                                     </p>
                                 </div>
@@ -161,9 +163,10 @@ export default function WorkerProfile() {
                         </div>
 
                         <div className="absolute-button">
-                            <Button style={{background: '#f04d2d', color: 'white',}}
-                                    href='/personal-account/employees'
-                            >Изменить</Button>
+                            <SimpleButton
+                                          url ='/personal-account/employees'
+                                          buttonText='Изменить'
+                            >Изменить</SimpleButton>
                         </div>
                     </div>
                 </div>

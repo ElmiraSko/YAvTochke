@@ -35,7 +35,8 @@
     /*margin-left: 15px;*/
 }
 .desc {
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 0.875rem;
     text-align: -webkit-left;
 }
 .red-text {

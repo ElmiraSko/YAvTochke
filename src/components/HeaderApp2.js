@@ -33,31 +33,46 @@ export default function HeaderApp2() {
     return (
         <div style={{backgroundColor: "#fff", boxShadow: '0 0 3px 2px rgba(132, 140, 142, 0.5)'}}>
             <Container maxWidth="lg">
-                <header className="appbar">
-                    <div className="link-logo">
-                        <NavLink className="logo" to={'/'} onClick={() => setSearchWork(true)} >
+                <header className="appbar ">
+                    <div className="link-logo ">
+                        <NavLink className="logo color-0C1618" to={'/'} onClick={() => setSearchWork(true)} >
                             <img src={Logo} alt="logo" style={{width: '2.2rem', padding: "10px 0 10px 0"}}/>
                         </NavLink>
-                        <NavLink className="logo-title" to={'/'} onClick={() => setSearchWork(true)} >
+                        <NavLink
+                            className="logo-title color-0C1618" to={'/'} onClick={() => setSearchWork(true)} >
                            Я в точке
                         </NavLink>
                         {/*<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*/}
-                        <div className={`link-padding-tab ${activeLink(searchWork)}`}>
-                            <NavLink className="links font-16-bold" onClick={() => setSearchWork(true)}
+                        <div className={`link-padding-tab ${activeLink(searchWork)}`} hidden={company}>
+                            <NavLink className="links text-up font-16-bold color-0C1618"
+                                     onClick={() => setSearchWork(true)}
                                      exact to={"/"}
-                                     // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
                             >
                                 Ищу подработку
                             </NavLink>
                         </div>
-                        <div className={`link-padding-tab ${activeLink(!searchWork)}`}>
-                            <NavLink className="links font-16-bold" onClick={() => setSearchWork(false)}
+                        <div className={`link-padding-tab ${activeLink(!searchWork)}`} hidden={user}>
+                            <NavLink className="links text-up font-16-bold color-0C1618"
+                                     onClick={() => setSearchWork(false)}
                                      exact to={"/employees"}
                                      // activeStyle={{color: "#F04D2D", fontWeight: "bold"}}
                             >
                                 Ищу сотрудника
                             </NavLink>
                         </div>
+                        <div className="link-padding-tab" hidden={!(searchWork && !user)}>
+                            <NavLink className="links text-up font-16-bold color-0C1618"
+                                     to={"/vacancy-employees"}
+                            > Объявления
+                            </NavLink>
+                        </div>
+                        {/*<div className="link-padding-tab" hidden={searchWork && !company}>*/}
+                        {/*    <NavLink className="links text-up font-16-bold"*/}
+                        {/*             to={"/profiles"}*/}
+                        {/*    > Анкеты*/}
+                        {/*    </NavLink>*/}
+                        {/*</div>*/}
+
                     </div>
 
                     <div className="link-padding" >
@@ -65,16 +80,16 @@ export default function HeaderApp2() {
                             searchWork ?
                                 (
                                     <div >
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"  hidden={!user}
                                                  to={"/vacancy-employees"}
                                         > Объявления
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!user}
                                                  to={"/profile"}
                                         > Профиль
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!user}
                                                  to={"/my-responses"}
                                         > Отклики
@@ -85,13 +100,12 @@ export default function HeaderApp2() {
                                         {/*         to={"/reg/employees"}*/}
                                         {/*> Регистрация*/}
                                         {/*</NavLink>*/}
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={signIn}
                                                  to={"/auth/employees"}
-                                            // onClick={() => setSignUp(!signUp)}
-                                        > Войти
+                                        > Вход
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!user}  // или id магазина
                                                  onClick={() => {logout()}}
                                                  to={"/"}
@@ -100,21 +114,17 @@ export default function HeaderApp2() {
                                     </div>
                                 ) : (
                                     <div>
-                                        <NavLink className="links f-s"
-                                            // hidden={signUpCompany}
-                                            // onClick={() => setSignIn(!signIn)}
+                                        <NavLink className="links f-s c_848C8E" hidden={!company}
                                                  to={"/profiles"}
                                         > Анкеты
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!company}
-                                            // onClick={() => setSignIn(!signIn)}
                                                  to={"/employer/vacancies"}
                                         > Объявления
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!company}
-                                            // onClick={() => setSignIn(!signIn)}
                                                  to={"/employer/personal-account"}
                                         > Кабинет
                                         </NavLink>
@@ -124,14 +134,14 @@ export default function HeaderApp2() {
                                         {/*         to={"/reg/company"}*/}
                                         {/*> Регистрация*/}
                                         {/*</NavLink>*/}
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={signInCompany}
                                                  to={"/auth/company"}
                                                  // to={"/auth/employees"}
                                             // onClick={() => setSignUpCompany(!signUpCompany)}
-                                        > Войти
+                                        > Вход
                                         </NavLink>
-                                        <NavLink className="links f-s"
+                                        <NavLink className="links f-s c_848C8E"
                                                  hidden={!company}  // id компании
                                                  onClick={() => {companyLogout()}}
                                                  to={"/employees"}

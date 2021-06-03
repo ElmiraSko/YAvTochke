@@ -1,62 +1,62 @@
 .v-d-title {
     color: #f04d2d;
     font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 1.25rem;      /* 20px */
+    line-height: 1.4375rem; /* 23px */
 }
 .v-d-price {
     color: #0C1618;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: 0.8px;
+    font-size: 1rem;
+    line-height: 1.1875rem;  /* 19px */
+    letter-spacing: 0.05rem;  /* 0.8px */
     text-transform: uppercase;
-    margin-top: 15px;
+    margin-top: 0.9375rem;  /* 15px */
 }
 .v-d-icon {
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 20px;
-    margin-top: 15px;
+    font-size: 0.875rem;       /* 14px - 0,875rem */
+    line-height: 1.25rem;      /* 20px */
+    margin-top: 0.9375rem;     /* 12px */
 }
 .point-t {
-    margin-top: 12px;
+    margin-top: 0.75rem;
 }
 .v-d-address {
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    margin-top: 25px;
+    font-size: 0.875rem;
+    line-height: 1rem;     /* 16px */
+    margin-top: 1.5625rem;     /* 25px */
 }
 .v-d-work_type {
     color: #f04d2d;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     margin-top: 15px;
 }
 .v-d-work_sch {
     font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: 0.8px;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    letter-spacing: 0.05rem;   /* 0.8px */
     text-transform: uppercase;
     color: #505350;
     margin-top: 15px;
 }
 .v-d-desc-t {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.125rem;  /* 18px */
+    line-height: 1.3125rem;
     color: #F04D2D;
     margin-top: 34px;
 }
 .v-d-desc {
     font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1rem;
+    line-height: 1.1875rem;
     margin-top: 20px;
 }
 .v-d-button {
@@ -69,8 +69,8 @@
 }
 .v-d-b {
     font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.9375rem;
+    line-height: 0.875rem;
     text-transform: uppercase;
     padding: 0 15px;
 }

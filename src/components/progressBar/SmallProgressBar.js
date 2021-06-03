@@ -10,10 +10,11 @@ export default function ProgressBar(props) {
     }, [props.value])
 
     return(
-        <div style={{ width: '120px',
+        <div style={{ width: '122px',
             marginLeft: 'auto', marginRight: 'auto', marginTop: '7px', }}>
             <progress value={props.value} max="100" className="small-progress">А</progress>
-            <span style={{position: 'relative',  top: '-20px', color: `${color}`}}>{props.value}%</span>
+            <span className="value-text"
+                style={{color: `${color}`}}>{props.value}%</span>
         </div>
     )
 }

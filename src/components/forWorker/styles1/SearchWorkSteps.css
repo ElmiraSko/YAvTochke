@@ -14,7 +14,7 @@
     background: #ffffff;
     border-radius: 4px;
     padding-bottom: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #0C1618;
     line-height: 19px;
 }
@@ -33,7 +33,7 @@
 .title-steps {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.25rem; /*20px*/
     line-height: 23px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -42,7 +42,7 @@
     display: flex;
     justify-content: space-around;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 19px;
     color: #f04d2d;
 }
@@ -62,10 +62,6 @@
     justify-content: space-around;
     font-size: 1.1rem;
 }
-.for-steps-icons {
-    width: 40px;
-    height: 40px;
-}
 
 
 @media screen and (max-width: 1024px) {
@@ -73,9 +69,13 @@
         width: 600px;
         font-size: 1.0rem;
     }
+    .title-steps {
+        font-size: 1.0625rem;
+    }
     .two {
         font-size: 1.0rem;
         margin-top: 2px;
+        line-height: 18px;
     }
     .wr-stp-div {
         margin: 10px 0 10px 0;
@@ -84,14 +84,17 @@
         margin: 12px 0 12px 0;
         font-size: 1.0rem;
     }
+    .steps-icons {
+        padding-top: 10px;
+    }
 }
 @media screen and (max-width: 768px) {
     .wrapper {
         width: 500px;
-        font-size: 1.0rem;
+        font-size: 0.875rem;
     }
     .title-steps {
-        font-weight: 500;
+        font-size: 1rem;
     }
     .wr-stp {
         font-weight: 500;
@@ -99,8 +102,9 @@
         color: #f04d2d;
     }
     .two {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         height: 160px;
+        line-height: 15px;
     }
     .how-title {
         font-size: 0.9rem;
@@ -108,6 +112,7 @@
     }
     .wr-stp-div {
         line-height: 1;
+        font-size: 0.875rem;
         width: 30%;
     }
     .how-wrapper {
@@ -118,5 +123,8 @@
         width: 28%;
         height: 160px;
         margin: 10px 0 0 0;
+    }
+    .steps-icons {
+        padding-top: 5px;
     }
 }
