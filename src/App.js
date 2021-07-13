@@ -244,7 +244,7 @@ function App() {
                                   <FogotPassword />
                               </Route>
 
-                              {/* <Redirect to="/" /> */}
+                              <Redirect to="/" />
                           </Switch>
                       </div>
                   {/*</div>*/}
