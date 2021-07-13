@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/YAvTochke/static/css/main.09629f90.chunk.css",
-    "main.js": "/YAvTochke/static/js/main.e26e37bb.chunk.js",
-    "main.js.map": "/YAvTochke/static/js/main.e26e37bb.chunk.js.map",
+    "main.js": "/YAvTochke/static/js/main.82587c22.chunk.js",
+    "main.js.map": "/YAvTochke/static/js/main.82587c22.chunk.js.map",
     "runtime-main.js": "/YAvTochke/static/js/runtime-main.94d02277.js",
     "runtime-main.js.map": "/YAvTochke/static/js/runtime-main.94d02277.js.map",
-    "static/js/2.850c97fe.chunk.js": "/YAvTochke/static/js/2.850c97fe.chunk.js",
-    "static/js/2.850c97fe.chunk.js.map": "/YAvTochke/static/js/2.850c97fe.chunk.js.map",
+    "static/js/2.8825d8f3.chunk.js": "/YAvTochke/static/js/2.8825d8f3.chunk.js",
+    "static/js/2.8825d8f3.chunk.js.map": "/YAvTochke/static/js/2.8825d8f3.chunk.js.map",
     "static/js/3.c40062e2.chunk.js": "/YAvTochke/static/js/3.c40062e2.chunk.js",
     "static/js/3.c40062e2.chunk.js.map": "/YAvTochke/static/js/3.c40062e2.chunk.js.map",
     "index.html": "/YAvTochke/index.html",
     "static/css/main.09629f90.chunk.css.map": "/YAvTochke/static/css/main.09629f90.chunk.css.map",
-    "static/js/2.850c97fe.chunk.js.LICENSE.txt": "/YAvTochke/static/js/2.850c97fe.chunk.js.LICENSE.txt",
+    "static/js/2.8825d8f3.chunk.js.LICENSE.txt": "/YAvTochke/static/js/2.8825d8f3.chunk.js.LICENSE.txt",
     "static/media/Logo-1.916a6dec.png": "/YAvTochke/static/media/Logo-1.916a6dec.png",
     "static/media/Photo-1st-screen.03894061.png": "/YAvTochke/static/media/Photo-1st-screen.03894061.png",
     "static/media/logo_HL _1.70ac3329.png": "/YAvTochke/static/media/logo_HL _1.70ac3329.png",
@@ -21,8 +21,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.94d02277.js",
-    "static/js/2.850c97fe.chunk.js",
+    "static/js/2.8825d8f3.chunk.js",
     "static/css/main.09629f90.chunk.css",
-    "static/js/main.e26e37bb.chunk.js"
+    "static/js/main.82587c22.chunk.js"
   ]
 }
