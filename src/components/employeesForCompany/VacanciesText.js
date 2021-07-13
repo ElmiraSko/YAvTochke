@@ -1,3 +1,7 @@
+import logo1 from "../../img/creon-logo-1.png";
+import logo2 from "../../img/logo_HL _1.png";
+
+
 const vacancies = [
     {
         id: 12,
@@ -14,7 +18,7 @@ const vacancies = [
         full_description: `Работа рядом с домом - выбери супермаркет, ближе к твоему дому!
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
             Бесплатное корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/logo_HL _1.png`,
+        imgUrl: logo2,
         inArchive: 'false',
         count: '8',
         is_respond: false,
@@ -35,7 +39,7 @@ const vacancies = [
         full_description: `Работа рядом с домом ! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
             Предлагаем корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/logo_HL _1.png`,
+        imgUrl: logo2,
         inArchive: 'false',
         count: '4',
         is_respond: false,
@@ -49,14 +53,14 @@ const vacancies = [
         address: "Новокосинская, д. 14а",
         price: "25 000",
         unit_of_time: "руб/мес",
-        companyName: "ООО Рога и копыта",
+        companyName: "ООО CREON",
         point: "В точке",
         work_type: "Постоянная работа",
         work_schedule: "2/2",
         full_description: `Работа рядом с домом - выбери супермаркет, ближе к твоему дому! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц.
              Предлагаем корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/creon-logo-1.png`,
+        imgUrl: logo1,
         inArchive: 'true',
         count: '5',
         is_respond: true,
@@ -70,14 +74,14 @@ const vacancies = [
         address: "Новокосинская, д. 14а",
         price: "14 700",
         unit_of_time: "руб/мес",
-        companyName: "ООО Рога и копыта",
+        companyName: "ООО CREON",
         point: "В точке",
         work_type: "Постоянная работа",
         work_schedule: "3/2",
         full_description: `Работа рядом с домом - выбери супермаркет, ближе к твоему дому! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц.
              Предлагаем корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/creon-logo-1.png`,
+        imgUrl: logo1,
         inArchive: 'true',
         count: '1',
         is_respond: false,
@@ -98,7 +102,7 @@ const vacancies = [
         full_description: `Работа рядом с домом ! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
             Предлагаем корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/logo_HL _1.png`,
+        imgUrl: logo2,
         inArchive: 'false',
         count: '4',
         is_respond: true,
@@ -119,7 +123,7 @@ const vacancies = [
         full_description: `Работа рядом с домом! 
             Оформление по ТК РФ, белая заработанная плата, выплата 2 раза в месяц. 
             Предлагаем корпоративное обучение, возможность профессионального роста.`,
-        imgUrl: `/images/logo_HL _1.png`,
+        imgUrl: logo2,
         inArchive: 'false',
         count: '4',
         is_respond: true,

@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
+import { Link } from 'react-router-dom';
 import '../components/styles/SignIn.css'
 
 export default function SignIn(props) {
@@ -59,7 +60,9 @@ export default function SignIn(props) {
                                 onClick={submitH}
                         >Войти</Button>
 
-                        <button className="forgot-password-button">Забыли пароль?</button>
+                        <Link to={"/forgot-password"} 
+                        style={{textDecoration: 'none', paddingTop: '20px', color: '#525252'}}
+                        >Забыли пароль?</Link>
                     </div>
             </div>
     )

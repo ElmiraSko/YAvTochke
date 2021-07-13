@@ -38,6 +38,7 @@ import Pay from "./components/Pay";
 import CompanyEmployerEdit from "./components/employeesForCompany/CompanyEmployerEdit";
 import SelectedVacancy from "./components/employeesForCompany/SelectedVacancy";
 import SelectedVacancyAddress from "./components/employeesForCompany/SelectedVacancyAddress";
+import FogotPassword from './components/FogotPassword';
 
 function App() {
     // [значение, метод изменяющий это значение] = React.useState(первоначальное значение)
@@ -239,8 +240,11 @@ function App() {
                               <Route exact path="/vacancy-details/company">
                                   <VacancyCompany />
                               </Route>
+                              <Route exact path="/forgot-password">
+                                  <FogotPassword />
+                              </Route>
 
-                              <Redirect to="/" />
+                              {/* <Redirect to="/" /> */}
                           </Switch>
                       </div>
                   {/*</div>*/}
